@@ -1,6 +1,8 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\PenerimaBansosController;
+use App\Http\Controllers\BansosController;
 use App\Http\Controllers\PhotoController;
 
 /*
@@ -18,4 +20,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
+Route::resource('penerima-bansos', PenerimaBansosController::class);
+Route::resource('bansos', BansosController::class);
 Route::resource('photos', PhotoController::class);
