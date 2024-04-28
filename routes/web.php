@@ -15,7 +15,7 @@ use App\Http\Controllers\PhotoController;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('landingpage');
 });
 
 Route::resource('photos', PhotoController::class);
