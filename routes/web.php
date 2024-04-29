@@ -1,6 +1,7 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
+use App\Http\Controllers\WelcomeController;
 use App\Http\Controllers\PhotoController;
 
 /*
@@ -17,5 +18,7 @@ use App\Http\Controllers\PhotoController;
 Route::get('/', function () {
     return view('landingpage');
 });
+
+Route::get('/', [WelcomeController::class, 'index']);
 
 Route::resource('photos', PhotoController::class);
