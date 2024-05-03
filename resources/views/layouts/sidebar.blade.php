@@ -45,6 +45,15 @@
             <p>Informasi Akun</p>
           </a>
         </li>
+        <li class="nav-item">
+          <a onclick="return confirm('Apakah anda yakin akan keluar ?')" href="{{ url('/') }}" class="nav-link">
+            <i class="nav-icon far fa-circle text-danger"></i>
+            <p>
+              Logout
+              <i class="right fas fa-angle"></i>
+            </p>
+          </a>
+        </li>
       </ul>
     </nav>
     <!-- /.sidebar-menu -->
