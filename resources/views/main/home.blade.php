@@ -19,7 +19,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ asset('img/hero2.webp') }}" class="d-block w-100"
+                        <img src="{{ asset('img/beranda.jpeg') }}" class="d-block w-100"
                             style="filter: brightness(70%); -webkit-filter: brightness(70%); object-fit: cover;"
                             alt="..." height="500">
                         <div class="carousel-caption d-md-block">
@@ -27,11 +27,7 @@
                                 Transparansi Setiap
                                 Penyaluran
                                 Bantuan Sosial</h5>
-                            <p class="welcome-body" style="font-size: 20px;">Sipantas atau Sistem Informasi Pelaporan
-                                Bantuan Sosial adalah situs
-                                web yang akan membantu
-                                baik pemerintah maupun penerima bantuan untuk memantau penyaluran bantuan dana sosial yang
-                                efektif dan user-friendly. </p>
+                            <p class="welcome-body" style="font-size: 20px;">SI BANSOS adalah</p>
                         </div>
                     </div>
                     @if (count($informasi))
@@ -162,34 +158,28 @@
         <section class="container shadow mt-5 p-5 contact">
             <div class="d-flex mb-3">
                 <div class="">
-                    <p class="sipantas" style="text-indent: 50px; line-height: 30px">Sipantas atau Sistem Informasi
-                        Pelaporan Bantuan Sosial adalah situs web yang akan membantu baik
-                        pemerintah maupun penerima bantuan untuk memantau penyaluran bantuan dana sosial yang efektif dan
-                        user-friendly. Sipantas berfungsi sebagai wadah dalam pelaporkan setiap kejanggalan dalam penyaluran
-                        bantuan sosial dan berfungsi dalam memantau dan menyelidiki guna meningkatkan integritas dan
-                        transparansi setiap penyaluran bantuan sosial</p>
+                    <p class="sipantas" style="text-indent: 50px; line-height: 30px">SI BANSOS adalah</p>
                 </div>
             </div>
             <div class="d-flex">
                 <h1 class="bi bi-house-fill"></h1>
                 <div class="ms-3">
                     <h5>Home</h5>
-                    <p>Jl. Komala Sari No.12 Dusun Bagek Gaet Desa Pohgading Timur, Kecamatan Pringgabaya, Lombok Timur, NTB
-                    </p>
+                    <p>Kelurahan Tulusrejo, Kec. Lowokwaru Malang</p>
                 </div>
             </div>
             <div class="d-flex my-4">
                 <h1 class="bi bi-telephone-fill"></h1>
                 <div class="ms-3">
                     <h5>Phone</h5>
-                    <p>+65 123 456 234</p>
+                    <p>nomer</p>
                 </div>
             </div>
             <div class="d-flex">
                 <h1 class="bi bi-envelope-open-fill"></h1>
                 <div class="ms-3">
                     <h5>Email</h5>
-                    <p>pantashelp@gmail.com</p>
+                    <p>email</p>
                 </div>
             </div>
         </section>

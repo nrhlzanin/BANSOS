@@ -16,9 +16,9 @@
                     <h1 class="h3 fw-normal text-center">Registrasi Sekarang</h1>
                     <p class="text-center">Registrasi sekarang juga guna memantau bantuan sosial yang tersalurkan</p>
                     <div class="form-floating mt-5 mb-4">
+                        <label for="nama">Nama</label>
                         <input type="text" name="nama" class="form-control @error('nama') is-invalid @enderror" id="nama"
                             value="{{ old('nama') }}" placeholder="nama">
-                        <label for="nama">Nama</label>
                         @error('nama')
                             <div class="invalid-feeback">
                                 {{ $message }}
@@ -26,9 +26,9 @@
                         @enderror
                     </div>
                     <div class="form-floating mb-4">
+                        <label for="nik">NIK</label>
                         <input type="text" name="nik" class="form-control @error('nik') is-invalid @enderror" id="nik"
                             value="{{ old('nik') }}" placeholder="nik">
-                        <label for="nik">NIK</label>
                         @error('nik')
                             <div class="invalid-feeback">
                                 {{ $message }}
@@ -36,9 +36,9 @@
                         @enderror
                     </div>
                     <div class="form-floating mb-4">
+                        <label for="telepon">Nomor Telepon</label>
                         <input type="tel" name="telepon" class="form-control @error('telepon') is-invalid @enderror"
                             id="telepon" value="{{ old('telepon') }}" placeholder="telepon">
-                        <label for="telepon">Nomor Telepon</label>
                         @error('telepon')
                             <div class="invalid-feeback">
                                 {{ $message }}
@@ -46,9 +46,9 @@
                         @enderror
                     </div>
                     <div class="form-floating mb-4">
+                        <label for="email">Email</label>
                         <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                             id="email" value="{{ old('email') }}" placeholder="email">
-                        <label for="email">Email</label>
                         @error('email')
                             <div class="invalid-feeback">
                                 {{ $message }}
@@ -56,9 +56,9 @@
                         @enderror
                     </div>
                     <div class="form-floating mb-4">
+                        <label for="tgl_lahir">Tanggal Lahir</label>
                         <input type="date" name="tgl_lahir" class="form-control @error('tgl_lahir') is-invalid @enderror"
                             id="tgl_lahir" value="{{ old('tgl_lahir') }}" placeholder="tgl_lahir">
-                        <label for="tgl_lahir">Tanggal Lahir</label>
                         @error('tgl_lahir')
                             <div class="invalid-feeback">
                                 {{ $message }}
@@ -66,10 +66,10 @@
                         @enderror
                     </div>
                     <div class="form-floating mb-4">
+                        <label for="username">Username</label>
                         <input type="text" name="username" class="form-control @error('username') is-invalid @enderror"
                             id="username" placeholder="name@example.com" value="{{ old('username') }}"
                             placeholder="username">
-                        <label for="username">Username</label>
                         @error('username')
                             <div class="invalid-feeback">
                                 {{ $message }}
@@ -77,9 +77,9 @@
                         @enderror
                     </div>
                     <div class="form-floating mb-4">
+                        <label for="password">Password</label>
                         <input type="password" name="password" class="form-control @error('password') is-invalid @enderror"
                             id="password" placeholder="Password" placeholder="password">
-                        <label for="password">Password</label>
                         @error('password')
                             <div class="invalid-feeback">
                                 {{ $message }}
@@ -87,10 +87,10 @@
                         @enderror
                     </div>
                     <div class="form-floating mb-4">
+                        <label for="konfirmasi_password">Konfirmasi Password</label>
                         <input type="password" name="konfirmasi_password"
                             class="form-control @error('konfirmasi_password') is-invalid @enderror" id="konfirmasi_password"
                             placeholder="konfirmasi_password" placeholder="konfirmasi_password">
-                        <label for="konfirmasi_password">Konfirmasi Password</label>
                         @error('konfirmasi_password')
                             <div class="invalid-feeback">
                                 {{ $message }}

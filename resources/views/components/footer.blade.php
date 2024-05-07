@@ -5,15 +5,15 @@
             <h5 class="mb-3">Hubungi Kami</h5>
             <div class="d-flex">
                 <i class="bi bi-envelope-open-fill"></i>
-                <p class="ms-2">pantashelp@gmail.com</p>
+                <p class="ms-2">email</p>
             </div>
             <div class="d-flex">
                 <i class="bi bi-telephone-fill"></i>
-                <p class="ms-2">+65 123 456 234</p>
+                <p class="ms-2">nomer</p>
             </div>
             <div class="d-flex">
                 <i class="bi bi-geo-alt-fill"></i>
-                <p class="ms-2">Jl. Komala Sari No.12 Lombok Timur - Nusa Tenggara Barat</p>
+                <p class="ms-2">Kelurahan Tulusrejo, Kec. Lowokwaru Malang</p>
             </div>
         </section>
         <section class="col-4">
@@ -35,23 +35,7 @@
             </ul>
         </section>
     </div>
-    {{-- news letter --}}
-    <div class="container pb-5">
-        <h1 class="text-center">Newsletter</h1>
-        <p class="text-center">Dapatkan informasi terbaru dengan melakukan subscribe pada layanan kami</p>
-        <div class="col-lg-6 m-auto">
-            <form action="" class="d-flex flex-column">
-                <div class="mb-3">
-                    <label for="news"></label>
-                    <input type="text" class="form-control" id="news" placeholder="Email Address">
-                </div>
-                <button class="btn btn-primary">
-                    <p class="d-inline">Subscribes</p>
-                    <i class="bi bi-telegram"></i>
-                </button>
-            </form>
-        </div>
-    </div>
+
     {{-- social media --}}
     <div class="container">
         <div class="m-auto social-media">
@@ -82,6 +66,6 @@
     {{-- copyright --}}
     <div class="container pt-5 pb-4 text-center">
         <hr class="mb-5">
-        <p>Copyright <span>&copy;</span> 2021 SI Pantas All Right Reserved</p>
+        <p>Copyright <span>&copy;</span> 2024 SI BANSOS</p>
     </div>
 </footer>
