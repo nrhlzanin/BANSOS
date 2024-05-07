@@ -9,7 +9,7 @@
     <link href=" {{ mix('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
-    <title>Si Pantas - Sistem Informasi Pelaporan Bantuan Sosial</title>
+    <title>Sistem Informasi Bantuan Sosial</title>
 </head>
 
 <body>
