@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta name="csrf-token" content="{{ csrf_token() }}">
     <!-- Untuk mengirimkan token Laravel CSRF pada setiap request ajax -->
-
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
     <!-- Google Font: Source Sans Pro -->
     <link rel="stylesheet"
@@ -23,6 +22,10 @@
 
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+    <!-- My Ccss -->
+    <link href=" {{ mix('css/app.css') }}" rel="stylesheet">
+    <link rel="stylesheet" href="{{ asset('css/main.css') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 
     @stack('css')
     <title>Sistem Informasi Bantuan Sosial</title>
@@ -75,6 +78,7 @@
             }
         });
     </script>
+    <script src="{{ mix('js/app.js') }}"></script>
     @stack('js') <!-- Digunakan untuk memanggil custom js dari perintah push('js') pada masing-masing view -->
 </body>
 

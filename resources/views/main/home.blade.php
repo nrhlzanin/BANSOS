@@ -19,7 +19,7 @@
                 </div>
                 <div class="carousel-inner">
                     <div class="carousel-item active">
-                        <img src="{{ asset('img/beranda.jpeg') }}" class="d-block w-100"
+                        <img src="{{ asset('img/hero4.webp') }}" class="d-block w-100"
                             style="filter: brightness(70%); -webkit-filter: brightness(70%); object-fit: cover;"
                             alt="..." height="500">
                         <div class="carousel-caption d-md-block">
@@ -152,36 +152,6 @@
                 </div>
                 <button type="submit" class="btn btn-primary col-12">Kirim</button>
             </form>
-        </section>
-
-        {{-- info contact --}}
-        <section class="container shadow mt-5 p-5 contact">
-            <div class="d-flex mb-3">
-                <div class="">
-                    <p class="sipantas" style="text-indent: 50px; line-height: 30px">SI BANSOS adalah</p>
-                </div>
-            </div>
-            <div class="d-flex">
-                <h1 class="bi bi-house-fill"></h1>
-                <div class="ms-3">
-                    <h5>Home</h5>
-                    <p>Kelurahan Tulusrejo, Kec. Lowokwaru Malang</p>
-                </div>
-            </div>
-            <div class="d-flex my-4">
-                <h1 class="bi bi-telephone-fill"></h1>
-                <div class="ms-3">
-                    <h5>Phone</h5>
-                    <p>nomer</p>
-                </div>
-            </div>
-            <div class="d-flex">
-                <h1 class="bi bi-envelope-open-fill"></h1>
-                <div class="ms-3">
-                    <h5>Email</h5>
-                    <p>email</p>
-                </div>
-            </div>
         </section>
     </main>
 @endsection
