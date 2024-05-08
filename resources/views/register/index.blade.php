@@ -26,40 +26,10 @@
                         @enderror
                     </div>
                     <div class="form-floating mb-4">
-                        <label for="nik">NIK</label>
-                        <input type="text" name="nik" class="form-control @error('nik') is-invalid @enderror" id="nik"
-                            value="{{ old('nik') }}" placeholder="nik">
-                        @error('nik')
-                            <div class="invalid-feeback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="form-floating mb-4">
-                        <label for="telepon">Nomor Telepon</label>
-                        <input type="tel" name="telepon" class="form-control @error('telepon') is-invalid @enderror"
-                            id="telepon" value="{{ old('telepon') }}" placeholder="telepon">
-                        @error('telepon')
-                            <div class="invalid-feeback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="form-floating mb-4">
                         <label for="email">Email</label>
                         <input type="email" name="email" class="form-control @error('email') is-invalid @enderror"
                             id="email" value="{{ old('email') }}" placeholder="email">
                         @error('email')
-                            <div class="invalid-feeback">
-                                {{ $message }}
-                            </div>
-                        @enderror
-                    </div>
-                    <div class="form-floating mb-4">
-                        <label for="tgl_lahir">Tanggal Lahir</label>
-                        <input type="date" name="tgl_lahir" class="form-control @error('tgl_lahir') is-invalid @enderror"
-                            id="tgl_lahir" value="{{ old('tgl_lahir') }}" placeholder="tgl_lahir">
-                        @error('tgl_lahir')
                             <div class="invalid-feeback">
                                 {{ $message }}
                             </div>
