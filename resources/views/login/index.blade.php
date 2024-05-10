@@ -24,9 +24,9 @@
                     <h1 class="h3 fw-normal text-center">Silakan Masuk</h1>
                     <p class="text-center">Silakan gunakan akun anda untuk memantau dana bantuan sosial</p>
                     <div class="form-floating mt-5 mb-4">
-                        <label for="floatingInput">Email address</label>
-                        <input type="email" name="email" class="form-control" id="floatingInput"
-                            placeholder="name@example.com" value="{{ old('email') }}">
+                        <label for="floatingInput">username</label>
+                        <input type="username" name="username" class="form-control" id="floatingInput"
+                            placeholder="username" value="{{ old('username') }}">
                     </div>
                     <div class="form-floating mb-4">
                         <label for="floatingPassword">Password</label>
@@ -34,8 +34,6 @@
                             placeholder="Password">
                     </div>
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Masuk</button>
-                    <small class="d-block text-center mt-3">Belum punya akun? <a href="/register">Registrasi
-                            sekarang!</a></small>
                 </form>
             </div>
         </div>

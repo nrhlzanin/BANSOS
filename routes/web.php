@@ -37,8 +37,8 @@ Route::post("/login", [LoginController::class, "authenticate"]);
 Route::post("/logout", [LoginController::class, "logout"]);
 
 // register
-Route::get("/register", [RegisterController::class, "index"])->middleware("guest");
-Route::post("/register", [RegisterController::class, "store"]);
+Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
+Route::post('/register', [RegisterController::class, 'store']);
 
 // warga
 Route::get("/dashboard/warga/bantuan", [DashboardController::class, 'bantuan'])->middleware("warga");
