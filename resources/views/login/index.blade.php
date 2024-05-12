@@ -36,14 +36,17 @@
                         </div>
                     </div>
                     <script>
-                        function showPassword() {
-                            var passwordInput = document.getElementById("floatingPassword");
-                            if (passwordInput.type === "password") {
-                                passwordInput.type = "text";
-                            } else {
-                                passwordInput.type = "password";
-                            }
+                    document.getElementById("togglePassword").addEventListener("click", function() {
+                        var passwordInput = document.getElementById("floatingPassword");
+                        var toggleBtn = document.getElementById("togglePassword");
+                        if (passwordInput.type === "password") {
+                            passwordInput.type = "text";
+                            toggleBtn.innerHTML = '<i class="bi bi-eye-slash"></i>';
+                        } else {
+                            passwordInput.type = "password";
+                            toggleBtn.innerHTML = '<i class="bi bi-eye"></i>';
                         }
+                    });
                     </script>
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Masuk</button>
                 </form>
