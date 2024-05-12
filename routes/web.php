@@ -1,11 +1,11 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardInfoController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RegisterController;
 use App\Models\Informasi;
 use Illuminate\Support\Facades\Route;
 use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
@@ -25,21 +25,23 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 Route::get("/", fn () => view("main.home", [
     "informasi" => Informasi::latest()->get()
 ]));
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
+
+// Route::group(['middleware' => ['auth']], function() {
+//     Route::group('[')
+// });
 
 // detail informasi
-Route::get("/informasi/{informasi:id}", [InformasiController::class, "show"]);
+// Route::get("/informasi/{informasi:id}", [InformasiController::class, "show"]);
 
 // daftar penerima
 Route::get("/penerima", [DashboardController::class, "daftarPenerima"])->middleware("auth");
 
 // login & logout
-Route::get("/login", [LoginController::class, "index"])->name("login")->middleware("guest");
-Route::post("/login", [LoginController::class, "authenticate"]);
-Route::post("/logout", [LoginController::class, "logout"]);
-
-// register
-Route::get('/register', [RegisterController::class, 'index'])->name('register')->middleware('guest');
-Route::post('/register', [RegisterController::class, 'store']);
+// Route::get("/login", [LoginController::class, "index"])->name("login")->middleware("guest");
+// Route::post("/login", [LoginController::class, "authenticate"]);
+// Route::post("/logout", [LoginController::class, "logout"]);
 
 // warga
 Route::get("/dashboard", [DashboardController::class, '']);

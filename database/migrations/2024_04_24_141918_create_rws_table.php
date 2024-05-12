@@ -16,10 +16,6 @@ return new class extends Migration
             $table->unsignedBigInteger('id_user')->index();
             $table->foreign('id_user')->references('id_user')->on('user');
             $table->string('nama_admin', 50);
-            $table->string('alamat', 100);
-            $table->string('username', 20);
-            $table->string('password', 20);
-            $table->string('email', 50);
             $table->string('no_telp', 15);
             $table->timestamps();
         });

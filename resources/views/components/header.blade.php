@@ -59,11 +59,7 @@
                     @else
                         <ul class="nav-item d-flex p-0 ms-5 authentication">
                             <li class="list-group">
-                                <a href="/login" class="nav-link">Login</a>
-                            </li>
-                            <li class="list-group ms-2">
-                                <a href="/register"
-                                    class="nav-link text-center bg-primary text-white rounded-pill border registration px-3">Registrasi</a>
+                                <a href="/login" class="nav-link text-center bg-primary text-white rounded-pill border login px-3">Login</a>
                             </li>
                         </ul>
                     @endauth
