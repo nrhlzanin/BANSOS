@@ -33,6 +33,16 @@
                         <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
                         <input type="checkbox" onclick="showPassword()"> Show Password
                     </div>
+                    <script>
+                        function showPassword() {
+                            var passwordInput = document.getElementById("floatingPassword");
+                            if (passwordInput.type === "password") {
+                                passwordInput.type = "text";
+                            } else {
+                                passwordInput.type = "password";
+                            }
+                        }
+                    </script>
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Masuk</button>
                 </form>
             </div>
