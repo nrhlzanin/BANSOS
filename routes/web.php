@@ -5,7 +5,6 @@ use App\Http\Controllers\DashboardInfoController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\RegisterController;
 use App\Models\Informasi;
 use Illuminate\Support\Facades\Route;
 
