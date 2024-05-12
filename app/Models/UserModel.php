@@ -10,18 +10,12 @@ class UserModel extends \Illuminate\Foundation\Auth\User
 {
     use HasFactory;
 
-    protected $table = 'm_user';
-    protected $primaryKey = 'user_id';
+    protected $table = 'user';
+    protected $primaryKey = 'id_user';
     /**
      * The attributes that are mass assignable.
      * 
      * @var string
      */
-    // protected $fillable = ['level_id', 'username', 'nama', 'password'];
-    protected $fillable = ['level_id', 'username', 'nama', 'password'];
-
-    public function level(): BelongsTo {
-        return $this->belongsTo(LevelModel::class, 'level_id', 'level_id');
-    }
-
+    protected $fillable = ['username', 'password', 'level', 'email'];
 }

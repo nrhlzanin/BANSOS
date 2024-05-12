@@ -19,15 +19,17 @@ class AuthController extends Controller
         // kondisi jika usernya ada
         if ($user) {
             // jika usernya memiliki level admin
-            if ($user->level_id == '1') {
+            if ($user->level == 'rw') {
                 return redirect()->intended('admin');
             }
             // jika usernya memiliki level manager
-            else if ($user->level_id == '2') {
-                return redirect()->intended('manager');
+            else if ($user->level == 'rw') {
+                return redirect()->intended('petugas');
             }
         }
-        return view('login');
+        return view("login.index", [
+            "title" => "login"
+        ]);
     }
 
     public function proses_login(Request $request) {
@@ -47,12 +49,12 @@ class AuthController extends Controller
             $user = Auth::user();
 
             // cek lagi jika level user admin maka arahkan ke halaman admin
-            if ($user->level_id == '1') {
+            if ($user->level == 'rw') {
                 return redirect()->intended('admin');
             } 
             // tapi jika level usernya user biasa maka arahkan kehalaman user
-            else if ($user->level_id == '2') {
-                return redirect()->intended('manager');
+            else if ($user->level == 'rt') {
+                return redirect()->intended('petugas');
             }
             // jika belum ada role maka ke halaman /
             return redirect()->intended('/');

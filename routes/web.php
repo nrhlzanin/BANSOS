@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardInfoController;
 use App\Http\Controllers\InformasiController;
@@ -23,17 +24,23 @@ use Illuminate\Support\Facades\Route;
 Route::get("/", fn () => view("main.home", [
     "informasi" => Informasi::latest()->get()
 ]));
+Route::get('/login', [AuthController::class, 'index'])->name('login');
+Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
+
+// Route::group(['middleware' => ['auth']], function() {
+//     Route::group('[')
+// });
 
 // detail informasi
-Route::get("/informasi/{informasi:id}", [InformasiController::class, "show"]);
+// Route::get("/informasi/{informasi:id}", [InformasiController::class, "show"]);
 
 // daftar penerima
 Route::get("/penerima", [DashboardController::class, "daftarPenerima"])->middleware("auth");
 
 // login & logout
-Route::get("/login", [LoginController::class, "index"])->name("login")->middleware("guest");
-Route::post("/login", [LoginController::class, "authenticate"]);
-Route::post("/logout", [LoginController::class, "logout"]);
+// Route::get("/login", [LoginController::class, "index"])->name("login")->middleware("guest");
+// Route::post("/login", [LoginController::class, "authenticate"]);
+// Route::post("/logout", [LoginController::class, "logout"]);
 
 // warga
 Route::get("/dashboard/warga/bantuan", [DashboardController::class, 'bantuan'])->middleware("warga");
