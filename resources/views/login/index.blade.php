@@ -30,8 +30,10 @@
                     </div>
                     <div class="form-floating mb-4">
                         <label for="floatingPassword">Password</label>
-                        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                        <input type="checkbox" onclick="showPassword()"> Show Password
+                        <div class="input-group">
+                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+                            <button class="btn btn-outline-secondary" type="button" id="togglePassword"><i class="bi bi-eye"></i></button>
+                        </div>
                     </div>
                     <script>
                         function showPassword() {
