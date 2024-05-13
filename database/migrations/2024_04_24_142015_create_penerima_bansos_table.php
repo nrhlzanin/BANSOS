@@ -13,20 +13,22 @@ return new class extends Migration
     {
         Schema::create('penerima_bansos', function (Blueprint $table) {
             $table->id('id_penerimabansos');
-            $table->unsignedBigInteger('id_jenisbansos')->index();
+            $table->unsignedBigInteger('id_jenisbansos')->index()->nullable();
             $table->unsignedBigInteger('id_petugas')->index();
             $table->unsignedBigInteger('id_admin')->index();
             $table->string('no_kk', 20);
             $table->string('nik', 20);
-            $table->enum('status', ['Pernah', 'Tidak pernah']);
             $table->enum('agama', ['Islam', 'Protestan', 'Katholik', 'Hindu', 'Budha', 'Konghucu']);
             $table->string('alamat', 100);
-            $table->string('pekerjaan', 30);
             $table->string('no_telp', 15);
-            $table->enum('pengeluaran', ['< 500.000', '>=500.000 - <=1.000.000', '>1.000.000 - <=2.500.000', '>2.500.000']);
-            $table->enum('pendapatan', ['< 500.000', '>=500.000 - <=1.000.000', '>1.000.000 - <=2.500.000', '>2.500.000']);
+            $table->enum('status_pekerjaan', ['Bekerja', 'Tidak Bekerja']);
+            $table->string('pekerjaan', 30);
+            $table->integer('jml_penghasilan')->nullable();
             $table->integer('jml_tanggungan');
-            $table->enum('jenis_bansos', ['BPNT', 'BLT', 'PKH', 'BSB']);
+            $table->enum('history_penerimaan', ['Pernah Menerima', 'Belum Menerima']);
+            $table->enum('tempat_tinggal', ['Kontrakan', 'Menumpang', 'Rumah Sendiri']);
+            $table->enum('pendidikan', ['Tidak Sekolah', 'SD', 'SMP', 'SMA', 'Kuliah']);
+            $table->enum('jenis_bansos', ['BPNT', 'BLT', 'PKH', 'BSB'])->nullable();
             $table->string('keterangan', 100);
             $table->timestamps();
 
