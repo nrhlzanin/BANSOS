@@ -1,0 +1,13 @@
+composer create-project laravel/laravel="10.3.*" ProjekBansos
+composer require laravel/ui
+npm install
+npm run build
+composer require livewire/livewire
+composer dump-autoload
+npm run dev
+composer require jeroennoten/laravel-adminlte
+php artisan adminlte:install
+composer require yajra/laravel-datatables:^10.0
+npm i laravel-datatables-vite --save-dev
+php artisan migrate
+php artisan serve
