@@ -30,24 +30,9 @@
                     </div>
                     <div class="form-floating mb-4">
                         <label for="floatingPassword">Password</label>
-                        <div class="input-group">
-                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
-                            <button class="btn btn-outline-secondary" type="button" id="togglePassword"><i class="bi bi-eye"></i></button>
-                        </div>
+                        <input type="password" name="password" class="form-control" id="floatingPassword"
+                            placeholder="Password">
                     </div>
-                    <script>
-                    document.getElementById("togglePassword").addEventListener("click", function() {
-                        var passwordInput = document.getElementById("floatingPassword");
-                        var toggleBtn = document.getElementById("togglePassword");
-                        if (passwordInput.type === "password") {
-                            passwordInput.type = "text";
-                            toggleBtn.innerHTML = '<i class="bi bi-eye-slash"></i>';
-                        } else {
-                            passwordInput.type = "password";
-                            toggleBtn.innerHTML = '<i class="bi bi-eye"></i>';
-                        }
-                    });
-                    </script>
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Masuk</button>
                 </form>
             </div>

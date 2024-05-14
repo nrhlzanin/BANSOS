@@ -23,7 +23,7 @@ class AuthController extends Controller
                 return redirect()->intended('admin');
             }
             // jika usernya memiliki level manager
-            else if ($user->level == 'rw') {
+            else if ($user->level == 'rt') {
                 return redirect()->intended('petugas');
             }
         }
@@ -51,7 +51,7 @@ class AuthController extends Controller
             // cek lagi jika level user admin maka arahkan ke halaman admin
             if ($user->level == 'rw') {
                 return redirect()->intended('admin');
-            } 
+            }
             // tapi jika level usernya user biasa maka arahkan kehalaman user
             else if ($user->level == 'rt') {
                 return redirect()->intended('petugas');
@@ -78,9 +78,9 @@ class AuthController extends Controller
         // validasinya yaitu semua field wajid diisi
         // validasi username harus unique atau tidak boleh ada duplicate username
         $validator = Validator::make($request->all(), [
-            'nama' => 'required', 
-            'username' => 'required|unique:m_user', 
-            'password' => 'required', 
+            'nama' => 'required',
+            'username' => 'required|unique:m_user',
+            'password' => 'required',
         ]);
 
         // kalau gagal kembali ke halaman registrasi dengan menampilkan pesan error

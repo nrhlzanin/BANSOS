@@ -8,43 +8,19 @@ use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Models\Informasi;
 use Illuminate\Support\Facades\Route;
-use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
-
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
 
 // beranda
 Route::get("/", fn () => view("main.home", [
     "informasi" => Informasi::latest()->get()
 ]));
+
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
-
-// Route::group(['middleware' => ['auth']], function() {
-//     Route::group('[')
-// });
-
-// detail informasi
-// Route::get("/informasi/{informasi:id}", [InformasiController::class, "show"]);
 
 // daftar penerima
 Route::get("/penerima", [DashboardController::class, "daftarPenerima"])->middleware("auth");
 
-// login & logout
-// Route::get("/login", [LoginController::class, "index"])->name("login")->middleware("guest");
-// Route::post("/login", [LoginController::class, "authenticate"]);
-// Route::post("/logout", [LoginController::class, "logout"]);
-
 // warga
-Route::get("/dashboard", [DashboardController::class, '']);
 Route::get("/dashboard/warga/bantuan", [DashboardController::class, 'bantuan'])->middleware("warga");
 Route::get("/dashboard/warga/detail/{penerima:id}", [DashboardController::class, 'detailBantuan'])->middleware("warga");
 Route::put("/dashboard/warga/bantuan/{penerima:id}", [DashboardController::class, 'updateBantuanRoleWarga'])->middleware("warga");
@@ -76,3 +52,12 @@ Route::put("/dashboard/desa/penerima/{penerima:id}", [DashboardController::class
 Route::get("/dashboard/desa/penerima/detail/{penerima:id}", [DashboardController::class, 'penerimaRoleDesaDetail'])->middleware("desa");
 Route::get("/dashboard/desa/history", [DashboardController::class, 'historyRoleDesa'])->middleware("desa");
 Route::get("/dashboard/desa/history/detail/{penerima:id}", [DashboardController::class, 'detailHistoryRoleDesa'])->middleware("desa");
+////////////////////////////////////////////////////////////////////////////////////////////////
+
+Route::get('/admin', function () {
+    return view('RW.dashboardrw');
+})->name('RW.dashboardrw')->middleware(['auth', 'rw:rw']);
+
+Route::get('/petugas', function () {
+    return view('dashboard.dashboardrt');
+})->name('dashboard.dashboardrt')->middleware(['auth', 'rt:rt']);

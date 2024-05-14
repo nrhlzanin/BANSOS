@@ -7,10 +7,10 @@
 @section('content')
     <div class="container">
         <div class="card">
-            <div class="card-header">Tampilan <?= (Auth::user()->level_id == 1)?'Admin':'Manager'; ?>
+            <div class="card-header">Tampilan <?= Auth::user()->level_id == 1 ? 'Admin' : 'Manager' ?>
                 <div class="card-body">
                     <h1>Login Sebagai:
-                        <?= (Auth::user()->level_id == 1)?'Admin':'Manager'; ?>
+                        <?= Auth::user()->level_id == 1 ? 'Admin' : 'Manager' ?>
                     </h1>
                     <a href="{{ route('logout') }}">Logout</a>
                 </div>

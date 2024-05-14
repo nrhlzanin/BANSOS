@@ -224,4 +224,13 @@ class DashboardController extends Controller
             "penerima" => $arsip->get()[0],
         ]);
     }
+
+
+    ////////////////////////////////////////////////////////////////////////////////////////
+
+    public function RW()
+    {
+        return view('RW/dashboardrw');
+    }
+
 }
