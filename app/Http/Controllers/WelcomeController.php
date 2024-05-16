@@ -12,14 +12,17 @@ class WelcomeController extends Controller
     public function index()
     {
         $breadcrumb = (object) [
-            'title' => 'Selamat Datang',
-            'list' => ['Home', 'welcome'] 
+            'title' => 'Your Page Title',
+            'list' => [
+                'Home' => route('home'),
+                'Your Page' => ''
+            ]
         ];
 
-        $activeMenu = 'dashboard';
-
-        return view('welcome', ['breadcrumb' => $breadcrumb, 'activeMenu' => $activeMenu]);
+        return view('your.view', compact('breadcrumb'));
     }
+}
+
 
     /**
      * Show the form for creating a new resource.
