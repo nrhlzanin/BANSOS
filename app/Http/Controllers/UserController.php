@@ -11,9 +11,11 @@ use Illuminate\Http\RedirectResponse;
 
 class UserController extends Controller
 {
+    //Menampilkan halaman awal user
     public function index(UserDataTable $dataTable) 
     {
-        return $dataTable->render('user.index');
+        $activeMenu = 'user';
+        return $dataTable->render('user.index', compact('activeMenu'));
     }
 
     public function create() 

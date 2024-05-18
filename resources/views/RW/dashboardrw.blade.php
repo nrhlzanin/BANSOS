@@ -27,10 +27,10 @@
   <!-- Site wrapper -->
   <div class="wrapper">
     <!-- Navbar -->
-    @include('RW.header')
+    @include('layouts.header')
     <!-- Navbar -->
       <!-- Sidebar -->
-    @include('RW.sidebar')
+    @include('layouts.sidebar')
       <!-- Sidebar -->
 
     <!-- Content Wrapper. Contains page content -->
@@ -113,7 +113,7 @@
             </div>
         </section>
     </div>
-    @include('RW.footer')
+    @include('layouts.footer')
   </div>
   <!-- Site wrapper -->
 

@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardInfoController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\UserController;
 use App\Models\Informasi;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Alternatif\Index as AlternatifIndex;
@@ -72,6 +73,17 @@ Route::get('/admin', function () {
 Route::get('/petugas', function () {
     return view('dashboard.dashboardrt');
 })->name('dashboard.dashboardrt')->middleware(['auth', 'rt:rt']);
+
+Route::group(['prefix' => 'user'], function (){
+    Route::get('/', [UserController::class, 'index']);          //Menampilkan halaman awal user
+    Route::post('/list', [UserController::class, 'list']);      // Menampilkan data user dalam bentuk json untuk datatables
+    Route::get('/create', [UserController::class, 'create']);   // Menampilkan halaman form tambah user
+    Route::post('/', [UserController::class, 'store']);         // Menyimpan data user baru
+    Route::get('/{id}', [UserController::class, 'show']);       // Menampilkan detail user
+    Route::get('/{id}/edit', [UserController::class, 'edit']);  // Menampilkan halaman form edit user
+    Route::put('/{id}', [UserController::class, 'update']);     // Menyimpan perubahan data user
+    Route::delete('/{id}', [UserController::class, 'destroy']); // Menghapus data user
+});
 
 // route data alternatif index
 Route::get('/alternatif', AlternatifIndex::class)->name('alternatif.index');

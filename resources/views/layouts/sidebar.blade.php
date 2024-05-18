@@ -25,7 +25,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="../widgets.html" class="nav-link">
+            <a href="RW/dashboardrw.blade.php" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
@@ -52,19 +52,25 @@
               <li class="nav-item">
                 <a href="../../index.html" class="nav-link">
                   <i class="far fa-dot-circle-o"></i>
-                  <p></p>
+                  <p>Bantuan Langsung Tunai (BLT)</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../../index2.html" class="nav-link">
                   <i class="far fa-dot-circle-o"></i>
-                  <p>Dashboard v2</p>
+                  <p>Program Keluarga Harapan (PKH)</p>
                 </a>
               </li>
               <li class="nav-item">
                 <a href="../../index3.html" class="nav-link">
                   <i class="far fa-dot-circle-o"></i>
-                  <p>Dashboard v3</p>
+                  <p>Bantuan Pangan Non Tunai (BPNT)</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="../../index3.html" class="nav-link">
+                  <i class="far fa-dot-circle-o"></i>
+                  <p>Bansos Beras</p>
                 </a>
               </li>
             </ul>
@@ -73,7 +79,7 @@
             <a href="#" class="nav-link">
               <i class="nav-icon far fa-user-circle"></i>
               <p>
-                INFORMASI AKUN
+                Informasi Akun
               </p>
             </a>
           </li>
