@@ -68,6 +68,6 @@ class Kernel extends HttpKernel
             'rw' => \App\Http\Middleware\CheckRole::class,
             'rt' => \App\Http\Middleware\CheckRole::class,
             'warga'=> \App\Http\Middleware\CheckRole::class,
-
+           
     ];
 }
