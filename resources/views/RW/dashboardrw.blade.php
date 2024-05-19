@@ -60,8 +60,8 @@
                 <div class="col-lg-3 col-6" >
                   <!-- small box -->
                   <div class="small-box" style="background-color: #b8efdc; position: relative; overflow: hidden;">
-                    <div class="inner" style="padding: 10px; color: black;">
-                        <img src="path/to/your/image.jpg" alt="Your Image" style="width: 100%; height: auto; border-radius: 5px;">
+                    <div class="inner" style="padding: 10px; color: black; display: flex; justify-content: center; align-items: center;">
+                        <img src="{{ asset('img/pedataan.png') }}" alt="Your Image" style="width: 50%; height: auto; border-radius: 5px;">
                     </div>
                     <div class="icon" style="position: absolute; top: 10px; right: 10px;">
                         <i class="ion ion-bag"></i>
@@ -73,21 +73,22 @@
                 <div class="col-lg-3 col-6">
                   <!-- small box -->
                   <div class="small-box" style="background-color: #b8efdc; position: relative; overflow: hidden;">
-                    <div class="inner" style="padding: 10px; color: black;">
-                        <img src="path/to/your/image.jpg" alt="Your Image" style="width: 100%; height: auto; border-radius: 5px;">
+                    <div class="inner" style="padding: 10px; color: black; display: flex; justify-content: center; align-items: center;">
+                        <img src="{{ asset('img/validasi.png') }}" alt="Your Image" style="width: 50%; height: auto; border-radius: 5px;">
                     </div>
                     <div class="icon" style="position: absolute; top: 10px; right: 10px;">
                         <i class="ion ion-bag"></i>
                     </div>
-                    <a href="#" class="small-box-footer" style="display: block; text-align: center; padding: 10px; background: rgba(0, 0, 0, 0.1); border-top: 1px solid rgba(0, 0, 0, 0.1); color: black;">Validasi Warga  <i class="fas fa-arrow-circle-right"></i></a>
-                  </div>
+                    <a href="#" class="small-box-footer" style="display: block; text-align: center; padding: 10px; background: rgba(0, 0, 0, 0.1); border-top: 1px solid rgba(0, 0, 0, 0.1); color: black;">Validasi Warga <i class="fas fa-arrow-circle-right"></i></a>
+                </div>
+                
                 </div>
                 <!-- ./col -->
                 <div class="col-lg-3 col-6">
                   <!-- small box -->
                   <div class="small-box" style="background-color: #b8efdc; position: relative; overflow: hidden;">
-                    <div class="inner" style="padding: 10px; color: black;">
-                        <img src="path/to/your/image.jpg" alt="Your Image" style="width: 100%; height: auto; border-radius: 5px;">
+                    <div class="inner" style="padding: 10px; color: black; display: flex; justify-content: center; align-items: center;">
+                        <img src="{{ asset('img/checklist.png') }}" alt="Your Image" style="width: 50%; height: auto; border-radius: 5px;">
                     </div>
                     <div class="icon" style="position: absolute; top: 10px; right: 10px;">
                         <i class="ion ion-bag"></i>
@@ -99,8 +100,8 @@
                 <div class="col-lg-3 col-6">
                     <!-- small box -->
                     <div class="small-box" style="background-color: #b8efdc; position: relative; overflow: hidden;">
-                        <div class="inner" style="padding: 10px; color: black;">
-                            <img src="path/to/your/image.jpg" alt="Your Image" style="width: 100%; height: auto; border-radius: 5px;">
+                        <div class="inner" style="padding: 10px; color: black; display: flex; justify-content: center; align-items: center;">
+                            <img src="{{ asset('img/ranking.png') }}" alt="Your Image" style="width: 50%; height: auto; border-radius: 5px;">
                         </div>
                         <div class="icon" style="position: absolute; top: 10px; right: 10px;">
                             <i class="ion ion-bag"></i>
