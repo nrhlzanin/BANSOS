@@ -10,4 +10,14 @@ class AdminController extends Controller
     {
         return view('RW/admin');
     }
+
+    public function dataWarga()
+    {
+        return view('RW.data-warga');
+    }
+
+    public function informasiAkun()
+    {
+        return view('RW.informasi-akun');
+    }
 }
