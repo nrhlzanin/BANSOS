@@ -22,9 +22,12 @@ use App\Http\Livewire\Proses\Index as ProsesIndex;
 
 
 // beranda
-Route::get("/", fn () => view("main.home", [
-    "informasi" => Informasi::latest()->get()
-]));
+Route::get("/", function () {
+    // session()->flush();  //untuk keperluan logout akun/sesi
+    return view("main.home", [
+        "informasi" => Informasi::latest()->get()
+    ]);
+});
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
@@ -68,11 +71,11 @@ Route::get("/dashboard/desa/history/detail/{penerima:id}", [DashboardController:
 
 Route::get('/admin', function () {
     return view('RW.dashboardrw');
-})->name('RW.dashboardrw')->middleware(['auth', 'rw:rw']);
+})->name('RW.dashboardrw')->middleware(['auth', 'role:rw']);
 
 Route::get('/petugas', function () {
-    return view('dashboard.dashboardrt');
-})->name('dashboard.dashboardrt')->middleware(['auth', 'rt:rt']);
+    return view('RT.dashboardrt');
+})->name('RT.dashboardrt')->middleware(['auth', 'role:rt']);
 
 Route::get('/data-warga', [App\Http\Controllers\AdminController::class, 'dataWarga'])->name('data-warga');
 Route::get('/informasi-akun', [App\Http\Controllers\AdminController::class, 'informasiAkun'])->name('data-warga');
