@@ -23,7 +23,9 @@
     <!-- Theme style -->
     <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
     <!-- My Ccss -->
-    <link href=" {{ mix('css/app.css') }}" rel="stylesheet">
+    {{--
+    <link href=" {{ mix('css/app.css', 'build') }}" rel="stylesheet">
+    --}}
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 
