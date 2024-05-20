@@ -25,7 +25,6 @@
                         <div class="carousel-caption d-md-block">
                             <h5 class="fs-1 welcome" style="line-height: 60px">Tingkatkan Integritas dan
                                 Transparansi Setiap
-                                Penyaluran
                                 Bantuan Sosial</h5>
                             <p class="welcome-body" style="font-size: 20px;">SI BANSOS adalah</p>
                         </div>
@@ -75,25 +74,26 @@
 
         {{-- fitur kami --}}
         <section class="container py-5" id="fitur" style="padding-top: 110px !important">
-            <h1 class="text-center">Fitur Kami</h1>
-            <p class="text-center">Tingkatkan kemudahan dalam penyaluran bantuan sosial dengan fitur kami</p>
+            <h1 class="text-center">JENIS PROGRAM BANTUAN SOSIAL</h1>
+            <p class="text-center">Berikut Jenis Program Bantuan Sosial:</p>
             <div class="row mt-5 p-3 feature">
                 <div class="text-center shadow rounded">
                     <img src="{{ asset('img/laporkan.jpg') }}" alt="">
-                    <h4>Laporkan</h4>
-                    <p>Tingkatkan ketepatan bantuan sosial bagi penerima dengan melaporkan setiap penyaluran bantuan sosial
-                        yang dilakukan</p>
+                    <h4>Bantuan Pangan Non Tunai (BPNT)</h4>
+                    <p>Bantuan Pangan Non Tunai (BPNT) adalah program pemerintah Indonesia yang memberikan bantuan sosial pangan kepada masyarakat kurang mampu 
+                        dalam bentuk uang elektronik atau Kartu Sembako.</p>
                 </div>
                 <div class="text-center shadow rounded">
                     <img src="{{ asset('img/tracking.jpg') }}" alt="">
-                    <h4>Tracking</h4>
-                    <p>Tingkatkan transparansi dan integritas dengan memantau setiap proses penyaluran bantuan sosial</p>
+                    <h4>Program Keluarga Harapan (PKH) </h4>
+                    <p>Program Keluarga Harapan (PKH) merupakan program pemberian bantuan sosial bersyarat (conditional cash transfer) kepada keluarga miskin yang ditetapkan 
+                        sebagai Keluarga Penerima Manfaat (KPM) PKH.</p>
                 </div>
                 <div class="text-center shadow rounded">
                     <img src="{{ asset('img/selidiki.jpg') }}" alt="">
-                    <h4>Selidiki</h4>
-                    <p>Berantas tindak penyelewengan bantuan sosial dengan melakukan penyelidikan terhadap proses penyaluran
-                        bantuan sosial</p>
+                    <h4>Bantuan Sosial Tunai (BST)</h4>
+                    <p>Bantuan Sosial Tunai (BST) adalah program bantuan sosial yang diberikan oleh pemerintah Indonesia kepada keluarga miskin dan rentan miskin yang terdampak 
+                        pandemi COVID-19.</p>
                 </div>
             </div>
         </section>
