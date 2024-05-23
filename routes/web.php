@@ -7,6 +7,7 @@ use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\ValidasiController;
 use App\Models\Informasi;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Alternatif\Index as AlternatifIndex;
@@ -31,6 +32,7 @@ Route::get("/", function () {
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
+Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // daftar penerima
 Route::get("/penerima", [DashboardController::class, "daftarPenerima"])->middleware("auth");
@@ -79,6 +81,7 @@ Route::get('/petugas', function () {
 
 Route::get('/data-warga', [App\Http\Controllers\AdminController::class, 'dataWarga'])->name('data-warga');
 Route::get('/informasi-akun', [App\Http\Controllers\AdminController::class, 'informasiAkun'])->name('data-warga');
+Route::get('/validasi', [ValidasiController::class, 'validasi'])->name('validasi');
 
 
 // route data alternatif index

@@ -69,8 +69,8 @@
         </a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" data-widget="control-sidebar" data-slide="true" href="#" role="button">
-          <i class="fas fa-sign-out-alt"></i>
+        <a class="nav-link" href="/logout" role="button">
+          <i class="fas fa-sign-out-alt"></i> Logout
         </a>
       </li>
     </ul>
