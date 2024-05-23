@@ -1,0 +1,710 @@
+.dashboard {
+    background: #F3F3F3;
+    display: flex;
+    width: 1440px;
+    box-sizing: border-box;
+  }
+  .dashboard .header {
+    background: #D6E6F2;
+    position: relative;
+    margin-bottom: 12px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    padding: 25px 15.1px 33px 76px;
+    width: 1163px;
+    box-sizing: border-box;
+  }
+  .dashboard .exit-1 {
+    background: url('../assets/images/exit_1.png') 50% / cover no-repeat;
+    margin: 1px 9.1px 0 0;
+    width: 28px;
+    height: 31px;
+  }
+  .dashboard .log-out {
+    margin-bottom: 1px;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-family: 'Inter';
+    font-weight: 700;
+    font-size: 26px;
+    color: #0A4AA9;
+  }
+  .dashboard .sistem-informasi-pendataan-bantuan-sosial {
+    margin: 8px 0 3px 0;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 26px;
+    color: #0A4AA9;
+  }
+  .dashboard .image-6 {
+    background: url('../assets/images/image_6.png') 50% / cover no-repeat;
+    width: 43px;
+    height: 43px;
+  }
+  .dashboard .sidebar {
+    position: absolute;
+    left: 556px;
+    top: 300px;
+    display: flex;
+    width: 48px;
+    height: 45px;
+    box-sizing: border-box;
+  }
+  .dashboard .frame-1 {
+    border-radius: 10px;
+    background: #127C56;
+    position: absolute;
+    left: -16px;
+    bottom: 0px;
+    display: flex;
+    padding: 32px 0 0 14px;
+    height: 1024px;
+    box-sizing: border-box;
+  }
+  .dashboard .image-1 {
+    background: url('../assets/images/image_1.png') 50% / cover no-repeat;
+    margin-right: 21px;
+    width: 48px;
+    height: 45px;
+  }
+  .dashboard .line-1 {
+    background: #FFFFFF;
+    margin-bottom: 13px;
+    width: 350px;
+    height: 1px;
+  }
+  .dashboard .line-2 {
+    background: #FFFFFF;
+    position: absolute;
+    top: 187px;
+    right: -4.5px;
+    width: 350px;
+    height: 1px;
+  }
+  .dashboard .desa-tulusrejo {
+    margin: 0 29.2px 31px 29.2px;
+    display: inline-block;
+    align-self: flex-end;
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 30px;
+    color: #FFFFFF;
+  }
+  .dashboard .admin {
+    margin-top: 13px;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 26px;
+    color: #FFFFFF;
+  }
+  .dashboard .sipbs {
+    background: #DAEEE7;
+    position: relative;
+    margin: 0 12px 27px 74px;
+    padding: 5px 2px 7px 2px;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .informasi-akun {
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+  }
+  .dashboard .image-2 {
+    background: url('../assets/images/image_1.png') 50% / cover no-repeat;
+    width: 48px;
+    height: 45px;
+  }
+  .dashboard .tabel-akun {
+    position: relative;
+    margin-right: 21px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 0px 32px 0;
+    box-sizing: border-box;
+  }
+  .dashboard .rectangle-14 {
+    mix-blend-mode: hard-light;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 512.2px;
+    height: 710px;
+  }
+  .dashboard .profile {
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 30px;
+    color: #FFFFFF;
+  }
+  .dashboard .image-21 {
+    background: url('../assets/images/image_1.png') 50% / cover no-repeat;
+    margin-right: 23px;
+    width: 198px;
+    height: 198px;
+  }
+  .dashboard .group-847 {
+    position: relative;
+    margin: 0 38px 41px 30.3px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .rectangle-26 {
+    border: 1px solid #A6ABB7;
+    background: #FFFFFF;
+    margin-top: 1px;
+    width: 299px;
+    height: 32px;
+  }
+  .dashboard .nama {
+    margin: 0 15.5px 2px 0;
+    display: inline-block;
+    width: 132.2px;
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 25px;
+    color: #000000;
+  }
+  .dashboard .group-8471 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .rectangle-261 {
+    border: 1px solid #A6ABB7;
+    background: #FFFFFF;
+    margin-top: 1px;
+    width: 299px;
+    height: 32px;
+  }
+  .dashboard .username {
+    margin: 0 19.4px 2px 0;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 25px;
+    color: #000000;
+  }
+  .dashboard .group-8472 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .rectangle-262 {
+    border: 1px solid #A6ABB7;
+    background: #FFFFFF;
+    margin-top: 1px;
+    width: 299px;
+    height: 32px;
+  }
+  .dashboard .password {
+    margin: 0 28.5px 2px 0;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 25px;
+    color: #000000;
+  }
+  .dashboard .group-8473 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 446.7px;
+    box-sizing: border-box;
+  }
+  .dashboard .rectangle-263 {
+    border: 1px solid #A6ABB7;
+    background: #FFFFFF;
+    margin-top: 1px;
+    width: 299px;
+    height: 32px;
+  }
+  .dashboard .email {
+    margin: 0 15.5px 2px 0;
+    display: inline-block;
+    width: 132.2px;
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 25px;
+    color: #000000;
+  }
+  .dashboard .frame-1090 {
+    border-radius: 10px;
+    background: #F6EE5D;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    padding: 11.5px 12.9px 11.5px 10px;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .group-848 {
+    margin: 52px 0 55px 0;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+  .dashboard .no-file-chosen {
+    align-self: flex-end;
+    overflow-wrap: break-word;
+    font-family: var(--body-paragraph-smedium-font-family, 'Poppins');
+    font-weight: var(--body-paragraph-smedium-font-weight, 500);
+    font-size: var(--body-paragraph-smedium-font-size, 14px);
+    line-height: var(--body-paragraph-smedium-line-height, 1.429);
+    color: #000000;
+  }
+  .dashboard .ganti-foto-profile {
+    margin-bottom: 14px;
+    display: inline-block;
+    align-self: flex-start;
+    overflow-wrap: break-word;
+    font-family: var(--body-paragraph-smedium-font-family, 'Poppins');
+    font-weight: var(--body-paragraph-smedium-font-weight, 500);
+    font-size: var(--body-paragraph-smedium-font-size, 14px);
+    line-height: var(--body-paragraph-smedium-line-height, 1.429);
+    color: #000000;
+  }
+  .dashboard .admin-1 {
+    margin-bottom: 17px;
+    display: inline-block;
+    align-self: flex-start;
+    overflow-wrap: break-word;
+    font-family: 'Poppins';
+    font-weight: 600;
+    font-size: 25px;
+    line-height: 0.8;
+    color: #000000;
+  }
+  .dashboard .frame-1091 {
+    border-radius: 3px;
+    background: #B9BABC;
+    position: absolute;
+    right: 106.6px;
+    bottom: 52px;
+    display: flex;
+    padding: 3.5px 12.2px 3.5px 10px;
+    box-sizing: border-box;
+  }
+  .dashboard .tabel-akun-1 {
+    position: relative;
+    margin-bottom: 158px;
+    padding: 5.4px 24px 50.1px 24px;
+    width: 515px;
+    box-sizing: border-box;
+  }
+  .dashboard .rectangle-141 {
+    mix-blend-mode: hard-light;
+    box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+    border-radius: 20px;
+    position: absolute;
+    top: 0px;
+    right: 0px;
+    width: 512.2px;
+    height: 552px;
+  }
+  .dashboard .rectangle-331 {
+    border-radius: 10px 10px 0 0;
+    background: #127C56;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    width: 515px;
+    height: 40.4px;
+  }
+  .dashboard .data {
+    margin: 0 0 36.1px 16px;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 30px;
+    color: #FFFFFF;
+  }
+  .dashboard .group-8474 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .rectangle-264 {
+    border: 1px solid #A6ABB7;
+    background: #FFFFFF;
+    width: 299px;
+    height: 30.6px;
+  }
+  .dashboard .nik {
+    margin: 4.8px 12.5px 0.9px 0;
+    display: inline-block;
+    width: 93.5px;
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+  }
+  .dashboard .group-8475 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .rectangle-265 {
+    border: 1px solid #A6ABB7;
+    background: #FFFFFF;
+    margin-bottom: 1.1px;
+    width: 299px;
+    height: 30.6px;
+  }
+  .dashboard .no-kk {
+    margin: 6.7px 12.5px 0 0;
+    display: inline-block;
+    width: 99.5px;
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+  }
+  .dashboard .group-8476 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .rectangle-266 {
+    border: 1px solid #A6ABB7;
+    background: #FFFFFF;
+    width: 299px;
+    height: 86.2px;
+  }
+  .dashboard .alamat {
+    margin: 3.8px 39.6px 57.4px 0;
+    display: inline-block;
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+  }
+  .dashboard .group-8477 {
+    margin-bottom: 19.9px;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .rectangle-267 {
+    border: 1px solid #A6ABB7;
+    background: #FFFFFF;
+    margin: 3.8px 0 15.5px 0;
+    width: 299px;
+    height: 30.6px;
+  }
+  .dashboard .jenis-kelamin {
+    margin-right: 29.8px;
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+  }
+  .dashboard .group-8481 {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .rectangle-268 {
+    border: 1px solid #A6ABB7;
+    background: #FFFFFF;
+    margin: 14.4px 0 30px 0;
+    width: 299px;
+    height: 30.6px;
+  }
+  .dashboard .jumlah-anggota-keluarga {
+    margin-right: 22px;
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+  }
+  .dashboard .group-8478 {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 411px;
+    box-sizing: border-box;
+  }
+  .dashboard .rectangle-269 {
+    border: 1px solid #A6ABB7;
+    background: #FFFFFF;
+    width: 299px;
+    height: 30.6px;
+  }
+  .dashboard .status {
+    margin: 2.9px 12.5px 2.8px 0;
+    display: inline-block;
+    width: 99.5px;
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 20px;
+    color: #000000;
+  }
+  .dashboard .section-4 {
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    position: absolute;
+    left: -16px;
+    top: 165px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 0 10px;
+    width: 461px;
+    height: 382px;
+    box-sizing: border-box;
+  }
+  .dashboard .dashboard-1 {
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 26px;
+    color: #FFFFFF;
+  }
+  .dashboard .data-warga {
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 26px;
+    color: #FFFFFF;
+  }
+  .dashboard .informasi-akun-1 {
+    overflow-wrap: break-word;
+    font-family: 'Noto Sans Tamil';
+    font-weight: 700;
+    font-size: 26px;
+    color: #000000;
+  }
+  .dashboard .dashboard-1 {
+    background: url('../assets/images/dashboard_1.png') 50% / cover no-repeat;
+    margin: 4px 28px 9px 0;
+    width: 19px;
+    height: 19px;
+  }
+  .dashboard .personal-data-1 {
+    background: url('../assets/images/personal_data_1.png') 50% / cover no-repeat;
+    margin: 4px 28px 9px 0;
+    width: 19px;
+    height: 19px;
+  }
+  .dashboard .image-9 {
+    background: url('../assets/images/image_9.png') 50% / cover no-repeat;
+    margin: 3px 27px 9px 0;
+    width: 20px;
+    height: 20px;
+  }
+  .dashboard .container {
+    position: relative;
+    margin: 0 47.4px 52px 37px;
+    display: flex;
+    box-sizing: border-box;
+  }
+  .dashboard .container-1 {
+    margin: 0 23px 0 89px;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .container-2 {
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+  }
+  .dashboard .container-3 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    box-sizing: border-box;
+  }
+  .dashboard .container-4 {
+    margin-bottom: 39px;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .container-5 {
+    margin: 9px 0 2px 0;
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+  }
+  .dashboard .container-6 {
+    margin-bottom: 18.9px;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .container-7 {
+    margin: 0 29px;
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .container-8 {
+    background: #FFFFFF;
+    position: relative;
+    display: flex;
+    flex-direction: row;
+    align-self: flex-start;
+    padding: 24px 20.8px 17px 0;
+    width: 350px;
+    box-sizing: border-box;
+  }
+  .dashboard .container-9 {
+    margin: 0 79.3px 19px 0;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .container-10 {
+    margin: 0 0 30.6px 6px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 405px;
+    box-sizing: border-box;
+  }
+  .dashboard .container-11 {
+    margin: 0 91.1px 43px 0;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .container-12 {
+    margin-bottom: 23.8px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 411px;
+    box-sizing: border-box;
+  }
+  .dashboard .container-13 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    box-sizing: border-box;
+  }
+  .dashboard .container-14 {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    width: 1163px;
+    height: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .container-15 {
+    display: flex;
+    flex-direction: row;
+    box-sizing: border-box;
+  }
+  .dashboard .container-16 {
+    margin-bottom: 37px;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width: 446.7px;
+    box-sizing: border-box;
+  }
+  .dashboard .container-17 {
+    margin-bottom: 25.9px;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    box-sizing: border-box;
+  }
+  .dashboard .text {
+    margin-right: 11px;
+    display: flex;
+    box-sizing: border-box;
+  }
+  .dashboard .edit {
+    overflow-wrap: break-word;
+    font-family: var(--body-paragraph-smedium-font-family, 'Poppins');
+    font-weight: var(--body-paragraph-smedium-font-weight, 500);
+    font-size: var(--body-paragraph-smedium-font-size, 14px);
+    line-height: var(--body-paragraph-smedium-line-height, 1.429);
+    color: var(--text-900, #101113);
+  }
+  .dashboard .iconoutlineedit {
+    margin: 1.9px 0 2.5px 0;
+    display: flex;
+    width: 15.6px;
+    height: 15.6px;
+    box-sizing: border-box;
+  }
+  .dashboard .vector {
+    width: 15.6px;
+    height: 15.6px;
+  }
+  .dashboard .edit-1 {
+    overflow-wrap: break-word;
+    font-family: var(--body-paragraph-smedium-font-family, 'Poppins');
+    font-weight: var(--body-paragraph-smedium-font-weight, 500);
+    font-size: var(--body-paragraph-smedium-font-size, 14px);
+    line-height: var(--body-paragraph-smedium-line-height, 1.429);
+    color: var(--text-900, #101113);
+  }
+  .dashboard .container-18 {
+    border-radius: 10px 10px 0 0;
+    background: #127C56;
+    position: relative;
+    margin-bottom: 51px;
+    display: flex;
+    padding: 7px 13.4px 8px 0;
+    width: 515px;
+    box-sizing: border-box;
+  }
+  .dashboard .container-19 {
+    margin-bottom: 33px;
+    display: flex;
+    flex-direction: row;
+    width: fit-content;
+    box-sizing: border-box;
+  }

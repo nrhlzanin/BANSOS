@@ -55,38 +55,104 @@
       <!-- /.content-header -->
 
       <!-- Main content -->
-      <div class="content">
-        <div class="container-fluid">
-          <!-- Main content -->
-          <div class="d-flex justify-content-between text-center flex-column flex-wrap flex-md-nowrap pt-3 pb-2 mb-3 border-bottom">
-            <h1 class="h2">Informasi Akun Anda</h1>
+      <div class="dashboard">
+        <div class="container-1">
+          <div class="tabel-akun">
+            <img class="rectangle-14" src="../assets/vectors/rectangle_141_x2.svg" />
+            <div class="container-18">
+              <span class="profile">Profile</span>
+            </div>
+            <div class="container-2">
+              <div class="image-21">
+                <img src="{{ asset('img/profile.png') }}">
+              </div>
+              <div class="group-848">
+                <div class="admin-1">Admin</div>
+                <div class="ganti-foto-profile">
+                  Ganti Foto Profile
+                </div>
+                <span class="no-file-chosen">
+                  No file chosen
+                  <button class="edit-1">Choose File</button>
+                </span>
+              </div>
+            </div>
+            <div class="group-847">
+              <div class="nama">
+                <label>Nama :</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" disabled>
+                </div>
+              </div>
+              <div class="username">
+                <label>Username :</label>
+                <div class="input-group">
+                  <input type="text" class="form-control" disabled>
+                </div>
+              </div>
+              <div class="username">
+                <label>Username :</label>
+                <input type="text" class="form-control" disabled>
+              </div>
+              <div class="password">
+                <label>Password :</label>
+                <input type="password" class="form-control">
+              </div>
+              <div class="email">
+                <label>Email :</label>
+                <input type="email" class="form-control">
+              </div>
+            </div>
+            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
           </div>
-          @if (session()->has('successUpdate'))
-              <div class="col-lg-8 m-auto alert alert-success alert-dismissible fade show mt-3 mb-3" role="alert">
-                  {{ session('successUpdate') }}
-                  <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+        </div>
+        <div class="tabel-akun-1">
+          <img class="rectangle-141" src="../assets/vectors/rectangle_14_x2.svg" />
+          <div class="rectangle-331"></div>
+          <div class="container-13">
+            <div class="data">Data</div>
+            <form class="form-group">
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="nik">NIK:</label>
+                  <input type="text" class="form-control" id="nik" name="nik" disabled>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="no_kk">No KK:</label>
+                  <input type="text" class="form-control" id="no_kk" name="no_kk" disabled>
+                </div>
               </div>
-          @endif
-          <div class="col-lg-8 m-auto shadow p-4 list-group list-group-flush profile">
-              <div class="aksi d-flex justify-content-end mb-4">
-                  <a href="{{ route('profile.edit') }}" class="btn btn-primary ms-2">Edit</a>
+              <div class="form-group">
+                <label for="alamat">Alamat:</label>
+                <input type="text" class="form-control" id="alamat" name="alamat" disabled>
               </div>
-              <div class="card-style mb-4 list-group-item">
-                  <h5>Nama Lengkap</h5>
-                  <small class="text-muted h6">{{ Auth::user()->nama }}</small>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="jenis_kelamin">Jenis Kelamin:</label>
+                  <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" disabled>
+                    <option value="laki-laki">Laki-laki</option>
+                    <option value="perempuan">Perempuan</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="jumlah_anggota">Jumlah Anggota Keluarga:</label>
+                  <input type="number" class="form-control" id="jumlah_anggota" name="jumlah_anggota" disabled>
+                </div>
               </div>
-              <!-- Other profile details -->
+              <div class="form-group">
+                <label for="status">Status:</label>
+                <select class="form-control" id="status" name="status" disabled>
+                  <option value="aktif">Menikah</option>
+                  <option value="tidak_aktif">Tidak Aktif</option>
+                </select>
+              </div>
+            </form>
           </div>
-          <!-- /.content -->
-        </div><!-- /.container-fluid -->
+        </div>
       </div>
-      <!-- /.content -->
-    </div>
-    <!-- /.content-wrapper -->
+  @include('layouts.footer')
+</div> <!-- ./wrapper -->
 
-    @include('layouts.footer')
-  </div>
-  <!-- ./wrapper -->
 
   <!-- jQuery -->
   <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
