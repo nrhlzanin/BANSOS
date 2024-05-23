@@ -16,8 +16,18 @@ class AdminController extends Controller
         return view('RW.data-warga');
     }
 
+    public function create()
+    {
+        return view('dashboard.admin.informasi.create');
+    }
+
     public function informasiAkun()
     {
         return view('RW.informasi-akun');
+    }
+
+    public function validasi() 
+    {
+        return view('RW.validasi');   
     }
 }

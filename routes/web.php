@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardInfoController;
@@ -71,6 +72,7 @@ Route::get("/dashboard/desa/history", [DashboardController::class, 'historyRoleD
 Route::get("/dashboard/desa/history/detail/{penerima:id}", [DashboardController::class, 'detailHistoryRoleDesa'])->middleware("desa");
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
+//Route dashboard
 Route::get('/admin', function () {
     return view('RW.dashboardrw');
 })->name('RW.dashboardrw')->middleware(['auth', 'role:rw']);
@@ -79,9 +81,11 @@ Route::get('/petugas', function () {
     return view('RT.dashboardrt');
 })->name('RT.dashboardrt')->middleware(['auth', 'role:rt']);
 
+//route RW
 Route::get('/data-warga', [App\Http\Controllers\AdminController::class, 'dataWarga'])->name('data-warga');
+Route::get('/data-warga/penerima', [AdminController::class, 'create']);
 Route::get('/informasi-akun', [App\Http\Controllers\AdminController::class, 'informasiAkun'])->name('data-warga');
-Route::get('/validasi', [ValidasiController::class, 'validasi'])->name('validasi');
+Route::get('/validasi', [AdminController::class, 'validasi'])->name('validasi');
 
 
 // route data alternatif index
