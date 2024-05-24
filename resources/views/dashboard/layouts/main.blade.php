@@ -30,7 +30,7 @@
 <body>
     <div class="container-fluid dashboard">
         <div class="row">
-            @include('dashboard.components.header')
+            @include('layouts.header')
             @yield('content')
         </div>
     </div>

@@ -84,9 +84,10 @@ Route::get('/petugas', function () {
 //route RW
 Route::get('/data-warga', [App\Http\Controllers\AdminController::class, 'dataWarga'])->name('data-warga');
 Route::get('/data-warga/penerima', [AdminController::class, 'create']);
-Route::get('/informasi-akun', [App\Http\Controllers\AdminController::class, 'informasiAkun'])->name('data-warga');
+//Route::get('/data-warga/edit-penerima/{penerima_bansos:id}',)
+Route::get('/informasi-akun', [App\Http\Controllers\AdminController::class, 'informasiAkun'])->name('informasi-akun');
 Route::get('/validasi', [AdminController::class, 'validasi'])->name('validasi');
-
+Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('index');
 
 // route data alternatif index
 Route::get('/alternatif', AlternatifIndex::class)->name('alternatif.index');

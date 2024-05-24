@@ -659,3 +659,12 @@
   width: fit-content;
   box-sizing: border-box;
 }
+.data-warga-1 {
+  position: absolute;
+  right: 34px;
+  bottom: 38px;
+  display: flex;
+  flex-direction: column;
+  padding: 15px 0 0px 0;
+  box-sizing: border-box;
+}
