@@ -18,7 +18,7 @@ class AdminController extends Controller
 
     public function create()
     {
-        return view('RW.dataWarga.informasi.create');
+        return view('RW.dataWarga.create');
     }
 
     public function details()
