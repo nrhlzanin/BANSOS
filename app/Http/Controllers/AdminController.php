@@ -18,7 +18,12 @@ class AdminController extends Controller
 
     public function create()
     {
-        return view('dashboard.admin.informasi.create');
+        return view('RW.informasi.create');
+    }
+
+    public function details()
+    {
+        return view('RW.informasi.detail');
     }
 
     public function informasiAkun()
