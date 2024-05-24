@@ -39,7 +39,7 @@
             <div class="container-fluid">
                 <div class="row mb-2">
                     <div class="col-sm-6">
-                        <h1 class="m-0">Data Penerima Bantuan Sosial</h1>
+                        <h1 class="m-0">Daftar Penerima Bantuan Sosial</h1>
                     </div><!-- /.col -->
                     <div class="col-sm-6">
                         <ol class="breadcrumb float-sm-right">
@@ -113,8 +113,8 @@
                                             <td></td>
                                             <td></td>
                                             <td>
-                                                <button class="btn btn-success" style="background-color: #19CD61;"> Detail   <i class="fa fa-info-circle"></i></button>
-                <button class="btn btn-danger" style="background-color: #FF0F0F;"> Delete <i class="fa fa-trash"></i></button>
+                                                <button class="btn btn-success" data-toggle="modal" data-target="#M" style="background-color: #19CD61;"> Detail   <i class="fa fa-info-circle"></i></button>
+                                                <button class="btn btn-danger" style="background-color: #FF0F0F;"> Delete <i class="fa fa-trash"></i></button>
                                             </td>
                                         </tr>
                                     </tbody>
