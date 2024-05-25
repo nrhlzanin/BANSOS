@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardInfoController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ValidasiController;
@@ -25,7 +26,6 @@ use App\Http\Livewire\Proses\Index as ProsesIndex;
 
 // beranda
 Route::get("/", function () {
-    // session()->flush();  //untuk keperluan logout akun/sesi
     return view("main.home", [
         "informasi" => Informasi::latest()->get()
     ]);
@@ -72,22 +72,28 @@ Route::get("/dashboard/desa/history", [DashboardController::class, 'historyRoleD
 Route::get("/dashboard/desa/history/detail/{penerima:id}", [DashboardController::class, 'detailHistoryRoleDesa'])->middleware("desa");
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Route dashboard
-Route::get('/admin', function () {
-    return view('RW.dashboardrw');
-})->name('RW.dashboardrw')->middleware(['auth', 'role:rw']);
+//Route RW coba
+Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
+    Route::get('/', [AdminController::class, 'index']);
+    
+    Route::get('/data-warga', [AdminController::class, 'dataWarga'])->name('admin.data-warga');
+    Route::get('/data-warga/penerima', [AdminController::class, 'create'])->name('admin.data-warga.create');
+    Route::get('/informasi-akun', [AdminController::class, 'informasiAkun'])->name('admin.informasi-akun');
+    Route::get('/validasi', [AdminController::class, 'validasi'])->name('admin.validasi');
+    Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('admin.informasi-bansos');
+});
+//Route RT
+Route::prefix('petugas')->middleware(['auth', 'role:rt'])->group(function () {
 
-Route::get('/petugas', function () {
-    return view('RT.dashboardrt');
-})->name('RT.dashboardrt')->middleware(['auth', 'role:rt']);
+});
 
 //route RW
-Route::get('/data-warga', [App\Http\Controllers\AdminController::class, 'dataWarga'])->name('data-warga');
-Route::get('/data-warga/penerima', [AdminController::class, 'create']);
-//Route::get('/data-warga/edit-penerima/{penerima_bansos:id}',)
-Route::get('/informasi-akun', [App\Http\Controllers\AdminController::class, 'informasiAkun'])->name('informasi-akun');
-Route::get('/validasi', [AdminController::class, 'validasi'])->name('validasi');
-Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('index');
+// Route::get('/data-warga', [App\Http\Controllers\AdminController::class, 'dataWarga'])->name('data-warga');
+// Route::get('/data-warga/penerima', [AdminController::class, 'create']);
+// //Route::get('/data-warga/edit-penerima/{penerima_bansos:id}',)
+// Route::get('/informasi-akun', [App\Http\Controllers\AdminController::class, 'informasiAkun'])->name('informasi-akun');
+// Route::get('/validasi', [AdminController::class, 'validasi'])->name('validasi');
+// Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('index');
 
 // route data alternatif index
 Route::get('/alternatif', AlternatifIndex::class)->name('alternatif.index');

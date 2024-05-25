@@ -35,7 +35,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ url('RW/dashboardrw') }}" class="nav-link">
+            <a href="{{ url('/admin') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
@@ -43,7 +43,7 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="{{ url('data-warga') }}" class="nav-link active">
+            <a href="{{ route('admin.data-warga') }}" class="nav-link active">
               <i class="nav-icon fas fa-address-card"></i>
               <p>
                 Data Warga
@@ -86,7 +86,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ url('informasi-akun') }}" class="nav-link">
+            <a href="{{ route('admin.informasi-akun') }}" class="nav-link">
               <i class="nav-icon far fa-user-circle"></i>
               <p>
                 Informasi Akun
