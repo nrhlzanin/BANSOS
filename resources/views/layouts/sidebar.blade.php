@@ -35,7 +35,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ url('RW/dashboardrw') }}" class="nav-link">
+            <a href="{{ url('admin') }}" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
@@ -43,15 +43,29 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="{{ url('data-warga') }}" class="nav-link active">
+            <a>
               <i class="nav-icon fas fa-address-card"></i>
               <p>
-                Data Warga
+                Data Warga <i class="right fas fa-chevron-circle-down"></i>
               </p>
             </a>
+            <ul class="nav nav-treeview">
+              <li class="nav-item">
+                <a href="{{ url('data-warga') }}" class="nav-link active">
+                  <i class="far fa-dot-circle-o"></i>
+                  <p>Daftar Penerima Bansos</p>
+                </a>
+              </li>
+              <li class="nav-item">
+                <a href="{{ url('validasi') }}" class="nav-link active">
+                  <i class="far fa-dot-circle-o"></i>
+                  <p>Validasi Data Warga</p>
+                </a>
+              </li>
+            </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link">
+            <a href="#" class="nav-link active">
               <i class="nav-icon fas fa-trophy"></i>
               <p>
                 Perankingan
@@ -60,25 +74,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../index.html" class="nav-link">
+                <a href="../../index.html" class="nav-link active">
                   <i class="far fa-dot-circle-o"></i>
                   <p>Bantuan Langsung Tunai (BLT)</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
+                <a href="../../index2.html" class="nav-link active">
                   <i class="far fa-dot-circle-o"></i>
                   <p>Program Keluarga Harapan (PKH)</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
+                <a href="../../index3.html" class="nav-link active">
                   <i class="far fa-dot-circle-o"></i>
                   <p>Bantuan Pangan Non Tunai (BPNT)</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
+                <a href="../../index3.html" class="nav-link active">
                   <i class="far fa-dot-circle-o"></i>
                   <p>Bansos Beras</p>
                 </a>
@@ -86,7 +100,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="{{ url('informasi-akun') }}" class="nav-link">
+            <a href="{{ url('informasi-akun') }}" class="nav-link active">
               <i class="nav-icon far fa-user-circle"></i>
               <p>
                 Informasi Akun
