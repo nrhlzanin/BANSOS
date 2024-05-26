@@ -21,7 +21,7 @@ use App\Http\Livewire\Penilaian\Index as PenilaianIndex;
 use App\Http\Livewire\Penilaian\Edit as PenilaianEdit;
 use App\Http\Livewire\Subkriteria\Create as SubkriteriaCreate;
 use App\Http\Livewire\Proses\Index as ProsesIndex;
-
+use App\Models\SubKriteria;
 
 // beranda
 Route::get("/", function () {
@@ -102,6 +102,7 @@ Route::get('/kriteria/create', KriteriaCreate::class)->name('kriteria.create');
 Route::get('/kriteria/{id}/edit', KriteriaEdit::class)->name('kriteria.edit');
 
 // route data sub kriteria
+// Route definition
 Route::get('/subkriteria/{kriteria}/create', SubkriteriaCreate::class)->name('subkriteria.create');
 
 // route penilaian
