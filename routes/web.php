@@ -81,6 +81,8 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/informasi-akun', [AdminController::class, 'informasiAkun'])->name('admin.informasi-akun');
     Route::get('/validasi', [AdminController::class, 'validasi'])->name('admin.validasi');
     Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('admin.informasi-bansos');
+    Route::get('/data-warga/validasi', [AdminController::class, 'validasiData'])->name('admin.data-warga.validation');
+    
 });
 //Route RT
 Route::prefix('petugas')->middleware(['auth', 'role:rt'])->group(function () {

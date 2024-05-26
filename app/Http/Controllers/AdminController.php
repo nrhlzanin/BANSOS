@@ -45,4 +45,8 @@ class AdminController extends Controller
     {
         return view('RW.validasi');   
     }
+    public function validasiData()
+    {
+        return view('RW.validasiDataWarga.validation');
+    }
 }
