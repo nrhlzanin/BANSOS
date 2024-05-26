@@ -47,11 +47,7 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-<<<<<<< HEAD
             <a>
-=======
-            <a href="{{ route('admin.data-warga') }}" class="nav-link active">
->>>>>>> d33d2bbaa23006862a9c487b8c60b2bdd6655f79
               <i class="nav-icon fas fa-address-card"></i>
               <p>
                 Data Warga <i class="right fas fa-chevron-circle-down"></i>
@@ -108,11 +104,7 @@
             </ul>
           </li>
           <li class="nav-item">
-<<<<<<< HEAD
             <a href="{{ url('informasi-akun') }}" class="nav-link active">
-=======
-            <a href="{{ route('admin.informasi-akun') }}" class="nav-link">
->>>>>>> d33d2bbaa23006862a9c487b8c60b2bdd6655f79
               <i class="nav-icon far fa-user-circle"></i>
               <p>
                 Informasi Akun
