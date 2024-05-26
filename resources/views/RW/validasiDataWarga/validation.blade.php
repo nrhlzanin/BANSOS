@@ -96,11 +96,11 @@
                                     <div class="mb-3 d-flex align-items-center">
                                         <label class="form-label" style="margin-right: 20px; margin-left: 5px; margin-top: 7px; color: #127C56;">Status Validasi:</label>
                                             <div class="form-check form-check-inline" style="margin-right: 10px;">
-                                                <input class="form-check-input" type="radio" name="status_validasi" id="data_valid" value="Data Valid">
+                                                <input class="form-check-input" type="radio" name="status_validasi_1" id="data_valid" value="Data Valid">
                                                 <label class="form-check-label" for="data_valid">Data Valid</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="status_validasi" id="data_tidak_valid" value="Data Tidak Valid">
+                                                <input class="form-check-input" type="radio" name="status_validasi_1" id="data_tidak_valid" value="Data Tidak Valid">
                                                 <label class="form-check-label" for="data_tidak_valid">Data Tidak Valid</label>
                                             </div>
                                     </div>
@@ -124,11 +124,11 @@
                                     <div class="mb-3 d-flex align-items-center">
                                         <label class="form-label" style="margin-right: 20px; margin-left: 5px; margin-top: 7px; color: #127C56;">Status Validasi:</label>
                                             <div class="form-check form-check-inline" style="margin-right: 10px;">
-                                                <input class="form-check-input" type="radio" name="status_validasi" id="data_valid" value="Data Valid">
+                                                <input class="form-check-input" type="radio" name="status_validasi_2" id="data_valid" value="Data Valid">
                                                 <label class="form-check-label" for="data_valid">Data Valid</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="status_validasi" id="data_tidak_valid" value="Data Tidak Valid">
+                                                <input class="form-check-input" type="radio" name="status_validasi_2" id="data_tidak_valid" value="Data Tidak Valid">
                                                 <label class="form-check-label" for="data_tidak_valid">Data Tidak Valid</label>
                                             </div>
                                     </div>
@@ -149,11 +149,11 @@
                                     <div class="mb-3 d-flex align-items-center">
                                         <label class="form-label" style="margin-right: 20px; margin-left: 5px; margin-top: 7px; color: #127C56;">Status Validasi:</label>
                                             <div class="form-check form-check-inline" style="margin-right: 10px;">
-                                                <input class="form-check-input" type="radio" name="status_validasi" id="data_valid" value="Data Valid">
+                                                <input class="form-check-input" type="radio" name="status_validasi_3" id="data_valid" value="Data Valid">
                                                 <label class="form-check-label" for="data_valid">Data Valid</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="status_validasi" id="data_tidak_valid" value="Data Tidak Valid">
+                                                <input class="form-check-input" type="radio" name="status_validasi_3" id="data_tidak_valid" value="Data Tidak Valid">
                                                 <label class="form-check-label" for="data_tidak_valid">Data Tidak Valid</label>
                                             </div>
                                     </div>
@@ -178,11 +178,11 @@
                                     <div class="mb-3 d-flex align-items-center">
                                         <label class="form-label" style="margin-right: 20px; margin-left: 5px; margin-top: 7px; color: #127C56;">Status Validasi:</label>
                                             <div class="form-check form-check-inline" style="margin-right: 10px;">
-                                                <input class="form-check-input" type="radio" name="status_validasi" id="data_valid" value="Data Valid">
+                                                <input class="form-check-input" type="radio" name="status_validasi_4" id="data_valid" value="Data Valid">
                                                 <label class="form-check-label" for="data_valid">Data Valid</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="status_validasi" id="data_tidak_valid" value="Data Tidak Valid">
+                                                <input class="form-check-input" type="radio" name="status_validasi_4" id="data_tidak_valid" value="Data Tidak Valid">
                                                 <label class="form-check-label" for="data_tidak_valid">Data Tidak Valid</label>
                                             </div>
                                     </div>
@@ -202,11 +202,11 @@
                                     <div class="mb-3 d-flex align-items-center">
                                         <label class="form-label" style="margin-right: 20px; margin-left: 5px; margin-top: 7px; color: #127C56;">Status Validasi:</label>
                                             <div class="form-check form-check-inline" style="margin-right: 10px;">
-                                                <input class="form-check-input" type="radio" name="status_validasi" id="data_valid" value="Data Valid">
+                                                <input class="form-check-input" type="radio" name="status_validasi_5" id="data_valid" value="Data Valid">
                                                 <label class="form-check-label" for="data_valid">Data Valid</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="status_validasi" id="data_tidak_valid" value="Data Tidak Valid">
+                                                <input class="form-check-input" type="radio" name="status_validasi_5" id="data_tidak_valid" value="Data Tidak Valid">
                                                 <label class="form-check-label" for="data_tidak_valid">Data Tidak Valid</label>
                                             </div>
                                     </div>
@@ -229,11 +229,11 @@
                                     <div class="mb-3 d-flex align-items-center">
                                         <label class="form-label" style="margin-right: 20px; margin-left: 5px; margin-top: 7px; color: #127C56;">Status Validasi:</label>
                                             <div class="form-check form-check-inline" style="margin-right: 10px;">
-                                                <input class="form-check-input" type="radio" name="status_validasi" id="data_valid" value="Data Valid">
+                                                <input class="form-check-input" type="radio" name="status_validasi_6" id="data_valid" value="Data Valid">
                                                 <label class="form-check-label" for="data_valid">Data Valid</label>
                                             </div>
                                             <div class="form-check form-check-inline">
-                                                <input class="form-check-input" type="radio" name="status_validasi" id="data_tidak_valid" value="Data Tidak Valid">
+                                                <input class="form-check-input" type="radio" name="status_validasi_6" id="data_tidak_valid" value="Data Tidak Valid">
                                                 <label class="form-check-label" for="data_tidak_valid">Data Tidak Valid</label>
                                             </div>
                                     </div>
