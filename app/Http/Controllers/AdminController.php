@@ -1,48 +1,49 @@
 <?php
 
-namespace App\Http\Controllers;
+    namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
+    use Illuminate\Http\Request;
+    
 
-class AdminController extends Controller
-{
-    public function index()
+    class AdminController extends Controller
     {
-        return view('RW/admin');
-    }
+        public function index()
+        {
+            return view('RW/admin');
+        }
 
-    public function dataWarga()
-    {
-        return view('RW.dataWarga.data-warga');
-    }
+        public function dataWarga()
+        {
+            $penerimas = \App\Models\Penerima::all();
+            return view('RW.dataWarga.data-warga', compact('penerimas'));
+        }
 
-    public function create()
-    {
-        return view('RW.dataWarga.create');
-    }
+        public function create()
+        {
+            return view('RW.dataWarga.create');
+        }
 
-    public function details()
-    {
-        return view('RW.dataWarga.informasi.detail');
-    }
+        public function details()
+        {
+            return view('RW.dataWarga.informasi.detail');
+        }
 
-    public function edit()
-    {
+        public function edit()
+        {
+        }
 
-    }
+        public function informasiAkun()
+        {
+            return view('RW.informasi-akun');
+        }
 
-    public function informasiAkun()
-    {
-        return view('RW.informasi-akun');
-    }
+        public function informasiBansos()
+        {
+            return view('RW.informasiBansos.index');
+        }
 
-    public function informasiBansos()
-    {
-        return view('RW.informasiBansos.index');
+        public function validasi()
+        {
+            return view('RW.validasi');
+        }
     }
-
-    public function validasi() 
-    {
-        return view('RW.validasi');   
-    }
-}

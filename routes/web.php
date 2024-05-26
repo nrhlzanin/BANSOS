@@ -36,7 +36,7 @@ Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('pro
 Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // daftar penerima
-Route::get("/penerima", [DashboardController::class, "daftarPenerima"])->middleware("auth");
+// Route::get("/penerima", [DashboardController::class, "daftarPenerima"])->middleware("auth");
 
 // warga
 Route::get("/dashboard/warga/bantuan", [DashboardController::class, 'bantuan'])->middleware("warga");
