@@ -103,20 +103,22 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr>
-                                            <td class="padat">
-                                                <input type="checkbox" name="id_penerimabansos[]" value="1">
-                                            </td>
-                                            <td>1</td>
-                                            <td>...</td>
-                                            <td>...</td>
-                                            <td></td>
-                                            <td></td>
-                                            <td>
-                                                <button class="btn btn-success" data-toggle="modal" data-target="#M" style="background-color: #19CD61;"> Detail   <i class="fa fa-info-circle"></i></button>
-                                                <button class="btn btn-danger" style="background-color: #FF0F0F;"> Delete <i class="fa fa-trash"></i></button>
-                                            </td>
-                                        </tr>
+                                        @foreach ($penerimas as $penerima)
+                                                <tr>
+                                                    <td>
+                                                        <input type="checkbox" name="id_penerimabansos[]" value="{{ $penerima->id }}">
+                                                    </td>
+                                                    <td>{{ $loop->iteration }}</td>
+                                                    <td>{{ $penerima->name }}</td>
+                                                    <td>{{ $penerima->address }}</td>
+                                                    <td>{{ $penerima->members}}</td>
+                                                    <td>{{ $penerima->bansos }}</td>
+                                                    <td>
+                                                        <button class="btn btn-success" data-toggle="modal" data-target="#M" style="background-color: #19CD61;">Detail<i class="fa fa-info-circle"></i></button>
+                                                        <button class="btn btn-danger" style="background-color: #FF0F0F;">Delete<i class="fa fa-trash"></i></button>
+                                                    </td>
+                                                </tr>
+                                            @endforeach
                                     </tbody>
                                 </table>                                
                             </div><!-- /.card-body -->
