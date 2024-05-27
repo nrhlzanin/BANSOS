@@ -3,6 +3,7 @@
     namespace App\Http\Controllers;
 
     use Illuminate\Http\Request;
+    use App\Models\Penerima;
     
 
     class AdminController extends Controller
@@ -20,14 +21,14 @@
 
         public function create()
         {
-            return view('RW.dataWarga.create');
+            return view('RW.dataWarga.create', compact('penerimas'));
         }
 
-        public function details()
+        public function show($id)
         {
-            return view('RW.dataWarga.informasi.detail');
+            $penerima = Penerima::findOrFail($id);
+            return view('RW.dataWarga.detail', compact('penerima'));
         }
-
         public function edit()
         {
         }

@@ -83,9 +83,8 @@
                                             </select>
                                         </div>
                                         <div class="col-md-4">
-                                            <button type="button" class="btn btn-primary float-right">Tambah
-                                                Data</button>
-                                        </div>
+                                            <a href="{{ route('penerimas.create') }}" class="btn btn-primary float-right">Tambah Data</a>
+                                        </div>                                        
                                     </div>
                                     @if (session()->has('successUpdate'))
                                         <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -126,10 +125,12 @@
                                                     <td>{{ $penerima->telepon }}</td>
                                                     <td>{{ $penerima->jenis_bantuan }}</td>
                                                     <td>
-                                                        <button class="btn btn-success" data-toggle="modal"
-                                                            data-target="#M" style="background-color: #19CD61;">Detail<i
-                                                                class="fa fa-info-circle"></i></button>
-                                                        <button class="btn btn-danger"
+                                                        <a href="{{ route('penerimas.show', $penerima->id) }}"
+                                                            class="btn btn-success"
+                                                            style="background-color: #19CD61;">Detail<i
+                                                                class="fa fa-info-circle"></i></a>
+                                                        <button class="btn btn-danger btn-delete"
+                                                            data-id="{{ $penerima->id }}"
                                                             style="background-color: #FF0F0F;">Delete<i
                                                                 class="fa fa-trash"></i></button>
                                                     </td>
@@ -179,8 +180,30 @@
                 var searchValue = $('#search-input').val();
                 table.search(searchValue).draw();
             });
+
+            $('#search-button').on('click', function() {
+                var searchValue = $('#search-input').val();
+                table.search(searchValue).draw();
+            });
+
+            $('.btn-delete').on('click', function() {
+                if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {
+                    var id = $(this).data('id');
+                    $.ajax({
+                        url: '/penerimas/' + id,
+                        type: 'DELETE',
+                        data: {
+                            _token: '{{ csrf_token() }}'
+                        },
+                        success: function(response) {
+                            alert('Data berhasil dihapus');
+                            location.reload();
+                        },
+                        error: function(xhr) {
+                            console.log(xhr.responseText);
+                        }
+                    });
+                }
+            });
         });
     </script>
-</body>
-
-</html>
