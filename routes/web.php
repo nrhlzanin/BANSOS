@@ -103,7 +103,7 @@ Route::get('/validasi', [AdminController::class, 'validasi'])->name('validasi');
 Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('index');
 
 // route data alternatif index
-Route::get('/alternatif', AlternatifIndex::class)->name('alternatif.index');
+Route::get('/alternatif', AlternatifIndex::class)->name('layouts.menu');
 // route data alternatif create
 Route::get('/alternatif/create', AlternatifCreate::class)->name('alternatif.create');
 // route data alternatif edit
