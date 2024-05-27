@@ -26,9 +26,7 @@ use App\Models\SubKriteria;
 
 // beranda
 Route::get("/", function () {
-    return view("main.home", [
-        "informasi" => Informasi::latest()->get()
-    ]);
+    return view("landing.index");
 });
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');

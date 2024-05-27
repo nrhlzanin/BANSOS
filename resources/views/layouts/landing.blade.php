@@ -30,13 +30,13 @@
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
 
     @stack('css')
-    <title>Sistem Informasi Bantuan Sosial</title>
+    <title>@yield('title')</title>
 </head>
 
 <body>
     <div class="wrapper">
         <!-- Header -->
-        @include('components.header')
+        @include('components.landing-header')
         <!-- Header -->
 
         <!-- Main content -->
@@ -47,7 +47,7 @@
 
         <!-- Footer -->
 
-        @include('components.footer')
+        @include('components.landing-footer')
         <!-- Footer -->
     </div>
 

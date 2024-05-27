@@ -1,4 +1,6 @@
-@extends('layouts.main')
+@extends('layouts.landing')
+
+@section('title', 'Login Web Bansos')
 
 @section('content')
     <section class="container" style="margin: 100px auto 300px !important">

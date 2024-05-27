@@ -1,7 +1,9 @@
-@extends('layouts.main')
+@extends('layouts.landing')
+
+@section('title', 'Landing Page')
 
 @section('content')
-    <main style="margin: 55px auto 100px;">
+<main style="margin: 55px auto 100px;">
 
 <section class="jumbotron" style="background-color: #DAEEE7">
 <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
@@ -22,8 +24,8 @@
         </div>
         
         
-                        </div>
-                </div>
+    </div>
+</div>
 </section>
 
 
@@ -89,7 +91,7 @@
 
 
 
-<section class="container shadow" id="tentang" style="padding: 100px 100px 50px; !important; margin-top: 100px !important">
+<section class="container shadow" id="tentang" style="padding: 100px 100px 50px !important; margin-top: 100px !important">
     <h1 class="text-center">Pertanyaan dan Saran</h1>
         <p class="text-center">Hubungi kami jika anda memiliki pertanyaan dan masukan</p>
             <form method="" class="mt-5">
