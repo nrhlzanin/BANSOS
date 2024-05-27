@@ -18,4 +18,9 @@ class UserModel extends \Illuminate\Foundation\Auth\User
      * @var string
      */
     protected $fillable = ['username', 'password', 'level', 'email'];
+    protected $hidden = ['password'];
+
+    public function rt() {
+        return $this->hasOne(RtModel::class, 'id_user', 'id_user');
+    }
 }

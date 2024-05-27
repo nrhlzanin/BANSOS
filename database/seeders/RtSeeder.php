@@ -14,11 +14,20 @@ class RtSeeder extends Seeder
     public function run(): void
     {
         $data = [
-            'id_petugas' => 1, 
-            'id_user' => 2, 
-            'nama_petugas' => 'Muhammad Haryanto', 
-            'no_telp' => '084156547904',
-            'no_rt' =>  4
+            [
+                'id_petugas' => 1, 
+                'id_user' => 2, 
+                'nama_petugas' => 'Muhammad Haryanto', 
+                'no_telp' => '084156547904',
+                'no_rt' =>  4
+            ], 
+            [
+                'id_petugas' => 2, 
+                'id_user' => 3, 
+                'nama_petugas' => 'Muhammad Hakam Agung', 
+                'no_telp' => '084156547544',
+                'no_rt' =>  5
+            ]            
         ];
         DB::table('rt')->insert($data);
     }
