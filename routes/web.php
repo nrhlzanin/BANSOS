@@ -89,7 +89,6 @@ Route::prefix('petugas')->middleware(['auth', 'role:rt'])->group(function () {
 
 });
 
-<<<<<<< HEAD
 // Route RW
 Route::get('/data-warga', [App\Http\Controllers\AdminController::class, 'dataWarga'])->name('data-warga');
 Route::get('/data-warga/penerima/create', [App\Http\Controllers\AdminController::class, 'create'])->name('penerimas.create');
@@ -100,15 +99,6 @@ Route::delete('/data-warga/penerima/{id}', [App\Http\Controllers\AdminController
 Route::get('/informasi-akun', [App\Http\Controllers\AdminController::class, 'informasiAkun'])->name('informasi-akun');
 Route::get('/validasi', [AdminController::class, 'validasi'])->name('validasi');
 Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('index');
-=======
-//route RW
-// Route::get('/data-warga', [App\Http\Controllers\AdminController::class, 'dataWarga'])->name('data-warga');
-// Route::get('/data-warga/penerima', [AdminController::class, 'create']);
-// //Route::get('/data-warga/edit-penerima/{penerima_bansos:id}',)
-// Route::get('/informasi-akun', [App\Http\Controllers\AdminController::class, 'informasiAkun'])->name('informasi-akun');
-// Route::get('/validasi', [AdminController::class, 'validasi'])->name('validasi');
-// Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('index');
->>>>>>> 95c1c9d4fb5bc63ab51f4878e3d6760fddff3dab
 
 // route data alternatif index
 Route::get('/alternatif', AlternatifIndex::class)->name('alternatif.index');
