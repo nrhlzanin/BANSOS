@@ -1,20 +1,34 @@
-<div class="mt-2">
-  <a href="#" data-toggle="modal" data-target="#ModalCreateSubKriteria" class="btn btn-success custom-btn">
-      Tambah Sub Kriteria <i class="fa fa-plus icon-spacing" aria-hidden="true"></i>
-  </a>
-</div>
-
-<div class="table-responsive mt-3">          
-  <table class="table table-striped">
-      <thead>
+<div class="card mt-4">
+  <div class="card-header d-flex justify-content-between align-items-center" style="background-color: #dafadb;">
+    <h3 style="font-size: 20px; font-weight: bold;">Jenis Pekerjaan</h3>
+    <a href="#" data-toggle="modal" data-target="#ModalEditSubKriteria" class="btn btn-warning">
+      Isi Bobot <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
+    </a>
+  </div>
+  <div class="card-body">
+    <div class="table-responsive mt-1">
+      <table class="table mb-0">
+        <thead>
           <tr>
-              <th>#</th>
-              <th>Kode Sub Kriteria</th>
-              <th>Nama Sub Kriteria</th>
-              <th>Kriteria</th>
-              <th>Aksi</th>
+            <th>#</th>
+            <th>Keterangan Crips</th>
+            <th>Nilai</th>
           </tr>
-      </thead>
-  </table>
+        </thead>
+        <tbody>
+          <tr>
+            <td>1</td>
+            <td>...</td>
+            <td>...</td>
+          </tr>
+          <tr>
+            <td>2</td>
+            <td>...</td>
+            <td>...</td>
+          </tr>
+          <!-- Tambahkan baris tambahan sesuai kebutuhan -->
+        </tbody>
+      </table>
+    </div>
+  </div>
 </div>
-

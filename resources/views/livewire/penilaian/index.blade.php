@@ -4,40 +4,30 @@
         <h3 class="card-title">Perhitungan dan Rangking</h3>
       </div>
       <div class="card-body">
-        <table class="table table-bordered">
-          <thead>
-            <tr>
-              <th>No</th>
-              <th>Nama</th>
-              <th>Nilai Normalisasi</th>
-              <th>Nilai Akhir</th>
-              <th>Peringkat</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>1</td>
-              <td>Budi</td>
-              <td>0.8</td>
-              <td>0.82</td>
-              <td>1</td>
-            </tr>
-            <tr>
-              <td>2</td>
-              <td>Ani</td>
-              <td>0.5</td>
-              <td>0.52</td>
-              <td>3</td>
-            </tr>
-            <tr>
-              <td>3</td>
-              <td>Caca</td>
-              <td>0.6</td>
-              <td>0.64</td>
-              <td>2</td>
-            </tr>
-          </tbody>
-        </table>
+        <table class="table table-striped">
+            <thead>
+              <tr>
+                <th>#</th>
+                <th>Alternatif</th>
+                <th>Kriteria 1</th>
+                <th>Kriteria 2</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>1</td>
+                <td>Alternatif 1</td>
+                <td>...</td>
+                <td>...</td>
+              </tr>
+              <tr>
+                <td>2</td>
+                <td>Alternatif 2</td>
+                <td>...</td>
+                <td>...</td>
+              </tr>
+            </tbody>
+          </table>
       </div>
     </div>
   </div>
