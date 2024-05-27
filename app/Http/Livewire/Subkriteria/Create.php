@@ -33,7 +33,7 @@ class Create extends Component
 	public function render()
 	{
 		$kriteria = Kriteria::find($this->kriteria_id);
-		return view('livewire.subkriteria.create', compact('kriteria'));
+		return view('livewire.subkriteria.create');
 	}
 
 	public function delete($id)

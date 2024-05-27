@@ -8,6 +8,6 @@ class PetugasController extends Controller
 {
     public function index() 
     {
-        return view('petugas');
+        return view('RT.dashboardrt');
     }
 }
