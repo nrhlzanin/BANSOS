@@ -9,10 +9,10 @@ use SebastianBergmann\CodeCoverage\Report\Html\Dashboard;
 
 class ProfileController extends Controller
 {
-  public function index()
-  {
-    return view("dashboard.warga.profile.index");
-  }
+  public function informasiAkun()
+    {
+        return view('RW.informasi-akun');
+    }
 
   public function edit()
   {

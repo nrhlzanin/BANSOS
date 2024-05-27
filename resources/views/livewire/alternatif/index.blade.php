@@ -1,63 +1,83 @@
-<div>
-	
-	{{-- tabel data alternatif --}}
-	<div class="container mx-auto px-4 sm:px-8">
-		<div class="py-8">
-			<div class="flex items-center justify-between">
-				<h2 class="text-2xl font-semibold leading-tight">Data Alternatif</h2>
-				<x-button-link href="{{ route('alternatif.create') }}">Tambah Alternatif</x-button-link>
-			</div>
-			<div class="-mx-4 sm:-mx-8 px-4 sm:px-8 py-4 overflow-x-auto">
-				<div class="inline-block min-w-full shadow rounded-lg overflow-hidden">
-					<table class="min-w-full leading-normal">
-						<thead>
-							<tr>
-								<th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-900 text-white text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-									No
-								</th>
-								<th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-900 text-white text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-									Kode Alternatif
-								</th>
-								<th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-900 text-white text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-									Nama Alternatif
-								</th>
-								<th class="px-5 py-3 border-b-2 border-gray-200 bg-gray-900 text-white text-center text-xs font-semibold text-gray-600 uppercase tracking-wider"></th>
-							</tr>
-						</thead>
-						<tbody>
-							@forelse ($alternatifs as $index => $alt)
-									
-							<tr>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									{{ $index + 1 }}
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									{{ $alt->kode }}
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									{{ $alt->name }}
-								</td>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm">
-									<div class="flex items-center justify-end gap-4">
-										<a href="{{ route('alternatif.edit', $alt->id) }}" class="uppercase font-medium text-xs text-gray-700">Ubah</a>
-										<x-jet-button wire:click="delete({{ $alt->id }})">Hapus</x-jet-button>
-									</div>
-								</td>
-							</tr>
+@extends('RW.layouts.main')
 
-							@empty
-
-							<tr>
-								<td class="px-5 py-5 border-b border-gray-200 bg-white text-sm" colspan="6">
-									Data alternatif masih kosong.
-								</td>
-							</tr>
-
-							@endforelse
-						</tbody>
-					</table>
-				</div>
-			</div>
-		</div>
-	</div>
-</div>
+@section('content')
+    <div class="content-header">
+      <div class="container-fluid">
+        <div class="row mb-2">
+          <div class="col-sm-6">
+            <h1 class="m-0">Sistem Pendukung Keputusan</h1>
+          </div><!-- /.col -->
+          <div class="col-sm-6">
+            <ol class="breadcrumb float-sm-right">
+              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="#">Perankingan</a></li>
+              <li class="breadcrumb-item active">BLT</li>
+            </ol>
+          </div><!-- /.col -->
+        </div><!-- /.row -->
+      </div><!-- /.container-fluid -->
+    </div>
+    <div class="col-md-4">
+        <select class="form-control">
+            <option selected disabled>Filter berdasarkan tahun</option>
+            <option value="1">2024</option>
+            <option value="2">2023</option>
+            <option value="3">2022</option>
+            <option value="3">2021</option>
+        </select>
+    </div>
+    <div class="mt-4">
+      <div class="container-fluid">
+        <div class="row">
+            <div class="col-12">
+                <div class="card">
+                    <div class="card-body">
+                        <div class="d-flex justify-content-between">
+                            <div class="topnav">
+                                <a class="active" href="#home">Kriteria</a>
+                                <a href="#news">Sub Kriteria</a>
+                                <a href="#contact">Normalisasi</a>
+                                <a href="#about">Perhitungan</a>
+                            </div>
+                            <button type="button" class="btn btn-warning">Simpan Rangking</button>
+                        </div>
+                        <div class="mt-2">
+                            <button type="button" class="btn btn-success custom-btn">
+                                Tambah Data Kriteria <i class="fa fa-plus icon-spacing" aria-hidden="true"></i>
+                            </button>
+                        </div>
+                        <div class="table-responsive mt-3" >          
+                            <table class="table table-striped">
+                                <thead>
+                                  <tr>
+                                    <th>#</th>
+                                    <th>Kode Kriteria</th>
+                                    <th>Nama Kriteria</th>
+                                    <th>Atribut</th>
+                                    <th>Bobot</th>
+                                    <th>Aksi</th>
+                                  </tr>
+                                </thead>
+                                <tbody>
+                                  <tr>
+                                    <td>1</td>
+                                    <td>C1</td>
+                                    <td>Pekerjaan Kepala Keluarga</td>
+                                    <td></td>
+                                    <td></td>
+                                    <td>
+                                    </td>
+                                  </tr>
+                                </tbody>
+                              </table>
+                            </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+      </div>
+    </div>
+    <!-- /.content-header -->
+        <!-- Main content -->
+        <section class="content">
+@endsection

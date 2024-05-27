@@ -11,11 +11,12 @@ class Index extends Component
 	{
 		$alternatifs = Alternatif::orderBy('kode')->get();
 
-		return view('livewire.alternatif.index', compact('alternatifs'));
+		return view('livewire.alternatif.index', compact('alternatifs'))->layout('RW.layouts.main');
 	}
 
 	public function delete($id)
 	{
 		Alternatif::find($id)->delete();
 	}
+
 }

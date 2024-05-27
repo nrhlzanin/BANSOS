@@ -5,10 +5,9 @@
     <div class="row">
         <div class="col-md-12 px-5">
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
-                <h1 class="h2"><b>Tambah Informasi</b></h1>
+                <h1 class="h2"><b>Validasi Informasi</b></h1>
             </div>
             <form action="" method="POST">
-                <h3 class="h3" style="margin-top: 25px; margin-bottom:25px">Lengkapi Data Diri Di Bawah Ini!</h3>
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
@@ -80,19 +79,33 @@
 
                 <hr>
                 {{-- KRITERIA --}}
+                <h3 class="h3" style="margin-top: 25px; margin-bottom:25px">Validasi Data Di Bawah Ini!</h3>
 
                 <div class="row">
                     <div class="col-md-6">
                         {{-- Status Pekerjaan --}}
                         <div class="mb-3">
-                            <label for="pekerjaan" class="form-label" style="margin: 5px">Status Pekerjaan:</label>
+                            <label for="pekerjaan" class="form-label" style="margin: 5px;">Status Pekerjaan:</label>
                                 <div>
                                     <select class="form-select" name="pekerjaan" id="pekerjaan" style="background-color: #f0f0f0; color: #333; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px; width: 570px">
                                         <option selected disabled>Pilih Status Pekerjaan</option>
                                         <option value="1">Bekerja</option>
                                         <option value="2">Tidak Bekerja</option>
                                     </select>
+                                    {{-- Validasi --}}
+                                    <div class="mb-3 d-flex align-items-center">
+                                        <label class="form-label" style="margin-right: 20px; margin-left: 5px; margin-top: 7px; color: #127C56;">Status Validasi:</label>
+                                            <div class="form-check form-check-inline" style="margin-right: 10px;">
+                                                <input class="form-check-input" type="radio" name="status_validasi_1" id="data_valid" value="Data Valid">
+                                                <label class="form-check-label" for="data_valid">Data Valid</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="status_validasi_1" id="data_tidak_valid" value="Data Tidak Valid">
+                                                <label class="form-check-label" for="data_tidak_valid">Data Tidak Valid</label>
+                                            </div>
+                                    </div>
                                 </div>
+                                <hr>
                         </div>
                         {{-- Jumlah Tanggungan --}}
                         <div class="mb-3">
@@ -107,8 +120,21 @@
                                         <option value="5">5</option>
                                         <option value="6">6</option>
                                     </select>
+                                    {{-- Validasi --}}
+                                    <div class="mb-3 d-flex align-items-center">
+                                        <label class="form-label" style="margin-right: 20px; margin-left: 5px; margin-top: 7px; color: #127C56;">Status Validasi:</label>
+                                            <div class="form-check form-check-inline" style="margin-right: 10px;">
+                                                <input class="form-check-input" type="radio" name="status_validasi_2" id="data_valid" value="Data Valid">
+                                                <label class="form-check-label" for="data_valid">Data Valid</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="status_validasi_2" id="data_tidak_valid" value="Data Tidak Valid">
+                                                <label class="form-check-label" for="data_tidak_valid">Data Tidak Valid</label>
+                                            </div>
+                                    </div>
                                 </div>
                         </div>
+                        <hr>
                         {{-- Tempat Tinggal --}}
                         <div class="mb-3">
                             <label for="tempat_tinggal" class="form-label" style="margin: 5px">Status Tempat Tinggal:</label>
@@ -119,8 +145,21 @@
                                         <option value="2">Kontrakan</option>
                                         <option value="3">Rumah Sendiri</option>
                                     </select>
+                                    {{-- Validasi --}}
+                                    <div class="mb-3 d-flex align-items-center">
+                                        <label class="form-label" style="margin-right: 20px; margin-left: 5px; margin-top: 7px; color: #127C56;">Status Validasi:</label>
+                                            <div class="form-check form-check-inline" style="margin-right: 10px;">
+                                                <input class="form-check-input" type="radio" name="status_validasi_3" id="data_valid" value="Data Valid">
+                                                <label class="form-check-label" for="data_valid">Data Valid</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="status_validasi_3" id="data_tidak_valid" value="Data Tidak Valid">
+                                                <label class="form-check-label" for="data_tidak_valid">Data Tidak Valid</label>
+                                            </div>
+                                    </div>
                                 </div>
                         </div>
+                        <hr>
                     </div>
                     <div class="col-md-6">
                         {{-- Penghasilan --}}
@@ -135,8 +174,21 @@
                                         <option value="4">> 1.500.000 sampai < 2.000.000</option>
                                         <option value="5">> 2.000.000</option>
                                     </select>
+                                    {{-- Validasi --}}
+                                    <div class="mb-3 d-flex align-items-center">
+                                        <label class="form-label" style="margin-right: 20px; margin-left: 5px; margin-top: 7px; color: #127C56;">Status Validasi:</label>
+                                            <div class="form-check form-check-inline" style="margin-right: 10px;">
+                                                <input class="form-check-input" type="radio" name="status_validasi_4" id="data_valid" value="Data Valid">
+                                                <label class="form-check-label" for="data_valid">Data Valid</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="status_validasi_4" id="data_tidak_valid" value="Data Tidak Valid">
+                                                <label class="form-check-label" for="data_tidak_valid">Data Tidak Valid</label>
+                                            </div>
+                                    </div>
                                 </div>
                         </div>
+                        <hr>
                         {{-- History Penerimaan Bansos --}}
                         <div class="mb-3">
                             <label for="history" class="form-label" style="margin: 5px">History Penerimaan Bansos:</label>
@@ -146,8 +198,21 @@
                                         <option value="1"> Pernah Menerima Bansos</option>
                                         <option value="2"> Belum Menerima Bansos</option>
                                     </select>
+                                    {{-- Validasi --}}
+                                    <div class="mb-3 d-flex align-items-center">
+                                        <label class="form-label" style="margin-right: 20px; margin-left: 5px; margin-top: 7px; color: #127C56;">Status Validasi:</label>
+                                            <div class="form-check form-check-inline" style="margin-right: 10px;">
+                                                <input class="form-check-input" type="radio" name="status_validasi_5" id="data_valid" value="Data Valid">
+                                                <label class="form-check-label" for="data_valid">Data Valid</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="status_validasi_5" id="data_tidak_valid" value="Data Tidak Valid">
+                                                <label class="form-check-label" for="data_tidak_valid">Data Tidak Valid</label>
+                                            </div>
+                                    </div>
                                 </div>
                         </div>
+                        <hr>
                         {{-- Status Pendidikan Terakhir --}}
                         <div class="mb-3">
                             <label for="pendidikan" class="form-label" style="margin: 5px">Pendidikan Terakhir:</label>
@@ -160,8 +225,21 @@
                                         <option value="4"> SMA</option>
                                         <option value="5"> Kuliah</option>
                                     </select>
+                                    {{-- Validasi --}}
+                                    <div class="mb-3 d-flex align-items-center">
+                                        <label class="form-label" style="margin-right: 20px; margin-left: 5px; margin-top: 7px; color: #127C56;">Status Validasi:</label>
+                                            <div class="form-check form-check-inline" style="margin-right: 10px;">
+                                                <input class="form-check-input" type="radio" name="status_validasi_6" id="data_valid" value="Data Valid">
+                                                <label class="form-check-label" for="data_valid">Data Valid</label>
+                                            </div>
+                                            <div class="form-check form-check-inline">
+                                                <input class="form-check-input" type="radio" name="status_validasi_6" id="data_tidak_valid" value="Data Tidak Valid">
+                                                <label class="form-check-label" for="data_tidak_valid">Data Tidak Valid</label>
+                                            </div>
+                                    </div>
                                 </div>
                         </div>
+                        <hr>
                     </div>
                 </div>
                 <button type="submit" name="submit" class="btn btn-primary" style="margin-top:150px; margin-bottom: 20px ">Submit</button>

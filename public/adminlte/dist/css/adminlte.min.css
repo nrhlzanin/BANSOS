@@ -668,3 +668,41 @@
   padding: 15px 0 0px 0;
   box-sizing: border-box;
 }
+.topnav {
+  background-color: #fff;
+  overflow: hidden;
+}
+
+/* Style the links inside the navigation bar */
+.topnav a {
+  float: left;
+  color: #000; /* Ubah warna teks default menjadi hitam */
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-size: 17px;
+}
+
+/* Change the color of links on hover */
+.topnav a:hover {
+  background-color: #000000;
+  color: white;
+}
+
+/* Add a color to the active/current link */
+.topnav a.active {
+  background-color: #127C56;
+  color: white;
+}
+.custom-btn {
+  background-color: #127C56;
+  border-color: #127C56;
+}
+
+.custom-btn:hover {
+  background-color: #0a5c3e; /* Warna saat dihover (opsional) */
+  border-color: #0a5c3e; /* Border saat dihover (opsional) */
+}
+.icon-spacing {
+  margin-left: 8px; /* Atur jarak sesuai kebutuhan */
+}
