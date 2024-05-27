@@ -12,7 +12,7 @@ class Index extends Component
 	public function render()
 	{
 		$alternatifs = $this->proses();
-		return view('livewire.proses.index', compact('alternatifs'));
+		return view('livewire.perhitungan.index', compact('alternatifs'));
 	}
 
 	public function print()

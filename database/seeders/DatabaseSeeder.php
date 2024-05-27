@@ -22,6 +22,9 @@ class DatabaseSeeder extends Seeder
         $this->call([
             PenerimasSeeder::class,
         ]);
+        $this->call([
+            KriteriasSeeder::class,
+        ]);
 
     }
 }

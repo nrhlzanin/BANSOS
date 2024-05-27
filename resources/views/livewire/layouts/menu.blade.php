@@ -49,7 +49,7 @@
 
               <div class="tab-content mt-4">
                 <div class="tab-pane fade show active" id="kriteria" role="tabpanel">
-                  @include('livewire.kriteria.index')
+                  @livewire('kriteria.index')
                 </div>
                 <div class="tab-pane fade" id="subkriteria" role="tabpanel">
                   @include('livewire.subkriteria.index')

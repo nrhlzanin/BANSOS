@@ -7,14 +7,14 @@ use Livewire\Component;
 
 class Index extends Component
 {
-	public function render()
-	{
-		$kriterias = Kriteria::orderBy('kode')->get();
-		return view('livewire.kriteria.index', compact('kriterias'))->layout('RW.layouts.main');
-	}
+    public function render()
+    {
+        $kriterias = Kriteria::orderBy('kode')->get();
+        return view('livewire.kriteria.index', ['kriterias' => $kriterias]);
+    }
 
-	public function delete($id)
-	{
-		Kriteria::find($id)->delete();
-	}
+    public function delete($id)
+    {
+        Kriteria::find($id)->delete();
+    }
 }
