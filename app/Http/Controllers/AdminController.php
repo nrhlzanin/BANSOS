@@ -10,7 +10,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('RW/admin');
+        return view('RW.dashboardrw');
     }
 
     public function dataWarga()
