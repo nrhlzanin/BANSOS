@@ -8,7 +8,7 @@ class AdminController extends Controller
 {
     public function index()
     {
-        return view('RW/admin');
+        return view('RW.dashboardrw');
     }
 
     public function dataWarga()
@@ -44,5 +44,9 @@ class AdminController extends Controller
     public function validasi() 
     {
         return view('RW.validasi');   
+    }
+    public function validasiData()
+    {
+        return view('RW.validasiDataWarga.validation');
     }
 }
