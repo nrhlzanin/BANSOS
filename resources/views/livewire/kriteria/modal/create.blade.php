@@ -14,9 +14,11 @@
                             <label for="status">Nama Kriteria:</label>
                             <select class="form-control" id="kriteria" name="kriteria">
                                 <option hidden>Pilih Kriteria</option>
-                                <option value="">Pekerjaan Kepala Keluarga</option>
+                                <option value="">Status Pekerjaan Kepala Keluarga</option>
                                 <option value="">Penghasilan Perbulan</option>
                                 <option value="">Jumlah Tanggungan</option>
+                                <option value="">Status Tempat Tinggal</option>
+                                <option value="">Pendidikan Kepala Keluarga</option>
                             </select>
                         </div>
                         <div class="form-group">
