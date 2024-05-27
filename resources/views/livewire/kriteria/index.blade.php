@@ -60,6 +60,14 @@
                                     <td></td>
                                     <td></td>
                                     <td>
+                                          <a href="#" class="btn btn-danger">
+                                              Delete <i class="fa fa-trash icon-spacing" aria-hidden="true"></i>
+                                          </a>
+                                          <a href="#" class="btn btn-warning">
+                                            Edit <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
+                                        </a>
+                                        </div>
+                                      </td>
                                     </td>
                                   </tr>
                                 </tbody>
@@ -76,3 +84,5 @@
         @include('livewire.kriteria.modal.create')
         <section class="content">
 @endsection
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">

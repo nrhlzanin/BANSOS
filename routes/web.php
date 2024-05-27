@@ -105,7 +105,7 @@ Route::get('/alternatif/create', AlternatifCreate::class)->name('alternatif.crea
 Route::get('/alternatif/{id}/edit', AlternatifEdit::class)->name('alternatif.edit');
 
 // route data kriteria
-Route::get('/kriteria', KriteriaIndex::class)->name('kriteria.index');
+Route::get('/kriteria', KriteriaIndex::class)->name('liveware.kriteria.index');
 Route::get('/kriteria/create', KriteriaCreate::class)->name('kriteria.create');
 Route::get('/kriteria/{id}/edit', KriteriaEdit::class)->name('kriteria.edit');
 
