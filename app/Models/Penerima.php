@@ -10,7 +10,7 @@ class Penerima extends Model
     use HasFactory;
 
     protected $fillable = [
-        'name', 'nik', 'contact', 'address', 'members', 'bansos'
+        'nama', 'nik', 'telepon', 'alamat', 'jenis_bansos'
     ];
 
     public function users()
