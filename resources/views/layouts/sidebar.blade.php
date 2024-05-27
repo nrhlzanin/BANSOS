@@ -35,23 +35,16 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-<<<<<<< HEAD
-            <a href="{{ url('admin') }}" class="nav-link active">
-=======
-            <a href="{{ url('/admin') }}" class="nav-link">
->>>>>>> d33d2bbaa23006862a9c487b8c60b2bdd6655f79
+            <a href="{{ url('/admin') }}" class="nav-link active">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <li class="nav-item menu-open">
-<<<<<<< HEAD
+          <li class="nav-item">
             <a>
-=======
-            <a href="{{ route('admin.data-warga') }}" class="nav-link active">
->>>>>>> d33d2bbaa23006862a9c487b8c60b2bdd6655f79
+            <a href="" class="nav-link">
               <i class="nav-icon fas fa-address-card"></i>
               <p>
                 Data Warga <i class="right fas fa-chevron-circle-down"></i>
@@ -59,13 +52,13 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="{{ url('data-warga') }}" class="nav-link active">
+                <a href="{{ route('admin.data-warga') }}" class="nav-link">
                   <i class="far fa-dot-circle-o"></i>
                   <p>Daftar Penerima Bansos</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="{{ url('validasi') }}" class="nav-link active">
+                <a href="{{ route('admin.validasi') }}" class="nav-link">
                   <i class="far fa-dot-circle-o"></i>
                   <p>Validasi Data Warga</p>
                 </a>
@@ -73,7 +66,7 @@
             </ul>
           </li>
           <li class="nav-item">
-            <a href="#" class="nav-link active">
+            <a href="#" class="nav-link">
               <i class="nav-icon fas fa-trophy"></i>
               <p>
                 Perankingan
@@ -82,25 +75,25 @@
             </a>
             <ul class="nav nav-treeview">
               <li class="nav-item">
-                <a href="../../index.html" class="nav-link active">
+                <a href="../../index.html" class="nav-link">
                   <i class="far fa-dot-circle-o"></i>
                   <p>Bantuan Langsung Tunai (BLT)</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index2.html" class="nav-link active">
+                <a href="../../index2.html" class="nav-link">
                   <i class="far fa-dot-circle-o"></i>
                   <p>Program Keluarga Harapan (PKH)</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index3.html" class="nav-link active">
+                <a href="../../index3.html" class="nav-link">
                   <i class="far fa-dot-circle-o"></i>
                   <p>Bantuan Pangan Non Tunai (BPNT)</p>
                 </a>
               </li>
               <li class="nav-item">
-                <a href="../../index3.html" class="nav-link active">
+                <a href="../../index3.html" class="nav-link">
                   <i class="far fa-dot-circle-o"></i>
                   <p>Bansos Beras</p>
                 </a>
@@ -108,11 +101,7 @@
             </ul>
           </li>
           <li class="nav-item">
-<<<<<<< HEAD
-            <a href="{{ url('informasi-akun') }}" class="nav-link active">
-=======
             <a href="{{ route('admin.informasi-akun') }}" class="nav-link">
->>>>>>> d33d2bbaa23006862a9c487b8c60b2bdd6655f79
               <i class="nav-icon far fa-user-circle"></i>
               <p>
                 Informasi Akun
@@ -136,5 +125,6 @@
   <script src="../../dist/js/adminlte.min.js"></script>
   <!-- AdminLTE for demo purposes -->
   <script src="../../dist/js/demo.js"></script>
-</body>
-</html>
+
+  
+  

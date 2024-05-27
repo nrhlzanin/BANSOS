@@ -9,12 +9,17 @@
   <link rel="stylesheet" href="../../dist/css/adminlte.min.css">
 </head>
 <body>
+  
+  @php
+    $rt = Auth::user()->rt;
+  @endphp
+
   <!-- Main Sidebar Container -->
   <aside class="main-sidebar sidebar-dark-primary elevation-4" style="background-color: #127C56;">
     <!-- Brand Logo -->
     <a href="{{ url('/') }}" class="brand-link">
       <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-      <span class="brand-text font-weight-light">RT 04</span>
+      <span class="brand-text font-weight-light">RT {{ $rt->no_rt ?? 'Undefined' }}</span>
     </a>
 
     <!-- Sidebar -->
@@ -25,7 +30,7 @@
           <img src="{{ asset('img/profile.png') }}" class="img-circle elevation-2" alt="User Image">
         </div>
         <div class="info">
-          <a href="#" class="d-block">PETUGAS | RT</a>
+          <a href="#" class="d-block">PETUGAS | RT {{ $rt->no_rt ?? 'Undefined' }}</a>
         </div>
       </div>
 
@@ -35,7 +40,7 @@
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
           <li class="nav-item">
-            <a href="{{ url('RT/dashboardrt') }}" class="nav-link">
+            <a href="{{ url('petugas') }}" class="nav-link">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
@@ -43,7 +48,7 @@
             </a>
           </li>
           <li class="nav-item menu-open">
-            <a href="{{ url('data-warga') }}" class="nav-link active">
+            <a href="{{ route('petugas.data-wargart') }}" class="nav-link active">
               <i class="nav-icon fas fa-address-card"></i>
               <p>
                 Data Warga
@@ -51,7 +56,7 @@
             </a>
           </li>
           <li class="nav-item">
-            <a href="{{ url('informasi-akun') }}" class="nav-link">
+            <a href="{{ route('petugas.infomasi-akunrt') }}" class="nav-link">
               <i class="nav-icon far fa-user-circle"></i>
               <p>
                 Informasi Akun

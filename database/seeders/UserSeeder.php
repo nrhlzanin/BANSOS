@@ -6,6 +6,7 @@ use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Psy\Command\WhereamiCommand;
 
 class UserSeeder extends Seeder
 {
@@ -28,9 +29,16 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('12345'),
                 'level' => 'rt',
                 'email' => 'petugas04@gmail.com'
+            ], 
+            [
+                'id_user' => 3,
+                'username' => 'petugasrt05',
+                'password' => Hash::make('12345'),
+                'level' => 'rt',
+                'email' => 'petugas05@gmail.com'
             ]
-            ];
+        ];
 
-            DB::table('user')->insert($data);            
+        DB::table('user')->insert($data);      
     }
 }
