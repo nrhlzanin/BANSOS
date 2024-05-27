@@ -60,14 +60,15 @@
                                     <td></td>
                                     <td></td>
                                     <td>
-                                          <a href="#" class="btn btn-danger">
-                                              Delete <i class="fa fa-trash icon-spacing" aria-hidden="true"></i>
-                                          </a>
-                                          <a href="#" class="btn btn-warning">
-                                            Edit <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
-                                        </a>
-                                        </div>
+                                      <a href="#" data-toggle="modal" data-target="#ModalDelete" class="btn btn-danger">
+                                        Delete <i class="fa fa-trash icon-spacing" aria-hidden="true"></i>
+                                    </a>
+                                    <a href="#" data-toggle="modal" data-target="#ModalEdit" class="btn btn-warning">
+                                        Edit <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
+                                    </a>
                                       </td>
+                                      @include('livewire.kriteria.modal.edit')
+                                      @include('livewire.kriteria.modal.delete')
                                     </td>
                                   </tr>
                                 </tbody>
