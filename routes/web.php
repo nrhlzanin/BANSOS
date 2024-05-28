@@ -120,3 +120,13 @@ Route::get('/subkriteria/{kriteria}/create', SubkriteriaCreate::class)->name('su
 Route::get('/penilaian', PenilaianIndex::class)->name('penilaian.index');
 Route::get('/penilaian/{altId}/edit', PenilaianEdit::class)->name('penilaian.edit');
 Route::get('/penilaian/proses', ProsesIndex::class)->name('penilaian.proses');
+
+Route::middleware([
+    'auth:sanctum',
+    config('jetstream.auth_session'),
+    'verified',
+])->group(function () {
+    Route::get('/dashboard', function () {
+        return view('dashboard');
+    })->name('dashboard');
+});

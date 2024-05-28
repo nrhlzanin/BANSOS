@@ -17,13 +17,13 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($kriterias as $kriteria)
+                @foreach($kriterias as $index =>$krit)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $kriteria->kode }}</td>
-                    <td>{{ $kriteria->name }}</td>
-                    <td>{{ $kriteria->type}}</td>
-                    <td>{{ $kriteria->bobot }}</td>
+                    <td>{{ $krit->kode }}</td>
+                    <td>{{ $krit->name }}</td>
+                    <td>{{ $krit->type}}</td>
+                    <td>{{ $krit->bobot }}</td>
                     <td>
                         <a href="#" data-toggle="modal" data-target="#ModalDelete" class="btn btn-danger">
                             Delete <i class="fa fa-trash icon-spacing" aria-hidden="true"></i>
