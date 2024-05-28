@@ -52,7 +52,7 @@
                   @livewire('kriteria.index')
                 </div>
                 <div class="tab-pane fade" id="subkriteria" role="tabpanel">
-                  @include('subkriteria.index')
+                  @include('livewire.subkriteria.index')
                 </div>
                 <div class="tab-pane fade" id="normalisasi" role="tabpanel">
                   @include('livewire.perhitungan.index')
