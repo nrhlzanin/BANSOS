@@ -6,6 +6,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardInfoController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
@@ -28,6 +29,8 @@ use App\Models\SubKriteria;
 Route::get("/", function () {
     return view("landing.index");
 });
+Route::get('/pengajuan/create', [PengajuanController::class, 'create'])->name('pengajuan.create');
+Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('pengajuan.store');
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('proses_login');

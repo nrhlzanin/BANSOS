@@ -23,10 +23,18 @@
                             <a class="nav-link" href="#informasi">Informasi</a>
                         </li>
                         <li class="nav-item">
+                            <a class="nav-link" href="{{ route('pengajuan.create') }}">Pengajuan</a>
+                        </li>
+                        <li class="nav-item">
                             <a class="nav-link" href="#tentang">FAQ</a>
                         </li>
+                        <ul class="nav-item d-flex p-0 ms-5 authentication">
+                            <li class="list-group">
+                                <a href="/login" class="nav-link text-center bg-primary text-white rounded-pill border login px-3">Login</a>
+                            </li>
+                        </ul>
                     @endif
-                    @auth
+                    <!-- @auth
                         <div class="btn-group username">
                             <button type="button" class="btn btn-transparent dropdown-toggle ps-0" data-bs-toggle="dropdown"
                                 aria-expanded="false">
@@ -62,7 +70,7 @@
                                 <a href="/login" class="nav-link text-center bg-primary text-white rounded-pill border login px-3">Login</a>
                             </li>
                         </ul>
-                    @endauth
+                    @endauth -->
                 </ul>
             </div>
         </div>
