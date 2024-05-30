@@ -23,4 +23,7 @@ class UserModel extends \Illuminate\Foundation\Auth\User
     public function rt() {
         return $this->hasOne(RtModel::class, 'id_user', 'id_user');
     }
+    public function warga() {
+        return $this->hasOne(WargaModel::class, 'id_user', 'id_user');
+    }
 }

@@ -16,17 +16,8 @@ return new class extends Migration
             $table->unsignedBigInteger('id_jenisbansos')->index();
             $table->unsignedBigInteger('id_petugas')->index();
             $table->unsignedBigInteger('id_admin')->index();
-            $table->string('no_kk', 20);
-            $table->string('nik', 20);
-            $table->enum('status', ['Pernah', 'Tidak pernah']);
-            $table->enum('agama', ['Islam', 'Protestan', 'Katholik', 'Hindu', 'Budha', 'Konghucu']);
-            $table->string('alamat', 100);
-            $table->string('pekerjaan', 30);
-            $table->string('no_telp', 15);
-            $table->enum('pengeluaran', ['< 500.000', '>=500.000 - <=1.000.000', '>1.000.000 - <=2.500.000', '>2.500.000']);
-            $table->enum('pendapatan', ['< 500.000', '>=500.000 - <=1.000.000', '>1.000.000 - <=2.500.000', '>2.500.000']);
-            $table->integer('jml_tanggungan');
-            $table->enum('jenis_bansos', ['BPNT', 'BLT', 'PKH', 'BSB']);
+            $table->unsignedBigInteger('id_pengajuan')->index();
+            $table->date('tanggal_penerimaan');
             $table->string('keterangan', 100);
             $table->timestamps();
 
@@ -34,6 +25,7 @@ return new class extends Migration
             $table->foreign('id_jenisbansos')->references('id_jenisbansos')->on('bansos');
             $table->foreign('id_petugas')->references('id_petugas')->on('rt');
             $table->foreign('id_admin')->references('id_admin')->on('rw');
+            $table->foreign('id_pengajuan')->references('id_pengajuan')->on('pengajuan');
         });
     }
 

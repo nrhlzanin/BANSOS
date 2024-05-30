@@ -36,6 +36,34 @@ class UserSeeder extends Seeder
                 'password' => Hash::make('12345'),
                 'level' => 'rt',
                 'email' => 'petugas05@gmail.com'
+            ],
+            [
+                'id_user' => 4,
+                'username' => 'petugasrt06',
+                'password' => Hash::make('12345'),
+                'level' => 'rt',
+                'email' => 'petugas06@gmail.com'
+            ],
+            [
+                'id_user' => 5,
+                'username' => 'wargart04',
+                'password' => Hash::make('12345'),
+                'level' => 'warga',
+                'email' => 'warga04@gmail.com'
+            ],
+            [
+                'id_user' => 6,
+                'username' => 'wargart05',
+                'password' => Hash::make('12345'),
+                'level' => 'warga',
+                'email' => 'warga05@gmail.com'
+            ],
+            [
+                'id_user' => 7,
+                'username' => 'wargart06',
+                'password' => Hash::make('12345'),
+                'level' => 'warga',
+                'email' => 'warga06@gmail.com'
             ]
         ];
 

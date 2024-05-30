@@ -11,6 +11,7 @@ use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ValidasiController;
+use App\Http\Controllers\WargaController;
 use App\Models\Informasi;
 use Illuminate\Support\Facades\Route;
 use App\Http\Livewire\Alternatif\Index as AlternatifIndex;
@@ -29,8 +30,6 @@ use App\Models\SubKriteria;
 Route::get("/", function () {
     return view("landing.index");
 });
-Route::get('/pengajuan/create', [PengajuanController::class, 'create'])->name('pengajuan.create');
-Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('pengajuan.store');
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
@@ -73,7 +72,7 @@ Route::get("/dashboard/desa/history", [DashboardController::class, 'historyRoleD
 Route::get("/dashboard/desa/history/detail/{penerima:id}", [DashboardController::class, 'detailHistoryRoleDesa'])->middleware("desa");
 ////////////////////////////////////////////////////////////////////////////////////////////////
 
-//Route RW coba
+// Route RW coba
 Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/', [AdminController::class, 'index']);
     
@@ -85,12 +84,16 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/data-warga/validasi', [AdminController::class, 'validasiData'])->name('admin.data-warga.validation');
     
 });
-//Route RT
+// Route RT
 Route::get('petugas', [PetugasController::class, 'index'])->middleware(['auth', 'role:rt']);
 Route::prefix('petugas')->group(function() {
     Route::get('/data-warga', [PetugasController::class, 'dataWarga'])->name('petugas.data-wargart');
     Route::get('/informasi-akun', [PetugasController::class, 'informasiAkun'])->name('petugas.infomasi-akunrt');
 });
+// Route Warga
+Route::get('warga', [WargaController::class, 'index'])->middleware('auth', 'role:warga');
+Route::get('/pengajuan/create', [PengajuanController::class, 'create'])->name('pengajuan.create');
+Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('pengajuan.store');
 
 // Route RW
 Route::get('/data-warga', [App\Http\Controllers\AdminController::class, 'dataWarga'])->name('data-warga');

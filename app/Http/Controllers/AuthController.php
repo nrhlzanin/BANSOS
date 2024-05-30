@@ -18,13 +18,17 @@ class AuthController extends Controller
 
         // kondisi jika usernya ada
         if ($user) {
-            // jika usernya memiliki level admin
+            // jika usernya memiliki level rw
             if ($user->level == 'rw') {
                 return redirect()->intended('admin');
             }
-            // jika usernya memiliki level manager
+            // jika usernya memiliki level rt
             else if ($user->level == 'rt') {
                 return redirect()->intended('petugas');
+            }
+            // jika usernya memiliki level warga
+            else if ($user->level == 'warga') {
+                return redirect()->intended('warga');
             }
         }
         return view("login.index", [
