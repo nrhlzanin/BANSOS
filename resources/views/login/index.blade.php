@@ -3,7 +3,7 @@
 @section('title', 'Login Web Bansos')
 
 @section('content')
-    <section class="container" style="margin: 100px auto 300px !important">
+    <section class="container" style="margin: 100px auto 300px!important">
         <div class="row justify-content-center">
             <div class="col-lg-8">
                 {{-- register berhasil --}}
@@ -39,5 +39,6 @@
                 </form>
             </div>
         </div>
+        <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
     </section>
 @endsection
