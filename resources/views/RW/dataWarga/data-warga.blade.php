@@ -127,11 +127,11 @@
                                                     <td>
                                                         <a href="{{ route('penerimas.show', $penerima->id) }}"
                                                             class="btn btn-success"
-                                                            style="background-color: #19CD61;">Detail<i
+                                                            style="background-color: #19CD61;">Detail <i
                                                                 class="fa fa-info-circle"></i></a>
                                                         <button class="btn btn-danger btn-delete"
                                                             data-id="{{ $penerima->id }}"
-                                                            style="background-color: #FF0F0F;">Delete<i
+                                                            style="background-color: #FF0F0F;">Delete <i
                                                                 class="fa fa-trash"></i></button>
                                                     </td>
                                                 </tr>
@@ -176,10 +176,10 @@
                 $('#no-data-alert').hide();
             }
 
-            $('#search-button').on('click', function() {
-                var searchValue = $('#search-input').val();
-                table.search(searchValue).draw();
-            });
+           // $('#search-button').on('click', function() {
+               // var searchValue = $('#search-input').val();
+                //table.search(searchValue).draw();
+            //});
 
             $('.btn-delete').on('click', function() {
                 if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {

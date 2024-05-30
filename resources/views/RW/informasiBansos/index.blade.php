@@ -49,6 +49,16 @@
                                         <td></td>
                                         <td></td>
                                         <td>
+                                          <a href="#"
+                                            class="btn btn-success"
+                                            style="background-color: #19CD61;">Detail <i
+                                                class="fa fa-info-circle"></i></a>
+                                        <button class="btn btn-danger btn-delete"
+                                            data-id="#"
+                                            style="background-color: #FF0F0F;">Delete <i
+                                                class="fa fa-trash"></i></button>
+                                        </td>
+                                        <td>
                                         </td>
                                       </tr>
                                     </tbody>
