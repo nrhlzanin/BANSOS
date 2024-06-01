@@ -26,6 +26,8 @@ use App\Http\Livewire\Subkriteria\Create as SubkriteriaCreate;
 use App\Http\Livewire\Proses\Index as ProsesIndex;
 use App\Models\SubKriteria;
 
+
+
 // beranda
 Route::get("/", function () {
     return view("landing.index");

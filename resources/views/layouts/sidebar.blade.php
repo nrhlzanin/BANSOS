@@ -28,88 +28,73 @@
           <a href="#" class="d-block">ADMIN | RW</a>
         </div>
       </div>
-
+    
       <!-- Sidebar Menu -->
-      <nav class="mt-2">
-        <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
-          <!-- Add icons to the links using the .nav-icon class
-               with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="{{ url('/admin') }}" class="nav-link active">
-              <i class="nav-icon fas fa-th"></i>
-              <p>
-                Dashboard
-              </p>
+    <nav class="mt-2">
+    <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
+        <!-- Dashboard -->
+        <li class="custom-nav-item nav-item" style="margin-bottom: 20px;">
+            <a href="{{ url('/admin') }}" class="nav-link {{ request()->is('admin') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-th"></i>
+                <p>Dashboard</p>
             </a>
-          </li>
-          <li class="nav-item">
-            <a>
-            <a href="" class="nav-link">
-              <i class="nav-icon fas fa-address-card"></i>
-              <p>
-                Data Warga <i class="right fas fa-chevron-circle-down"></i>
-              </p>
-            </a>
-            <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{ route('admin.data-warga') }}" class="nav-link">
-                  <i class="far fa-dot-circle-o"></i>
-                  <p>Daftar Penerima Bansos</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="{{ route('admin.validasi') }}" class="nav-link">
-                  <i class="far fa-dot-circle-o"></i>
-                  <p>Validasi Data Warga</p>
-                </a>
-              </li>
-            </ul>
-          </li>
-          <li class="nav-item">
-            <a href="#" class="nav-link">
-              <i class="nav-icon fas fa-trophy"></i>
-              <p>
-                Perankingan
-                <i class="right fas fa-chevron-circle-down"></i>
-              </p>
+        </li>
+
+        <!-- Data Warga -->
+        <li class="custom-nav-item nav-item has-treeview {{ request()->is('admin/data-warga', 'admin/validasi') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ request()->is('admin/data-warga', 'admin/validasi') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-address-card"></i>
+                <p>
+                    Data Warga
+                    <i class="fas fa-chevron-circle-down right"></i>
+                </p>
             </a>
             <ul class="nav nav-treeview">
-              <li class="nav-item">
-                <a href="{{route('layouts.menu')}}" class="nav-link">
-                  <i class="far fa-dot-circle-o"></i>
-                  <p>Bantuan Langsung Tunai (BLT)</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index2.html" class="nav-link">
-                  <i class="far fa-dot-circle-o"></i>
-                  <p>Program Keluarga Harapan (PKH)</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
-                  <i class="far fa-dot-circle-o"></i>
-                  <p>Bantuan Pangan Non Tunai (BPNT)</p>
-                </a>
-              </li>
-              <li class="nav-item">
-                <a href="../../index3.html" class="nav-link">
-                  <i class="far fa-dot-circle-o"></i>
-                  <p>Bansos Beras</p>
-                </a>
-              </li>
+                <li class="nav-item" style="margin-bottom: 20px;">
+                    <a href="{{ route('admin.data-warga') }}" class="nav-link {{ request()->is('admin/data-warga') ? 'active' : '' }}">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Daftar Penerima Bansos</p>
+                    </a>
+                </li>
+                <li class="nav-item" style="margin-bottom: 20px;">
+                    <a href="{{ route('admin.validasi') }}" class="nav-link {{ request()->is('admin/validasi') ? 'active' : '' }}">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Validasi Data Warga</p>
+                    </a>
+                </li>
             </ul>
-          </li>
-          <li class="nav-item">
-            <a href="{{ route('admin.informasi-akun') }}" class="nav-link">
-              <i class="nav-icon far fa-user-circle"></i>
-              <p>
-                Informasi Akun
-              </p>
+        </li>
+
+        <!-- Perankingan -->
+        <li style="margin-bottom: 20px;" class="custom-nav-item nav-item has-treeview {{ request()->is('layouts/menu') ? 'menu-open' : '' }}">
+            <a href="#" class="nav-link {{ request()->is('layouts/menu') ? 'active' : '' }}">
+                <i class="nav-icon fas fa-trophy"></i>
+                <p>
+                    Perankingan
+                    <i class="fas fa-chevron-circle-down right"></i>
+                </p>
             </a>
-          </li>
-        </ul>
-      </nav>
+            <ul class="nav nav-treeview">
+                <li class="nav-item" style="margin-bottom: 20px;">
+                    <a href="{{ route('layouts.menu') }}" class="nav-link {{ request()->is('layouts/menu') ? 'active' : '' }}">
+                        <i class="far fa-dot-circle nav-icon"></i>
+                        <p>Bantuan Langsung Tunai (BLT)</p>
+                    </a>
+                </li>
+                <!-- Other menu items -->
+            </ul>
+        </li>
+
+        <!-- Informasi Akun -->
+        <li class="custom-nav-item nav-item" style="margin-bottom: 20px;">
+            <a href="{{ route('admin.informasi-akun') }}" class="nav-link {{ request()->is('admin/informasi-akun') ? 'active' : '' }}">
+                <i class="nav-icon far fa-user-circle"></i>
+                <p>Informasi Akun</p>
+            </a>
+        </li>
+    </ul>
+</nav>
+
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
@@ -123,8 +108,5 @@
   <script src="{{ asset('adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
   <!-- AdminLTE App -->
   <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
-
-  
-  
+</body>
+</html>

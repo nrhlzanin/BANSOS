@@ -39,32 +39,29 @@
         <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">
           <!-- Add icons to the links using the .nav-icon class
                with font-awesome or any other icon font library -->
-          <li class="nav-item">
-            <a href="{{ url('petugas') }}" class="nav-link">
+               <li class="custom-nav-item nav-item" style="margin-bottom: 20px;">
+            <a href="{{ url('petugas') }}" class="nav-link {{ request()->is('petugas') ? 'active' : '' }}">
               <i class="nav-icon fas fa-th"></i>
               <p>
                 Dashboard
               </p>
             </a>
           </li>
-          <li class="nav-item menu-open">
-            <a href="{{ route('petugas.data-wargart') }}" class="nav-link active">
+          <li class="custom-nav-item nav-item has-treeview" style="margin-bottom: 20px;">
+              <a href="{{ route('petugas.data-wargart') }}" class="nav-link {{ request()->is('petugas/data-wargart') ? 'active' : '' }}">
               <i class="nav-icon fas fa-address-card"></i>
               <p>
                 Data Warga
               </p>
             </a>
           </li>
-          <li class="nav-item">
-            <a href="{{ route('petugas.infomasi-akunrt') }}" class="nav-link">
-              <i class="nav-icon far fa-user-circle"></i>
-              <p>
-                Informasi Akun
-              </p>
+          <li class="custom-nav-item nav-item" style="margin-bottom: 20px;">
+            <a href="{{ route('petugas.infomasi-akunrt') }}" class="nav-link {{ request()->is('petugas/informasi-akunrt') ? 'active' : '' }}">                <i class="nav-icon far fa-user-circle"></i>
+                <p>Informasi Akun</p>
             </a>
-          </li>
-        </ul>
-      </nav>
+        </li>
+    </ul>
+</nav>
       <!-- /.sidebar-menu -->
     </div>
     <!-- /.sidebar -->
@@ -78,7 +75,5 @@
   <script src="{{ asset('adminlte/plugins/overlayScrollbars/js/jquery.overlayScrollbars.min.js') }}"></script>
   <!-- AdminLTE App -->
   <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
-  <!-- AdminLTE for demo purposes -->
-  <script src="{{ asset('adminlte/dist/js/demo.js') }}"></script>
 </body>
 </html>
