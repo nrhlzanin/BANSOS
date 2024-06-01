@@ -41,7 +41,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Dashboard</h1>
+              <h1 class="m-0">Informasi Akun</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -113,19 +113,29 @@
             <div class="data">Data</div>
             <form class="form-group">
               <div class="form-row">
-                <div class="form-group col-md-6">
                   <label for="nik">NIK:</label>
                   <input type="text" class="form-control" id="nik" name="nik" disabled>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="no_kk">No KK:</label>
-                  <input type="text" class="form-control" id="no_kk" name="no_kk" disabled>
-                </div>
               </div>
               <div class="form-group">
                 <label for="alamat">Alamat:</label>
                 <input type="text" class="form-control" id="alamat" name="alamat" disabled>
               </div>
+              <div class="form-row">
+              <div class="form-group col-md-6">
+                <label for="jenis_kelamin">RT:</label>
+                  <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" disabled>
+                    <option value="1">1</option>
+                    <option value="2">2</option>
+                    <option value="3">3</option>
+                  </select>
+              </div>
+              <div class="form-group col-md-6">
+                <label for="no_kk">RW:</label>
+                <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" disabled>
+                  <option value="1">1</option>
+                </select>
+              </div>
+            </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="jenis_kelamin">Jenis Kelamin:</label>
@@ -135,16 +145,17 @@
                   </select>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="jumlah_anggota">Jumlah Anggota Keluarga:</label>
-                  <input type="number" class="form-control" id="jumlah_anggota" name="jumlah_anggota" disabled>
+                  <label for="status">Status:</label>
+                  <select class="form-control" id="status" name="status" disabled>
+                    <option value="aktif">Menikah</option>
+                    <option value="tidak_aktif">Tidak Aktif</option>
+                  </select>
                 </div>
               </div>
               <div class="form-group">
-                <label for="status">Status:</label>
-                <select class="form-control" id="status" name="status" disabled>
-                  <option value="aktif">Menikah</option>
-                  <option value="tidak_aktif">Tidak Aktif</option>
-                </select>
+                <label for="jumlah_anggota">Jumlah Anggota Keluarga:</label>
+                  <input type="number" class="form-control" id="jumlah_anggota" name="jumlah_anggota" disabled>
+              </div>
               </div>
             </form>
           </div>

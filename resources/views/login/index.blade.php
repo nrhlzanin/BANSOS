@@ -42,3 +42,11 @@
         <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
     </section>
 @endsection
+<script>
+    @if (session('success'))
+    <div class="alert alert-success">
+        {{ session('success') }}
+    </div>
+    @endif
+
+</script>
