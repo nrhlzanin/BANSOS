@@ -25,6 +25,10 @@
 
 </head>
 <body class="hold-transition sidebar-mini">
+  @php
+    $user = Auth::user();
+    $rw = Auth::user()->rw;
+  @endphp
   <!-- Site wrapper -->
   <div class="wrapper">
     <!-- Navbar -->
@@ -82,7 +86,7 @@
               <div class="nama">
                 <label>Nama :</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" value="{{ $user->name }}" disabled>
+                  <input type="text" class="form-control" value="{{ $rw->nama_admin }}" disabled>
                 </div>
               </div>
               <div class="username">
@@ -93,7 +97,7 @@
               </div>
               <div class="password">
                 <label>Password :</label>
-                <input type="password" class="form-control" value="{{ $user->password }}">
+                <input type="password" class="form-control">
               </div>
               <div class="email">
                 <label>Email :</label>

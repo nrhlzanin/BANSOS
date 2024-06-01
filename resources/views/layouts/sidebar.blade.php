@@ -9,9 +9,8 @@
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
 </head>
 <body>
-  <!-- Main Sidebar Container -->
-  @php
-  $rt = Auth::user()->rt;
+@php
+  $rw = Auth::user()->rw;
 @endphp
 
 <!-- Main Sidebar Container -->
@@ -19,21 +18,21 @@
   <!-- Brand Logo -->
   <a href="{{ url('/') }}" class="brand-link">
     <img src="../../dist/img/AdminLTELogo.png" alt="AdminLTE Logo" class="brand-image img-circle elevation-3" style="opacity: .8">
-    <span class="brand-text font-weight-light">RW {{ $rt->no_rt ?? '' }}</span>
+    <span class="brand-text font-weight-light">RW 03</span>
   </a>
 
-  <!-- Sidebar -->
-  <div class="sidebar">
-    <!-- Sidebar user (optional) -->
-    <div class="user-panel mt-3 pb-3 mb-3 d-flex">
-      <div class="image">
-        <img src="{{ asset('img/profile.png') }}" class="img-circle elevation-2" alt="User Image">
+    <!-- Sidebar -->
+    <div class="sidebar">
+      <!-- Sidebar user (optional) -->
+      <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+        <div class="image">
+          <img src="{{ asset('img/profile.png') }}" class="img-circle elevation-2" alt="User Image">
+        </div>
+        <div class="info">
+          <a href="#" class="d-block">ADMIN | {{ $rw->nama_admin }}</a>
+        </div>
       </div>
-      <div class="info">
-        <a href="#" class="d-block">ADMIN | RW {{ $rt->no_rt ?? '' }}</a>
-      </div>
-    </div>
-    
+
       <!-- Sidebar Menu -->
     <nav class="mt-2">
     <ul class="nav nav-pills nav-sidebar flex-column" data-widget="treeview" role="menu" data-accordion="false">

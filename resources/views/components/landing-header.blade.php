@@ -44,26 +44,27 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('pengajuan.create') }}">Pengajuan</a>
                         </li>
-                        <li>
-                            <a class="nav-link" href="/logout" role="button">
-                                <i class="fas fa-sign-out-alt"></i> Logout
-                            </a>
-                        </li>
-                        <div class="btn-group username">
-                            <button type="button" class="btn btn-transparent dropdown-toggle ps-0" data-bs-toggle="dropdown"
-                                aria-expanded="false">
+                        <li class="nav-item dropdown">
+                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                                 Selamat Datang {{ auth()->user()->warga->nama_kepalaKeluarga }}
-                            </button>
-                            <ul class="dropdown-menu dropdown-menu-end">
-                                <li><a class="dropdown-item" href="/profile"><i class="bi bi-person"></i><span class="ms-2">Profil Saya</span></a></li>
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
+                                <li>
+                                    <a class="dropdown-item" href="/profile">
+                                        <i class="bi bi-person"></i><span class="ms-2">Profil Saya</span>
+                                    </a>
+                                </li>
+                                <li><hr class="dropdown-divider"></li>
                                 <li>
                                     <form action="/logout" method="POST">
                                         @csrf
-                                        <button type="submit" class="dropdown-item"><i class="bi bi-box-arrow-right"></i><span class="ms-2">Keluar</span></button>
+                                        <button type="submit" class="dropdown-item">
+                                            <i class="fas fa-sign-out-alt"></i><span class="ms-2">Keluar</span>
+                                        </button>
                                     </form>
                                 </li>
                             </ul>
-                        </div>
+                        </li>
                     @endauth
                 </ul>
             </div>

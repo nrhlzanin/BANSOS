@@ -15,8 +15,11 @@ class UserModel extends Authenticatable
     protected $fillable = ['username', 'password', 'level', 'email'];
     protected $hidden = ['password'];
 
-    public function rt()
-    {
+    public function rw() {
+        return $this->hasOne(RwModel::class, 'id_user', 'id_user');
+    }
+    
+    public function rt() {
         return $this->hasOne(RtModel::class, 'id_user', 'id_user');
     }
 
