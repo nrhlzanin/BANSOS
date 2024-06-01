@@ -71,8 +71,8 @@
         </li>
 
         <!-- Perankingan -->
-        <li style="margin-bottom: 20px;" class="custom-nav-item nav-item has-treeview {{ request()->is('layouts/menu') ? 'menu-open' : '' }}">
-            <a href="#" class="nav-link {{ request()->is('layouts/menu') ? 'active' : '' }}">
+        <li style="margin-bottom: 20px;" class="custom-nav-item nav-item has-treeview {{ request()->is('admin/perankingan/kriteria') ? 'menu-open' : '' }}">
+            <a href="{{ route('admin.spk.layouts.menu') }}" class="nav-link {{ request()->is('admin/perankingan/kriteria') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-trophy"></i>
                 <p>
                     Perankingan
@@ -81,15 +81,15 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item" style="margin-bottom: 20px;">
-                    <a href="{{ route('layouts.menu') }}" class="nav-link {{ request()->is('layouts/menu') ? 'active' : '' }}">
+                    <a href="{{ route('admin.spk.layouts.menu') }}" class="nav-link {{ request()->is('admin/perankingan/kriteria') ? 'active' : '' }}">
                         <i class="far fa-dot-circle nav-icon"></i>
                         <p>Bantuan Langsung Tunai (BLT)</p>
-                    </a>
+                    </a>                    
                 </li>
                 <!-- Other menu items -->
             </ul>
         </li>
-
+        
         <!-- Informasi Akun -->
         <li class="custom-nav-item nav-item" style="margin-bottom: 20px;">
             <a href="{{ route('admin.informasi-akun') }}" class="nav-link {{ request()->is('admin/informasi-akun') ? 'active' : '' }}">

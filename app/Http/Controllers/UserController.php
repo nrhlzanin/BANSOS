@@ -2,77 +2,41 @@
 
 namespace App\Http\Controllers;
 
-use App\DataTables\UserDataTable;
-use App\Models\UserModel;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Hash;
-use App\Http\Requests\StorePostRequest;
-use Illuminate\Http\RedirectResponse;
+use App\Models\UserModel;
+use Illuminate\Support\Facades\Auth;
 
 class UserController extends Controller
 {
-    //Menampilkan halaman awal user
-    public function index(UserDataTable $dataTable) 
+    public function informasiAkun()
     {
-        $activeMenu = 'user';
-        return $dataTable->render('user.index', compact('activeMenu'));
+        // Ambil data pengguna yang sedang login
+        $user = Auth::user();
+
+        // Pastikan $user dikirim ke view
+        return view('RW.informasi-akun', compact('user'));
     }
 
-    public function create() 
+    public function updateAccountInfo(Request $request)
     {
-        return view('user.create');
-    }
-
-    public function store(StorePostRequest $request) : RedirectResponse 
-    {
-        // The incoming request is valid
-
-        // Retrieve the validated input data
-        $validated = $request->validated();
-
-        // Retrieve a portion of the validated input data
-        $validated = $request->safe()->only(['username', 'password', 'nama', 'level_id']);
-        $validated = $request->safe()->except(['username', 'password', 'nama', 'level_id']);
-
-        // Store the post
-
-        return redirect('/user');
-    }
-
-    public function tambah_simpan(Request $request)
-    {
-        UserModel::create([
-            'username' => $request->username,
-            'nama' => $request->nama,
-            'password' => Hash::make($request->password),
-            'level_id' => $request->level_id
+        // Validasi input
+        $request->validate([
+            'username' => 'required|string|max:20|unique:user,username,' . Auth::id() . ',id_user',
+            'email' => 'required|string|email|max:50|unique:user,email,' . Auth::id() . ',id_user',
+            'password' => 'nullable|string|min:8|confirmed',
         ]);
-        return redirect('/user');
-    }
 
-    public function update($id)
-    {
-        $user = UserModel::find($id);
-        return view('user.user_update', ['data' => $user]);
-    }
+        // Ambil data pengguna yang sedang login
+        $user = Auth::user();
 
-    public function update_simpan($id, Request $request)
-    {
-        $user = UserModel::find($id);
-
+        // Update data pengguna
         $user->username = $request->username;
-        $user->nama = $request->nama;
-        $user->level_id = $request->level_id;
-
+        $user->email = $request->email;
+        if ($request->filled('password')) {
+            $user->password = bcrypt($request->password);
+        }
         $user->save();
-        return redirect('/user');
-    }
 
-    public function delete($id)
-    {
-        $user = UserModel::find($id);
-        $user->delete();
-        
-        return redirect('/user');
+        return redirect()->back()->with('success', 'Informasi akun berhasil diperbarui.');
     }
 }

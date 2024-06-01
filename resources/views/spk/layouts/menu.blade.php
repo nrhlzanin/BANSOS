@@ -35,30 +35,30 @@
             <div class="card-body">
               <div class="d-flex justify-content-between">
                 <nav class="nav nav-pills">
-                  <a class="nav-link active" id="kriteria-tab" data-toggle="pill" href="#kriteria">Kriteria</a>
-                  <a class="nav-link" id="subkriteria-tab" data-toggle="pill" href="#subkriteria">Sub Kriteria</a>
-                  <a class="nav-link" id="normalisasi-tab" data-toggle="pill" href="#normalisasi">Normalisasi</a>
-                  <a class="nav-link" id="perhitungan-tab" data-toggle="pill" href="#perhitungan">Perhitungan</a>
-                </nav>
+                  <a class="nav-link {{ Request::is('admin/perankingan/kriteria') ? 'active' : '' }}" id="kriteria-tab" href="{{ route('admin.kriteria.index') }}">Kriteria</a>
+                  <a class="nav-link {{ Request::is('admin/perankingan/subkriteria') ? 'active' : '' }}" id="subkriteria-tab" href="{{ route('admin.subkriteria.index') }}">Sub Kriteria</a>
+                  <a class="nav-link {{ Request::is('admin/perankingan/normalisasi') ? 'active' : '' }}" id="normalisasi-tab" href="{{ route('admin.normalisasi.index') }}">Normalisasi</a>
+                  <a class="nav-link {{ Request::is('admin/perankingan/perhitungan') ? 'active' : '' }}" id="perhitungan-tab" href="{{ route('admin.perhitungan.index') }}">Perhitungan</a>
+              </nav>              
                 <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#simpanRanking">Simpan Rangking</button>
               </div>
 
               <div class="modal fade" id="simpanRanking" tabindex="-1" role="dialog" aria-labelledby="simpanRankingLabel" aria-hidden="true">
-                @include('livewire.kriteria.modal.simpan')
+                @include('spk.kriteria.modal.simpan')
               </div>
 
               <div class="tab-content mt-4">
                 <div class="tab-pane fade show active" id="kriteria" role="tabpanel">
-                  @livewire('kriteria.index')
+                  @include('spk.kriteria.index')
                 </div>
                 <div class="tab-pane fade" id="subkriteria" role="tabpanel">
-                  @include('livewire.subkriteria.index')
+                  @include('spk.subkriteria.index')
                 </div>
                 <div class="tab-pane fade" id="normalisasi" role="tabpanel">
-                  @include('livewire.perhitungan.index')
+                  @include('spk.perhitungan.index')
                 </div>
                 <div class="tab-pane fade" id="perhitungan" role="tabpanel">
-                 @include('livewire.penilaian.index')
+                 @include('spk.penilaian.index')
                 </div>
               </div>
             </div>
@@ -67,22 +67,4 @@
       </div>
     </div>
   </div>
-
-  <script>
-    $(document).ready(function() {
-      // Handle tab click
-      $('.nav-link').on('click', function(e) {
-        e.preventDefault();
-        $('.nav-link').removeClass('active');
-        $(this).addClass('active');
-
-        const selectedTab = $(this).attr('href');
-        $('.tab-pane').removeClass('show active');
-        $(selectedTab).addClass('show active');
-      });
-
-      // Trigger click on the active tab to ensure content is displayed correctly on load
-      $('.nav-link.active').trigger('click');
-    });
-  </script>
 @endsection

@@ -5,10 +5,14 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardInfoController;
 use App\Http\Controllers\InformasiController;
+use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PengajuanController;
+use App\Http\Controllers\PenilaianController;
+use App\Http\Controllers\PerhitunganController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubkriteriaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ValidasiController;
 use App\Http\Controllers\WargaController;
@@ -24,6 +28,7 @@ use App\Http\Livewire\Penilaian\Index as PenilaianIndex;
 use App\Http\Livewire\Penilaian\Edit as PenilaianEdit;
 use App\Http\Livewire\Subkriteria\Create as SubkriteriaCreate;
 use App\Http\Livewire\Proses\Index as ProsesIndex;
+use App\Models\Kriteria;
 use App\Models\SubKriteria;
 
 
@@ -40,39 +45,6 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // daftar penerima
 // Route::get("/penerima", [DashboardController::class, "daftarPenerima"])->middleware("auth");
 
-// warga
-Route::get("/dashboard/warga/bantuan", [DashboardController::class, 'bantuan'])->middleware("warga");
-Route::get("/dashboard/warga/detail/{penerima:id}", [DashboardController::class, 'detailBantuan'])->middleware("warga");
-Route::put("/dashboard/warga/bantuan/{penerima:id}", [DashboardController::class, 'updateBantuanRoleWarga'])->middleware("warga");
-Route::get("/dashboard/warga/laporan", [DashboardController::class, 'create'])->middleware("warga");
-Route::post("/dashboard/warga/laporan", [DashboardController::class, 'store'])->middleware("warga");
-Route::get("/dashboard/warga/history", [DashboardController::class, 'historyRoleWarga'])->middleware("warga");
-Route::get("/dashboard/warga/history/detail/{penerima:id}", [DashboardController::class, 'detailHistoryRoleWarga'])->middleware("warga");
-Route::middleware('warga')->group(function () {
-    Route::prefix('dashboard/warga/profile')->group(function () {
-        Route::get('index', [ProfileController::class, 'index'])->name('dashboard.warga.profile.index');
-        Route::get('edit', [ProfileController::class, 'edit'])->name('profile.edit');
-        Route::put('update', [ProfileController::class, 'update'])->name('profile.update');
-    });
-});
-
-// admin
-Route::get("/dashboard/admin/laporan", [DashboardController::class, 'show'])->middleware("admin");
-Route::get("/dashboard/admin/laporan/{laporan:id}", [DashboardController::class, 'detail'])->middleware("admin");
-Route::delete("/dashboard/admin/laporan/{laporan:id}", [DashboardController::class, 'destroy'])->middleware("admin");
-Route::get("/dashboard/admin/penerima", [DashboardController::class, 'penerimaRoleAdmin'])->middleware("admin");
-Route::get("/dashboard/admin/penerima/detail/{penerima:id}", [DashboardController::class, 'penerimaRoleAdminDetail'])->middleware("admin");
-Route::get("/dashboard/admin/arsip", [DashboardController::class, 'arsip'])->middleware("admin");
-Route::get("/dashboard/admin/arsip/detail/{penerima:id}", [DashboardController::class, 'detailArsip'])->middleware("admin");
-Route::resource("/dashboard/admin/informasi", DashboardInfoController::class)->middleware("admin");
-
-// desa
-Route::get("/dashboard/desa/penerima", [DashboardController::class, 'penerimaRoleDesa'])->middleware("desa");
-Route::put("/dashboard/desa/penerima/{penerima:id}", [DashboardController::class, 'updateBantuanRoleDesa'])->middleware("desa");
-Route::get("/dashboard/desa/penerima/detail/{penerima:id}", [DashboardController::class, 'penerimaRoleDesaDetail'])->middleware("desa");
-Route::get("/dashboard/desa/history", [DashboardController::class, 'historyRoleDesa'])->middleware("desa");
-Route::get("/dashboard/desa/history/detail/{penerima:id}", [DashboardController::class, 'detailHistoryRoleDesa'])->middleware("desa");
-////////////////////////////////////////////////////////////////////////////////////////////////
 
 // Route RW coba
 Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
@@ -84,7 +56,18 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/validasi', [AdminController::class, 'validasi'])->name('admin.validasi');
     Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('admin.informasi-bansos');
     Route::get('/data-warga/validasi', [AdminController::class, 'validasiData'])->name('admin.data-warga.validation');
-    
+    Route::get('/perankingan', [AdminController::class, 'perankingan'])->name('admin.spk.layouts.menu');
+    Route::get('/perankingan/kriteria', [KriteriaController::class, 'kriteria'])->name('admin.kriteria.index');
+    Route::get('/spk/kriteria/create', [KriteriaController::class, 'create'])->name('spk.kriteria.create');
+    Route::post('/spk/kriteria/store', [KriteriaController::class, 'store'])->name('spk.kriteria.store');
+    Route::get('/spk/kriteria/{id}/edit', [KriteriaController::class, 'edit'])->name('spk.kriteria.edit');
+    Route::post('/spk/kriteria/{id}/update', [KriteriaController::class, 'update'])->name('spk.kriteria.update');
+    Route::get('/spk/kriteria/{id}/delete', [KriteriaController::class, 'destroy'])->name('spk.kriteria.delete');
+
+    Route::get('/perankingan/subkriteria', [SubkriteriaController::class, 'index'])->name('admin.subkriteria.index');
+    Route::get('/perankingan/normalisasi', [PerhitunganController::class, 'index'])->name('admin.normalisasi.index');
+    Route::get('/perankingan/perhitungan', [PenilaianController::class, 'index'])->name('admin.perhitungan.index');
+
 });
 // Route RT
 Route::get('petugas', [PetugasController::class, 'index'])->middleware(['auth', 'role:rt']);
@@ -108,33 +91,4 @@ Route::get('/informasi-akun', [App\Http\Controllers\AdminController::class, 'inf
 Route::get('/validasi', [AdminController::class, 'validasi'])->name('validasi');
 Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('index');
 
-// route data alternatif index
-Route::get('/alternatif', AlternatifIndex::class)->name('layouts.menu');
-// route data alternatif create
-Route::get('/alternatif/create', AlternatifCreate::class)->name('alternatif.create');
-// route data alternatif edit
-Route::get('/alternatif/{id}/edit', AlternatifEdit::class)->name('alternatif.edit');
 
-// route data kriteria
-Route::get('/kriteria', KriteriaIndex::class)->name('liveware.kriteria.index');
-Route::get('/kriteria/create', KriteriaCreate::class)->name('kriteria.create');
-Route::get('/kriteria/{id}/edit', KriteriaEdit::class)->name('kriteria.edit');
-
-// route data sub kriteria
-// Route definition
-Route::get('/subkriteria/{kriteria}/create', SubkriteriaCreate::class)->name('subkriteria.create');
-
-// route penilaian
-Route::get('/penilaian', PenilaianIndex::class)->name('penilaian.index');
-Route::get('/penilaian/{altId}/edit', PenilaianEdit::class)->name('penilaian.edit');
-Route::get('/penilaian/proses', ProsesIndex::class)->name('penilaian.proses');
-
-Route::middleware([
-    'auth:sanctum',
-    config('jetstream.auth_session'),
-    'verified',
-])->group(function () {
-    Route::get('/dashboard', function () {
-        return view('dashboard');
-    })->name('dashboard');
-});

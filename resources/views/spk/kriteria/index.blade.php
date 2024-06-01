@@ -17,30 +17,31 @@
                 </tr>
             </thead>
             <tbody>
-                @foreach($kriterias as $index =>$krit)
+                @foreach($kriterias as $kriteria)
                 <tr>
                     <td>{{ $loop->iteration }}</td>
-                    <td>{{ $krit->kode }}</td>
-                    <td>{{ $krit->name }}</td>
-                    <td>{{ $krit->type}}</td>
-                    <td>{{ $krit->bobot }}</td>
+                    <td>{{ $kriteria->kode }}</td>
+                    <td>{{ $kriteria->name }}</td>
+                    <td>{{ $kriteria->bobot }}</td>
+                    <td>{{ $kriteria->type }}</td>
                     <td>
-                        <a href="#" data-toggle="modal" data-target="#ModalDelete" class="btn btn-danger">
+                        <a href="{{ route('spk.kriteria.delete', $kriteria->id) }}" data-toggle="modal" data-target="#ModalDelete" class="btn btn-danger">
                             Delete <i class="fa fa-trash icon-spacing" aria-hidden="true"></i>
                         </a>
-                        <a href="#" data-toggle="modal" data-target="#ModalEdit" class="btn btn-warning">
+                        <a href="{{ route('spk.kriteria.edit', $kriteria->id) }}" data-toggle="modal" data-target="#ModalEdit" class="btn btn-warning">
                             Edit <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
                         </a>
                     </td>
                 </tr>
                 @endforeach
             </tbody>
+            
         </table>
     </div>
     <!-- Modals -->
-    @include('livewire.kriteria.modal.create')
-    @include('livewire.kriteria.modal.edit')
-    @include('livewire.kriteria.modal.delete')
+    @include('spk.kriteria.modal.create')
+    @include('spk.kriteria.modal.edit')
+    @include('spk.kriteria.modal.delete')
 </div>
 <script>
     if (table.rows().count() > 0) {

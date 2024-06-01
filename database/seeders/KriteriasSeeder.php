@@ -13,15 +13,24 @@ class KriteriasSeeder extends Seeder
         DB::table('kriterias')->insert([
             [
                 'kode' => 'C1',
-                'name' => 'Pekerjaan Kepala Keluarga', // Perhatikan penggunaan 'name' di sini
-                'bobot' => 1.0, // Atur bobot sesuai kebutuhan Anda
-                'type' => true, // Atur tipe sesuai kebutuhan Anda
-                'min' => null, // Atur nilai minimum sesuai kebutuhan Anda
-                'max' => null, // Atur nilai maksimum sesuai kebutuhan Anda
+                'name' => 'Pekerjaan Kepala Keluarga',
+                'bobot' => 0.8,
+                'type' => true,
+                'min' => null,
+                'max' => null,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
-            // Tambahkan lebih banyak entri sesuai kebutuhan
+            [
+                'kode' => 'C2',
+                'name' => 'Jumlah Penghasilan Perbulan',
+                'bobot' => 1.0,
+                'type' => true,
+                'min' => null,
+                'max' => null,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
         ]);
         
     }
