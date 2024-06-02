@@ -30,7 +30,7 @@
 
                     {{-- Image --}}
                     <div class="text-center mb-4">
-                        <img src="{{ asset('images/image.png') }}" alt="Login Image" class="img-fluid" style="max-height: 150px;">
+                        <img src="{{ asset('public/img/lockout.png') }}" alt="Login Image" class="img-fluid" style="max-height: 150px;">
                     </div>
 
                     <div class="form-floating mt-5 mb-4">
