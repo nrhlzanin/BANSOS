@@ -75,23 +75,18 @@ class SpkController extends Controller
                 'bobot' => $request->bobot,
             ]);
     
-            return redirect()->route('spk.modal.createKriteria')->with('success', 'Kriteria berhasil ditambahkan.');
+            return redirect()->route('spk.modal.createKriteria.get')->with('success', 'Kriteria berhasil ditambahkan.');
         }
-    // Show form to edit Kriteria
-    public function edit(Kriteria $kriteria)
-    {
-        return view('kriteria.edit',compact('kriteria'));
-    }
-
 
     // Delete Kriteria
     public function destroy(Kriteria $kriteria)
     {
         $kriteria->delete();
 
-        return redirect()->route('kriteria.index')
-                        ->with('success','Kriteria deleted successfully');
+        return redirect()->back()->with('success', 'Kriteria deleted successfully');
     }
+
+
 
     // Display all Sub Kriteria for a given Kriteria
     public function subKriteria(Kriteria $kriteria)

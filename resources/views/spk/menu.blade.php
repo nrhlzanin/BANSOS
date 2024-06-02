@@ -35,7 +35,7 @@
             <div class="card-body">
               <ul class="nav nav-tabs" id="myTab" role="tablist">
                 <li class="nav-item">
-                  <a class="nav-link " id="kriteria-tab" data-toggle="tab" href="#kriteria" role="tab" aria-controls="kriteria" aria-selected="true">Kriteria</a>
+                  <a class="nav-link active" id="kriteria-tab" data-toggle="tab" href="#kriteria" role="tab" aria-controls="kriteria" aria-selected="true">Kriteria</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link " id="subkriteria-tab" data-toggle="tab" href="#subkriteria" role="tab" aria-controls="subkriteria" aria-selected="false">Sub Kriteria</a>
@@ -52,7 +52,7 @@
               </ul>
               <div class="tab-content" id="myTabContent">
                 <!-- Kriteria tab content -->
-                <div class="tab-pane fade" id="kriteria" role="tabpanel" aria-labelledby="kriteria-tab">
+                <div class="tab-pane fade show active" id="kriteria" role="tabpanel" aria-labelledby="kriteria-tab">
                   <div class="container mt-4">
                     <div class="mt-2">
                       @include('spk.modal.createKriteria')
@@ -85,9 +85,9 @@
                                           <a href="#" data-toggle="modal" data-target="#ModalEdit{{ $krit->id }}" class="btn btn-warning">
                                             Edit <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
                                         </a>                                      
-                                        <a href="#" data-toggle="modal" data-target="#ModalDelete{{ $krit->id }}" class="btn btn-danger">
-                                            Delete <i class="fa fa-trash icon-spacing" aria-hidden="true"></i>
-                                        </a>
+                                        <button class="btn btn-danger delete-btn" data-id="{{ $krit->id }}">
+                                          Delete <i class="fa fa-trash icon-spacing" aria-hidden="true"></i>
+                                      </button>                                                                        
                                         </td>
                                     </tr>
                                 @empty
@@ -97,7 +97,6 @@
                                 @endforelse
                                 @endisset
                             </tbody>
-                            
                         </table>
                     </div>
                 </div>
@@ -133,7 +132,7 @@
                                         <td>{{ $item->name }}</td>
                                         <td>{{ $item->bobot }}</td>
                                         <td>
-                                          <form action="{{ route('subkriteria.destroy', ['kriteriaId' => $kriteria->id, 'ubkriteriaId' => $item->id]) }}" method="POST">
+                                          <form action="{{ route('subkriteria.destroy', ['kriteriaId' => $kriteria->id, 'subkriteriaId' => $item->id]) }}" method="POST">
                                             @csrf
                                             @method('DELETE')
                                             <button type="submit" class="btn btn-danger">Hapus</button>
@@ -411,3 +410,4 @@
     </div>
   </div>
 @endsection
+

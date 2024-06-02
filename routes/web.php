@@ -51,6 +51,8 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/perankingan', [SpkController::class, 'perankingan'])->name('admin.spk.menu');
     Route::put('/kriteria/update/{id}', [SpkController::class, 'update'])->name('spk.modal.editKriteria');
     Route::post('/kriteria/create', [SpkController::class, 'store'])->name('spk.modal.createKriteria');
+    Route::get('kriteria/create', [SpkController::class, 'perankingan'])->name('spk.modal.createKriteria.get');
+    Route::delete('/kriteria/delete/{kriteria}', [SpkController::class, 'destroy'])->name('kriteria.delete');
 
     Route::get('/addBansos', [AdminController::class, 'addBansos']);
 
