@@ -49,22 +49,13 @@ class SpkController extends Controller
 
     public function update(Request $request, $id)
     {
-    $request->validate([
-        'kode_kriteria' => 'required',
-        'nama_kriteria' => 'required',
-        'type_kriteria' => 'required',
-        'bobot' => 'required|numeric'
-    ]);
+        $kriteria = Kriteria::find($id);
+        $kriteria->kode = $request->input('kode_kriteria');
+        $kriteria->name = $request->input('nama_kriteria');
+        $kriteria->type = $request->input('type_kriteria');
+        $kriteria->save();
 
-    $kriteria = Kriteria::findOrFail($id);
-    $kriteria->update([
-        'kode' => $request->kode_kriteria,
-        'name' => $request->nama_kriteria,
-        'type' => $request->type_kriteria,
-        'bobot' => $request->bobot,
-    ]);
-
-    return redirect()->route('admin.spk.menu')->with('success', 'Kriteria berhasil diperbarui.');
+        return redirect()->back()->with('success', 'Kriteria updated successfully');
     }
 
         // Show form to create new Kriteria

@@ -82,9 +82,9 @@
                                         <td>{{ $krit->type }}</td>
                                         <td>
                                           @include('spk.modal.editKriteria')
-                                          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalEdit{{ $kriteria->id }}">
+                                          <a href="#" data-toggle="modal" data-target="#ModalEdit{{ $krit->id }}" class="btn btn-warning">
                                             Edit <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
-                                        </button>                                        
+                                        </a>                                      
                                         <a href="#" data-toggle="modal" data-target="#ModalDelete{{ $krit->id }}" class="btn btn-danger">
                                             Delete <i class="fa fa-trash icon-spacing" aria-hidden="true"></i>
                                         </a>
