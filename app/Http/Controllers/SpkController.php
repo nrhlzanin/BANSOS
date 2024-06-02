@@ -45,48 +45,53 @@ class SpkController extends Controller
         ->with('subkriteria', $subkriteria)
         ->with('alternatives', $alternatives)
         ->with('psiScores', $psiScores);
-}
+    }
+
+    public function update(Request $request, $id)
+    {
+    $request->validate([
+        'kode_kriteria' => 'required',
+        'nama_kriteria' => 'required',
+        'type_kriteria' => 'required',
+        'bobot' => 'required|numeric'
+    ]);
+
+    $kriteria = Kriteria::findOrFail($id);
+    $kriteria->update([
+        'kode' => $request->kode_kriteria,
+        'name' => $request->nama_kriteria,
+        'type' => $request->type_kriteria,
+        'bobot' => $request->bobot,
+    ]);
+
+    return redirect()->route('admin.spk.menu')->with('success', 'Kriteria berhasil diperbarui.');
+    }
 
         // Show form to create new Kriteria
-    public function create()
-    {
-        return view('kriteria.create');
-    }
+        public function store(Request $request)
+        {
+            $request->validate([
+                'kode' => 'required|string|max:255',
+                'name' => 'required|string|max:255',
+                'type' => 'required|string',
+                'bobot' => 'required|numeric',
+            ]);
+        
+            Kriteria::create([
+                'kode' => $request->kode,
+                'name' => $request->name,
+                'type' => $request->type,
+                'bobot' => $request->bobot,
+            ]);
     
-     // Store new Kriteria
-    public function store(Request $request)
-    {
-        $request->validate([
-            'kode' => 'required',
-            'name' => 'required',
-            'type' => 'required',
-        ]);
-    
-        Kriteria::create($request->all());
-    
-        return redirect()->route('kriteria.index')
-            ->with('success','Kriteria created successfully.');
-    }
+            return redirect()->route('spk.modal.createKriteria')->with('success', 'Kriteria berhasil ditambahkan.');
+        }
     // Show form to edit Kriteria
     public function edit(Kriteria $kriteria)
     {
         return view('kriteria.edit',compact('kriteria'));
     }
 
-    // Update Kriteria
-    public function update(Request $request, Kriteria $kriteria)
-    {
-        $request->validate([
-            'kode' => 'required',
-            'name' => 'required',
-            'type' => 'required',
-        ]);
-
-        $kriteria->update($request->all());
-
-        return redirect()->route('kriteria.index')
-                        ->with('success','Kriteria updated successfully');
-    }
 
     // Delete Kriteria
     public function destroy(Kriteria $kriteria)

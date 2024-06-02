@@ -46,15 +46,19 @@
                 <li class="nav-item">
                   <a class="nav-link" id="perhitungan-tab" data-toggle="tab" href="#perhitungan" role="tab" aria-controls="perhitungan" aria-selected="false">Perhitungan</a>
                 </li>
+                <li class="nav-item">
+                  <a class="nav-link" id="perankingan-tab" data-toggle="tab" href="#perankingan" role="tab" aria-controls="perankingan" aria-selected="false">Perankingan</a>
+                </li>
               </ul>
               <div class="tab-content" id="myTabContent">
                 <!-- Kriteria tab content -->
                 <div class="tab-pane fade" id="kriteria" role="tabpanel" aria-labelledby="kriteria-tab">
                   <div class="container mt-4">
                     <div class="mt-2">
-                        <a href="#" data-toggle="modal" data-target="#ModalCreate" class="btn btn-success custom-btn">
-                            Tambah Data Kriteria <i class="fa fa-plus icon-spacing" aria-hidden="true"></i>
-                        </a>
+                      @include('spk.modal.createKriteria')
+                      <a href="#" data-toggle="modal" data-target="#ModalCreate" class="btn btn-success custom-btn">
+                        Tambah Data Kriteria <i class="fa fa-plus icon-spacing" aria-hidden="true"></i>
+                    </a>
                     </div>
                     <div class="table-responsive mt-3">
                         <table class="table table-striped">
@@ -69,6 +73,7 @@
                             </thead>
                             <tbody>
                                 @isset($kriterias)
+
                                 @forelse ($kriterias as $index => $krit)
                                     <tr>
                                         <td>{{ $index + 1 }}</td>
@@ -76,12 +81,13 @@
                                         <td>{{ $krit->name }}</td>
                                         <td>{{ $krit->type }}</td>
                                         <td>
-                                            <a href="#" data-toggle="modal" data-target="#ModalDelete" class="btn btn-danger">
-                                                Delete <i class="fa fa-trash icon-spacing" aria-hidden="true"></i>
-                                            </a>
-                                            <a href="#" data-toggle="modal" data-target="#ModalEdit" class="btn btn-warning">
-                                                Edit <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
-                                            </a>
+                                          @include('spk.modal.editKriteria')
+                                          <button type="button" class="btn btn-warning" data-toggle="modal" data-target="#ModalEdit{{ $kriteria->id }}">
+                                            Edit <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
+                                        </button>                                        
+                                        <a href="#" data-toggle="modal" data-target="#ModalDelete{{ $krit->id }}" class="btn btn-danger">
+                                            Delete <i class="fa fa-trash icon-spacing" aria-hidden="true"></i>
+                                        </a>
                                         </td>
                                     </tr>
                                 @empty
@@ -208,41 +214,196 @@
                 </div>
                 <!-- Perhitungan tab content -->
                 <div class="tab-pane fade" id="perhitungan" role="tabpanel" aria-labelledby="perhitungan-tab">
-                  <div class="tab-pane" id="normalisasi" role="tabpanel">
-                    <div class="card">
-                      <div class="card-header">
-                        <h3 class="card-title">Perhitungan dan Rangking</h3>
-                      </div>
-                      <div class="card-body">
-                        <table class="table table-striped">
+                  <div class="row">
+                    <div class="col-md-12">
+                      <div class="card">
+                        <div class="card-header">
+                          <h3 class="card-title">Normalisasi Matrik</h3>
+                        </div>
+                        <div class="card-body">
+                          <table class="table table-striped">
                             <thead>
                               <tr>
                                 <th>#</th>
                                 <th>Alternatif</th>
-                                <th>Kriteria 1</th>
-                                <th>Kriteria 2</th>
+                                <?php //foreach ($kriteria as $kriteria) {?>
+                                  <th><?//= $kriteria->nama_kriteria?></th>
+                                <?php //}?>
                               </tr>
                             </thead>
                             <tbody>
+                              <?php //foreach ($alternatif as $alternatif) {?>
+                                <tr>
+                                  <td><?//= $alternatif->id_alternatif?></td>
+                                  <td><?//= $alternatif->nama_alternatif?></td>
+                                  <?php //foreach ($kriteria as $kriteria) {?>
+                                    <td><?//= $alternatif->nilai_kriteria[$kriteria->id_kriteria]?></td>
+                                  <?php //}?>
+                                </tr>
+                              <?php //}?>
                               <tr>
-                                <td>1</td>
-                                <td>Alternatif 1</td>
-                                <td>...</td>
-                                <td>...</td>
-                              </tr>
-                              <tr>
-                                <td>2</td>
-                                <td>Alternatif 2</td>
-                                <td>...</td>
-                                <td>...</td>
+                                <th colspan="2">Total</th>
+                                <?php //foreach ($kriteria as $kriteria) {?>
+                                  <th><?//= array_sum(array_column($alternatif, 'nilai_kriteria')[$kriteria->id_kriteria])?></th>
+                                <?php //}?>
                               </tr>
                             </tbody>
                           </table>
+                        </div>
+                      </div>
+                    </div>
+                    <!--Rata-Rata Kinerja-->
+                    <div class="row">
+                      <div class="col-md-12">
+                        <div class="card">
+                          <div class="card-header">
+                            <h3 class="card-title">Rata-Rata Kinerja</h3>
+                          </div>
+                          <div class="card-body">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <?php //foreach ($kriteria as $kriteria) {?>
+                                    <th><?//= $kriteria->nama_kriteria?></th>
+                                  <?php// }?>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <?php //foreach ($kriteria as $kriteria) {?>
+                                    <td><?//= number_format(array_sum(array_column($alternatif, 'nilai_kriteria')[$kriteria->id_kriteria]) / count($alternatif), 2)?></td>
+                                  <?php //}?>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    </div>
+                    <!--Nilai Variasi Preferensi-->
+                      <div class="col-md-12">
+                        <div class="card">
+                          <div class="card-header">
+                            <h3 class="card-title">Variasi Preferensi</h3>
+                          </div>
+                          <div class="card-body">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <th>#</th>
+                                  <th>Alternatif</th>
+                                  <?php //foreach ($kriteria as $kriteria) {?>
+                                    <th><?//= $kriteria->nama_kriteria?></th>
+                                  <?php //}?>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <?php //foreach ($alternatif as $alternatif) {?>
+                                  <tr>
+                                    <td><?//= $alternatif->id_alternatif?></td>
+                                    <td><?//= $alternatif->nama_alternatif?></td>
+                                    <?php //foreach ($kriteria as $kriteria) {?>
+                                      <td><?//= $alternatif->nilai_kriteria[$kriteria->id_kriteria]?></td>
+                                    <?php //}?>
+                                  </tr>
+                                <?php //}?>
+                                <tr>
+                                  <th colspan="2">Total</th>
+                                  <?php //foreach ($kriteria as $kriteria) {?>
+                                    <th><?//= array_sum(array_column($alternatif, 'nilai_kriteria')[$kriteria->id_kriteria])?></th>
+                                  <?php //}?>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    <!--Penentuan Deviasi Nilai Preferensi-->
+                      <div class="col-md-12">
+                        <div class="card">
+                          <div class="card-header">
+                            <h3 class="card-title">Penentuan Deviasi Nilai Preferensi</h3>
+                          </div>
+                          <div class="card-body">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <?php //foreach ($kriteria as $kriteria) {?>
+                                    <th><?//= $kriteria->nama_kriteria?></th>
+                                  <?php// }?>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <?php //foreach ($kriteria as $kriteria) {?>
+                                    <td><?//= number_format(array_sum(array_column($alternatif, 'nilai_kriteria')[$kriteria->id_kriteria]) / count($alternatif), 2)?></td>
+                                  <?php //}?>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
+                      </div>
+                    <!--Bobot Kriteia-->
+                      <div class="col-md-12">
+                        <div class="card">
+                          <div class="card-header">
+                            <h3 class="card-title">Bobot Kriteria</h3>
+                          </div>
+                          <div class="card-body">
+                            <table class="table table-striped">
+                              <thead>
+                                <tr>
+                                  <?php //foreach ($kriteria as $kriteria) {?>
+                                    <th><?//= $kriteria->nama_kriteria?></th>
+                                  <?php// }?>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                <tr>
+                                  <?php //foreach ($kriteria as $kriteria) {?>
+                                    <td><?//= number_format(array_sum(array_column($alternatif, 'nilai_kriteria')[$kriteria->id_kriteria]) / count($alternatif), 2)?></td>
+                                  <?php //}?>
+                                </tr>
+                              </tbody>
+                            </table>
+                          </div>
+                        </div>
                       </div>
                     </div>
                   </div>
+                  <!--Perankingan-->
+                  <div class="tab-pane fade" id="perankingan" role="tabpanel" aria-labelledby="perankingan-tab">
+                    <div class="container mt-4">
+                      <table class="table table-striped">
+                        <thead>
+                          <tr>
+                            <th>#</th>
+                            <th>Alternatif</th>
+                            <?php //foreach ($kriteria as $kriteria) {?>
+                              <th><?//= $kriteria->nama_kriteria?></th>
+                            <?php //}?>
+                            <th>Score PSI</th>
+                            <th>Rank</th>
+                          </tr>
+                        </thead>
+                        <tbody>
+                          <?php// $rank = 1; foreach ($alternatif as $alternatif) {?>
+                          <tr>
+                            <td><?//= $rank++?></td>
+                            <td><?//= $alternatif->nama_alternatif?></td>
+                            <?php //foreach ($kriteria as $kriteria) {?>
+                              <td><?//= $alternatif->nilai_kriteria[$kriteria->id_kriteria]?></td>
+                            <?php //}?>
+                            <td><?//= number_format($alternatif->score_psi, 2)?></td>
+                            <td><?//= $rank - 1?></td>
+                          </tr>
+                          <?php //}?>
+                        </tbody>
+                      </table>
+                    </div>
+                  </div>
                 </div>
-              </div>
             </div>
           </div>
         </div>
