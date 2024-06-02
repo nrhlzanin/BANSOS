@@ -45,7 +45,6 @@
                 </form>
             </div>
         </div>
-        <link rel="stylesheet" type="text/css" href="{{ asset('css/styles.css') }}">
     </section>
 @endsection
 
