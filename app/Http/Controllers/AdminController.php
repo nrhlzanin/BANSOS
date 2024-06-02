@@ -15,7 +15,7 @@ class AdminController extends Controller
 
     public function dataWarga()
     {
-        $penerimas = \App\Models\Penerima::all();
+        $penerimas = Penerima::all();
         return view('RW.dataWarga.data-warga', compact('penerimas'));
 
     }

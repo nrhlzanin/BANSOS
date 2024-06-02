@@ -14,11 +14,17 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             UserSeeder::class,
+            WargaSeeder::class,
+            PengajuanSeeder::class,
             RwSeeder::class,
             RtSeeder::class,
-            WargaSeeder::class,
-            PenerimasSeeder::class,
-            KriteriasSeeder::class
+            KriteriaSeeder::class,
+            SubKriteriaSeeder::class,
+            AlternatifSeeder::class,
+            JenisBansosSeeder::class,
+            BansosSeeder::class,
+            PenerimaBansosSeeder::class,
+            AlternatifKriteriaSeeder::class,
         ]);
     }
 }
