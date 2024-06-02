@@ -87,4 +87,9 @@ class AdminController extends Controller
         return view('spk.layouts.menu');
     }
 
+    public function addBansos()
+    {
+        return view('RW.addBansos.addBansos');
+    }
+
 }

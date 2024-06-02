@@ -49,6 +49,7 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('admin.informasi-bansos');
     Route::get('/data-warga/validasi', [AdminController::class, 'validasiData'])->name('admin.data-warga.validation');
     Route::get('/perankingan', [SpkController::class, 'perankingan'])->name('admin.spk.menu');
+    Route::get('/addBansos', [AdminController::class, 'addBansos']);
 
 
 
