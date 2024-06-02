@@ -19,6 +19,16 @@ class PengajuanModel extends Model
         'penghasilan', 
         'pendidikan', 
         'jumlah_tanggungan', 
-        'tempat_tinggal'
+        'tempat_tinggal',
+        'transportasi', 
+        'luas_bangunan', 
+        'jenis_atap', 
+        'jenis_dinding', 
+        'kelistrikan', 
+        'sumber_air_bersih', 
+        'aset'
+    ];
+    protected $casts = [
+        'aset' => 'array',
     ];
 }

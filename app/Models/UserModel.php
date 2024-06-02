@@ -3,27 +3,28 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Foundation\Auth\User as Authenticatable;
 
-class UserModel extends \Illuminate\Foundation\Auth\User
+class UserModel extends Authenticatable
 {
     use HasFactory;
 
     protected $table = 'user';
     protected $primaryKey = 'id_user';
-    /**
-     * The attributes that are mass assignable.
-     * 
-     * @var string
-     */
+
     protected $fillable = ['username', 'password', 'level', 'email'];
     protected $hidden = ['password'];
 
+    public function rw() {
+        return $this->hasOne(RwModel::class, 'id_user', 'id_user');
+    }
+    
     public function rt() {
         return $this->hasOne(RtModel::class, 'id_user', 'id_user');
     }
-    public function warga() {
+
+    public function warga()
+    {
         return $this->hasOne(WargaModel::class, 'id_user', 'id_user');
     }
 }

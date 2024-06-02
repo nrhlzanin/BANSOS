@@ -1,3 +1,4 @@
+<!-- resources/views/account/info.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -24,6 +25,10 @@
 
 </head>
 <body class="hold-transition sidebar-mini">
+  @php
+    $user = Auth::user();
+    $rw = Auth::user()->rw;
+  @endphp
   <!-- Site wrapper -->
   <div class="wrapper">
     <!-- Navbar -->
@@ -41,7 +46,7 @@
         <div class="container-fluid">
           <div class="row mb-2">
             <div class="col-sm-6">
-              <h1 class="m-0">Dashboard</h1>
+              <h1 class="m-0">Informasi Akun</h1>
             </div><!-- /.col -->
             <div class="col-sm-6">
               <ol class="breadcrumb float-sm-right">
@@ -67,7 +72,7 @@
                 <img src="{{ asset('img/profile.png') }}">
               </div>
               <div class="group-848">
-                <div class="admin-1">Admin</div>
+                <div class="admin-1">{{ $user->username }}</div>
                 <div class="ganti-foto-profile">
                   Ganti Foto Profile
                 </div>
@@ -81,18 +86,14 @@
               <div class="nama">
                 <label>Nama :</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" disabled>
+                  <input type="text" class="form-control" value="{{ $rw->nama_admin }}" disabled>
                 </div>
               </div>
               <div class="username">
                 <label>Username :</label>
                 <div class="input-group">
-                  <input type="text" class="form-control" disabled>
+                  <input type="text" class="form-control" value="{{ $user->username }}" disabled>
                 </div>
-              </div>
-              <div class="username">
-                <label>Username :</label>
-                <input type="text" class="form-control" disabled>
               </div>
               <div class="password">
                 <label>Password :</label>
@@ -100,7 +101,7 @@
               </div>
               <div class="email">
                 <label>Email :</label>
-                <input type="email" class="form-control">
+                <input type="email" class="form-control" value="{{ $user->email }}">
               </div>
             </div>
             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
@@ -113,76 +114,42 @@
             <div class="data">Data</div>
             <form class="form-group">
               <div class="form-row">
-                <div class="form-group col-md-6">
                   <label for="nik">NIK:</label>
-                  <input type="text" class="form-control" id="nik" name="nik" disabled>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="no_kk">No KK:</label>
-                  <input type="text" class="form-control" id="no_kk" name="no_kk" disabled>
-                </div>
+                  <input type="text" class="form-control" id="nik" name="nik" value="{{ $user->nik }}" disabled>
               </div>
               <div class="form-group">
                 <label for="alamat">Alamat:</label>
-                <input type="text" class="form-control" id="alamat" name="alamat" disabled>
+                <input type="text" class="form-control" id="alamat" name="alamat" value="{{ $user->alamat }}" disabled>
+              </div>
+              <div class="form-row">
+                <div class="form-group col-md-6">
+                  <label for="rt">RT:</label>
+                  <select class="form-control" id="rt" name="rt" disabled>
+                    <option value="1" {{ $user->rt == 1 ? 'selected' : '' }}>1</option>
+                    <option value="2" {{ $user->rt == 2 ? 'selected' : '' }}>2</option>
+                    <option value="3" {{ $user->rt == 3 ? 'selected' : '' }}>3</option>
+                  </select>
+                </div>
+                <div class="form-group col-md-6">
+                  <label for="rw">RW:</label>
+                  <select class="form-control" id="rw" name="rw" disabled>
+                    <option value="1" {{ $user->rw == 1 ? 'selected' : '' }}>1</option>
+                  </select>
+                </div>
               </div>
               <div class="form-row">
                 <div class="form-group col-md-6">
                   <label for="jenis_kelamin">Jenis Kelamin:</label>
                   <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" disabled>
-                    <option value="laki-laki">Laki-laki</option>
-                    <option value="perempuan">Perempuan</option>
+                    <option value="laki-laki" {{ $user->jenis_kelamin == 'laki-laki' ? 'selected' : '' }}>Laki-laki</option>
+                    <option value="perempuan" {{ $user->jenis_kelamin == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
                   </select>
                 </div>
                 <div class="form-group col-md-6">
-                  <label for="jumlah_anggota">Jumlah Anggota Keluarga:</label>
-                  <input type="number" class="form-control" id="jumlah_anggota" name="jumlah_anggota" disabled>
+                  <label for="status">Status:</label>
+                  <select class="form-control" id="status" name="status" disabled>
+                    <option value="menikah" {{ $user->status == 'menikah' ? 'selected' : '' }}>Menikah</option>
+                    <option value="tidak_aktif" {{ $user->status == 'tidak_aktif' ? 'selected' : '' }}>Tidak Aktif</option>
+                  </select>
                 </div>
-              </div>
-              <div class="form-group">
-                <label for="status">Status:</label>
-                <select class="form-control" id="status" name="status" disabled>
-                  <option value="aktif">Menikah</option>
-                  <option value="tidak_aktif">Tidak Aktif</option>
-                </select>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-  @include('layouts.footer')
-</div> <!-- ./wrapper -->
-
-
-  <!-- jQuery -->
-  <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
-  <!-- Bootstrap 4 -->
-  <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
-
-  <!-- DataTables  & Plugins -->
-  <script src="{{ asset('adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/jszip/jszip.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/pdfmake/pdfmake.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/pdfmake/vfs_fonts.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-
-  <!-- AdminLTE App -->
-  <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
-  <script>
-    //Untuk mengirimkan token Laravel CSRF pada setiap request ajax
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-  </script>
-  @stack('js') <!-- Digunakan untuk memanggil custom js dari perintah push('js') pada masing-masing view -->
-</body>
-</html>
+              </
