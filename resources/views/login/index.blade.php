@@ -6,7 +6,7 @@
     <section class="container" style="margin: 100px auto 300px!important">
         <div class="row justify-content-center">
             <div class="col-lg-8">
-                {{-- Display success message --}}
+                {{-- Register success --}}
                 @if (session()->has('success'))
                     <div class="alert alert-success alert-dismissible fade show" role="alert">
                         {{ session('success') }}
@@ -14,7 +14,7 @@
                     </div>
                 @endif
 
-                {{-- Display login error message --}}
+                {{-- Login error --}}
                 @if (session()->has('loginError'))
                     <div class="alert alert-danger alert-dismissible fade show" role="alert">
                         {{ session('loginError') }}
@@ -27,6 +27,12 @@
                     @csrf
                     <h1 class="h3 fw-normal text-center">Silakan Masuk</h1>
                     <p class="text-center">Silakan gunakan akun anda untuk memantau dana bantuan sosial</p>
+
+                    {{-- Image --}}
+                    <div class="text-center mb-4">
+                        <img src="{{ asset('images/image.png') }}" alt="Login Image" class="img-fluid" style="max-height: 150px;">
+                    </div>
+
                     <div class="form-floating mt-5 mb-4">
                         <input type="text" name="username" class="form-control" id="floatingInput" placeholder="username" value="{{ old('username') }}" required>
                         <label for="floatingInput">Username</label>
