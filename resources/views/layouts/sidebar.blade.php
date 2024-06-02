@@ -71,7 +71,7 @@
 
         <!-- Perankingan -->
         <li style="margin-bottom: 20px;" class="custom-nav-item nav-item has-treeview {{ request()->is('admin/perankingan') ? 'menu-open' : '' }}">
-            <a href="{{ route('admin.spk.layouts.menu') }}" class="nav-link {{ request()->is('admin/perankingan') ? 'active' : '' }}">
+            <a href="{{ route('admin.spk.menu') }}" class="nav-link {{ request()->is('admin/perankingan') ? 'active' : '' }}">
                 <i class="nav-icon fas fa-trophy"></i>
                 <p>
                     Perankingan
@@ -80,7 +80,7 @@
             </a>
             <ul class="nav nav-treeview">
                 <li class="nav-item" style="margin-bottom: 20px;">
-                    <a href="{{ route('admin.spk.layouts.menu') }}" class="nav-link {{ request()->is('admin/perankingan') ? 'active' : '' }}">
+                    <a href="{{ route('admin.spk.menu') }}" class="nav-link {{ request()->is('admin/perankingan') ? 'active' : '' }}">
                         <i class="far fa-dot-circle nav-icon"></i>
                         <p>Bantuan Langsung Tunai (BLT)</p>
                     </a>                    
