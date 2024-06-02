@@ -12,22 +12,14 @@ use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\PerhitunganController;
 use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SpkController;
 use App\Http\Controllers\SubkriteriaController;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\ValidasiController;
 use App\Http\Controllers\WargaController;
 use App\Models\Informasi;
 use Illuminate\Support\Facades\Route;
-use App\Http\Livewire\Alternatif\Index as AlternatifIndex;
-use App\Http\Livewire\Alternatif\Create as AlternatifCreate;
-use App\Http\Livewire\Alternatif\Edit as AlternatifEdit;
-use App\Http\Livewire\Kriteria\Index as KriteriaIndex;
-use App\Http\Livewire\Kriteria\Create as KriteriaCreate;
-use App\Http\Livewire\Kriteria\Edit as KriteriaEdit;
-use App\Http\Livewire\Penilaian\Index as PenilaianIndex;
-use App\Http\Livewire\Penilaian\Edit as PenilaianEdit;
-use App\Http\Livewire\Subkriteria\Create as SubkriteriaCreate;
-use App\Http\Livewire\Proses\Index as ProsesIndex;
+
 use App\Models\Kriteria;
 use App\Models\SubKriteria;
 
@@ -56,17 +48,9 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/validasi', [AdminController::class, 'validasi'])->name('admin.validasi');
     Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('admin.informasi-bansos');
     Route::get('/data-warga/validasi', [AdminController::class, 'validasiData'])->name('admin.data-warga.validation');
-    Route::get('/perankingan', [AdminController::class, 'perankingan'])->name('admin.spk.layouts.menu');
-    Route::get('/perankingan/kriteria', [KriteriaController::class, 'kriteria'])->name('admin.kriteria.index');
-    Route::get('/spk/kriteria/create', [KriteriaController::class, 'create'])->name('spk.kriteria.create');
-    Route::post('/spk/kriteria/store', [KriteriaController::class, 'store'])->name('spk.kriteria.store');
-    Route::get('/spk/kriteria/{id}/edit', [KriteriaController::class, 'edit'])->name('spk.kriteria.edit');
-    Route::post('/spk/kriteria/{id}/update', [KriteriaController::class, 'update'])->name('spk.kriteria.update');
-    Route::get('/spk/kriteria/{id}/delete', [KriteriaController::class, 'destroy'])->name('spk.kriteria.delete');
+    Route::get('/perankingan', [SpkController::class, 'perankingan'])->name('admin.spk.menu');
 
-    Route::get('/perankingan/subkriteria', [SubkriteriaController::class, 'index'])->name('admin.subkriteria.index');
-    Route::get('/perankingan/normalisasi', [PerhitunganController::class, 'index'])->name('admin.normalisasi.index');
-    Route::get('/perankingan/perhitungan', [PenilaianController::class, 'index'])->name('admin.perhitungan.index');
+
 
 });
 // Route RT
