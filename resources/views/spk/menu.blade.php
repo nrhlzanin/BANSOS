@@ -107,43 +107,48 @@
                     @foreach($kriterias as $kriteria)
                       <div class="mt-6 mx-6">
                         <div class="card">
-                          <div class="card-header">
+                          <div class="card-header d-flex justify-content-between align-items-center">
                             <h3>{{ $kriteria->name }} ({{ $kriteria->kode }})</h3>
+                            <div>
+                              <button type="button" class="btn btn-success custom-btn mr-2 btn-sm" data-toggle="modal" data-target="#createSubKriteriaModal{{ $kriteria->id }}">
+                                  Tambah Data Sub Kriteria <i class="fa fa-plus icon-spacing" aria-hidden="true"></i>
+                              </button>
+                              <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editSubKriteriaModal{{ $kriteria->id }}">
+                                  Edit <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
+                              </button>
+                          </div>                          
+                            </div>
                           </div>
                           <div class="mt-2">
-                            <a href="#" data-toggle="modal" data-target="#ModalCreate" class="btn btn-success custom-btn">
-                              Tambah Data Sub Kriteria <i class="fa fa-plus icon-spacing" aria-hidden="true"></i>
-                            </a>
-                          </div>
-                          <div class="card-body">
-                            <div class="table-responsive">
-                              <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th>Sub Kriteria</th>
-                                    <th>Bobot</th>
-                                    <th>Aksi</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  @isset($subkriteria)
-                                    @foreach($subkriteria->where('kriteria_id', $kriteria->id) as $item)
-                                      <tr>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->bobot }}</td>
-                                        <td>
-                                          <form action="{{ route('subkriteria.destroy', ['kriteriaId' => $kriteria->id, 'subkriteriaId' => $item->id]) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Hapus</button>
-                                          </form>
-                                        </td>
-                                      </tr>
-                                    @endforeach
-                                  @endisset
-                                </tbody>
-                              </table>
-                            </div>
+                            @include('spk.modal.createSubKriteria', ['kriteria' => $kriteria])
+                            @include('spk.modal.editSubKriteria', ['kriteria' => $kriteria])
+                          <div class="table-responsive">
+                            <table class="table">
+                              <thead>
+                                <tr>
+                                  <th>Sub Kriteria</th>
+                                  <th>Bobot</th>
+                                  <th>Aksi</th>
+                                </tr>
+                              </thead>
+                              <tbody>
+                                @isset($subkriteria)
+                                  @foreach($subkriteria->where('kriteria_id', $kriteria->id) as $item)
+                                    <tr>
+                                      <td>{{ $item->name }}</td>
+                                      <td>{{ $item->bobot }}</td>
+                                      <td>
+                                        <form action="{{ route('subkriteria.destroy', ['kriteriaId' => $kriteria->id, 'subkriteriaId' => $item->id]) }}" method="POST">
+                                          @csrf
+                                          @method('DELETE')
+                                          <button type="submit" class="btn btn-danger">Hapus</button>
+                                        </form>
+                                      </td>
+                                    </tr>
+                                  @endforeach
+                                @endisset
+                              </tbody>
+                            </table>
                           </div>
                         </div>
                       </div>
