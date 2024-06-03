@@ -18,9 +18,19 @@ return new class extends Migration
             $table->string('no_nik');
             $table->string('pekerjaan');
             $table->decimal('penghasilan', 15, 2);
-            $table->string('pendidikan');
+            $table->enum('pendidikan', [
+                'tidak sekolah', 
+                'SD', 
+                'SMP', 
+                'SMA', 
+                'kuliah'
+            ]);
             $table->integer('jumlah_tanggungan');
-            $table->string('tempat_tinggal');
+            $table->enum('tempat_tinggal', [
+                'Kontrakan',
+                'Menumpang', 
+                'Rumah Pribadi'
+            ])->nullable();
             $table->enum('transportasi', [
                 'Jalan Kaki dan/ Sepeda', 
                 'Transportasi Umum', 
@@ -30,22 +40,19 @@ return new class extends Migration
             ])->nullable();
             $table->integer('luas_bangunan')->nullable();
             $table->enum('jenis_atap', [
-                'Genteng Tanah Liat', 
-                'Genteng Metal', 
-                'Asbes', 
-                'Seng', 
-                'Bambu', 
                 'Jerami', 
-                'Lainnya'
+                'Bambu', 
+                'Seng', 
+                'Genteng Tanah Liat', 
+                'Asbes', 
+                'Genteng Metal', 
             ])->nullable();
             $table->enum('jenis_dinding', [
-                'Tembok', 
-                'Papan Kayu', 
-                'Anyaman Bambu', 
                 'Triplek', 
+                'Anyaman Bambu', 
+                'Papan Kayu', 
                 'Batu Bata', 
                 'Batako', 
-                'Lainnya'
             ])->nullable();
             $table->enum('kelistrikan', [
                 'Menumpang', 

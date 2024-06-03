@@ -46,24 +46,73 @@ class UserSeeder extends Seeder
             ],
             [
                 'id_user' => 5,
-                'username' => 'wargart04',
+                'username' => 'ahmad',
                 'password' => Hash::make('12345'),
                 'level' => 'warga',
-                'email' => 'warga04@gmail.com'
+                'email' => 'ahmad@gmail.com'
             ],
             [
                 'id_user' => 6,
-                'username' => 'wargart05',
+                'username' => 'siti',
                 'password' => Hash::make('12345'),
                 'level' => 'warga',
-                'email' => 'warga05@gmail.com'
+                'email' => 'siti@gmail.com'
             ],
             [
                 'id_user' => 7,
-                'username' => 'wargart06',
+                'username' => 'budi',
                 'password' => Hash::make('12345'),
                 'level' => 'warga',
-                'email' => 'warga06@gmail.com'
+                'email' => 'budi@gmail.com'
+            ],
+            [
+                'id_user' => 8,
+                'username' => 'heri',
+                'password' => Hash::make('12345'),
+                'level' => 'warga',
+                'email' => 'heri@gmail.com'
+            ],
+            [
+                'id_user' => 9,
+                'username' => 'jordi',
+                'password' => Hash::make('12345'),
+                'level' => 'warga',
+                'email' => 'jordi@gmail.com'
+            ],
+            [
+                'id_user' => 10,
+                'username' => 'yandi',
+                'password' => Hash::make('12345'),
+                'level' => 'warga',
+                'email' => 'yandi@gmail.com'
+            ],
+            [
+                'id_user' => 11,
+                'username' => 'dery',
+                'password' => Hash::make('12345'),
+                'level' => 'warga',
+                'email' => 'dery@gmail.com'
+            ],
+            [
+                'id_user' => 12,
+                'username' => 'yuki',
+                'password' => Hash::make('12345'),
+                'level' => 'warga',
+                'email' => 'yuki@gmail.com'
+            ],
+            [
+                'id_user' => 13,
+                'username' => 'supri',
+                'password' => Hash::make('12345'),
+                'level' => 'warga',
+                'email' => 'supri@gmail.com'
+            ],
+            [
+                'id_user' => 14,
+                'username' => 'bejo',
+                'password' => Hash::make('12345'),
+                'level' => 'warga',
+                'email' => 'bejo@gmail.com'
             ]
         ];
 
