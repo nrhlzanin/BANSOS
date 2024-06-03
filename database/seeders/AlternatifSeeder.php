@@ -14,26 +14,16 @@ class Alternatifseeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('alternatifs')->insert([
+        DB::table('alternatif')->insert([
             [
-                'id'=> 1,
-                'kode'=>'ALT001',
-                'name'=>'Ahmad Supriyadi',	
-                'gender'=>'1',
-                'phone'=>'081234567890',	
-                'email'=>'ahmad@example.com',
-                'address'=>'Jl. Merdeka No.1, Jakarta',
+                'id_alternatif'=> 1,
+                'id_pengajuan' => 1,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'id'=> 2,
-                'kode'=>'ALT002',
-                'name'=>'Siti Aminah',	
-                'gender'=>'2',
-                'phone' => '081234567891', 
-                'email' => 'siti@example.com', 
-                'address' => 'Jl. Kebangsaan No.2, Bandung', 
+                'id_alternatif'=> 2,
+                'id_pengajuan' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ]

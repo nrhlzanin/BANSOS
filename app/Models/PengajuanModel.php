@@ -8,13 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class PengajuanModel extends Model
 {
     use HasFactory;
-    protected $table = 'pengajuans';
+    protected $table = 'pengajuan';
     protected $primaryKey = 'id_pengajuan';
     protected $fillable = [
         'no_kk', 
         'no_nik', 
-        'nama', 
-        'no_rt', 
         'pekerjaan', 
         'penghasilan', 
         'pendidikan', 
@@ -25,10 +23,15 @@ class PengajuanModel extends Model
         'jenis_atap', 
         'jenis_dinding', 
         'kelistrikan', 
-        'sumber_air_bersih', 
-        'aset'
+        'sumber_air_bersih'
     ];
     protected $casts = [
         'aset' => 'array',
     ];
+    public function warga() {
+        return $this->belongsTo(WargaModel::class, 'id_warga', 'id_warga');
+    }
+    public function alternatif() {
+        return $this->hasOne(AlternatifModel::class, 'id_pengajuan', 'id_pengajuan');
+    }
 }

@@ -151,8 +151,8 @@
   position: absolute;
   top: 0px;
   right: 0px;
-  width: 512.2px;
-  height: 810px;
+  width: 515px;
+  height: 820px;
 }
 .dashboard .profile {
     overflow-wrap: break-word;
@@ -185,7 +185,8 @@
   .group-847 .nama,
   .group-847 .username,
   .group-847 .password,
-  .group-847 .email {
+  .group-847 .email, 
+  .group-847 .notelp {
     margin-bottom: 20px; /* Adjust spacing between form sections */
   }
   
@@ -271,7 +272,7 @@
   position: absolute;
   top: 0px;
   right: 0px;
-  width: 512.2px;
+  width: 515px;
   height: 600px;
 }
 .dashboard .rectangle-331 {
@@ -280,7 +281,7 @@
   position: absolute;
   left: 0px;
   top: 0px;
-  width: 513.5px;
+  width: 515px;
   height: 60px;
 }
 .dashboard .data {
@@ -487,7 +488,7 @@
   box-sizing: border-box;
 }
 .dashboard .container-1 {
-  margin: 0 23px 0 89px;
+  margin: 0 23px 0 50px;
   display: flex;
   flex-direction: row;
   width: fit-content;

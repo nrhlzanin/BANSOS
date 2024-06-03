@@ -104,52 +104,59 @@
                 <!-- Sub Kriteria tab content -->
                 <div class="tab-pane fade" id="subkriteria" role="tabpanel" aria-labelledby="subkriteria-tab">
                   <div class="card mt-4">
-                    @foreach($kriterias as $kriteria)
-                      <div class="mt-6 mx-6">
-                        <div class="card">
-                          <div class="card-header">
-                            <h3>{{ $kriteria->name }} ({{ $kriteria->kode }})</h3>
+                      @foreach($kriterias as $kriteria)
+                          <div class="mt-6 mx-6">
+                              <div class="card">
+                                  <div class="card-header d-flex justify-content-between align-items-center">
+                                      <h3>{{ $kriteria->name }} ({{ $kriteria->kode }})</h3>
+                                      <div>
+                                          <button type="button" class="btn btn-success custom-btn mr-2 btn-sm" data-toggle="modal" data-target="#createSubKriteriaModal{{ $kriteria->id }}">
+                                              Tambah Data Sub Kriteria <i class="fa fa-plus icon-spacing" aria-hidden="true"></i>
+                                          </button>
+                                          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editSubKriteriaModal{{ $kriteria->id }}">
+                                              Edit <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
+                                          </button>
+                                      </div>
+                                  </div>
+                              </div>
+                              <div class="mt-2">
+                                  @include('spk.modal.createSubKriteria', ['kriteria' => $kriteria])
+                                  @include('spk.modal.editSubKriteria', ['kriteria' => $kriteria])
+                                  <div class="table-responsive">
+                                      <table class="table">
+                                          <thead>
+                                              <tr>
+                                                  <th>Sub Kriteria</th>
+                                                  <th>Bobot</th>
+                                                  <th>Aksi</th>
+                                              </tr>
+                                          </thead>
+                                          <tbody>
+                                              @if ($sub_kriterias!== null)
+                                                  @foreach ($sub_kriterias as $item)
+                                                      <tr>
+                                                          <td>{{ $item->name }}</td>
+                                                          <td>{{ $item->bobot }}</td>
+                                                          <td>
+                                                              <form action="{{ route('subkriteria.destroy', ['kriteriaId' => $kriteria->id, 'subkriteriaId' => $item->id]) }}" method="POST">
+                                                                  @csrf
+                                                                  @method('DELETE')
+                                                                  <button type="submit" class="btn btn-danger">Hapus</button>
+                                                              </form>
+                                                          </td>
+                                                      </tr>
+                                                  @endforeach
+                                              @else
+                                                  <p>Tidak ada subkriteria yang sesuai dengan kriteria yang diberikan.</p>
+                                              @endif
+                                          </tbody>
+                                      </table>
+                                  </div>
+                              </div>
                           </div>
-                          <div class="mt-2">
-                            <a href="#" data-toggle="modal" data-target="#ModalCreate" class="btn btn-success custom-btn">
-                              Tambah Data Sub Kriteria <i class="fa fa-plus icon-spacing" aria-hidden="true"></i>
-                            </a>
-                          </div>
-                          <div class="card-body">
-                            <div class="table-responsive">
-                              <table class="table">
-                                <thead>
-                                  <tr>
-                                    <th>Sub Kriteria</th>
-                                    <th>Bobot</th>
-                                    <th>Aksi</th>
-                                  </tr>
-                                </thead>
-                                <tbody>
-                                  @isset($subkriteria)
-                                    @foreach($subkriteria->where('kriteria_id', $kriteria->id) as $item)
-                                      <tr>
-                                        <td>{{ $item->name }}</td>
-                                        <td>{{ $item->bobot }}</td>
-                                        <td>
-                                          <form action="{{ route('subkriteria.destroy', ['kriteriaId' => $kriteria->id, 'subkriteriaId' => $item->id]) }}" method="POST">
-                                            @csrf
-                                            @method('DELETE')
-                                            <button type="submit" class="btn btn-danger">Hapus</button>
-                                          </form>
-                                        </td>
-                                      </tr>
-                                    @endforeach
-                                  @endisset
-                                </tbody>
-                              </table>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                    @endforeach
+                      @endforeach
                   </div>
-                </div>
+              </div>
                 <!-- Normalisasi tab content -->
                 <div class="tab-pane fade " id="normalisasi" role="tabpanel" aria-labelledby="normalisasi-tab">
                   <div class="card mt-4">
@@ -189,7 +196,7 @@
                                     <td>{{ $loop->iteration }}</td>
                                     <td>{{ $alternative->name }}</td>
                                     @foreach($kriterias as $kriteria)
-                                        <td>{{ $psiScores[$alternative->id][$kriteria->id] }}</td>
+                                        <td></td>
                                     @endforeach
                                 </tr>
                             @endforeach
@@ -214,71 +221,47 @@
                 <!-- Perhitungan tab content -->
                 <div class="tab-pane fade" id="perhitungan" role="tabpanel" aria-labelledby="perhitungan-tab">
                   <div class="row">
-                    <div class="col-md-12">
-                      <div class="card">
-                        <div class="card-header">
-                          <h3 class="card-title">Normalisasi Matrik</h3>
-                        </div>
-                        <div class="card-body">
-                          <table class="table table-striped">
-                            <thead>
-                              <tr>
-                                <th>#</th>
-                                <th>Alternatif</th>
-                                <?php //foreach ($kriteria as $kriteria) {?>
-                                  <th><?//= $kriteria->nama_kriteria?></th>
-                                <?php //}?>
-                              </tr>
-                            </thead>
-                            <tbody>
-                              <?php //foreach ($alternatif as $alternatif) {?>
-                                <tr>
-                                  <td><?//= $alternatif->id_alternatif?></td>
-                                  <td><?//= $alternatif->nama_alternatif?></td>
-                                  <?php //foreach ($kriteria as $kriteria) {?>
-                                    <td><?//= $alternatif->nilai_kriteria[$kriteria->id_kriteria]?></td>
-                                  <?php //}?>
-                                </tr>
-                              <?php //}?>
-                              <tr>
-                                <th colspan="2">Total</th>
-                                <?php //foreach ($kriteria as $kriteria) {?>
-                                  <th><?//= array_sum(array_column($alternatif, 'nilai_kriteria')[$kriteria->id_kriteria])?></th>
-                                <?php //}?>
-                              </tr>
-                            </tbody>
-                          </table>
-                        </div>
-                      </div>
-                    </div>
-                    <!--Rata-Rata Kinerja-->
-                    <div class="row">
                       <div class="col-md-12">
-                        <div class="card">
-                          <div class="card-header">
-                            <h3 class="card-title">Rata-Rata Kinerja</h3>
+                          <div class="card">
+                              <div class="card-header">
+                                  <h3 class="card-title">Normalisasi Matrik</h3>
+                              </div>
+                              <div class="card-body">
+                                  <table class="table table-striped">
+                                    <thead>
+                                      <tr>
+                                          <th>#</th>
+                                          <th>Alternatif</th>
+                                          @foreach($kriterias as $kriteria)
+                                          <th>{{ $kriteria->nama_kriteria }}</th>
+                                          @endforeach
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      @foreach($alternatives as $key => $alternative)
+                                      <tr>
+                                          <td>{{ $key + 1 }}</td>
+                                          <td>{{ $alternative->nama_alternatif }}</td>
+                                          @if(isset($alternative->nilai_kriteria[$kriteria->id_kriteria]))
+                                              {{ $alternative->nilai_kriteria[$kriteria->id_kriteria] }}
+                                          @else
+                                              {{-- Tampilkan pesan atau nilai default jika tidak ada nilai yang tersedia --}}
+                                              Tidak ada nilai
+                                          @endif
+                                      </tr>
+                                      @endforeach
+                                      <tr>
+                                          <th colspan="2">Total</th>
+                                          @foreach($kriterias as $kriteria)
+                                          <th>{{ $alternatives->sum('nilai_kriteria') }}</th>
+                                          @endforeach
+                                      </tr>
+                                  </tbody>
+                                  
+                                  </table>
+                              </div>
                           </div>
-                          <div class="card-body">
-                            <table class="table table-striped">
-                              <thead>
-                                <tr>
-                                  <?php //foreach ($kriteria as $kriteria) {?>
-                                    <th><?//= $kriteria->nama_kriteria?></th>
-                                  <?php// }?>
-                                </tr>
-                              </thead>
-                              <tbody>
-                                <tr>
-                                  <?php //foreach ($kriteria as $kriteria) {?>
-                                    <td><?//= number_format(array_sum(array_column($alternatif, 'nilai_kriteria')[$kriteria->id_kriteria]) / count($alternatif), 2)?></td>
-                                  <?php //}?>
-                                </tr>
-                              </tbody>
-                            </table>
-                          </div>
-                        </div>
                       </div>
-                    </div>
                     <!--Nilai Variasi Preferensi-->
                       <div class="col-md-12">
                         <div class="card">

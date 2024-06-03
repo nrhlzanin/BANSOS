@@ -13,9 +13,9 @@ class KriteriaSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('kriterias')->insert([
+        DB::table('kriteria')->insert([
             [
-                'id' => 1,
+                'id_kriteria' => 1,
                 'kode' => 'KRT001',
                 'name' => 'Status Pekerjaan Kepala Keluarga',
                 'bobot' => 1.0,

@@ -15,13 +15,13 @@ class AlternatifKriteriaSeeder extends Seeder
     {
         DB::table('alternatif_kriteria')->insert([
             [
-                'alternatif_id' => 1,
-                'kriteria_id' => 1,
+                'id_alternatif' => 1,
+                'id_kriteria' => 1,
                 'nilai'	=> 1.0,
             ],
             [
-                'alternatif_id' => 2,
-                'kriteria_id' => 1,
+                'id_alternatif' => 2,
+                'id_kriteria' => 1,
                 'nilai'	=> 1.0,
             ],
         ]);

@@ -9,7 +9,7 @@ class PetugasController extends Controller
 {
     public function index() 
     {
-        return view('RT.dashboardrt');
+        return view('RT.dashboard.index');
     }
     public function dataWarga() 
     {

@@ -10,73 +10,58 @@ use Illuminate\Http\Request;
 class SpkController extends Controller
 {
     public function perankingan(Kriteria $kriteria)
-{
-    // Ambil data kriteria
-    $kriterias = Kriteria::all();
-
-    // Ambil data subkriteria sesuai kriteria yang dipilih
-    $subkriteria = SubKriteria::where('kriteria_id', $kriteria->id)->get();
-
-    // Ambil data alternatif
-    $alternatives = Alternatif::all();
-
-    // Lakukan perhitungan PSI untuk setiap alternatif dan pasangan subkriteria
-    $psiScores = [];
-
-    foreach ($alternatives as $alternative) {
-        $psiScore = [];
-        foreach ($subkriteria as $sub) {
-            // Lakukan normalisasi bobot subkriteria (jika diperlukan)
-            $min = SubKriteria::where('kriteria_id', $kriteria->id)->min('weight');
-            $max = SubKriteria::where('kriteria_id', $kriteria->id)->max('weight');
-            $normalizedWeight = ($sub->weight - $min) / ($max - $min);
-
-            // Hitung PSI untuk pasangan subkriteria dan alternatif
-            $nilai = $alternative->nilai($sub->id);
-            $psiScore[] = $normalizedWeight * $nilai;
-        }
-        // Hitung total PSI untuk alternatif
-        $totalPsi = array_sum($psiScore);
-        $psiScores[$alternative->id] = $totalPsi;
-    }
-
-    return view('spk.menu', compact('kriterias'))
-        ->with('kriteria', $kriteria)
-        ->with('subkriteria', $subkriteria)
-        ->with('alternatives', $alternatives)
-        ->with('psiScores', $psiScores);
-    }
-
-    public function update(Request $request, $id)
     {
-        $kriteria = Kriteria::find($id);
-        $kriteria->kode = $request->input('kode_kriteria');
-        $kriteria->name = $request->input('nama_kriteria');
-        $kriteria->type = $request->input('type_kriteria');
-        $kriteria->save();
+        // Ambil data
+        $data = $this->ambilData($kriteria);
+        $kriterias = $data['kriterias'];
+        $alternatives = $data['alternatives'];
+        $sub_kriterias = $data['sub_kriterias'];
 
-        return redirect()->back()->with('success', 'Kriteria updated successfully');
+        // Lakukan perhitungan PSI
+        $psiScores = $this->hitungPSI($alternatives, $sub_kriterias, $kriteria);
+
+        return view('spk.menu', compact('kriterias', 'kriteria', 'sub_kriterias', 'alternatives', 'psiScores'));
     }
 
-        // Show form to create new Kriteria
-        public function store(Request $request)
-        {
-            $request->validate([
-                'kode' => 'required|string|max:255',
-                'name' => 'required|string|max:255',
-                'type' => 'required|string',
-                'bobot' => 'required|numeric',
-            ]);
-        
-            Kriteria::create([
-                'kode' => $request->kode,
-                'name' => $request->name,
-                'type' => $request->type,
-                'bobot' => $request->bobot,
-            ]);
-    
-            return redirect()->route('spk.modal.createKriteria.get')->with('success', 'Kriteria berhasil ditambahkan.');
+    public function ambilData($kriteria)
+    {
+        // Ambil data kriteria
+        $kriterias = Kriteria::all();
+
+        // Ambil data alternatif
+        $alternatives = Alternatif::all();
+
+        // Ambil data subkriteria
+        $sub_kriterias = SubKriteria::where('kriteria_id', $kriteria->id)->get();
+
+        return compact('kriterias', 'alternatives', 'sub_kriterias');
+    }
+
+    public function hitungPSI($alternatifs, $sub_kriterias, $kriteria)
+    {
+        // Lakukan perhitungan PSI untuk setiap alternatif dan pasangan subkriteria
+        $psiScores = [];
+
+        foreach ($alternatifs as $alternative) {
+            $psiScore = [];
+            foreach ($sub_kriterias as $sub) {
+                // Lakukan normalisasi bobot subkriteria (jika diperlukan)
+                $min = SubKriteria::where('kriteria_id', $kriteria->id)->min('weight');
+                $max = SubKriteria::where('kriteria_id', $kriteria->id)->max('weight');
+                $normalizedWeight = ($sub->weight - $min) / ($max - $min);
+
+                // Hitung PSI untuk pasangan subkriteria dan alternatif
+                $nilai = $alternative->nilai($sub->id);
+                $psiScore[] = $normalizedWeight * $nilai;
+            }
+            // Hitung total PSI untuk alternatif
+            $totalPsi = array_sum($psiScore);
+            $psiScores[$alternative->id] = $totalPsi;
         }
+
+        return $psiScores;
+    }
+
 
     // Delete Kriteria
     public function destroy(Kriteria $kriteria)
@@ -85,9 +70,6 @@ class SpkController extends Controller
 
         return redirect()->back()->with('success', 'Kriteria deleted successfully');
     }
-
-
-
     // Display all Sub Kriteria for a given Kriteria
     public function subKriteria(Kriteria $kriteria)
     {
@@ -139,12 +121,4 @@ class SpkController extends Controller
                         ->with('success','Sub Kriteria updated successfully');
     }
 
-    // Delete Sub Kriteria for a given Kriteria
-    public function destroySubKriteria(SubKriteria $subKriteria)
-    {
-        $subKriteria->delete();
-
-        return redirect()->route('kriteria.subKriteria', $subKriteria->kriteria_id)
-                        ->with('success','Sub Kriteria deleted successfully');
-    }
 }

@@ -13,19 +13,19 @@ return new class extends Migration
     {
         Schema::create('penerima_bansos', function (Blueprint $table) {
             $table->id('id_penerimabansos');
-            $table->unsignedBigInteger('id_jenisbansos')->index();
+            $table->unsignedBigInteger('id_bansos')->index();
             $table->unsignedBigInteger('id_petugas')->index();
             $table->unsignedBigInteger('id_admin')->index();
-            $table->unsignedBigInteger('id_pengajuan')->index();
+            $table->unsignedBigInteger('id_alternatif')->index();
             $table->date('tanggal_penerimaan');
             $table->string('keterangan', 100);
             $table->timestamps();
 
             // Add foreign key constraints
-            $table->foreign('id_jenisbansos')->references('id_jenisbansos')->on('bansos');
+            $table->foreign('id_bansos')->references('id_bansos')->on('bansos');
             $table->foreign('id_petugas')->references('id_petugas')->on('rt');
             $table->foreign('id_admin')->references('id_admin')->on('rw');
-            $table->foreign('id_pengajuan')->references('id_pengajuan')->on('pengajuan');
+            $table->foreign('id_alternatif')->references('id_alternatif')->on('alternatif');
         });
     }
 

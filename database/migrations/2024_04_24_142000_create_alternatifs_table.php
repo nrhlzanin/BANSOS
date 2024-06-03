@@ -13,10 +13,11 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('alternatif_kriteria', function (Blueprint $table) {
-            $table->foreignId('alternatif_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->foreignId('kriteria_id')->constrained()->cascadeOnUpdate()->cascadeOnDelete();
-            $table->float('nilai');
+        Schema::create('alternatif', function (Blueprint $table) {
+            $table->id('id_alternatif');
+            $table->unsignedBigInteger('id_pengajuan')->index();
+            $table->foreign('id_pengajuan')->references('id_pengajuan')->on('pengajuan');
+            $table->timestamps();
         });
     }
 
@@ -27,6 +28,6 @@ return new class extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('alternatif_kriteria');
+        Schema::dropIfExists('alternatif');
     }
 };
