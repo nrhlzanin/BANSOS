@@ -4,7 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Kriteria;
 use App\Models\SubKriteria;
-use App\Models\Alternatif;
+use App\Models\AlternatifModel;
 use Illuminate\Http\Request;
 
 class SpkController extends Controller
@@ -29,7 +29,7 @@ class SpkController extends Controller
         $kriterias = Kriteria::all();
 
         // Ambil data alternatif
-        $alternatives = Alternatif::all();
+        $alternatives = AlternatifModel::all();
 
         // Ambil data subkriteria
         $sub_kriterias = SubKriteria::where('kriteria_id', $kriteria->id)->get();
