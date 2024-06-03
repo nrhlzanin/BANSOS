@@ -14,10 +14,10 @@ class SubKriteriaSeeder extends Seeder
      */
     public function run(): void
     {
-        DB::table('sub_kriterias')->insert([
+        DB::table('sub_kriteria')->insert([
             [
                 'id' => 1,
-                'kriteria_id' => 1,
+                'id_kriteria' => 1,
                 'name' => 'Bekerja',
                 'min' => 1,
                 'max' => 2,

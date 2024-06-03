@@ -21,7 +21,6 @@ class DatabaseSeeder extends Seeder
             KriteriaSeeder::class,
             SubKriteriaSeeder::class,
             AlternatifSeeder::class,
-            JenisBansosSeeder::class,
             BansosSeeder::class,
             PenerimaBansosSeeder::class,
             AlternatifKriteriaSeeder::class,

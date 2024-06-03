@@ -16,27 +16,27 @@ class BansosSeeder extends Seeder
     {
         DB::table('bansos')->insert([
             [
-                'id_jenisbansos' => 1,
+                'id_bansos' => 1,
                 'asal_bansos' => 'Pemerintah',
-                'jenis_bansos' => 'BPNT',
+                'jenis_bansos' => 'Bantuan Pangan Non Tunai (BPNT)',
                 'tanggal_keluar' => Carbon::now(),
                 'status' => 'Active',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'id_jenisbansos' => 2,
+                'id_bansos' => 2,
                 'asal_bansos' => 'Pemerintah',
-                'jenis_bansos' => 'PKH',
+                'jenis_bansos' => 'Program Keluarga Harapan (PKH)',
                 'tanggal_keluar' => Carbon::now(),
                 'status' => 'Active',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'id_jenisbansos' => 3,
+                'id_bansos' => 3,
                 'asal_bansos' => 'Pemerintah',
-                'jenis_bansos' => 'BST',
+                'jenis_bansos' => 'Bantuan Sosial Tunai (BST)',
                 'tanggal_keluar' => Carbon::now(),
                 'status' => 'Active',
                 'created_at' => Carbon::now(),

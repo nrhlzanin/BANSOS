@@ -18,10 +18,10 @@ class PenerimaBansosSeeder extends Seeder
         DB::table('penerima_bansos')->insert([
             [
                 'id_penerimabansos' => 1,
-                'id_jenisbansos' => 1,
+                'id_bansos' => 1,
                 'id_petugas' => 1,
                 'id_admin' => 1,
-                'id_pengajuan' => 1,
+                'id_alternatif' => 1,
                 'tanggal_penerimaan' => Carbon::now(),
                 'keterangan' => 'received successfully',
                 'created_at' => Carbon::now(),
@@ -29,10 +29,10 @@ class PenerimaBansosSeeder extends Seeder
             ],
             [
                 'id_penerimabansos' => 2,
-                'id_jenisbansos' => 2,
+                'id_bansos' => 2,
                 'id_petugas' => 2,
                 'id_admin' => 1,
-                'id_pengajuan' => 2,
+                'id_alternatif' => 2,
                 'tanggal_penerimaan' => Carbon::now(),
                 'keterangan' => 'received successfully',
                 'created_at' => Carbon::now(),

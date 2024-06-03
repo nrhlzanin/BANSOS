@@ -35,30 +35,30 @@
 
     <!-- Content Wrapper. Contains page content -->
     <div class="content-wrapper">
-    <!-- Content Header (Page header) -->
-    <div class="content-header">
-      <div class="container-fluid">
-        <div class="row mb-2">
-          <div class="col-sm-6">
-            <h1 class="m-0">Dashboard</h1>
-          </div><!-- /.col -->
-          <div class="col-sm-6">
-            <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
-              <li class="breadcrumb-item active">Dashboard</li>
-            </ol>
-          </div><!-- /.col -->
-        </div><!-- /.row -->
-      </div><!-- /.container-fluid -->
-    </div>
-    <!-- /.content-header -->
+        <!-- Content Header (Page header) -->
+        <div class="content-header">
+            <div class="container-fluid">
+                @yield('content_header')
+                <!-- <div class="row mb-2">
+                    <div class="col-sm-6">
+                        <h1 class="m-0">Dashboard</h1>
+                    </div>
+                    <div class="col-sm-6">
+                        <ol class="breadcrumb float-sm-right">
+                            <li class="breadcrumb-item"><a href="#">Home</a></li>
+                            <li class="breadcrumb-item active">Dashboard</li>
+                        </ol>
+                    </div>
+                </div> -->
+            </div>
+        </div>
+        <!-- /.content-header -->
         <!-- Main content -->
         <section class="content">
-            <div class="container-fluid">
-              <!-- Small boxes (Stat box) -->
+            @yield('content')
+            <!-- <div class="container-fluid">
               <div class="row">
                 <div class="col-lg-3 col-6" >
-                  <!-- small box -->
                   <div class="small-box" style="background-color: #b8efdc; position: relative; overflow: hidden;">
                     <div class="inner" style="padding: 10px; color: black; display: flex; justify-content: center; align-items: center;">
                         <img src="{{ asset('img/pedataan.png') }}" alt="Your Image" style="width: 50%; height: auto; border-radius: 5px;">
@@ -69,9 +69,7 @@
                     <a href="#" class="small-box-footer" style="display: block; text-align: center; padding: 10px; background: rgba(0, 0, 0, 0.1); border-top: 1px solid rgba(0, 0, 0, 0.1); color: black;">Pendataan Warga  <i class="fas fa-arrow-circle-right"></i></a>
                   </div>
                 </div>
-                <!-- ./col -->
                 <div class="col-lg-3 col-6">
-                  <!-- small box -->
                   <div class="small-box" style="background-color: #b8efdc; position: relative; overflow: hidden;">
                     <div class="inner" style="padding: 10px; color: black; display: flex; justify-content: center; align-items: center;">
                         <img src="{{ asset('img/checklist.png') }}" alt="Your Image" style="width: 50%; height: auto; border-radius: 5px;">
@@ -82,9 +80,8 @@
                     <a href="#" class="small-box-footer" style="display: block; text-align: center; padding: 10px; background: rgba(0, 0, 0, 0.1); border-top: 1px solid rgba(0, 0, 0, 0.1); color: black;">Informasi Bansos  <i class="fas fa-arrow-circle-right"></i></a>
                   </div>
                 </div>
-                <!-- ./col -->
               </div>
-            </div>
+            </div> -->
         </section>
     </div>
     @include('layouts.footer')

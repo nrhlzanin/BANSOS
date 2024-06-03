@@ -13,10 +13,10 @@ return new class extends Migration
 	 */
 	public function up()
 	{
-		Schema::create('sub_kriterias', function (Blueprint $table) {
+		Schema::create('sub_kriteria', function (Blueprint $table) {
 			$table->id();
-			$table->foreignId('kriteria_id')->nullable()
-				->constrained()->cascadeOnUpdate()
+			$table->foreignId('id_kriteria')->nullable()
+				->constrained('kriteria', 'id_kriteria')->cascadeOnUpdate()
 				->nullOnDelete();
 			$table->string('name');
 			$table->bigInteger('min')->nullable();
@@ -33,6 +33,6 @@ return new class extends Migration
 	 */
 	public function down()
 	{
-		Schema::dropIfExists('sub_kriterias');
+		Schema::dropIfExists('sub_kriteria');
 	}
 };
