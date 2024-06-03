@@ -1,16 +1,16 @@
 <!-- Create Sub Kriteria Modal -->
-<div class="modal fade" id="createSubKriteriaModal{{ $kriteria->id_kriteria }}" tabindex="-1" role="dialog" aria-labelledby="createSubKriteriaModalLabel" aria-hidden="true">
+<div class="modal fade" id="createSubKriteriaModal{{ $krit->id_kriteria }}" tabindex="-1" role="dialog" aria-labelledby="createSubKriteriaModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="createSubKriteriaModalLabel">Tambah Data Sub Kriteria {{ $kriteria->name }}</h5>
+          <h5 class="modal-title" id="createSubKriteriaModalLabel">Tambah Data Sub Kriteria {{ $krit->name }}</h5>
           <button type="button" class="close" data-dismiss="modal" aria-label="Close">
             <span aria-hidden="true">&times;</span>
           </button>
         </div>
         <div class="modal-body">
           <!-- Form for creating a new Sub Kriteria -->
-          <form action="{{ route('kriteria.storeSubKriteria', $kriteria->id_kriteria) }}" method="POST">
+          <form action="{{ route('kriteria.storeSubKriteria', $krit->id_kriteria) }}" method="POST">
             @csrf
   
             <!-- Form fields for the Sub Kriteria -->

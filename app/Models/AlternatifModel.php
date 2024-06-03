@@ -7,10 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class AlternatifModel extends Model
 {
-	use HasFactory;
+    use HasFactory;
 
-	// lepaskan proteksi mass assignment
-	// Disable mass assignment protection
     protected $table = 'alternatif';
     protected $primaryKey = 'id_alternatif';
 
@@ -21,7 +19,7 @@ class AlternatifModel extends Model
 
     public function kriteria()
     {
-        return $this->belongsToMany(Kriteria::class, 'nilai', 'alternatif_id', 'kriteria_id')
+        return $this->belongsToMany(Kriteria::class, 'alternatif_kriteria', 'id_alternatif', 'id_kriteria')
                     ->withPivot('nilai');
     }
 

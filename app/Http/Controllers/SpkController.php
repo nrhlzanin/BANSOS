@@ -14,16 +14,28 @@ class SpkController extends Controller
 	public $name, $min, $max, $bobot;
 
     public function perankingan()
-    {
-        // Ambil data
-        $kriterias = $this->ambilKriteria();
-        $alternatif = $this->ambilAlternatif();
-        $penilaian = $this->ambilPenilaian();
-        $perhitungan = $this->ambilPerhitungan();
-        $subKriteria = $this->ambilSemuaSubKriteria();
+{
+    // Ambil data kriteria, alternatif, dan sub-kriteria
+    $kriteria = $this->ambilKriteria();
+    $alternatif = $this->ambilAlternatif();
+    $sub_kriteria = $this->ambilSemuaSubKriteria(); // Atau $this->ambilSubKriteria($kriteria_id) jika Anda memiliki kriteria ID yang spesifik
 
-        return view('spk.menu', compact('kriterias', 'alternatif', 'penilaian', 'perhitungan', 'subKriteria'));
+    // Pastikan data yang diterima adalah array atau koleksi
+    if (!is_array($kriteria) && !$kriteria instanceof \Illuminate\Support\Collection) {
+        throw new \Exception('Data kriteria harus berupa array atau koleksi.');
     }
+
+    if (!is_array($alternatif) && !$alternatif instanceof \Illuminate\Support\Collection) {
+        throw new \Exception('Data alternatif harus berupa array atau koleksi.');
+    }
+
+    if (!is_array($sub_kriteria) && !$sub_kriteria instanceof \Illuminate\Support\Collection) {
+        throw new \Exception('Data sub kriteria harus berupa array atau koleksi.');
+    }
+
+    return view('spk.menu', compact('kriteria', 'alternatif', 'sub_kriteria'));
+}
+
 
     public function ambilKriteria()
     {
