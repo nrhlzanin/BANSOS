@@ -79,7 +79,7 @@
                                         <td>{{ $index + 1 }}</td>
                                         <td>{{ $krit->kode }}</td>
                                         <td>{{ $krit->name }}</td>
-                                        <td>{{ $krit->type }}</td>
+                                        <td>{{ $krit->type ? 'Benefit' : 'Cost'}}</td>
                                         <td>
                                           @include('spk.modal.editKriteria')
                                           <a href="#" data-toggle="modal" data-target="#ModalEdit{{ $krit->id }}" class="btn btn-warning">
@@ -133,10 +133,10 @@
                                           </thead>
                                           <tbody>
                                               @if ($sub_kriterias!== null)
-                                                  @foreach ($sub_kriterias as $item)
+                                                  @foreach ($kriteria->$sub_kriterias as $sub)
                                                       <tr>
-                                                          <td>{{ $item->name }}</td>
-                                                          <td>{{ $item->bobot }}</td>
+                                                          <td>{{ $sub->name }}</td>
+                                                          <td>{{ $sub->bobot }}</td>
                                                           <td>
                                                               <form action="{{ route('subkriteria.destroy', ['kriteriaId' => $kriteria->id, 'subkriteriaId' => $item->id]) }}" method="POST">
                                                                   @csrf
@@ -191,10 +191,10 @@
                             </tr>
                           </thead>
                           <tbody>
-                            @foreach($alternatives as $alternative)
+                            @foreach($alternatifs as $alternatif)
                                 <tr>
                                     <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $alternative->name }}</td>
+                                    <td>{{ $alternatif->name }}</td>
                                     @foreach($kriterias as $kriteria)
                                         <td></td>
                                     @endforeach
@@ -233,17 +233,17 @@
                                           <th>#</th>
                                           <th>Alternatif</th>
                                           @foreach($kriterias as $kriteria)
-                                          <th>{{ $kriteria->nama_kriteria }}</th>
+                                          <th>{{ $kriteria->kode }}</th>
                                           @endforeach
                                       </tr>
                                   </thead>
                                   <tbody>
-                                      @foreach($alternatives as $key => $alternative)
+                                      @foreach($alternatifs as $key => $alternatif)
                                       <tr>
                                           <td>{{ $key + 1 }}</td>
-                                          <td>{{ $alternative->nama_alternatif }}</td>
-                                          @if(isset($alternative->nilai_kriteria[$kriteria->id_kriteria]))
-                                              {{ $alternative->nilai_kriteria[$kriteria->id_kriteria] }}
+                                          <td>{{ $alternatif->name }}</td>
+                                          @if(isset($alternatif->nilai_kriteria[$kriteria->id_kriteria]))
+                                              {{ $alternatif->nilai_kriteria[$kriteria->id_kriteria] }}
                                           @else
                                               {{-- Tampilkan pesan atau nilai default jika tidak ada nilai yang tersedia --}}
                                               Tidak ada nilai
@@ -251,9 +251,9 @@
                                       </tr>
                                       @endforeach
                                       <tr>
-                                          <th colspan="2">Total</th>
+                                        <th colspan="2">Total</th>
                                           @foreach($kriterias as $kriteria)
-                                          <th>{{ $alternatives->sum('nilai_kriteria') }}</th>
+                                          <th></th>
                                           @endforeach
                                       </tr>
                                   </tbody>
@@ -274,26 +274,29 @@
                                 <tr>
                                   <th>#</th>
                                   <th>Alternatif</th>
-                                  <?php //foreach ($kriteria as $kriteria) {?>
-                                    <th><?//= $kriteria->nama_kriteria?></th>
-                                  <?php //}?>
+                                  <?php foreach ($kriterias as $kriteria) {?>
+                                    <th><?= $kriteria->kode?></th>
+                                  <?php }?>
                                 </tr>
                               </thead>
                               <tbody>
-                                <?php //foreach ($alternatif as $alternatif) {?>
-                                  <tr>
-                                    <td><?//= $alternatif->id_alternatif?></td>
-                                    <td><?//= $alternatif->nama_alternatif?></td>
-                                    <?php //foreach ($kriteria as $kriteria) {?>
-                                      <td><?//= $alternatif->nilai_kriteria[$kriteria->id_kriteria]?></td>
-                                    <?php //}?>
-                                  </tr>
-                                <?php //}?>
+                                @foreach($alternatifs as $key => $alternatif)
                                 <tr>
-                                  <th colspan="2">Total</th>
-                                  <?php //foreach ($kriteria as $kriteria) {?>
-                                    <th><?//= array_sum(array_column($alternatif, 'nilai_kriteria')[$kriteria->id_kriteria])?></th>
-                                  <?php //}?>
+                                    <td>{{ $key + 1 }}</td>
+                                    <td>{{ $alternatif->name }}</td>
+                                    @if(isset($alternatif->nilai_kriteria[$kriteria->id_kriteria]))
+                                        {{ $alternatif->nilai_kriteria[$kriteria->id_kriteria] }}
+                                    @else
+                                        {{-- Tampilkan pesan atau nilai default jika tidak ada nilai yang tersedia --}}
+                                        Tidak ada nilai
+                                    @endif
+                                </tr>
+                                @endforeach
+                                <tr>
+                                    <th colspan="2">Total</th>
+                                    @foreach($kriterias as $kriteria)
+                                    <th></th>
+                                    @endforeach
                                 </tr>
                               </tbody>
                             </table>
@@ -310,14 +313,14 @@
                             <table class="table table-striped">
                               <thead>
                                 <tr>
-                                  <?php //foreach ($kriteria as $kriteria) {?>
-                                    <th><?//= $kriteria->nama_kriteria?></th>
-                                  <?php// }?>
+                                  <?php foreach ($kriterias as $kriteria) {?>
+                                    <th><?= $kriteria->kode?></th>
+                                  <?php }?>
                                 </tr>
                               </thead>
                               <tbody>
                                 <tr>
-                                  <?php //foreach ($kriteria as $kriteria) {?>
+                                  <?//php foreach ($kriterias as $kriteria) {?>
                                     <td><?//= number_format(array_sum(array_column($alternatif, 'nilai_kriteria')[$kriteria->id_kriteria]) / count($alternatif), 2)?></td>
                                   <?php //}?>
                                 </tr>
@@ -336,9 +339,9 @@
                             <table class="table table-striped">
                               <thead>
                                 <tr>
-                                  <?php //foreach ($kriteria as $kriteria) {?>
-                                    <th><?//= $kriteria->nama_kriteria?></th>
-                                  <?php// }?>
+                                  <?php foreach ($kriterias as $kriteria) {?>
+                                    <th><?= $kriteria->kode?></th>
+                                  <?php }?>
                                 </tr>
                               </thead>
                               <tbody>
@@ -362,9 +365,9 @@
                           <tr>
                             <th>#</th>
                             <th>Alternatif</th>
-                            <?php //foreach ($kriteria as $kriteria) {?>
-                              <th><?//= $kriteria->nama_kriteria?></th>
-                            <?php //}?>
+                            <?php foreach ($kriterias as $kriteria) {?>
+                              <th><?= $kriteria->name?></th>
+                            <?php }?>
                             <th>Score PSI</th>
                             <th>Rank</th>
                           </tr>
@@ -393,4 +396,3 @@
     </div>
   </div>
 @endsection
-
