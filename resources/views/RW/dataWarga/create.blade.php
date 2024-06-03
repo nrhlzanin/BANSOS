@@ -222,10 +222,10 @@
                                 <div>
                                     <select class="form-select" name="Penghasilan" id="Penghasilan" style="background-color: white; color: #333; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px; width: 570px">
                                         <option selected disabled>Pilih Penghasilan Per Bulan</option>
-                                        <option value="1">< 570.000</option>
-                                        <option value="2">> 570.000 sampai < 1.000.000</option>
-                                        <option value="3">> 1.000.000 sampai < 1.570.000</option>
-                                        <option value="4">> 1.570.000 sampai < 2.000.000</option>
+                                        <option value="1">< = 500.000</option>
+                                        <option value="2">> 500.000 sampai < = 1.000.000</option>
+                                        <option value="3">> 1.000.000 sampai < = 1.500.000</option>
+                                        <option value="4">> 1.500.000 sampai < = 2.000.000</option>
                                         <option value="5">> 2.000.000</option>
                                     </select>
                                 </div>
