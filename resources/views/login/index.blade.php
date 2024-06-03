@@ -30,17 +30,28 @@
 
                     {{-- Image --}}
                     <div class="text-center mb-4">
-                        <img src="{{ asset('public/img/lockout.png') }}" alt="Login Image" class="img-fluid" style="max-height: 150px;">
+                        <img src="{{ asset('img/lockout.png') }}" alt="Login Image" class="img-fluid" style="max-height: 150px;">
                     </div>
 
                     <div class="form-floating mt-5 mb-4">
                         <input type="text" name="username" class="form-control" id="floatingInput" placeholder="username" value="{{ old('username') }}" required>
                         <label for="floatingInput">Username</label>
                     </div>
-                    <div class="form-floating mb-4">
-                        <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+
+                    <div class="form-floating mb-4 position-relative">
+                        <div class="input-group">
+                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                            <span class="input-group-text" id="basic-addon2" onclick="togglePasswordVisibility()">
+                                <i class="fa fa-eye" id="togglePasswordIcon"></i>
+                            </span>
+                        </div>
                         <label for="floatingPassword">Password</label>
                     </div>
+
+                    <div class="mb-3 text-end">
+                        <a href="{{ url('forgot-password') }}">Lupa Password?</a>
+                    </div>
+
                     <button class="w-100 btn btn-lg btn-primary" type="submit">Masuk</button>
                 </form>
             </div>
@@ -49,9 +60,21 @@
 @endsection
 
 <script>
+    function togglePasswordVisibility() {
+        const passwordInput = document.getElementById('floatingPassword');
+        const togglePasswordIcon = document.getElementById('togglePasswordIcon');
+        const isPasswordVisible = passwordInput.type === 'text';
+        passwordInput.type = isPasswordVisible ? 'password' : 'text';
+        togglePasswordIcon.classList.toggle('fa-eye-slash', !isPasswordVisible);
+        togglePasswordIcon.classList.toggle('fa-eye', isPasswordVisible);
+    }
+
     @if (session('success'))
         document.addEventListener('DOMContentLoaded', function() {
             alert('{{ session('success') }}');
         });
     @endif
 </script>
+
+{{-- Include Font Awesome for the eye icon --}}
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
