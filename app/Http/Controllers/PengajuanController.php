@@ -12,7 +12,8 @@ class PengajuanController extends Controller
      */
     public function index()
     {
-        //
+        $pengajuanModel = PengajuanModel::all();
+        return view('pengajuan.index', compact('pengajuanModel'));
     }
 
     /**
@@ -32,17 +33,24 @@ class PengajuanController extends Controller
             'no_kk' => 'required|string|max:20',
             'no_nik' => 'required|string|max:20',
             'nama' => 'required|string|max:255',
+            'no_rt' => 'required|integer',
             'pekerjaan' => 'required|string|max:255',
             'penghasilan' => 'required|numeric',
             'pendidikan' => 'required|string|max:255',
             'jumlah_tanggungan' => 'required|integer',
             'tempat_tinggal' => 'required|string|max:255',
-            'kriteria' => 'nullable|string',
+            'transportasi' => 'nullable|string|max:255',
+            'luas_bangunan' => 'nullable|numeric',
+            'jenis_atap' => 'nullable|string|max:255',
+            'jenis_dinding' => 'nullable|string|max:255',
+            'kelistrikan' => 'nullable|string|max:255',
+            'sumber_air_bersih' => 'nullable|string|max:255',
+            'aset' => 'nullable|array',
         ]);
 
         PengajuanModel::create($request->all());
 
-        return redirect()->route('pengajuan.create')->with('success', 'Pengajuan berhasil dikirim.');
+        return redirect()->route('pengajuan.index')->with('success', 'Pengajuan berhasil dikirim.');
     }
 
     /**
@@ -50,7 +58,8 @@ class PengajuanController extends Controller
      */
     public function show(string $id)
     {
-        //
+        $pengajuan = PengajuanModel::findOrFail($id);
+        return view('pengajuan.show', compact('pengajuan'));
     }
 
     /**
@@ -58,7 +67,8 @@ class PengajuanController extends Controller
      */
     public function edit(string $id)
     {
-        //
+        $pengajuan = PengajuanModel::findOrFail($id);
+        return view('pengajuan.edit', compact('pengajuan'));
     }
 
     /**
@@ -66,7 +76,29 @@ class PengajuanController extends Controller
      */
     public function update(Request $request, string $id)
     {
-        //
+        $request->validate([
+            'no_kk' => 'required|string|max:20',
+            'no_nik' => 'required|string|max:20',
+            'nama' => 'required|string|max:255',
+            'no_rt' => 'required|integer',
+            'pekerjaan' => 'required|string|max:255',
+            'penghasilan' => 'required|numeric',
+            'pendidikan' => 'required|string|max:255',
+            'jumlah_tanggungan' => 'required|integer',
+            'tempat_tinggal' => 'required|string|max:255',
+            'transportasi' => 'nullable|string|max:255',
+            'luas_bangunan' => 'nullable|numeric',
+            'jenis_atap' => 'nullable|string|max:255',
+            'jenis_dinding' => 'nullable|string|max:255',
+            'kelistrikan' => 'nullable|string|max:255',
+            'sumber_air_bersih' => 'nullable|string|max:255',
+            'aset' => 'nullable|array',
+        ]);
+
+        $pengajuan = PengajuanModel::findOrFail($id);
+        $pengajuan->update($request->all());
+
+        return redirect()->route('pengajuan.index')->with('success', 'Pengajuan berhasil diperbarui.');
     }
 
     /**
@@ -74,6 +106,9 @@ class PengajuanController extends Controller
      */
     public function destroy(string $id)
     {
-        //
+        $pengajuan = PengajuanModel::findOrFail($id);
+        $pengajuan->delete();
+
+        return redirect()->route('pengajuan.index')->with('success', 'Pengajuan berhasil dihapus.');
     }
 }
