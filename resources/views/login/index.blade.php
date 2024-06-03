@@ -23,37 +23,41 @@
                 @endif
 
                 {{-- Login form --}}
-                <form action="{{ url('proses_login') }}" method="POST" class="shadow rounded p-5 login">
-                    @csrf
-                    <h1 class="h3 fw-normal text-center">Silakan Masuk</h1>
-                    <p class="text-center">Silakan gunakan akun anda untuk memantau dana bantuan sosial</p>
-
+                <div class="row shadow rounded p-2 login" style="background-color: #fff;">
                     {{-- Image --}}
-                    <div class="text-center mb-4">
-                        <img src="{{ asset('img/lockout.png') }}" alt="Login Image" class="img-fluid" style="max-height: 150px;">
+                    <div class="col-md-6 text-center my-auto">
+                        <img src="{{ asset('img/lockout.png') }}" alt="Login Image" class="img-fluid" style="max-height: 300px;">
                     </div>
 
-                    <div class="form-floating mt-5 mb-4">
-                        <input type="text" name="username" class="form-control" id="floatingInput" placeholder="username" value="{{ old('username') }}" required>
-                        <label for="floatingInput">Username</label>
-                    </div>
+                    <div class="col-md-6">
+                        <form action="{{ url('proses_login') }}" method="POST">
+                            @csrf
+                            <h1 class="h3 fw-normal text-center">Silakan Masuk</h1>
+                            <p class="text-center">Silakan gunakan akun anda untuk memantau dana bantuan sosial</p>
 
-                    <div class="form-floating mb-4 position-relative">
-                        <div class="input-group">
-                            <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
-                            <span class="input-group-text" id="basic-addon2" onclick="togglePasswordVisibility()">
-                                <i class="fa fa-eye" id="togglePasswordIcon"></i>
-                            </span>
-                        </div>
-                        <label for="floatingPassword">Password</label>
-                    </div>
+                            <div class="form-floating mt-5 mb-4">
+                                <input type="text" name="username" class="form-control" id="floatingInput" placeholder="username" value="{{ old('username') }}" required>
+                                <label for="floatingInput">Username</label>
+                            </div>
 
-                    <div class="mb-3 text-end">
-                        <a href="{{ url('forgot-password') }}">Lupa Password?</a>
-                    </div>
+                            <div class="form-floating mb-4 position-relative">
+                                <div class="input-group">
+                                    <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
+                                    <span class="input-group-text" id="basic-addon2" onclick="togglePasswordVisibility()">
+                                        <i class="fa fa-eye" id="togglePasswordIcon"></i>
+                                    </span>
+                                </div>
+                                <label for="floatingPassword">Password</label>
+                            </div>
 
-                    <button class="w-100 btn btn-lg btn-primary" type="submit">Masuk</button>
-                </form>
+                            <div class="mb-3 text-end">
+                                <a href="{{ url('forgot-password') }}">Lupa Password?</a>
+                            </div>
+
+                            <button class="w-100 btn btn-lg btn-primary" type="submit">Masuk</button>
+                        </form>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
@@ -68,13 +72,13 @@
         togglePasswordIcon.classList.toggle('fa-eye-slash', !isPasswordVisible);
         togglePasswordIcon.classList.toggle('fa-eye', isPasswordVisible);
     }
-
-        // document.addEventListener('DOMContentLoaded', function() {
-            // @if (session('success'))
-            //     alert('{{ session('success') }}');
-            // @endif
-        // });
 </script>
 
 {{-- Include Font Awesome for the eye icon --}}
 <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css">
+
+<style>
+    body {
+        background-color: #DDE6E3 !important;
+    }
+</style>
