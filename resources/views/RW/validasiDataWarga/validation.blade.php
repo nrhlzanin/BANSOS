@@ -7,29 +7,80 @@
             <div class="d-flex justify-content-between flex-wrap flex-md-nowrap align-items-center pt-3 pb-2 mb-3 border-bottom">
                 <h1 class="h2"><b>Halaman Validasi Data</b></h1>
             </div>
-            <form action="" method="POST">
+            <form action="myForm" method="POST">
                 <h3 class="h3" style="margin-top: 25px; margin-bottom:25px">Validasi Data Diri Di Bawah Ini!</h3>
                 @csrf
                 <div class="row">
                     <div class="col-md-6">
-                        {{-- Nama --}}
+                        <!-- Nama -->
                         <div class="mb-3">
                             <label for="nama" class="form-label" style="margin: 5px">Nama:</label>
                             <input type="text" class="form-control form-control-lg" name="nama" id="nama" placeholder="Nama Lengkap" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                            <small id="nama_warning" style="color: red; display: none; margin: 5px;">Hanya huruf dan simbol yang diperbolehkan.</small>
                         </div>
-                        {{-- No. KTP --}}
+
+                        <script>
+                            document.getElementById('nama').addEventListener('input', function (e) {
+                                const input = e.target;
+                                const warning = document.getElementById('nama_warning');
+                                const filteredValue = input.value.replace(/[^a-zA-Z\s\-_.,;'"!@#$%^&*()+=?<>{}[\]\\/]/g, '');
+
+                                if (input.value !== filteredValue) {
+                                    input.value = filteredValue;
+                                    warning.style.display = 'block';
+                                } else {
+                                    warning.style.display = 'none';
+                                }
+                            });
+                        </script>
+
+                        <!-- No. KTP -->
                         <div class="mb-3">
                             <label for="no_ktp" class="form-label" style="margin: 5px">No. KTP:</label>
-                            <input type="text" class="form-control form-control-lg" name="no_ktp" id="no_ktp" placeholder="Nomor KTP" oninput="this.value = this.value.replace(/[^0-9]/g, '');" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                            <input type="text" class="form-control form-control-lg" name="no_ktp" id="no_ktp" placeholder="NIK" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                            <small id="no_ktp_warning" style="color: red; display: none; margin: 5px;">Hanya angka yang diperbolehkan.</small>
                         </div>
-                        {{-- Tempat Tanggal Lahir --}}
+
+                        <script>
+                            document.getElementById('no_ktp').addEventListener('input', function (e) {
+                                const input = e.target;
+                                const warning = document.getElementById('no_ktp_warning');
+                                const filteredValue = input.value.replace(/[^0-9]/g, '');
+
+                                if (input.value !== filteredValue) {
+                                    input.value = filteredValue;
+                                    warning.style.display = 'block';
+                                } else {
+                                    warning.style.display = 'none';
+                                }
+                            });
+                        </script>
+
+                        <!-- Tempat Tanggal Lahir -->
                         <div class="mb-3">
                             <label for="tempat_tanggal_lahir" class="form-label" style="margin: 5px">Tempat Tanggal Lahir:</label>
                             <div class="input-group">
                                 <input type="text" class="form-control form-control-lg" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir" style="border-radius: 5px; font-size: 16px; padding: 10px; margin-right: 10px; margin-top: 5px;">
+                                <small id="tempat_lahir_warning" style="color: red; display: none; margin: 5px;">Hanya huruf yang diperbolehkan.</small>
                                 <input type="date" class="form-control form-control-lg" name="tanggal_lahir" id="tanggal_lahir" style="border-radius: 5px; font-size: 16px; padding: 10px; margin-left: 10px; margin-top: 5px;">
                             </div>
                         </div>
+
+                        <script>
+                            document.getElementById('tempat_lahir').addEventListener('input', function (e) {
+                                const input = e.target;
+                                const warning = document.getElementById('tempat_lahir_warning');
+                                const filteredValue = input.value.replace(/[^a-zA-Z\s]/g, '');
+
+                                if (input.value !== filteredValue) {
+                                    input.value = filteredValue;
+                                    warning.style.display = 'block';
+                                } else {
+                                    warning.style.display = 'none';
+                                }
+                            });
+                        </script>
+
                         {{-- Agama --}}
                         <div class="mb-3">
                             <label for="agama" class="form-label" style="margin: 5px">Agama:</label>
@@ -57,44 +108,162 @@
                                 <label class="form-check-label" for="jenis_kelamin_perempuan">Perempuan</label>
                             </div>
                         </div>
-                        {{-- No Telepon --}}
+                        <!-- No Telepon -->
                         <div class="mb-3">
                             <label for="no_telepon" class="form-label" style="margin: 5px; margin-top: 9px;">No Telepon:</label>
-                            <input type="text" class="form-control form-control-lg" name="no_telepon" id="no_telepon" placeholder="Nomor Telepon" oninput="this.value = this.value.replace(/[^0-9]/g, '');" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                            <input type="text" class="form-control form-control-lg" name="no_telepon" id="no_telepon" placeholder="ex: 089123745184" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                            <small id="no_telepon_warning" style="color: red; display: none; margin: 5px;">Hanya angka yang diperbolehkan.</small>
                         </div>
-                        {{-- Email --}}
+
+                        <script>
+                            document.getElementById('no_telepon').addEventListener('input', function (e) {
+                                const input = e.target;
+                                const warning = document.getElementById('no_telepon_warning');
+                                const filteredValue = input.value.replace(/[^0-9]/g, '');
+
+                                if (input.value !== filteredValue) {
+                                    input.value = filteredValue;
+                                    warning.style.display = 'block';
+                                } else {
+                                    warning.style.display = 'none';
+                                }
+                            });
+                        </script>
+
+                        <!-- Email -->
                         <div class="mb-3">
                             <label for="email" class="form-label" style="margin: 5px">Email:</label>
-                            <input type="email" class="form-control form-control-lg" name="email" id="email" placeholder="Alamat Email" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" required>
+                            <input type="email" class="form-control form-control-lg" name="email" id="email" placeholder="example@gmail.com" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" required>
+                            <small id="email_warning" style="color: red; display: none; margin: 5px;">Email tidak valid.</small>
                         </div>
+
+                        <script>
+                            document.getElementById('email').addEventListener('input', function (e) {
+                                const input = e.target;
+                                const warning = document.getElementById('email_warning');
+                                const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                                if (!emailPattern.test(input.value)) {
+                                    warning.style.display = 'block';
+                                } else {
+                                    warning.style.display = 'none';
+                                }
+                            });
+                        </script>
+
 
                     </div>  
                     <div class="col-md-6">
-                        {{-- No. KK --}}
+                        <!-- No. KK -->
                         <div class="mb-3">
                             <label for="no_kk" class="form-label" style="margin: 5px">No. KK:</label>
-                            <input type="text" class="form-control form-control-lg" name="no_kk" id="no_kk" placeholder="Nomor Kartu Keluarga" oninput="this.value = this.value.replace(/[^0-9]/g, '');" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                            <input type="text" class="form-control form-control-lg" name="no_kk" id="no_kk" placeholder="Nomor Kartu Keluarga" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                            <small id="no_kk_warning" style="color: red; display: none; margin: 5px;">Hanya angka yang diperbolehkan.</small>
                         </div>
-                        {{-- Provinsi --}}
+
+                        <script>
+                            document.getElementById('no_kk').addEventListener('input', function (e) {
+                                const input = e.target;
+                                const warning = document.getElementById('no_kk_warning');
+                                const filteredValue = input.value.replace(/[^0-9]/g, '');
+
+                                if (input.value !== filteredValue) {
+                                    input.value = filteredValue;
+                                    warning.style.display = 'block';
+                                } else {
+                                    warning.style.display = 'none';
+                                }
+                            });
+                        </script>
+
+                        <!-- Provinsi -->
                         <div class="mb-3">
                             <label for="provinsi" class="form-label" style="margin: 5px">Provinsi:</label>
                             <input type="text" class="form-control form-control-lg" name="provinsi" id="provinsi" placeholder="Nama Provinsi" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                            <small id="provinsi_warning" style="color: red; display: none; margin: 5px;">Hanya huruf yang diperbolehkan.</small>
                         </div>
-                        {{-- Kabupaten --}}
+
+                        <script>
+                            document.getElementById('provinsi').addEventListener('input', function (e) {
+                                const input = e.target;
+                                const warning = document.getElementById('provinsi_warning');
+                                const filteredValue = input.value.replace(/[^a-zA-Z\s]/g, '');
+
+                                if (input.value !== filteredValue) {
+                                    input.value = filteredValue;
+                                    warning.style.display = 'block';
+                                } else {
+                                    warning.style.display = 'none';
+                                }
+                            });
+                        </script>
+
+                        <!-- Kabupaten -->
                         <div class="mb-3">
                             <label for="kabupaten" class="form-label" style="margin: 5px">Kabupaten:</label>
                             <input type="text" class="form-control form-control-lg" name="kabupaten" id="kabupaten" placeholder="Nama Kabupaten" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                            <small id="kabupaten_warning" style="color: red; display: none; margin: 5px;">Hanya huruf yang diperbolehkan.</small>
                         </div>
-                        {{-- Kecamatan --}}
+
+                        <script>
+                            document.getElementById('kabupaten').addEventListener('input', function (e) {
+                                const input = e.target;
+                                const warning = document.getElementById('kabupaten_warning');
+                                const filteredValue = input.value.replace(/[^a-zA-Z\s]/g, '');
+
+                                if (input.value !== filteredValue) {
+                                    input.value = filteredValue;
+                                    warning.style.display = 'block';
+                                } else {
+                                    warning.style.display = 'none';
+                                }
+                            });
+                        </script>
+
+                        <!-- Kecamatan -->
                         <div class="mb-3">
                             <label for="kecamatan" class="form-label" style="margin: 5px">Kecamatan:</label>
                             <input type="text" class="form-control form-control-lg" name="kecamatan" id="kecamatan" placeholder="Nama Kecamatan" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                            <small id="kecamatan_warning" style="color: red; display: none; margin: 5px;">Hanya huruf yang diperbolehkan.</small>
                         </div>
-                        {{-- Desa --}}
+
+                        <script>
+                            document.getElementById('kecamatan').addEventListener('input', function (e) {
+                                const input = e.target;
+                                const warning = document.getElementById('kecamatan_warning');
+                                const filteredValue = input.value.replace(/[^a-zA-Z\s]/g, '');
+
+                                if (input.value !== filteredValue) {
+                                    input.value = filteredValue;
+                                    warning.style.display = 'block';
+                                } else {
+                                    warning.style.display = 'none';
+                                }
+                            });
+                        </script>
+
+                        <!-- Desa -->
                         <div class="mb-3">
                             <label for="desa" class="form-label" style="margin: 5px">Desa:</label>
                             <input type="text" class="form-control form-control-lg" name="desa" id="desa" placeholder="Nama Desa" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                            <small id="desa_warning" style="color: red; display: none; margin: 5px;">Hanya huruf yang diperbolehkan.</small>
                         </div>
+
+                        <script>
+                            document.getElementById('desa').addEventListener('input', function (e) {
+                                const input = e.target;
+                                const warning = document.getElementById('desa_warning');
+                                const filteredValue = input.value.replace(/[^a-zA-Z\s]/g, '');
+
+                                if (input.value !== filteredValue) {
+                                    input.value = filteredValue;
+                                    warning.style.display = 'block';
+                                } else {
+                                    warning.style.display = 'none';
+                                }
+                            });
+                        </script>
+
                         {{-- RT/RW/Kode Pos --}}
                         <div class="mb-3">
                             <label for="rt_rw" class="form-label" style="margin: 5px">RT/RW/Kode Pos:</label>
@@ -250,7 +419,7 @@
                             <label for="transportasi" class="form-label" style="margin: 5px">Transportasi:</label>
                                 <div>
                                     <select class="form-select" name="transportasi" id="transportasi" style="background-color: white; color: #333; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px; width: 570px">
-                                        <option selected disabled>Pilih Besaran Listrik</option>
+                                        <option selected disabled>Pilih Transportasi</option>
                                         <option value="1">Jalan Kaki dan/Sepeda</option>
                                         <option value="2">Transportasi Umum</option>
                                         <option value="3">1 Kendaraan Bermotor</option>
@@ -272,15 +441,15 @@
                                 </div>
                                 <hr>
                         </div>
-                        {{-- Unggah Slip Gaji --}}
                         <div class="mb-3">
                             <label for="gambar" class="form-label">Upload Slip Gaji:</label>
-                            <input type="file" class="form-control-file" id="gambar" name="gambar" onchange="previewImage(event)">
+                            <input type="file" class="form-control-file" id="gambar" name="gambar" accept=".jpg, .jpeg, .png, .gif" onchange="previewImage(event)">
                             <img id="preview" src="#" alt="Preview" style="display: none; max-width: 200px; margin-top: 10px;">
                             <small class="form-text text-muted" style="margin: 5px;">Format gambar yang diterima: JPG, PNG, GIF. Ukuran maksimum file: 5MB.</small>
-                        {{-- Validasi --}}
-                        <div class="mb-3 d-flex align-items-center">
-                            <label class="form-label" style="margin-right: 20px; margin-left: 5px; margin-top: 7px; color: #127C56;">Status Validasi:</label>
+                            
+                            <!-- Validasi -->
+                            <div class="mb-3 d-flex align-items-center">
+                                <label class="form-label" style="margin-right: 20px; margin-left: 5px; margin-top: 7px; color: #127C56;">Status Validasi:</label>
                                 <div class="form-check form-check-inline" style="margin-right: 10px;">
                                     <input class="form-check-input" type="radio" name="status_validasi_7" id="data_valid" value="Data Valid">
                                     <label class="form-check-label" for="data_valid">Data Valid</label>
@@ -289,10 +458,10 @@
                                     <input class="form-check-input" type="radio" name="status_validasi_7" id="data_tidak_valid" value="Data Tidak Valid">
                                     <label class="form-check-label" for="data_tidak_valid">Data Tidak Valid</label>
                                 </div>
+                            </div>
+                            <hr>
                         </div>
-                        <hr>
-                        </div>
-
+                        
                         <script>
                             function previewImage(event) {
                                 var reader = new FileReader();
@@ -303,7 +472,7 @@
                                 }
                                 reader.readAsDataURL(event.target.files[0]);
                             }
-                        </script>
+                        </script>                        
       
                     </div>
                     <div class="col-md-6">
@@ -500,9 +669,29 @@
                         
                     </div>
                 </div>
-                <button type="submit" name="submit" class="btn btn-primary" style="margin-top:150px; margin-bottom: 20px ">Submit</button>
+                <button type="submit" name="submit" class="btn btn-primary center-btn" style="margin-top:150px; margin-bottom: 20px ">Submit</button>
             </form>
         </div>
     </div>
 </main>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        var centerButton = document.querySelector(".center-btn");
+        centerButton.style.display = "block";
+        centerButton.style.margin = "auto";
+    });
+    
+    // Contoh animasi saat tombol disubmit
+    document.getElementById("myForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Untuk mencegah form dikirim secara default
+        
+        // Tambahkan animasi di sini
+        var centerButton = document.querySelector(".center-btn");
+        centerButton.style.opacity = "0";
+        setTimeout(function() {
+            alert("Form berhasil disubmit!");
+        }, 500); // Menunggu 0.5 detik sebelum menampilkan alert
+    });
+    </script>
 @endsection
