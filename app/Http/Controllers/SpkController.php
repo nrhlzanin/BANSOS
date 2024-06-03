@@ -23,29 +23,46 @@ class SpkController extends Controller
     // Lakukan perhitungan PSI untuk setiap alternatif dan pasangan subkriteria
     $psiScores = [];
 
+    // Lakukan perhitungan PSI untuk setiap alternatif
     foreach ($alternatives as $alternative) {
-        $psiScore = [];
+        $psiScore = 0;
+
+            // Normalisasi Data ke Bobot Berdasarkan Subkriteria
+    foreach ($alternatives as $alternative) {
+        $normalizedWeights = [];
         foreach ($subkriteria as $sub) {
-            // Lakukan normalisasi bobot subkriteria (jika diperlukan)
-            $min = SubKriteria::where('kriteria_id', $kriteria->id)->min('weight');
-            $max = SubKriteria::where('kriteria_id', $kriteria->id)->max('weight');
-            $normalizedWeight = ($sub->weight - $min) / ($max - $min);
-
-            // Hitung PSI untuk pasangan subkriteria dan alternatif
-            $nilai = $alternative->nilai($sub->id);
-            $psiScore[] = $normalizedWeight * $nilai;
+            // Hitung nilai relatif dan konversikan ke dalam bobot
+            // Simpan bobot dalam array
+            $normalizedWeights[] = $sub->weight;
         }
-        // Hitung total PSI untuk alternatif
-        $totalPsi = array_sum($psiScore);
-        $psiScores[$alternative->id] = $totalPsi;
+
+        // Normalisasi Matriks
+        // Hitung nilai rata-rata kinerja (N)
+        $N = array_sum($normalizedWeights) / count($normalizedWeights);
+
+        // Hitung nilai variasi preferensi (T)
+        $T = [];
+        foreach ($normalizedWeights as $weight) {
+            $T[] = pow($weight - $N, 2);
+        }
+
+        // Hitung nilai deviasi preferensi (Omega)
+        $Omega = 1 - array_sum($T);
+
+        // Hitung nilai bobot kriteria (W)
+        $W = $Omega / array_sum($Omega);
+
+        // Hitung nilai PSI
+        $psiScore = 0;
+        foreach ($normalizedWeights as $index => $weight) {
+            $psiScore += $weight * $W[$index];
+        }
+        // Simpan nilai PSI ke dalam array
+        $psiScores[$alternative->id] = $psiScore;
     }
 
-    return view('spk.menu', compact('kriterias'))
-        ->with('kriteria', $kriteria)
-        ->with('subkriteria', $subkriteria)
-        ->with('alternatives', $alternatives)
-        ->with('psiScores', $psiScores);
-    }
+    return view('spk.menu', compact('kriterias', 'kriteria', 'subkriteria', 'alternatives', 'psiScores'));
+}
 
     public function update(Request $request, $id)
     {
@@ -85,9 +102,6 @@ class SpkController extends Controller
 
         return redirect()->back()->with('success', 'Kriteria deleted successfully');
     }
-
-
-
     // Display all Sub Kriteria for a given Kriteria
     public function subKriteria(Kriteria $kriteria)
     {
@@ -137,14 +151,5 @@ class SpkController extends Controller
 
         return redirect()->route('kriteria.subKriteria', $subKriteria->kriteria_id)
                         ->with('success','Sub Kriteria updated successfully');
-    }
-
-    // Delete Sub Kriteria for a given Kriteria
-    public function destroySubKriteria(SubKriteria $subKriteria)
-    {
-        $subKriteria->delete();
-
-        return redirect()->route('kriteria.subKriteria', $subKriteria->kriteria_id)
-                        ->with('success','Sub Kriteria deleted successfully');
     }
 }
