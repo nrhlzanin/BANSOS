@@ -1,4 +1,3 @@
-<!-- resources/views/account/info.blade.php -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -103,6 +102,10 @@
                 <label>Email :</label>
                 <input type="email" class="form-control" value="{{ $user->email }}">
               </div>
+              <div class="notelp">
+                <label>Nomor Telp :</label>
+                <input type="email" class="form-control" value="{{ $rw->no_telp }}">
+              </div>
             </div>
             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
           </div>
@@ -133,7 +136,7 @@
                 <div class="form-group col-md-6">
                   <label for="rw">RW:</label>
                   <select class="form-control" id="rw" name="rw" disabled>
-                    <option value="1" {{ $user->rw == 1 ? 'selected' : '' }}>1</option>
+                    <option value="1" {{ $user->rt == 1 ? 'selected' : '' }}>1</option>
                   </select>
                 </div>
               </div>
