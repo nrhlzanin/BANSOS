@@ -2,54 +2,99 @@
 
 namespace App\Http\Controllers;
 
-use App\Models\Kriteria;
-use App\Models\SubKriteria;
 use Illuminate\Http\Request;
+use App\Models\Kriteria;
 
-class SubkriteriaController extends Controller
+class KriteriaController extends Controller
 {
-    public function index($kriteria)
+    /**
+     * Display a listing of the resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function index()
     {
-        // Mengambil data kriteria
-        $kriteria = Kriteria::findOrFail($kriteria);
-
-        // Mengambil semua subkriteria untuk kriteria tertentu
-        $subkriteria = $kriteria->subkriteria;
-
-        return view('subkriteria.index', compact('kriteria', 'subkriteria'));
+        $kriterias = Kriteria::all();
+        return view('spk.kriteria.index', compact('kriterias'));
     }
 
-    public function create($kriteria)
+    /**
+     * Show the form for creating a new resource.
+     *
+     * @return \Illuminate\Http\Response
+     */
+    public function create()
     {
-        // Mengambil data kriteria
-        $kriteria = Kriteria::findOrFail($kriteria);
-
-        return view('subkriteria.create', compact('kriteria'));
+        return view('spk.kriteria.modal.create');
     }
 
-    public function store(Request $request, $kriteria)
+    /**
+     * Store a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+    public function store(Request $request)
     {
-        // Validasi input
-        $request->validate([
-            'name' => 'required|string|max:255',
-            'bobot' => 'required|numeric',
-        ]);
-
-        // Membuat subkriteria baru untuk kriteria tertentu
-        $kriteria = Kriteria::findOrFail($kriteria);
-        $kriteria->subkriteria()->create([
-            'name' => $request->name,
-            'bobot' => $request->bobot,
-        ]);
-
-        return redirect()->route('subkriteria.index', $kriteria)->with('success', 'Subkriteria berhasil disimpan.');
+        $kriteria = new Kriteria();
+        $kriteria->kode = $request->input('kode');
+        $kriteria->name = $request->input('name');
+        $kriteria->type = $request->input('type');
+        $kriteria->save();
+        return redirect()->route('kriteria.index')->with('success', 'Kriteria berhasil ditambahkan');
     }
 
-    public function destroy($kriteriaId, $subkriteriaId)
+    /**
+     * Display the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function show($id)
     {
-        // Menghapus subkriteria
-        SubKriteria::findOrFail($subkriteriaId)->delete();
+        $kriteria = Kriteria::find($id);
+        return view('spk.kriteria.show', compact('kriteria'));
+    }
 
-        return redirect()->route('subkriteria.index', $kriteriaId)->with('success', 'Subkriteria berhasil dihapus.');
+    /**
+     * Show the form for editing the specified resource.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function edit($id)
+    {
+        $kriteria = Kriteria::find($id);
+        return view('spk.kriteria.modal.edit', compact('kriteria'));
+    }
+
+    /**
+     * Update the specified resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function update(Request $request, $id)
+    {
+        $kriteria = Kriteria::find($id);
+        $kriteria->kode = $request->input('kode');
+        $kriteria->name = $request->input('name');
+        $kriteria->type = $request->input('type');
+        $kriteria->save();
+        return redirect()->route('kriteria.index')->with('success', 'Kriteria berhasil diupdate');
+    }
+
+    /**
+     * Remove the specified resource from storage.
+     *
+     * @param  int  $id
+     * @return \Illuminate\Http\Response
+     */
+    public function destroy($id)
+    {
+        $kriteria = Kriteria::find($id);
+        $kriteria->delete();
+        return redirect()->route('kriteria.index')->with('success', 'Kriteria berhasil dihapus');
     }
 }

@@ -18,7 +18,7 @@ class AdminController extends Controller
 
     public function dataWarga()
     {
-        $penerimas = \App\Models\Penerima::all();
+        $penerimas = Penerima::all();
         return view('RW.dataWarga.data-warga', compact('penerimas'));
 
     }
@@ -85,6 +85,11 @@ class AdminController extends Controller
     public function perankingan()
     {
         return view('spk.layouts.menu');
+    }
+
+    public function addBansos()
+    {
+        return view('RW.addBansos.addBansos');
     }
 
 }
