@@ -104,129 +104,123 @@
                 <!-- Sub Kriteria tab content -->
                 <div class="tab-pane fade" id="subkriteria" role="tabpanel" aria-labelledby="subkriteria-tab">
                   <div class="card mt-4">
-                      @foreach($kriteria as $krit)
-                          <div class="mt-6 mx-6">
-                              <div class="card">
-                                  <div class="card-header d-flex justify-content-between align-items-center">
-                                      <h3>{{ $krit->name }} ({{ $krit->kode }})</h3>
-                                      <div>
-                                          <button type="button" class="btn btn-success custom-btn mr-2 btn-sm" data-toggle="modal" data-target="#createSubKriteriaModal{{ $krit->id }}">
-                                              Tambah Data Sub Kriteria <i class="fa fa-plus icon-spacing" aria-hidden="true"></i>
-                                          </button>
-                                          <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editSubKriteriaModal{{ $krit->id }}">
-                                              Edit <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
-                                          </button>
-                                      </div>
-                                  </div>
-                              </div>
-                              <div class="mt-2">
-                                  @include('spk.modal.createSubKriteria', ['kriteria' => $kriteria])
-                                  @include('spk.modal.editSubKriteria', ['kriteria' => $kriteria])
-                                  <div class="table-responsive">
-                                      <table class="table">
-                                          <thead>
-                                              <tr>
-                                                <th>#</th>
-                                                  <th>Sub Kriteria</th>
-                                                  <th>Bobot</th>
-                                                  <th>Aksi</th>
-                                              </tr>
-                                          </thead>
-                                          <tbody>
-                                            @foreach ($alternatif as $key => $alt)
-                                                <tr>
-                                                    <td>{{ $key + 1 }}</td>
-                                                    <td>{{ $alt->name }}</td>
-                                                    <td>
-                                                        @php
-                                                            $nilai_kriteria = $alt->nilai_kriteria;
-                                                        @endphp
-                                                        @if ($nilai_kriteria && $nilai_kriteria->isNotEmpty())
-                                                            @php
-                                                                $nilai = $nilai_kriteria->where('id_kriteria', $kriteria->id)->first();
-                                                            @endphp
-                                                            @if ($nilai)
-                                                                {{ $nilai->nilai }}
-                                                            @else
-                                                                Tidak ada nilai
-                                                            @endif
-                                                        @else
-                                                            Tidak ada nilai
-                                                        @endif
-                                                    </td>
-                                                </tr>
-                                            @endforeach
-
-                                        </tbody>
-                                        
-                                      </table>
-                                  </div>
-                              </div>
-                          </div>
-                      @endforeach
+                    @foreach ($kriteria as $krit)
+                    <div class="mt-6 mx-6">
+                        <div class="card">
+                            <div class="card-header d-flex justify-content-between align-items-center">
+                                <h3>{{ $krit->name }} ({{ $krit->kode }})</h3>
+                                <div>
+                                    <button type="button" class="btn btn-success custom-btn mr-2 btn-sm" data-toggle="modal" data-target="#createSubKriteriaModal{{ $krit->id }}">
+                                        Tambah Data Sub Kriteria <i class="fa fa-plus icon-spacing" aria-hidden="true"></i>
+                                    </button>
+                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editSubKriteriaModal{{ $krit->id }}">
+                                        Edit <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
+                                    </button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="mt-2">
+                            @include('spk.modal.createSubKriteria', ['kriteria' => $kriteria])
+                            @include('spk.modal.editSubKriteria', ['kriteria' => $kriteria])
+                            <div class="table-responsive">
+                                <table class="table">
+                                    <thead>
+                                        <tr>
+                                            <th>#</th>
+                                            <th>Sub Kriteria</th>
+                                            <th>Bobot</th>
+                                            <th>Aksi</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        @foreach ($krit->subKriteria as $key => $sub)
+                                            <tr>
+                                                <td>{{ $key + 1 }}</td>
+                                                <td>{{ $sub->name }}</td>
+                                                <td>{{ $sub->bobot }}</td>
+                                                <td>Aksi</td> <!-- Tambahkan tombol aksi sesuai kebutuhan -->
+                                            </tr>
+                                        @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+                
                   </div>
               </div>
                 <!-- Normalisasi tab content -->
                 <div class="tab-pane fade " id="normalisasi" role="tabpanel" aria-labelledby="normalisasi-tab">
                   <div class="card mt-4">
-                    <div class="card-body">
-                      <div class="table-responsive mt-3">
-                        <div class="row">
-                          <div class="col-md-6">
-                            <label for="showEntries" class="form-label">Show</label>
-                            <select class="form-control form-control-sm" id="showEntries">
-                              <option value="10">10</option>
-                              <option value="25">25</option>
-                              <option value="50">50</option>
-                              <option value="100">100</option>
-                            </select>
+                      <div class="card-body">
+                          <div class="table-responsive mt-3">
+                              <div class="row">
+                                  <div class="col-md-6">
+                                      <label for="showEntries" class="form-label">Show</label>
+                                      <select class="form-control form-control-sm" id="showEntries">
+                                          <option value="10">10</option>
+                                          <option value="25">25</option>
+                                          <option value="50">50</option>
+                                          <option value="100">100</option>
+                                      </select>
+                                  </div>
+                                  <div class="col-md-6">
+                                      <label for="search" class="form-label">Search</label>
+                                      <input type="text" class="form-control form-control-sm" id="search">
+                                  </div>
+                              </div>
+                              <div class="card-header">
+                                  <h3>Hasil Analisa</h3>
+                              </div>
+                              <table class="table table-striped">
+                                  <thead>
+                                      <tr>
+                                          <th>#</th>
+                                          <th>Alternatif</th>
+                                          @foreach($kriteria as $krit)
+                                          <th>{{ $krit->kode }}</th>
+                                          @endforeach
+                                      </tr>
+                                  </thead>
+                                  <tbody>
+                                      @foreach($alternatif as $alt)
+                                      <tr>
+                                          <td>{{ $loop->iteration }}</td>
+                                          <td>{{ $alt->name }}</td>
+                                          @php
+                                          $nilai = [];
+                                          foreach ($kriteria as $k) {
+                                              $ks = $alt->kriteria->find($k->id);
+                                              $nilai[] = $ks ? $ks->pivot->nilai : 0;
+                                          }
+                                          @endphp
+                                          @foreach ($nilai as $n)
+                                          <td>
+                                              {{ $n }}
+                                          </td>
+                                          @endforeach
+                                      </tr>
+                                      @endforeach
+                                  </tbody>
+                              </table>
                           </div>
-                          <div class="col-md-6">
-                            <label for="search" class="form-label">Search</label>
-                            <input type="text" class="form-control form-control-sm" id="search">
+                          <div class="row right-content-between mt-3">
+                              <div class="col-md-6">
+                                  <nav aria-label="Pagination">
+                                      <ul class="pagination right-content-end">
+                                          <li class="page-item disabled">
+                                              <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
+                                          </li>
+                                          <li class="page-item"><a class="page-link" href="#">Next</a></li>
+                                      </ul>
+                                  </nav>
+                              </div>
                           </div>
-                        </div>
-                        <div class="card-header">
-                          <h3>Hasil Analisa</h3>
-                        </div>
-                        <table class="table table-striped">
-                          <thead>
-                            <tr>
-                              <th>#</th>
-                              <th>Alternatif</th>
-                              @foreach($kriteria as $krit)
-                                <th>{{ $krit->name }}</th>
-                              @endforeach
-                            </tr>
-                          </thead>
-                          <tbody>
-                            @foreach($alternatif as $alt)
-                                <tr>
-                                    <td>{{ $loop->iteration }}</td>
-                                    <td>{{ $alt->name }}</td>
-                                    @foreach($kriteria as $krit)
-                                        <td></td>
-                                    @endforeach
-                                </tr>
-                            @endforeach
-                        </tbody>
-                        </table>
                       </div>
-                      <div class="row right-content-between mt-3">
-                        <div class="col-md-6">
-                          <nav aria-label="Pagination">
-                            <ul class="pagination right-content-end">
-                              <li class="page-item disabled">
-                                <a class="page-link" href="#" tabindex="-1" aria-disabled="true">Previous</a>
-                              </li>
-                              <li class="page-item"><a class="page-link" href="#">Next</a></li>
-                            </ul>
-                          </nav>
-                        </div>
-                      </div>
-                    </div>
                   </div>
-                </div>
+              </div>
+              
                 <!-- Perhitungan tab content -->
                 <div class="tab-pane fade" id="perhitungan" role="tabpanel" aria-labelledby="perhitungan-tab">
                   <div class="row">
