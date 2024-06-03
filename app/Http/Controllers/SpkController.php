@@ -32,7 +32,7 @@ class SpkController extends Controller
         $alternatives = AlternatifModel::all();
 
         // Ambil data subkriteria
-        $sub_kriterias = SubKriteria::where('kriteria_id', $kriteria->id)->get();
+        $sub_kriterias = SubKriteria::where('id_kriteria', $kriteria->id)->get();
 
         return compact('kriterias', 'alternatives', 'sub_kriterias');
     }
@@ -46,8 +46,8 @@ class SpkController extends Controller
             $psiScore = [];
             foreach ($sub_kriterias as $sub) {
                 // Lakukan normalisasi bobot subkriteria (jika diperlukan)
-                $min = SubKriteria::where('kriteria_id', $kriteria->id)->min('weight');
-                $max = SubKriteria::where('kriteria_id', $kriteria->id)->max('weight');
+                $min = SubKriteria::where('id_kriteria', $kriteria->id)->min('weight');
+                $max = SubKriteria::where('id_kriteria', $kriteria->id)->max('weight');
                 $normalizedWeight = ($sub->weight - $min) / ($max - $min);
 
                 // Hitung PSI untuk pasangan subkriteria dan alternatif
@@ -73,7 +73,7 @@ class SpkController extends Controller
     // Display all Sub Kriteria for a given Kriteria
     public function subKriteria(Kriteria $kriteria)
     {
-        $subkriteria = SubKriteria::where('kriteria_id', $kriteria->id)->get();
+        $subkriteria = SubKriteria::where('id_kriteria', $kriteria->id)->get();
         return view('kriteria.subkriteria', compact('kriteria', 'subkriteria'));
     }
 
@@ -92,7 +92,7 @@ class SpkController extends Controller
         ]);
 
         SubKriteria::create([
-            'kriteria_id' => $kriteria->id,
+            'id_kriteria' => $kriteria->id,
             'name' => $request->name,
             'bobot' => $request->bobot,
         ]);
@@ -117,7 +117,7 @@ class SpkController extends Controller
 
         $subKriteria->update($request->all());
 
-        return redirect()->route('kriteria.subKriteria', $subKriteria->kriteria_id)
+        return redirect()->route('kriteria.subKriteria', $subKriteria->id_kriteria)
                         ->with('success','Sub Kriteria updated successfully');
     }
 

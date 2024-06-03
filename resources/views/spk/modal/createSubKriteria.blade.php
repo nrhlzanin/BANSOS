@@ -1,5 +1,5 @@
 <!-- Create Sub Kriteria Modal -->
-<div class="modal fade" id="createSubKriteriaModal{{ $kriteria->id }}" tabindex="-1" role="dialog" aria-labelledby="createSubKriteriaModalLabel" aria-hidden="true">
+<div class="modal fade" id="createSubKriteriaModal{{ $kriteria->id_kriteria }}" tabindex="-1" role="dialog" aria-labelledby="createSubKriteriaModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">
@@ -10,7 +10,7 @@
         </div>
         <div class="modal-body">
           <!-- Form for creating a new Sub Kriteria -->
-          <form action="{{ route('kriteria.storeSubKriteria', $kriteria->id) }}" method="POST">
+          <form action="{{ route('kriteria.storeSubKriteria', $kriteria->id_kriteria) }}" method="POST">
             @csrf
   
             <!-- Form fields for the Sub Kriteria -->

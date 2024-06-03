@@ -9,6 +9,7 @@ class SubKriteria extends Model
 {
 	use HasFactory;
 
+	protected $table = 'sub_kriteria';
 	protected $guarded = [];
 
 	// relasi ke kriteria (parent model)

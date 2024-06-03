@@ -1,6 +1,6 @@
 <!-- Edit Sub Kriteria Modal -->
 @foreach($kriterias as $kriteria)
-  <div class="modal fade" id="editSubKriteriaModal{{ $kriteria->id }}" tabindex="-1" role="dialog" aria-labelledby="editSubKriteriaModalLabel" aria-hidden="true">
+  <div class="modal fade" id="editSubKriteriaModal{{ $kriteria->id_kriteria }}" tabindex="-1" role="dialog" aria-labelledby="editSubKriteriaModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
       <div class="modal-content">
         <div class="modal-header">

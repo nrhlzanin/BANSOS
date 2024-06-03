@@ -9,6 +9,8 @@ class Kriteria extends Model
 {
 	use HasFactory;
 
+	protected $table = 'kriteria';
+	protected $primaryKey = 'id_kriteria';
 	protected $guarded = [];
 
 	// relasi ke banyak sub kriteria

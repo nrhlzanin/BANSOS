@@ -1,5 +1,5 @@
 @foreach ($kriterias as $krit)
-<div class="modal fade" id="ModalEdit{{ $krit->id }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade" id="ModalEdit{{ $krit->id_kriteria }}" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header">
@@ -9,7 +9,7 @@
                 </button>
             </div>
             <div class="modal-body">
-                <form action="{{ route('spk.modal.editKriteria', $krit->id) }}" method="post">
+                <form action="{{ route('spk.modal.editKriteria', $krit->id_kriteria) }}" method="post">
                     @csrf
                     @method('PUT')
                     <div class="form-group">
