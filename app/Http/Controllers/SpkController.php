@@ -9,57 +9,170 @@ use Illuminate\Http\Request;
 
 class SpkController extends Controller
 {
-    public function perankingan(Kriteria $kriteria)
+    public $kriteria_id;
+
+	public $name, $min, $max, $bobot;
+
+    public function perankingan()
     {
         // Ambil data
-        $data = $this->ambilData($kriteria);
-        $kriterias = $data['kriterias'];
-        $alternatives = $data['alternatives'];
-        $sub_kriterias = $data['sub_kriterias'];
+        $kriterias = $this->ambilKriteria();
+        $alternatif = $this->ambilAlternatif();
+        $penilaian = $this->ambilPenilaian();
+        $perhitungan = $this->ambilPerhitungan();
+        $subKriteria = $this->ambilSemuaSubKriteria();
 
-        // Lakukan perhitungan PSI
-        $psiScores = $this->hitungPSI($alternatives, $sub_kriterias, $kriteria);
-
-        return view('spk.menu', compact('kriterias', 'kriteria', 'sub_kriterias', 'alternatives', 'psiScores'));
+        return view('spk.menu', compact('kriterias', 'alternatif', 'penilaian', 'perhitungan', 'subKriteria'));
     }
 
-    public function ambilData($kriteria)
+    public function ambilKriteria()
     {
         // Ambil data kriteria
-        $kriterias = Kriteria::all();
-
-        // Ambil data alternatif
-        $alternatives = AlternatifModel::all();
-
-        // Ambil data subkriteria
-        $sub_kriterias = SubKriteria::where('id_kriteria', $kriteria->id)->get();
-
-        return compact('kriterias', 'alternatives', 'sub_kriterias');
+        return Kriteria::orderBy('kode')->get();
     }
 
-    public function hitungPSI($alternatifs, $sub_kriterias, $kriteria)
+    public function ambilAlternatif()
     {
-        // Lakukan perhitungan PSI untuk setiap alternatif dan pasangan subkriteria
-        $psiScores = [];
+        // Ambil data Alternatif
+        return AlternatifModel::orderBy('id_pengajuan')->get();
+    }
 
-        foreach ($alternatifs as $alternative) {
-            $psiScore = [];
-            foreach ($sub_kriterias as $sub) {
-                // Lakukan normalisasi bobot subkriteria (jika diperlukan)
-                $min = SubKriteria::where('id_kriteria', $kriteria->id)->min('weight');
-                $max = SubKriteria::where('id_kriteria', $kriteria->id)->max('weight');
-                $normalizedWeight = ($sub->weight - $min) / ($max - $min);
+    public function ambilPenilaian()
+    {
+        // Assuming this method should return both alternatives and criteria
+        $alternatif = $this->ambilAlternatif();
+        $kriteria = $this->ambilKriteria();
 
-                // Hitung PSI untuk pasangan subkriteria dan alternatif
-                $nilai = $alternative->nilai($sub->id);
-                $psiScore[] = $normalizedWeight * $nilai;
+        return compact('alternatif', 'kriteria');
+    }
+
+    public function ambilPerhitungan()
+    {
+        // Assuming hitungPSI() method is properly defined somewhere
+        return $this->hitungPSI();
+    }
+
+    public function ambilSubKriteria($kriteriaId)
+    {
+        // Corrected to accept an argument and find sub-criteria
+        return Kriteria::find($kriteriaId);
+    }
+
+    public function ambilSemuaSubKriteria()
+    {
+        // If you want to get all sub-criteria for all kriteria
+        return Kriteria::with('subKriteria')->get();
+    }
+
+    private function hitungPSI()
+    {
+        $alternatif = AlternatifModel::orderBy('id_pengajuan')->get();
+        $kriteria = Kriteria::orderBy('kode')->pluck('type')->toArray();
+    
+    
+        // penentuan matriks keputusan
+        $Xij = [];
+        foreach ($alternatif as $ka => $alt) {
+            foreach ($alt->kriteria as $kk => $krit) {
+                $Xij[$ka][$kk] = $krit->pivot->nilai;
             }
-            // Hitung total PSI untuk alternatif
-            $totalPsi = array_sum($psiScore);
-            $psiScores[$alternative->id] = $totalPsi;
         }
 
-        return $psiScores;
+        // Pengecekan apakah $Xij tidak kosong untuk mencegah error undefined array key
+        if (empty($Xij) || empty($Xij[0])) {
+            return $alternatif; // Mengembalikan data alternatif atau tangani kasus ini sesuai kebutuhan
+        }
+    
+        // normalisasi matriks keputusan
+        $rows = count($Xij);
+        $cols = count($Xij[0]);
+        $Nij = [];
+        for ($j = 0; $j < $cols; $j++) {
+            $xj = [];
+            for ($i = 0; $i < $rows; $i++) {
+                $xj[] = $Xij[$i][$j];
+            }
+    
+            $divisor = max($xj);
+            $cost = false;
+            if ($kriteria[$j]['type'] == false) {
+                $cost = true;
+                $divisor = min($xj);
+            }
+    
+            foreach ($xj as $kj => $x) {
+                $Nij[$kj][$j] = $cost ? ($divisor / $x) : ($x / $divisor);
+            }
+        }
+    
+        // menjumlahkan elemen tiap kolom matriks
+        $EN = [];
+        for ($i = 0; $i < $cols; $i++) {
+            $jumlah = 0;
+            for ($j = 0; $j < $rows; $j++) {
+                $jumlah += $Nij[$j][$i];
+            }
+            $EN[] = $jumlah;
+        }
+    
+        // hitung nilai mean
+        $N = [];
+        foreach ($EN as $e) {
+            $N[] = $e / $rows;
+        }
+    
+        // hitung variasi preferensi
+        $Tj = [];
+        for ($i = 0; $i < $cols; $i++) {
+            for ($j = 0; $j < $rows; $j++) {
+                $Tj[$j][$i] = pow($Nij[$j][$i] - $N[$i], 2);
+            }
+        }
+    
+        // hitung total tiap kriteria
+        $TTj = [];
+        for ($i = 0; $i < $cols; $i++) {
+            $jumlah = 0;
+            for ($j = 0; $j < $rows; $j++) {
+                $jumlah += $Tj[$j][$i];
+            }
+            $TTj[] = $jumlah;
+        }
+    
+        // menentukan penyimpangan nilai preferensi
+        $Omega = [];
+        foreach ($TTj as  $ttj) {
+            $Omega[] = 1 - $ttj;
+        }
+    
+        // total penyimpangan nilai preferensi
+        $EOmega = array_sum($Omega);
+    
+        // menghitung kriteria bobot
+        $Wj = [];
+        foreach ($Omega as $o) {
+            $Wj[] = $o / $EOmega;
+        }
+    
+        // menghitung PSI
+        $ThetaI = [];
+        for ($i = 0; $i < $cols; $i++) {
+            for ($j = 0; $j < $rows; $j++) {
+                $ThetaI[$j][$i] = $Nij[$j][$i] * $Wj[$i];
+            }
+        }
+    
+        // penjumlahan tiap baris proses sebelumnya
+        $TThetaI = [];
+        foreach ($ThetaI as $theta) {
+            $TThetaI[] = array_sum($theta);
+        }
+    
+        foreach ($alternatif as $key => $alternatif) {
+            $alternatif->nilai = round($TThetaI[$key], 4);
+        }
+    
+        return $alternatif;
     }
 
 

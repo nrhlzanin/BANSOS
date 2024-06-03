@@ -10,12 +10,19 @@ class Kriteria extends Model
 	use HasFactory;
 
 	protected $table = 'kriteria';
-	protected $primaryKey = 'id_kriteria';
-	protected $guarded = [];
+    protected $primaryKey = 'id_kriteria';
+    protected $guarded = [];
 
-	// relasi ke banyak sub kriteria
-	public function subkriteria()
-	{
-		return $this->hasMany(SubKriteria::class);
-	}
+    // Relationship to many sub-criteria
+    public function subKriteria()
+    {
+        return $this->hasMany(SubKriteria::class, 'kriteria_id', 'id_kriteria');
+    }
+
+    public function alternatif()
+    {
+        return $this->belongsToMany(AlternatifModel::class, 'nilai', 'kriteria_id', 'alternatif_id')
+                    ->withPivot('nilai')
+                    ->withTimestamps();
+    }
 }
