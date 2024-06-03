@@ -69,11 +69,11 @@
         togglePasswordIcon.classList.toggle('fa-eye', isPasswordVisible);
     }
 
-    @if (session('success'))
-        document.addEventListener('DOMContentLoaded', function() {
-            alert('{{ session('success') }}');
-        });
-    @endif
+        // document.addEventListener('DOMContentLoaded', function() {
+            // @if (session('success'))
+            //     alert('{{ session('success') }}');
+            // @endif
+        // });
 </script>
 
 {{-- Include Font Awesome for the eye icon --}}

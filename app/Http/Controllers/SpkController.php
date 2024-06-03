@@ -62,6 +62,7 @@ class SpkController extends Controller
     }
 
     return view('spk.menu', compact('kriterias', 'kriteria', 'subkriteria', 'alternatives', 'psiScores'));
+    }
 }
 
     public function update(Request $request, $id)
