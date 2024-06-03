@@ -75,11 +75,6 @@ Route::prefix('warga')->group(function() {
     Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('pengajuan.store');    
 });
 
-// Route RW
-Route::get('/data-warga', [App\Http\Controllers\AdminController::class, 'dataWarga'])->name('data-warga');
-Route::get('/data-warga/penerima/create', [App\Http\Controllers\AdminController::class, 'create'])->name('penerimas.create');
-Route::get('/data-warga/penerima/{id}', [App\Http\Controllers\AdminController::class, 'show'])->name('penerimas.show');
-Route::delete('/data-warga/penerima/{id}', [App\Http\Controllers\AdminController::class, 'destroy'])->name('penerimas.destroy');
 
 //Route::get('/data-warga/edit-penerima/{penerima_bansos:id}',)
 Route::get('/informasi-akun', [App\Http\Controllers\AdminController::class, 'informasiAkun'])->name('informasi-akun');

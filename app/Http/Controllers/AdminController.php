@@ -2,12 +2,10 @@
 
 namespace App\Http\Controllers;
 
-
 use Illuminate\Http\Request;
-use App\Models\Penerima;
-use App\Models\UserModel;
+use App\Models\PenerimaBansosModel;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-
 
 class AdminController extends Controller
 {
@@ -18,9 +16,8 @@ class AdminController extends Controller
 
     public function dataWarga()
     {
-        $penerimas = Penerima::all();
-        return view('RW.dataWarga.data-warga', compact('penerimas'));
-
+        $penerima_bansos = PenerimaBansosModel::all();
+        return view('RW.dataWarga.data-warga', compact('penerima_bansos'));
     }
 
     public function create()
@@ -28,23 +25,63 @@ class AdminController extends Controller
         return view('RW.dataWarga.create');
     }
 
+    public function store(Request $request)
+    {
+        $request->validate([
+            'id_jenisbansos' => 'required|integer',
+            'id_petugas' => 'required|integer',
+            'id_admin' => 'required|integer',
+            'id_pengajuan' => 'required|integer',
+            'tanggal_penerimaan' => 'required|date',
+            'keterangan' => 'nullable|string|max:255',
+        ]);
+
+        PenerimaBansosModel::create($request->all());
+
+        return redirect()->route('admin.dataWarga')->with('success', 'Data penerima berhasil ditambahkan.');
+    }
+
     public function show($id)
     {
-        $penerima = Penerima::findOrFail($id);
+        $penerima = PenerimaBansosModel::findOrFail($id);
         return view('RW.dataWarga.detail', compact('penerima'));
     }
 
-
-    public function edit()
+    public function edit($id)
     {
-
+        $penerima = PenerimaBansosModel::findOrFail($id);
+        return view('RW.dataWarga.edit', compact('penerima'));
     }
 
-
-    public function validasi() 
+    public function update(Request $request, $id)
     {
-        return view('RW.validasi');   
+        $request->validate([
+            'id_jenisbansos' => 'required|integer',
+            'id_petugas' => 'required|integer',
+            'id_admin' => 'required|integer',
+            'id_pengajuan' => 'required|integer',
+            'tanggal_penerimaan' => 'required|date',
+            'keterangan' => 'nullable|string|max:255',
+        ]);
+
+        $penerima = PenerimaBansosModel::findOrFail($id);
+        $penerima->update($request->all());
+
+        return redirect()->route('admin.dataWarga')->with('success', 'Data penerima berhasil diperbarui.');
     }
+
+    public function destroy($id)
+    {
+        $penerima = PenerimaBansosModel::findOrFail($id);
+        $penerima->delete();
+        return redirect()->route('admin.dataWarga')->with('success', 'Data penerima berhasil dihapus.');
+    }
+
+    public function validasi()
+    {
+        return view('RW.validasi');
+    }
+
     public function validasiData()
     {
         return view('RW.validasiDataWarga.validation');
@@ -52,26 +89,19 @@ class AdminController extends Controller
 
     public function informasiAkun()
     {
-        // Ambil data pengguna yang sedang login
         $user = Auth::user();
-
-        // Pastikan $user dikirim ke view
         return view('RW.informasi-akun', compact('user'));
     }
 
     public function updateAccountInfo(Request $request)
     {
-        // Validasi input
         $request->validate([
             'username' => 'required|string|max:20|unique:user,username,' . Auth::id() . ',id_user',
             'email' => 'required|string|email|max:50|unique:user,email,' . Auth::id() . ',id_user',
             'password' => 'nullable|string|min:8|confirmed',
         ]);
 
-        // Ambil data pengguna yang sedang login
         $user = Auth::user();
-
-        // Update data pengguna
         $user->username = $request->username;
         $user->email = $request->email;
         if ($request->filled('password')) {
@@ -91,5 +121,4 @@ class AdminController extends Controller
     {
         return view('RW.addBansos.addBansos');
     }
-
 }

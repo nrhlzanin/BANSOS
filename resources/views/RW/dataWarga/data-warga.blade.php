@@ -83,7 +83,7 @@
                                             </select>
                                         </div>
                                         <div class="col-md-4">
-                                            <a href="{{ route('penerimas.create') }}" class="btn btn-primary float-right">Tambah Data</a>
+                                            <a href="{{ route('admin.data-warga.create') }}" class="btn btn-primary float-right">Tambah Data</a>
                                         </div>                                        
                                     </div>
                                     @if (session()->has('successUpdate'))
@@ -104,28 +104,28 @@
                                                     <input type="checkbox" id="checkall">
                                                 </th>
                                                 <th scope="col" class="text-center p-2">No</th>
-                                                <th scope="col" class="text-center">Nama Penerima <i
+                                                <th scope="col" class="text-center">ID Penerima <i
                                                         class="fa fa-sort fa-sm"></i></th>
-                                                <th scope="col" class="text-center">Alamat</th>
-                                                <th scope="col" class="text-center">Telepon</th>
-                                                <th scope="col" class="text-center">Jenis Bantuan</th>
+                                                <th scope="col" class="text-center">ID Petugas</th>
+                                                <th scope="col" class="text-center">ID Jenis Bansos</th>
+                                                <th scope="col" class="text-center">Tanggal Penerimaan</th>
                                                 <th scope="col" class="text-center">Aksi</th>
                                             </tr>
                                         </thead>
                                         <tbody>
-                                            @foreach ($penerimas as $penerima)
+                                            @foreach ($penerima_bansos as $penerima)
                                                 <tr>
                                                     <td>
                                                         <input type="checkbox" name="id_penerimabansos[]"
                                                             value="{{ $penerima->id }}">
                                                     </td>
                                                     <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $penerima->nama }}</td>
-                                                    <td>{{ $penerima->desa }}</td>
-                                                    <td>{{ $penerima->telepon }}</td>
-                                                    <td>{{ $penerima->jenis_bantuan }}</td>
+                                                    <td>{{ $penerima->id_penerimabansos }}</td>
+                                                    <td>{{ $penerima->id_petugas }}</td>
+                                                    <td>{{ $penerima->id_jenisbansos }}</td>
+                                                    <td>{{ $penerima->tanggal_penerimaan }}</td>
                                                     <td>
-                                                        <a href="{{ route('penerimas.show', $penerima->id) }}"
+                                                        <a href="{{ route('admin.data-warga.create', $penerima->id) }}"
                                                             class="btn btn-success"
                                                             style="background-color: #19CD61;">Detail <i
                                                                 class="fa fa-info-circle"></i></a>
@@ -179,7 +179,7 @@
            // $('#search-button').on('click', function() {
                // var searchValue = $('#search-input').val();
                 //table.search(searchValue).draw();
-            //});
+            //});s
 
             $('.btn-delete').on('click', function() {
                 if (confirm('Apakah Anda yakin ingin menghapus data ini?')) {

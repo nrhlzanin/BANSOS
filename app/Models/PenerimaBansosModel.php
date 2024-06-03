@@ -8,18 +8,36 @@ use Illuminate\Database\Eloquent\Model;
 class PenerimaBansosModel extends Model
 {
     use HasFactory;
+
     protected $table = 'penerima_bansos';
-    protected $primaryKey = 'id_penerimabansos';
-    public function alternatif() {
-        return $this->belongsTo(AlternatifModel::class, 'id_alternatif', 'id_alternatif');
+
+    protected $fillable = [
+        'id_penerimabansos',
+        'id_jenisbansos',
+        'id_petugas',
+        'id_admin',
+        'id_pengajuan',
+        'tanggal_penerimaan',
+        'keterangan',
+    ];
+
+    public function jenisBansos()
+    {
+        return $this->belongsTo(JenisBantuan::class, 'id_jenisbansos');
     }
-    public function bansos() {
-        return $this->belongsTo(BansosModel::class, 'id_bansos', 'id_bansos');
+
+    public function petugas()
+    {
+        return $this->belongsTo(User::class, 'id_petugas');
     }
-    public function rw() {
-        return $this->belongsTo(RwModel::class, 'id_admin', 'id_admin');
+
+    public function admin()
+    {
+        return $this->belongsTo(User::class, 'id_admin');
     }
-    public function rt() {
-        return $this->belongsTo(RtModel::class, 'id_petugas', 'id_petugas');
+
+    public function pengajuan()
+    {
+        return $this->belongsTo(PengajuanModel::class, 'id_pengajuan');
     }
 }
