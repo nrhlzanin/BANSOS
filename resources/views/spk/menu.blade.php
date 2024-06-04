@@ -104,52 +104,56 @@
                 <!-- Sub Kriteria tab content -->
                 <div class="tab-pane fade" id="subkriteria" role="tabpanel" aria-labelledby="subkriteria-tab">
                   <div class="card mt-4">
-                    @foreach ($kriteria as $krit)
-                    <div class="mt-6 mx-6">
-                        <div class="card">
-                            <div class="card-header d-flex justify-content-between align-items-center">
-                                <h3>{{ $krit->name }} ({{ $krit->kode }})</h3>
-                                <div>
-                                    <button type="button" class="btn btn-success custom-btn mr-2 btn-sm" data-toggle="modal" data-target="#createSubKriteriaModal{{ $krit->id }}">
-                                        Tambah Data Sub Kriteria <i class="fa fa-plus icon-spacing" aria-hidden="true"></i>
-                                    </button>
-                                    <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editSubKriteriaModal{{ $krit->id }}">
-                                        Edit <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
-                                    </button>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="mt-2">
-                            @include('spk.modal.createSubKriteria', ['kriteria' => $kriteria])
-                            @include('spk.modal.editSubKriteria', ['kriteria' => $kriteria])
-                            <div class="table-responsive">
-                                <table class="table">
-                                    <thead>
-                                        <tr>
-                                            <th>#</th>
-                                            <th>Sub Kriteria</th>
-                                            <th>Bobot</th>
-                                            <th>Aksi</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        @foreach ($krit->subKriteria as $key => $sub)
-                                            <tr>
-                                                <td>{{ $key + 1 }}</td>
-                                                <td>{{ $sub->name }}</td>
-                                                <td>{{ $sub->bobot }}</td>
-                                                <td>Aksi</td> <!-- Tambahkan tombol aksi sesuai kebutuhan -->
-                                            </tr>
-                                        @endforeach
-                                    </tbody>
-                                </table>
-                            </div>
-                        </div>
-                    </div>
-                @endforeach
-                
+                      @foreach ($kriteria as $krit)
+                      <div class="mt-6 mx-6">
+                          <div class="card">
+                              <div class="card-header d-flex justify-content-between align-items-center">
+                                  <h3>{{ $krit->name }} ({{ $krit->kode }})</h3>
+                                  <div>
+                                      <button type="button" class="btn btn-success custom-btn mr-2 btn-sm" data-toggle="modal" data-target="#createSubKriteriaModal{{ $krit->id_kriteria }}">
+                                          Tambah Data Sub Kriteria <i class="fa fa-plus icon-spacing" aria-hidden="true"></i>
+                                      </button>
+                                      <button type="button" class="btn btn-warning btn-sm" data-toggle="modal" data-target="#editSubKriteriaModal{{ $krit->id_kriteria }}">
+                                          Edit <i class="fa fa-pencil-alt icon-spacing" aria-hidden="true"></i>
+                                      </button>
+                                  </div>
+                              </div>
+                          </div>
+                          <div class="mt-2">
+                              <!-- Include Create Sub Kriteria Modal -->
+                              @include('spk.modal.createSubKriteria', ['krit' => $krit])
+                              <!-- Include Edit Sub Kriteria Modal -->
+                              @include('spk.modal.editSubKriteria', ['krit' => $krit])
+                              <div class="table-responsive">
+                                  <table class="table">
+                                      <thead>
+                                          <tr>
+                                              <th>#</th>
+                                              <th>Sub Kriteria</th>
+                                              <th>Bobot</th>
+                                              <th>Aksi</th>
+                                          </tr>
+                                      </thead>
+                                      <tbody>
+                                          @foreach ($krit->subKriteria as $key => $sub)
+                                              <tr>
+                                                  <td>{{ $key + 1 }}</td>
+                                                  <td>{{ $sub->name }}</td>
+                                                  <td>{{ $sub->bobot }}</td>
+                                                  <td>
+                                                      <!-- Tambahkan tombol aksi sesuai kebutuhan -->
+                                                  </td>
+                                              </tr>
+                                          @endforeach
+                                      </tbody>
+                                  </table>
+                              </div>
+                          </div>
+                      </div>
+                      @endforeach
                   </div>
-              </div>
+                </div>
+
                 <!-- Normalisasi tab content -->
                 <div class="tab-pane fade " id="normalisasi" role="tabpanel" aria-labelledby="normalisasi-tab">
                   <div class="card mt-4">
