@@ -195,6 +195,7 @@ class SpkController extends Controller
 
         return redirect()->back()->with('success', 'Kriteria deleted successfully');
     }
+    
     // Display all Sub Kriteria for a given Kriteria
     public function subKriteria(Kriteria $kriteria)
     {
