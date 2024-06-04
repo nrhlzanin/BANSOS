@@ -24,6 +24,51 @@ class AlternatifKriteriaSeeder extends Seeder
                 'id_kriteria' => 1,
                 'nilai'	=> 1.0,
             ],
+            [
+                'id_alternatif' => 3,
+                'id_kriteria' => 1,
+                'nilai'	=> 1.0,
+            ],
+            [
+                'id_alternatif' => 2,
+                'id_kriteria' => 1,
+                'nilai'	=> 1.0,
+            ],
+            [
+                'id_alternatif' => 4,
+                'id_kriteria' => 1,
+                'nilai'	=> 1.0,
+            ],
+            [
+                'id_alternatif' => 5,
+                'id_kriteria' => 1,
+                'nilai'	=> 1.0,
+            ],
+            [
+                'id_alternatif' => 1,
+                'id_kriteria' => 2,
+                'nilai'	=> 1.0,
+            ],
+            [
+                'id_alternatif' => 2,
+                'id_kriteria' => 2,
+                'nilai'	=> 1.0,
+            ],
+            [
+                'id_alternatif' => 3,
+                'id_kriteria' => 2,
+                'nilai'	=> 1.0,
+            ],
+            [
+                'id_alternatif' => 4,
+                'id_kriteria' => 2,
+                'nilai'	=> 1.0,
+            ],
+            [
+                'id_alternatif' => 5,
+                'id_kriteria' => 2,
+                'nilai'	=> 1.0,
+            ],
         ]);
     }
 }

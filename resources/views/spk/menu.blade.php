@@ -219,7 +219,7 @@
                                                       @foreach($alternatif as $alt)
                                                       <tr>
                                                           <td>{{ $loop->iteration }}</td>
-                                                          <td>{{ $alt->kode }}</td>
+                                                          <td>{{ $alt->pengajuan->warga->nama_kepalaKeluarga }}</td>
                                                           @php
                                                           $nilai = [];
                                                           foreach ($kriteria as $k) {
@@ -280,7 +280,7 @@
                                                             @foreach ($alternatif as $key => $alt)
                                                                 <tr>
                                                                     <td>{{ $key + 1 }}</td>
-                                                                    <td>{{ $alt->name }}</td>
+                                                                    <td>{{ $alt->pengajuan->warga->nama_kepalaKeluarga }}</td>
                                                                     <td>
                                                                         @if ($alt->nilai_kriteria)
                                                                             @php
@@ -336,25 +336,9 @@
                                                             @foreach ($alternatif as $key => $alt)
                                                                 <tr>
                                                                     <td>{{ $key + 1 }}</td>
-                                                                    <td>{{ $alt->name }}</td>
+                                                                    <td>{{ $alt->pengajuan->warga->nama_kepalaKeluarga }}</td>
                                                                     <td>
-                                                                        @if ($alt->nilai_kriteria)
-                                                                            @php
-                                                                                $nilai = $alt->nilai_kriteria
-                                                                                    ->where(
-                                                                                        'id_kriteria',
-                                                                                        $kriteria->id,
-                                                                                    )
-                                                                                    ->first();
-                                                                            @endphp
-                                                                            @if ($nilai)
-                                                                                {{ $nilai->nilai }}
-                                                                            @else
-                                                                                Tidak ada nilai
-                                                                            @endif
-                                                                        @else
-                                                                            Tidak ada nilai
-                                                                        @endif
+                                                                        
                                                                     </td>
                                                                 </tr>
                                                             @endforeach
@@ -448,29 +432,29 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php $rank = 1; foreach ($alternatif as $alt) {?> ?>
+                                                <?php// $rank = 1; foreach ($alternatif as $alternatif) {?> ?>
                                                 <tr>
                                                     <td>
-                                                        <?= $rank++?>
+                                                        <?//= $rank++?>
                                                     </td>
                                                     <td>
-                                                        <?= $alt->kode?>
+                                                        <?//= $alternatif->nama_alternatif?>
                                                     </td>
-                                                    <?php foreach ($kriteria as $krit) {
+                                                    <?php //foreach ($kriteria as $kriteria) {
                                                     ?>
                                                     <td>
-                                                        
+                                                        <?//= $alternatif->nilai_kriteria[$kriteria->id_kriteria]?>
                                                     </td>
-                                                    <?php }
+                                                    <?php //}
                                                     ?>
                                                     <td>
-                                                        <?= number_format($alt->nilai, 2)?>
+                                                        <?//= number_format($alternatif->score_psi, 2)?>
                                                     </td>
                                                     <td>
-                                                        <?= $rank - 1?>
+                                                        <?//= $rank - 1?>
                                                     </td>
                                                 </tr>
-                                                <?php }
+                                                <?php //}
                                                 ?>
                                             </tbody>
                                         </table>
