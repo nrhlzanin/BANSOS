@@ -46,7 +46,7 @@ class SpkController extends Controller
     public function ambilAlternatif()
     {
         // Ambil data Alternatif
-        return AlternatifModel::orderBy('id_pengajuan')->get();
+        return AlternatifModel::with('kriteria')->orderBy('kode')->get();
     }
 
     public function ambilPenilaian()

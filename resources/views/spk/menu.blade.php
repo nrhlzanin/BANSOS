@@ -216,25 +216,26 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                        @foreach ($alternatif as $alt)
-                                                            <tr>
-                                                                <td>{{ $loop->iteration }}</td>
-                                                                <td>{{ $alt->name }}</td>
-                                                                @php
-                                                                    $nilai = [];
-                                                                    foreach ($kriteria as $k) {
-                                                                        $ks = $alt->kriteria->find($k->id);
-                                                                        $nilai[] = $ks ? $ks->pivot->nilai : 0;
-                                                                    }
-                                                                @endphp
-                                                                @foreach ($nilai as $n)
-                                                                    <td>
-                                                                        {{ $n }}
-                                                                    </td>
-                                                                @endforeach
-                                                            </tr>
-                                                        @endforeach
-                                                    </tbody>
+                                                      @foreach($alternatif as $alt)
+                                                      <tr>
+                                                          <td>{{ $loop->iteration }}</td>
+                                                          <td>{{ $alt->kode }}</td>
+                                                          @php
+                                                          $nilai = [];
+                                                          foreach ($kriteria as $k) {
+                                                              $ks = $alt->kriteria->find($k->id_kriteria);
+                                                              // dd($ks);
+                                                              $nilai[] = $ks ? $ks->pivot->nilai : 0;
+                                                          }
+                                                          @endphp
+                                                          @foreach ($nilai as $n)
+                                                          <td>
+                                                              {{ $n }}
+                                                          </td>
+                                                          @endforeach
+                                                      </tr>
+                                                      @endforeach
+                                                  </tbody>
                                                 </table>
                                             </div>
                                             <div class="row right-content-between mt-3">
@@ -447,29 +448,29 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php// $rank = 1; foreach ($alternatif as $alternatif) {?> ?>
+                                                <?php $rank = 1; foreach ($alternatif as $alt) {?> ?>
                                                 <tr>
                                                     <td>
-                                                        <?//= $rank++?>
+                                                        <?= $rank++?>
                                                     </td>
                                                     <td>
-                                                        <?//= $alternatif->nama_alternatif?>
+                                                        <?= $alt->kode?>
                                                     </td>
-                                                    <?php //foreach ($kriteria as $kriteria) {
+                                                    <?php foreach ($kriteria as $krit) {
                                                     ?>
                                                     <td>
-                                                        <?//= $alternatif->nilai_kriteria[$kriteria->id_kriteria]?>
+                                                        
                                                     </td>
-                                                    <?php //}
+                                                    <?php }
                                                     ?>
                                                     <td>
-                                                        <?//= number_format($alternatif->score_psi, 2)?>
+                                                        <?= number_format($alt->nilai, 2)?>
                                                     </td>
                                                     <td>
-                                                        <?//= $rank - 1?>
+                                                        <?= $rank - 1?>
                                                     </td>
                                                 </tr>
-                                                <?php //}
+                                                <?php }
                                                 ?>
                                             </tbody>
                                         </table>
