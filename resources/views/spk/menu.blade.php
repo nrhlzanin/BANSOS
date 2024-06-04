@@ -1,3 +1,5 @@
+
+
 @extends('RW.layouts.main')
 
 @section('content')
@@ -287,7 +289,7 @@
                                                                                 $nilai = $alt->nilai_kriteria
                                                                                     ->where(
                                                                                         'id_kriteria',
-                                                                                        $kriteria->id,
+                                                                                        $kriteria->id_kriteria,
                                                                                     )
                                                                                     ->first();
                                                                             @endphp
@@ -425,7 +427,7 @@
                                                     <th>#</th>
                                                     <th>Alternatif</th>
                                                     <?php foreach ($kriteria as $krit) {?>
-                                                    <th><?= $krit->name ?></th>
+                                                    <th><?= $krit->kode ?></th>
                                                     <?php }?>
                                                     <th>Score PSI</th>
                                                     <th>Rank</th>
@@ -438,7 +440,7 @@
                                                         <?//= $rank++?>
                                                     </td>
                                                     <td>
-                                                        <?//= $alternatif->nama_alternatif?>
+                                                        <?//= $alternatif->pengajuan->warga->nama_kepalaKeluarga?>
                                                     </td>
                                                     <?php //foreach ($kriteria as $kriteria) {
                                                     ?>
