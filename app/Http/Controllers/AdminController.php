@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\PenerimaBansosModel;
 use App\Models\User;
+use App\Models\BansosModel;
+use App\Models\AlternatifModel;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -16,7 +18,16 @@ class AdminController extends Controller
 
     public function dataWarga()
     {
-        $penerima_bansos = PenerimaBansosModel::all();
+        $user = Auth::user();
+
+        // Eager load relasi yang diperlukan dan gunakan join untuk mengurutkan berdasarkan id_pengajuan
+        $penerima_bansos = PenerimaBansosModel::with([
+            'alternatif.pengajuan.warga', // Relasi dari penerima_bansos -> alternatif -> pengajuan -> warga
+            'bansos' // Relasi dari penerima_bansos -> bansos
+        ])->join('alternatif', 'penerima_bansos.id_alternatif', '=', 'alternatif.id_alternatif')
+          ->orderBy('alternatif.id_pengajuan')
+          ->get();
+
         return view('RW.dataWarga.data-warga', compact('penerima_bansos'));
     }
 

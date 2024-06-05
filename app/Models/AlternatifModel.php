@@ -14,7 +14,7 @@ class AlternatifModel extends Model
 
     public function pengajuan()
     {
-        return $this->belongsTo(PengajuanModel::class, 'id_pengajuan');
+        return $this->belongsTo(PengajuanModel::class, 'id_pengajuan', 'id_pengajuan');
     }
 
     public function kriteria()

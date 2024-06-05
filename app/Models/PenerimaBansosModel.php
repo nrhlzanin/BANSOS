@@ -23,7 +23,7 @@ class PenerimaBansosModel extends Model
 
     public function jenisBansos()
     {
-        return $this->belongsTo(JenisBantuan::class, 'id_jenisbansos');
+        return $this->belongsTo(BansosModel::class, 'id_bansos');
     }
 
     public function petugas()
@@ -40,4 +40,19 @@ class PenerimaBansosModel extends Model
     {
         return $this->belongsTo(PengajuanModel::class, 'id_pengajuan');
     }
+
+    public function alternatif()
+    {
+        return $this->belongsTo(AlternatifModel::class, 'id_alternatif');
+    }
+
+    public function bansos()
+    {
+        return $this->belongsTo(BansosModel::class, 'id_bansos');
+    }
+    public function warga()
+    {
+        return $this->belongsTo(BansosModel::class, 'id_bansos');
+    }
+
 }

@@ -103,11 +103,10 @@
                                                 <th>
                                                     <input type="checkbox" id="checkall">
                                                 </th>
-                                                <th scope="col" class="text-center p-2">No</th>
-                                                <th scope="col" class="text-center">ID Penerima <i
-                                                        class="fa fa-sort fa-sm"></i></th>
-                                                <th scope="col" class="text-center">ID Petugas</th>
-                                                <th scope="col" class="text-center">ID Jenis Bansos</th>
+                                                <th scope="col" class="text-center">No</th>
+                                                <th scope="col" class="text-center">Nama</th>
+                                                <th scope="col" class="text-center">NIK</th>
+                                                <th scope="col" class="text-center">Jenis Bansos</th>
                                                 <th scope="col" class="text-center">Tanggal Penerimaan</th>
                                                 <th scope="col" class="text-center">Aksi</th>
                                             </tr>
@@ -119,11 +118,11 @@
                                                         <input type="checkbox" name="id_penerimabansos[]"
                                                             value="{{ $penerima->id }}">
                                                     </td>
-                                                    <td>{{ $loop->iteration }}</td>
-                                                    <td>{{ $penerima->id_penerimabansos }}</td>
-                                                    <td>{{ $penerima->id_petugas }}</td>
-                                                    <td>{{ $penerima->id_jenisbansos }}</td>
-                                                    <td>{{ $penerima->tanggal_penerimaan }}</td>
+                                                    <td>1</td>
+                                                    <td>{{ $penerima->alternatif->pengajuan->warga->nama_kepalaKeluarga }}</td>
+                                                    <td>{{ $penerima->alternatif->pengajuan->no_nik }}</td>
+                                                    <td>{{ $penerima->bansos->jenis_bansos }}</td>
+                                                    <td>{{ $penerima->bansos->tanggal_keluar }}</td>
                                                     <td>
                                                         <a href="{{ route('admin.data-warga.create', $penerima->id) }}"
                                                             class="btn btn-success"

@@ -401,15 +401,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            <tr>
-                                                                <?php //foreach ($kriteria as $kriteria) {
-                                                                ?>
-                                                                <td>
-                                                                    <?//= number_format(array_sum(array_column($alternatif, 'nilai_kriteria')[$kriteria->id_kriteria]) / count($alternatif), 2)?>
-                                                                </td>
-                                                                <?php //}
-                                                                ?>
-                                                            </tr>
+                                                          
                                                         </tbody>
                                                     </table>
                                                 </div>
@@ -434,30 +426,25 @@
                                                 </tr>
                                             </thead>
                                             <tbody>
-                                                <?php// $rank = 1; foreach ($alternatif as $alternatif) {?> ?>
-                                                <tr>
-                                                    <td>
-                                                        <?//= $rank++?>
-                                                    </td>
-                                                    <td>
-                                                        <?//= $alternatif->pengajuan->warga->nama_kepalaKeluarga?>
-                                                    </td>
-                                                    <?php //foreach ($kriteria as $kriteria) {
-                                                    ?>
-                                                    <td>
-                                                        <?//= $alternatif->nilai_kriteria[$kriteria->id_kriteria]?>
-                                                    </td>
-                                                    <?php //}
-                                                    ?>
-                                                    <td>
-                                                        <?//= number_format($alternatif->score_psi, 2)?>
-                                                    </td>
-                                                    <td>
-                                                        <?//= $rank - 1?>
-                                                    </td>
-                                                </tr>
-                                                <?php //}
-                                                ?>
+                                              <tbody>
+                                                @php $rank = 1; @endphp
+                                                @foreach ($alternatif as $alt)
+                                                    <tr>
+                                                        <td>{{ $rank }}</td>
+                                                        <td>{{ $alt->pengajuan->warga->nama_kepalaKeluarga }}</td>
+                                                        @foreach ($kriteria as $kindex => $krit)
+                                                            <td>
+                                                                @php
+                                                                    $nilai = $alt->kriteria->find($krit->id_kriteria)->pivot->nilai ?? 'Tidak ada nilai';
+                                                                @endphp
+                                                                {{ $nilai }}
+                                                            </td>
+                                                        @endforeach
+                                                        <td>{{ number_format($alt->nilai, 2) }}</td>
+                                                        <td>{{ $rank++ }}</td>
+                                                    </tr>
+                                                @endforeach
+                                            </tbody>
                                             </tbody>
                                         </table>
                                     </div>

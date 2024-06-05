@@ -8,6 +8,7 @@ use Illuminate\Database\Eloquent\Model;
 class JenisBantuan extends Model
 {
     use HasFactory;
+    protected $table = 'jenis_bantuans';
 
     public function informasi()
     {
