@@ -13,18 +13,17 @@ return new class extends Migration
     {
         Schema::create('pengajuan', function (Blueprint $table) {
             $table->id('id_pengajuan');
-            $table->unsignedBigInteger('id_warga')->index();
-            $table->string('no_kk');
-            $table->string('no_nik');
-            $table->string('pekerjaan');
-            $table->decimal('penghasilan', 15, 2);
+            $table->foreignId('id_warga')->constrained('warga', 'id_warga')->onDelete('restrict')->onUpdate('restrict');
+            $table->string('pekerjaan', 50);
+            $table->double('penghasilan', 7, );
+            $table->text('foto_slipgaji')->nullable();
             $table->enum('pendidikan', [
                 'tidak sekolah', 
                 'SD', 
                 'SMP', 
                 'SMA', 
                 'kuliah'
-            ]);
+            ])->nullable();
             $table->integer('jumlah_tanggungan');
             $table->enum('tempat_tinggal', [
                 'Kontrakan',
@@ -45,14 +44,14 @@ return new class extends Migration
                 'Seng', 
                 'Genteng Tanah Liat', 
                 'Asbes', 
-                'Genteng Metal', 
+                'Genteng Metal',
             ])->nullable();
             $table->enum('jenis_dinding', [
                 'Triplek', 
                 'Anyaman Bambu', 
                 'Papan Kayu', 
                 'Batu Bata', 
-                'Batako', 
+                'Batako',
             ])->nullable();
             $table->enum('kelistrikan', [
                 'Menumpang', 
@@ -68,17 +67,9 @@ return new class extends Migration
                 'PDAM Terbatas', 
                 'PDAM Bebas'
             ])->nullable();
-            $table->json('aset')->nullable();
             $table->enum('status_data', ['belum tervalidasi', 'tervalidasi'])->default('belum tervalidasi'); // Untuk status verifikasi data
             $table->enum('status_pengajuan', ['proses', 'diterima', 'ditolak'])->default('proses'); // Untuk status verifikasi pengajuan
-            $table->text('foto_kk')->nullable();
-            $table->text('foto_ktp')->nullable();
-            $table->text('foto_slipgaji')->nullable();
             $table->timestamps();
-
-            // Add foreign key constraints
-            $table->foreign('id_warga')->references('id_warga')->on('warga');
-
         });
     }
 

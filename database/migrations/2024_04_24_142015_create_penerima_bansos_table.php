@@ -13,19 +13,14 @@ return new class extends Migration
     {
         Schema::create('penerima_bansos', function (Blueprint $table) {
             $table->id('id_penerimabansos');
-            $table->unsignedBigInteger('id_bansos')->index();
-            $table->unsignedBigInteger('id_petugas')->index();
-            $table->unsignedBigInteger('id_admin')->index();
+            $table->foreignId('id_bansos')->constrained('bansos', 'id_bansos')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreignId('id_petugas')->constrained('rt', 'id_petugas')->onDelete('restrict')->onUpdate('restrict');
+            $table->foreignId('id_admin')->constrained('rw', 'id_admin')->onDelete('restrict')->onUpdate('restrict');
             $table->unsignedBigInteger('id_alternatif')->index();
+            $table->foreign('id_alternatif')->references('id_alternatif')->on('alternatif');
             $table->date('tanggal_penerimaan');
             $table->string('keterangan', 100);
             $table->timestamps();
-
-            // Add foreign key constraints
-            $table->foreign('id_bansos')->references('id_bansos')->on('bansos');
-            $table->foreign('id_petugas')->references('id_petugas')->on('rt');
-            $table->foreign('id_admin')->references('id_admin')->on('rw');
-            $table->foreign('id_alternatif')->references('id_alternatif')->on('alternatif');
         });
     }
 

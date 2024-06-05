@@ -13,10 +13,9 @@ return new class extends Migration
     {
         Schema::create('rt', function (Blueprint $table) {
             $table->id('id_petugas');
-            $table->unsignedBigInteger('id_user')->index();
-            $table->foreign('id_user')->references('id_user')->on('user');
+            $table->foreignId('id_user')->constrained('user', 'id_user')->onDelete('restrict')->onUpdate('restrict');
             $table->string('nama_petugas', 50);
-            $table->string('no_telp', 15);
+            $table->string('no_telp', 13);
             $table->integer('no_rt');
             $table->timestamps();
         });

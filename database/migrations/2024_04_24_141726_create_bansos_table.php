@@ -13,10 +13,11 @@ return new class extends Migration
     {
         Schema::create('bansos', function (Blueprint $table) {
             $table->id('id_bansos');
-            $table->string('asal_bansos', 20);
-            $table->string('jenis_bansos');
-            $table->date('tanggal_keluar');
-            $table->string('status', 50);
+            $table->string('nama_bansos', 50);
+            $table->string('jenis_bansos', 50);
+            $table->string('asal_bansos', 50);
+            $table->date('periode');
+            $table->text('keterangan');
             $table->timestamps();
         });
     }
