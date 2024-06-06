@@ -122,7 +122,7 @@
 
         <!-- FAQ -->
         <section class="container shadow" id="tentang"
-            style="padding: 100px 100px 50px !important; margin-top: 100px !important">
+            style="padding: 30px 100px 20px !important; margin-top: 20px !important">
             <h1 class="text-center">Pertanyaan dan Saran</h1>
             <p class="text-center">Hubungi kami jika anda memiliki pertanyaan dan masukan</p>
             <form method="post" action="{{ route('contact.submit') }}" class="mt-5">

@@ -4,7 +4,8 @@
 
 @section('content')
 <main class="container" style="margin: 100px auto 100px;">
-    <h1 class="animate__animated animate__fadeInUp">Form Pengajuan Bantuan Sosial</h1>
+    <header class="animate__animated animate__fadeInUp">
+    <h1>Form Pengajuan Bantuan Sosial</h1>
 
     @if(session('success'))
         <div class="alert alert-success">
@@ -676,6 +677,7 @@
             <button type="submit" name="submit" class="btn btn-primary center-btn" style="margin-top:150px; margin-bottom: 20px ">Submit</button>
         </form>
 </div>
+    </header>
 </main>
 
 <script>
