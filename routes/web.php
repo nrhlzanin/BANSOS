@@ -8,6 +8,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\DashboardInfoController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\KriteriaController;
+use App\Http\Controllers\LandingController;
 use App\Http\Controllers\LoginController;
 use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PenilaianController;
@@ -29,16 +30,8 @@ use App\Models\SubKriteria;
 
 
 // beranda
-// Route::get("/", function () {
-//     return view("landing.index");
-// });
+Route::get("/", [LandingController::class, 'index']);
 
-Route::get("/", function () {
-    $count_bansos = BansosModel::count();
-    $count_pengajuan = PengajuanModel::count();
-
-    return view("landing.index", compact('count_bansos', 'count_pengajuan'));
-});
 Route::post('/contact/submit', [ContactController::class, 'submit'])->name('contact.submit');
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
