@@ -4,7 +4,7 @@
 
 @section('content')
 <main class="container" style="margin: 100px auto 100px;">
-    <header class="animate__animated animate__fadeInUp">
+    <header class="animate__animated animate__fadeInBottomLeft">
     <h1>Form Pengajuan Bantuan Sosial</h1>
 
     @if(session('success'))
