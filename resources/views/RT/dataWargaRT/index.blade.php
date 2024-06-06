@@ -1,3 +1,3 @@
-@extends('appRT')
+@extends('layouts.appRT')
 
 @section('title', 'Data Pengajuan Warga')
