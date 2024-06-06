@@ -17,11 +17,11 @@
             </div>
         </section>
         <section class="col-4">
-            <h5 class="mb-3">Fitur Kami</h5>
+            <h5 class="mb-3">Jenis Program Bantuan Sosial</h5>
             <ul>
-                <li><a href="#fitur" class="text-white text-decoration-none">Laporkan</a></li>
-                <li><a href="#fitur" class="text-white text-decoration-none">Tracking</a></li>
-                <li><a href="#fitur" class="text-white text-decoration-none">Selidiki</a></li>
+                <li><a href="#informasi" class="text-white text-decoration-none">Bantuan Pangan Non Tunai (BPNT)</a></li>
+                <li><a href="#informasi" class="text-white text-decoration-none">Program Keluarga Harapan (PKH)</a></li>
+                <li><a href="#informasi" class="text-white text-decoration-none">Bantuan Sosial Tunai (BST)</a></li>
             </ul>
         </section>
         <section class="">
@@ -31,7 +31,6 @@
                 <li><a href="#informasi" class="text-white text-decoration-none">Informasi Bantuan Sosial</a></li>
                 <li><a href="#tentang" class="text-white text-decoration-none">Tentang Kami</a></li>
                 <li><a href="/login" class="text-white text-decoration-none">Login</a></li>
-                <li><a href="/register" class="text-white text-decoration-none">Registrasi</a></li>
             </ul>
         </section>
     </div>
