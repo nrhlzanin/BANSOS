@@ -3,8 +3,11 @@
 @section('title', 'Login Web Bansos')
 
 @section('content')
+    
     <section class="container" style="margin: 100px auto 300px!important">
-        <div class="row justify-content-center">
+        <h1 class="h3 fw-bold text-center">Selamat Datang</h1>
+        <header class="animate__animated animate__fadeInUp">
+        <div class="row justify-content-center" >
             <div class="col-lg-8">
                 {{-- Register success --}}
                 @if (session()->has('success'))
@@ -32,22 +35,23 @@
                     <div class="col-md-6">
                         <form action="{{ url('proses_login') }}" method="POST">
                             @csrf
-                            <h1 class="h3 fw-normal text-center">Silakan Masuk</h1>
-                            <p class="text-center">Silakan gunakan akun anda untuk memantau dana bantuan sosial</p>
+                            <div class="form-floating mt-5 mb-4">
+                            <p class="text-center">Silahkan gunakan akun anda untuk memantau dana bantuan sosial</p>
+                            </div>
 
                             <div class="form-floating mt-5 mb-4">
-                                <input type="text" name="username" class="form-control" id="floatingInput" placeholder="username" value="{{ old('username') }}" required>
                                 <label for="floatingInput">Username</label>
+                                <input type="text" name="username" class="form-control" id="floatingInput" placeholder="username" value="{{ old('username') }}" required>
                             </div>
 
                             <div class="form-floating mb-4 position-relative">
+                                <label for="floatingPassword">Password</label>
                                 <div class="input-group">
                                     <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password" required>
                                     <span class="input-group-text" id="basic-addon2" onclick="togglePasswordVisibility()">
                                         <i class="fa fa-eye" id="togglePasswordIcon"></i>
                                     </span>
                                 </div>
-                                <label for="floatingPassword">Password</label>
                             </div>
 
                             <div class="mb-3 text-end">
@@ -60,6 +64,7 @@
                 </div>
             </div>
         </div>
+        </header>
     </section>
 @endsection
 

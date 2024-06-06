@@ -1,5 +1,7 @@
 <?php
 
+use App\Http\Controllers\BansosController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
@@ -26,9 +28,12 @@ use App\Models\SubKriteria;
 
 
 // beranda
-Route::get("/", function () {
-    return view("landing.index");
-});
+// Route::get("/", function () {
+//     return view("landing.index");
+// });
+
+Route::get("/", [BansosController::class, 'index']);
+Route::post('/contact/submit', [ContactController::class, 'submit'])->name('contact.submit');
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
 Route::post('/proses_login', [AuthController::class, 'proses_login'])->name('proses_login');
