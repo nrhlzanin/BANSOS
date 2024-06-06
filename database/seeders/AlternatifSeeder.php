@@ -26,6 +26,24 @@ class Alternatifseeder extends Seeder
                 'id_pengajuan' => 2,
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
+            ],
+            [
+                'id_alternatif'=> 3,
+                'id_pengajuan' => 3,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'id_alternatif'=> 4,
+                'id_pengajuan' => 4,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
+            ],
+            [
+                'id_alternatif'=> 5,
+                'id_pengajuan' => 5,
+                'created_at' => Carbon::now(),
+                'updated_at' => Carbon::now(),
             ]
         ]);
     }

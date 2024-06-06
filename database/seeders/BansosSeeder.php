@@ -19,29 +19,32 @@ class BansosSeeder extends Seeder
                 'id_bansos' => 1,
                 'asal_bansos' => 'Pemerintah',
                 'jenis_bansos' => 'Bantuan Pangan Non Tunai (BPNT)',
-                'tanggal_keluar' => Carbon::now(),
-                'status' => 'Active',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'periode' => '2024-01-01', // Contoh periode, sesuaikan dengan format tanggal yang digunakan
+                'keterangan' => 'Deskripsi bantuan',
+                'status' => 'Aktif',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'id_bansos' => 2,
                 'asal_bansos' => 'Pemerintah',
                 'jenis_bansos' => 'Program Keluarga Harapan (PKH)',
-                'tanggal_keluar' => Carbon::now(),
-                'status' => 'Active',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'periode' => '2024-04-11', // Contoh periode, sesuaikan dengan format tanggal yang digunakan
+                'keterangan' => 'Deskripsi bantuan',
+                'status' => 'Aktif',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
             [
                 'id_bansos' => 3,
                 'asal_bansos' => 'Pemerintah',
                 'jenis_bansos' => 'Bantuan Sosial Tunai (BST)',
-                'tanggal_keluar' => Carbon::now(),
-                'status' => 'Active',
-                'created_at' => Carbon::now(),
-                'updated_at' => Carbon::now(),
+                'periode' => '2024-02-21', // Contoh periode, sesuaikan dengan format tanggal yang digunakan
+                'keterangan' => 'Deskripsi bantuan',
+                'status' => 'Aktif',
+                'created_at' => now(),
+                'updated_at' => now(),
             ],
-        ]);
+        ]);   
     }
 }

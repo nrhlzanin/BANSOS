@@ -67,6 +67,7 @@ return new class extends Migration
                 'PDAM Terbatas', 
                 'PDAM Bebas'
             ])->nullable();
+            $table->string('aset')->nullable();
             $table->enum('status_data', ['belum tervalidasi', 'tervalidasi'])->default('belum tervalidasi'); // Untuk status verifikasi data
             $table->enum('status_pengajuan', ['proses', 'diterima', 'ditolak'])->default('proses'); // Untuk status verifikasi pengajuan
             $table->timestamps();
