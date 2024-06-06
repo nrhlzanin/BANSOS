@@ -39,7 +39,10 @@
                             <a class="nav-link" aria-current="page" href="#beranda">Beranda</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link" href="#pengumuman">Pengumuman</a>
+                            <a class="nav-link" href="#jenis">Jenis Bansos</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#informasi">Informasi</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('warga.pengajuan.create') }}">Pengajuan</a>

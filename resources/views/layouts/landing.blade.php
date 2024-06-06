@@ -38,9 +38,11 @@
 <body>
     <div class="wrapper">
         <!-- Header -->
-        @include('components.landing-header')
+        @if (!isset($hideHeader) || !$hideHeader)
+            @include('components.landing-header')
+        @endif
         <!-- Header -->
-
+        
         <!-- Main content -->
         <section class="content">
             @yield('content')

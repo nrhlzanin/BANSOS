@@ -1,4 +1,4 @@
-@extends('layouts.landing', ['hideFooter' => true])
+@extends('layouts.landing',['hideFooter' => true])
 
 @section('title', 'Login Web Bansos')
 
