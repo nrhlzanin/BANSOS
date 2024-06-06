@@ -34,7 +34,7 @@
             </div>
         </section>
 
-        <!-- Informasi -->
+        <!-- Jenis BANSOS -->
         <section class="container py-5" id="fitur" style="padding-top: 110px !important">
             <h1 class="text-center">JENIS PROGRAM BANTUAN SOSIAL</h1>
             <p class="text-center" style="font-size: 30px">Berikut Jenis Program Bantuan Sosial:</p>
@@ -78,7 +78,7 @@
             </div>
         </section>
 
-        <!-- Pengumuman -->
+        <!-- Informasi -->
         <section class="w-100 mx-0" id="informasi"
             style="padding-top: 110px; padding-bottom: 110px  !important; background-color: #DAEEE7;">
             <div class="container">

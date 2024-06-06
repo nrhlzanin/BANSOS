@@ -21,7 +21,8 @@ use App\Http\Controllers\ValidasiController;
 use App\Http\Controllers\WargaController;
 use App\Models\Informasi;
 use Illuminate\Support\Facades\Route;
-
+use App\Models\BansosModel;
+use App\Models\PengajuanModel;
 use App\Models\Kriteria;
 use App\Models\SubKriteria;
 
@@ -32,7 +33,12 @@ use App\Models\SubKriteria;
 //     return view("landing.index");
 // });
 
-Route::get("/", [BansosController::class, 'index']);
+Route::get("/", function () {
+    $count_bansos = BansosModel::count();
+    $count_pengajuan = PengajuanModel::count();
+
+    return view("landing.index", compact('count_bansos', 'count_pengajuan'));
+});
 Route::post('/contact/submit', [ContactController::class, 'submit'])->name('contact.submit');
 
 Route::get('/login', [AuthController::class, 'index'])->name('login');
@@ -41,7 +47,6 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 
 // daftar penerima
 // Route::get("/penerima", [DashboardController::class, "daftarPenerima"])->middleware("auth");
-
 
 // Route RW coba
 Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
