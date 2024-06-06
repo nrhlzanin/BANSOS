@@ -29,7 +29,7 @@
     <link rel="stylesheet" href="{{ asset('css/main.css') }}">
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.8.2/font/bootstrap-icons.css">
     <!--animasi-->
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css"/>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
 
     @stack('css')
     <title>@yield('title')</title>
@@ -48,8 +48,9 @@
         <!-- Main content -->
 
         <!-- Footer -->
-
-        @include('components.landing-footer')
+        @if (!isset($hideFooter) || !$hideFooter)
+            @include('components.landing-footer')
+        @endif
         <!-- Footer -->
     </div>
 
@@ -84,7 +85,8 @@
     </script>
     <script src="{{ mix('js/app.js') }}"></script>
     @stack('js') <!-- Digunakan untuk memanggil custom js dari perintah push('js') pada masing-masing view -->
-    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav"
+        aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
     </button>
 </body>
