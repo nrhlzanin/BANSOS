@@ -120,9 +120,9 @@
                                                     </td>
                                                     <td>1</td>
                                                     <td>{{ $penerima->alternatif->pengajuan->warga->nama_kepalaKeluarga }}</td>
-                                                    <td>{{ $penerima->alternatif->pengajuan->no_nik }}</td>
+                                                    <td>{{ $penerima->alternatif->pengajuan->warga->no_nik }}</td>
                                                     <td>{{ $penerima->bansos->jenis_bansos }}</td>
-                                                    <td>{{ $penerima->bansos->tanggal_keluar }}</td>
+                                                    <td>{{ $penerima->bansos->periode }}</td>
                                                     <td>
                                                         <a href="{{ route('admin.data-warga.create', $penerima->id) }}"
                                                             class="btn btn-success"

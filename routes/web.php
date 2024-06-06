@@ -71,8 +71,8 @@ Route::prefix('petugas')->group(function() {
 // Route Warga
 Route::get('warga', [WargaController::class, 'index'])->middleware('auth', 'role:warga');
 Route::prefix('warga')->group(function() {
-    Route::get('/pengajuan/create', [PengajuanController::class, 'create'])->name('pengajuan.create');
-    Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('pengajuan.store');    
+    Route::get('/pengajuan/create', [PengajuanController::class, 'create'])->name('warga.pengajuan.create');
+    Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('warga.pengajuan.store');    
 });
 
 

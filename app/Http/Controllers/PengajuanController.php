@@ -21,7 +21,7 @@ class PengajuanController extends Controller
      */
     public function create()
     {
-        return view('pengajuan.create');
+        return view('warga.pengajuan.create');
     }
 
     /**
