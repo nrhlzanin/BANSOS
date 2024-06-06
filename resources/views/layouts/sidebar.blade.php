@@ -68,6 +68,13 @@
                 </li>
             </ul>
         </li>
+            <!-- Informasi Bansos -->
+            <li class="custom-nav-item nav-item" style="margin-bottom: 10px;">
+                <a href="{{ route('admin.addBansos') }}" class="nav-link {{ request()->is('admin/informasi-bansos') ? 'active' : '' }}">
+                    <i class="nav-icon fas fa-th"></i>
+                    <p>Informasi Bansos</p>
+                </a>
+            </li>
 
         <!-- Perankingan -->
         <li style="margin-bottom: 10px;" class="custom-nav-item nav-item has-treeview {{ request()->is('admin/perankingan') ? 'menu-open' : '' }}">
@@ -91,7 +98,7 @@
         
         <!-- Informasi Akun -->
         <li class="custom-nav-item nav-item" style="margin-bottom: 10px;">
-            <a href="{{ route('admin.informasi-akun') }}" class="nav-link {{ request()->is('admin/informasi-akun') ? 'active' : '' }}">
+            <a href="{{ route('admin.informasi.informasi-akun') }}" class="nav-link {{ request()->is('admin/informasi-akun') ? 'active' : '' }}">
                 <i class="nav-icon far fa-user-circle"></i>
                 <p>Informasi Akun</p>
             </a>

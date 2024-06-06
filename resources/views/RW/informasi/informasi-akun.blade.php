@@ -155,4 +155,13 @@
                     <option value="tidak_aktif" {{ $user->status == 'tidak_aktif' ? 'selected' : '' }}>Tidak Aktif</option>
                   </select>
                 </div>
-              </
+              </div>
+            </form>
+          </div>
+        </div>
+      </div>
+    </div>
+
+@include('layouts.footer')
+</div>
+</body>

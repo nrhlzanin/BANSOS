@@ -34,70 +34,34 @@
                                         <th>#</th>
                                         <th>Asal Bansos</th>
                                         <th>Jenis Bansos</th>
-                                        <th>Tanggal Masuk</th>
-                                        <th>Tanggal Keluar</th>
+                                        <th>Periode</th>
                                         <th>Status</th>
+                                        <th>Ketreangan</th>
                                         <th>Aksi</th>
                                       </tr>
                                     </thead>
                                     <tbody>
+                                      @foreach ($bansos as $bans)
                                       <tr>
                                         <td>1</td>
-                                        <td>Pemerintah</td>
-                                        <td>PKH</td>
-                                        <td></td>
-                                        <td></td>
-                                        <td></td>
+                                        <td>{{ $bans->asal_bansos }}</td>
+                                        <td>{{ $bans->jenis_bansos }}</td>
+                                        <td>{{ $bans->periode }}</td>
+                                        <td>{{$bans->status}}</td>
+                                        <td>{{$bans->keterangan}}</td>
                                         <td>
-                                          <a href="#"
-                                            class="btn btn-success"
-                                            style="background-color: #19CD61;">Detail <i
-                                                class="fa fa-info-circle"></i></a>
-                                        <button class="btn btn-danger btn-delete"
-                                            data-id="#"
-                                            style="background-color: #FF0F0F;">Delete <i
-                                                class="fa fa-trash"></i></button>
-                                        </td>
-                                        <td>
+                                          <a href="" class="btn btn-success" style="background-color: #19CD61;">Detail <i class="fa fa-info-circle"></i></a>
+                                            <button class="btn btn-danger btn-delete" data-id="" style="background-color: #FF0F0F;">Delete <i class="fa fa-trash"></i></button>
                                         </td>
                                       </tr>
+                                      @endforeach
                                     </tbody>
                                   </table>
                                 </div>
                               </div>
-                        </div>
                     </div>
                 </div>
             </div>
         </div>
     </div>
-
 @endsection
-
-<!-- DataTables  & Plugins -->
-<script src="{{ asset('adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/jszip/jszip.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/pdfmake/pdfmake.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/pdfmake/vfs_fonts.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-<script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-
-<!-- AdminLTE App -->
-<script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
-<script>
-  //Untuk mengirimkan token Laravel CSRF pada setiap request ajax
-  $.ajaxSetup({
-    headers: {
-      'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-    }
-  });
-</script>
-@stack('js') <!-- Digunakan untuk memanggil custom js dari perintah push('js') pada masing-masing view -->
-</body>
-</html>

@@ -49,10 +49,11 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     
     Route::get('/data-warga', [AdminController::class, 'dataWarga'])->name('admin.data-warga');
     Route::get('/data-warga/penerima', [AdminController::class, 'create'])->name('admin.data-warga.create');
-    Route::get('/informasi-akun', [AdminController::class, 'informasiAkun'])->name('admin.informasi-akun');
+    Route::get('/informasi-akun', [InformasiController::class, 'index'])->name('admin.informasi.informasi-akun');
     Route::get('/validasi', [AdminController::class, 'validasi'])->name('admin.validasi');
     Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('admin.informasi-bansos');
     Route::get('/data-warga/validasi', [AdminController::class, 'validasiData'])->name('admin.data-warga.validation');
+    Route::get('/informasi-bansos', [BansosController::class, 'index'])->name('admin.addBansos');
     Route::get('/perankingan', [SpkController::class, 'perankingan'])->name('admin.spk.menu');
     Route::put('/kriteria/update/{id}', [SpkController::class, 'update'])->name('spk.modal.editKriteria');
     Route::post('/kriteria/create', [SpkController::class, 'store'])->name('spk.modal.createKriteria');
