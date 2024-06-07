@@ -5,120 +5,90 @@
 @section('content')
     <main style="margin: 55px auto 100px;">
         <!-- Beranda -->
-        <section class="jumbotron" style="background-color: #DAEEE7">
-            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-                <div class="carousel-inner">
-                    <div class="carousel-item active" style="display: flex;">
-                        <div style="flex: 1; padding-right: 20px;">
-                            <div class="carousel-caption d-md-block text-end" style="color: black; position: unset">
-                                <h1 class="fs-1 welcome" style="line-height: 60px;">Tingkatkan Integritas dan Transparansi
-                                    Bantuan Sosial dengan "SI BANSOS"</h1>
-                                <p style="text-align: justify; margin-top: 30px; font-size: 18px">"SI BANSOS" adalah sistem
-                                    informasi bantuan sosial RW 03 Kelurahan Tulusrejo yang dirancang untuk membantu
-                                    pendataan, penyaluran, dan pelaporan bansos di wilayah RW 03. Sistem ini diharapkan
-                                    dapat meningkatkan efisiensi, transparansi, dan akuntabilitas penyaluran bansos. Sistem
-                                    ini akan meliputi pendataan penerima bansos, pelaporan, dan validasi data, penyaluran
-                                    bansos, serta informasi akun.</p>
-                                <p style="text-align: justify; font-size: 18px">Sistem ini dilatarbelakangi oleh
-                                    permasalahan pendataan, penyaluran, dan monitoring bansos yang masih dilakukan secara
-                                    manual dan menyebabkan berbagai permasalahan. Diharapkan sistem ini dapat mengatasi
-                                    permasalahan tersebut dan meningkatkan kualitas penyaluran bansos di wilayah RW 03.</p>
-                            </div>
-                        </div>
-                        <div style="flex: 1;">
-                            <img src="http://127.0.0.1:8000/img/hero4.webp" class="d-block w-100" style="object-fit: cover;"
-                                alt="..." height="500">
-                        </div>
-                    </div>
-                </div>
+        <section class="responsive-section">
+            <div class="responsive-text">
+                <h1>Tingkatkan Integritas dan Transparansi Bantuan Sosial dengan "SI BANSOS"</h1>
+                <p>"SI BANSOS" adalah sistem informasi bantuan sosial RW 03 Kelurahan Tulusrejo yang dirancang untuk membantu pendataan, penyaluran, dan pelaporan bansos di wilayah RW 03. Sistem ini diharapkan dapat meningkatkan efisiensi, transparansi, dan akuntabilitas penyaluran bansos. Sistem ini akan meliputi pendataan penerima bansos, pelaporan, dan validasi data, penyaluran bansos, serta informasi akun.</p>
+                <p>Sistem ini dilatarbelakangi oleh permasalahan pendataan, penyaluran, dan monitoring bansos yang masih dilakukan secara manual dan menyebabkan berbagai permasalahan. Diharapkan sistem ini dapat mengatasi permasalahan tersebut dan meningkatkan kualitas penyaluran bansos di wilayah RW 03.</p>
             </div>
+            <img src="http://127.0.0.1:8000/img/hero4.webp" class="responsive-image">
         </section>
-
-        <!-- Jenis BANSOS -->
-        <section class="container py-5" id="jenis" style="padding-top: 110px !important">
-            <h1 class="text-center">JENIS PROGRAM BANTUAN SOSIAL</h1>
-            <p class="text-center" style="font-size: 30px">Berikut Jenis Program Bantuan Sosial:</p>
-            <div class="row mt-5 p-3 feature">
-                <div class="text-center shadow rounded" style="background-color: #D6E6F2;">
-                    <img src="http://127.0.0.1:8000/img/laporkan.jpg" alt=""
-                        style="float: right; width: 200px; margin-left: 20px; margin-top: 10px; margin-right: 10px;">
-                    <h4 style="text-align: middle; margin-left: 20px; margin-bottom: 40px;margin-top: 10px; font-size: 22px;">
-                        Bantuan Pangan Non Tunai (BPNT)
-                    </h4>
-                    <p>Bantuan Pangan Non Tunai (BPNT) adalah program pemerintah Indonesia yang memberikan bantuan sosial
-                        pangan kepada masyarakat kurang mampu
-                        dalam bentuk uang elektronik atau Kartu Sembako.</p>
-                    <a href="https://katadata.co.id/ekonopedia/istilah-ekonomi/65839f989c180/bantuan-pangan-non-tunai-definisi-dasar-hukum-dan-cara-mengeceknya"
-                        target="_blank" style="margin-bottom: 10px;">Info Lebih Lanjut </a>
-                </div>
-                <div class="text-center shadow rounded" style="background-color: #D6E6F2;">
-                    <img src="http://127.0.0.1:8000/img/laporkan.jpg" alt=""
-                        style="float: right; width: 200px; margin-left: 20px; margin-top: 10px; margin-right: 10px;">
-                    <h4 style="text-align: middle; margin-left: 20px; margin-bottom: 40px; margin-top: 10px; font-size: 22px;">
-                        Program Keluarga Harapan (PKH)
-                    </h4>
-                    <p>Program Keluarga Harapan (PKH) merupakan program pemberian bantuan sosial bersyarat kepada keluarga
-                        miskin yang ditetapkan
-                        sebagai Keluarga Penerima Manfaat (KPM) PKH.</p>
-                    <a href="https://kemensos.go.id/program-keluarga-harapan-pkh" target="_blank"
-                        style="margin-bottom: 10px;">Info Lebih Lanjut </a>
-                </div>
-                <div class="text-center shadow rounded" style="background-color: #D6E6F2;">
-                    <img src="http://127.0.0.1:8000/img/laporkan.jpg" alt=""
-                        style="float: right; width: 200px; margin-left: 20px; margin-top: 10px; margin-right: 10px;">
-                    <h4 style="text-align: middle; margin-left: 20px; margin-bottom: 40px; margin-top: 10px; font-size: 22px;">
-                        Bantuan Sosial Tunai (BST)
-                    </h4>
-                    <p>Bantuan Sosial Tunai (BST) adalah program bantuan sosial yang diberikan oleh pemerintah Indonesia
-                        kepada keluarga miskin dan rentan miskin yang terdampak
-                        pandemi COVID-19.</p>
-                    <a href="https://lifepal.co.id/media/bantuan-sosial-tunai/" target="_blank"
-                        style="margin-bottom: 10px;">Info Lebih Lanjut </a>
-                </div>
-            </div>
-        </section>
-
+        
+        
         <!-- Informasi -->
-        <section class="w-100 mx-0" id="informasi"
-            style="padding-top: 110px; padding-bottom: 110px  !important; background-color: #DAEEE7;">
+        <section class="responsive-section-2" id="jenis">
+            <h1 class="text-center">JENIS PROGRAM BANTUAN SOSIAL</h1>
+            <div class="row mt-5 p-3 feature">
+                <div class="shadow card">
+                    <div class="card-header">
+                        <h4>Bantuan Pangan Non Tunai (BPNT)</h4>
+                        <img src="http://127.0.0.1:8000/img/laporkan.jpg" class="card-image" alt="BPNT">
+                    </div>
+                    <p>Bantuan Pangan Non Tunai (BPNT) adalah program pemerintah Indonesia yang memberikan bantuan sosial pangan kepada masyarakat kurang mampu dalam bentuk uang elektronik atau Kartu Sembako.</p>
+                    <a href="https://katadata.co.id/ekonopedia/istilah-ekonomi/65839f989c180/bantuan-pangan-non-tunai-definisi-dasar-hukum-dan-cara-mengeceknya" target="_blank">Info Lebih Lanjut ></a>
+                </div>
+        
+                <div class="shadow card">
+                    <div class="card-header">
+                        <h4>Program Keluarga Harapan (PKH)</h4>
+                        <img src="http://127.0.0.1:8000/img/laporkan.jpg" class="card-image" alt="PKH">
+                    </div>
+                    <p>Program Keluarga Harapan (PKH) merupakan program pemberian bantuan sosial bersyarat kepada keluarga miskin yang ditetapkan sebagai Keluarga Penerima Manfaat (KPM) PKH.</p>
+                    <a href="https://kemensos.go.id/program-keluarga-harapan-pkh" target="_blank">Info Lebih Lanjut ></a>
+                </div>
+        
+                <div class="shadow card">
+                    <div class="card-header">
+                        <h4>Bantuan Sosial Tunai (BST)</h4>
+                        <img src="http://127.0.0.1:8000/img/laporkan.jpg" class="card-image" alt="BST">
+                    </div>
+                    <p>Bantuan Sosial Tunai (BST) adalah program bantuan sosial yang diberikan oleh pemerintah Indonesia kepada keluarga miskin dan rentan miskin yang terdampak pandemi COVID-19.</p>
+                    <a href="https://lifepal.co.id/media/bantuan-sosial-tunai/" target="_blank">Info Lebih Lanjut ></a>
+                </div>
+            </div>
+        </section>
+        
+
+        <!-- Pengumuman -->
+        <section class="responsive-section2" id="informasi" style="">
             <div class="container">
                 <h1 class="text-center">Bantuan Sosial Terbaru</h1>
-                <p class="text-center col-lg-8 m-auto">Dapatkan seputar informasi bantuan sosial terkini untuk memastikan
-                    tingkat transparansi dan integritas dengan memantau setiap proses penyaluran bantuan sosial</p>
-                <div class="row mt-5 p-3 feature">
-                    <div class="text-center shadow rounded" style="background-color: white;">
-                        <img src="http://127.0.0.1:8000/img/laporkan.jpg" alt=""
-                            style="float: left ; width: 200px; margin-left: 20px; margin-top: 10px; margin-right: 10px;">
-                        <h1 style="text-align: middle; margin-left: 10px; margin-bottom: 10px;margin-top: 10px; margin-right:10px; font-size: 110px;">
-                            10
-                        </h1>
-                        <h2 style="text-align: middle; margin-left: 10px; margin-bottom: 10px; margin-right: 10px; font-size: 25px;">
+                <p class="text-center col-lg-8 m-auto">Dapatkan seputar informasi bantuan sosial terkini untuk memastikan tingkat transparansi dan integritas dengan memantau setiap proses penyaluran bantuan sosial</p>
+        
+                <div class="mt-5 p-3 feature">
+                    <div class="text-center shadow card2" style="background-color: white; max-width: 400px; margin: auto;">
+                        <h2 style="font-size: 25px;">
                             <b>Data Kuota Bansos</b>
                         </h2>
+                        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+                            <img src="http://127.0.0.1:8000/img/laporkan.jpg" alt="" style="">
+                            <h1 style="font-size: 110px;"> {{ $count_bansos }} </h1>
+                        </div>
                     </div>
-                    <div class="text-center shadow rounded" style="background-color: white;">
-                        <img src="http://127.0.0.1:8000/img/laporkan.jpg" alt=""
-                            style="float: left; width: 200px; margin-left: 20px; margin-top: 10px; margin-right: 10px;">
-                        <h1 style="text-align: middle; margin-left: 10px; margin-bottom: 10px;margin-top: 10px; margin-right:10px; font-size: 110px;">
-                            {{ $count_bansos }}
-                        </h1>
-                        <h2 style="text-align: middle; margin-left: 10px; margin-bottom: 10px; margin-right: 10px; font-size: 25px;">
+        
+                    <div class="text-center shadow card2" style="background-color: white; flex: 1; max-width: 400px; margin: auto;">
+                        <h2 style="font-size: 25px;">
                             <b>Data Bansos Dicairkan</b>
                         </h2>
+                        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+                            <img src="http://127.0.0.1:8000/img/laporkan.jpg" alt="" style="">
+                            <h1 style="font-size: 110px;"> {{ $count_bansos }} </h1>
+                        </div>
                     </div>
-                    <div class="text-center shadow rounded" style="background-color: white;">
-                        <img src="http://127.0.0.1:8000/img/laporkan.jpg" alt=""
-                            style="float: left; width: 200px; margin-left: 20px; margin-top: 10px; margin-right: 10px;">
-                        <h1 style="text-align: middle; margin-left: 10px; margin-bottom: 10px;margin-top: 10px; margin-right:10px; font-size: 110px;">
-                            {{ $count_pengajuan }}
-                        </h1>
-                        <h2 style="text-align: middle; margin-left: 10px; margin-bottom: 10px; margin-right: 10px; font-size: 25px;">
+        
+                    <div class="text-center shadow card2" style="background-color: white; max-width: 400px; margin: auto;">
+                        <h2 style="font-size: 25px;">
                             <b>Peserta Pendaftaran Bansos</b>
                         </h2>
+                        <div style="display: flex; flex-direction: row; align-items: center; justify-content: center;">
+                            <img src="http://127.0.0.1:8000/img/laporkan.jpg" alt="" style="">
+                            <h1 style="font-size: 110px;"> {{ $count_pengajuan }} </h1>
+                        </div>
                     </div>
                 </div>
             </div>
         </section>
+        
 
         <!-- FAQ -->
         <section class="container shadow" id="tentang"
@@ -141,4 +111,264 @@
             </form>
         </section>
     </main>
+
+
+<style>
+ .responsive-section {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    padding: 40px;
+    background-color: #DAEEE7;
+    height: 100vh;
+}
+
+.responsive-section2 {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #DAEEE7;
+    padding: 40px;
+    height: 100vh;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.feature {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 20px;
+}
+
+.card2 {
+    background-color: black;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 300px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    margin: auto;
+}
+
+.card2 h2 {
+    font-size: 25px;
+    margin: 0;
+}
+
+.card2 img {
+    width: 70p%;
+    height: auto;
+}
+
+.card2 h1 {
+    font-size: 110px;
+    margin: 0;
+}
+
+@media (max-width: 768px) {
+    .responsive-section2 {
+        padding: 20px;
+        height: auto;
+    }
+
+    .card2 {
+        max-width: 100%;
+        padding: 20px
+    }
+
+    .feature {
+        padding: 20px;
+        gap: 10px;
+    }
+
+    .card2 h2 {
+        font-size: 18px;
+    }
+
+    .card2 h1 {
+        font-size: 80px;
+    }
+}
+
+
+
+.card {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    border-radius: 12px;
+}
+
+.card2 {
+    display: flex;
+    flex-direction: column;
+    padding: 32px;
+    border-radius: 12px;
+    gap: 20px;
+    width: 400px;
+}
+
+@media (max-width: 100px) {
+    .card {
+        display: flex;
+    }
+}
+
+.card-image {
+    display: flex;
+    max-width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+@media (max-width: 10px) {
+    .card-image {
+        width: 100%;
+    }
+}
+
+.responsive-section-2 {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 40px;
+    height: 100vh;
+}
+
+.text-center {
+    text-align: center;
+}
+
+.row {
+    display: flex;
+    flex-wrap
+    gap: 20px;
+}
+
+.card {
+    background-color: #D6E6F2;
+    padding: 20px;
+    border-radius: 8px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.card-header {
+    display: flex;
+    justify-items: baseline;
+    align-items: center;
+    gap: 10px;
+}
+
+.card h4 {
+    font-size: 22px;
+    margin: 0;
+}
+
+.card-image {
+    width: 90%;
+    height: 90%;
+}
+
+.card p {
+    font-size: 16px;
+}
+
+.card a {
+    margin-top: auto;
+    color: blue;
+    text-decoration: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .responsive-section-2 {
+        padding: 20px;
+        height: auto;
+    }
+
+    .card {
+        max-width: 100%;
+    }
+
+    .card-header {
+        flex-direction: column;
+        align-items: flex-start;
+    }
+
+    .card-image {
+        width: 100%;
+        height: auto;
+    }
+
+    .card h4 {
+        font-size: 18px;
+    }
+
+    .card p {
+        font-size: 14px;
+    }
+}
+
+
+.responsive-text {
+    color: black;
+    width: 50%;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.responsive-image {
+    width: 700px;
+    height: auto;
+    display: flex;
+}
+
+@media (max-width: 1200px) {
+    .responsive-image {
+        width: 500px;
+    }
+}
+
+@media (max-width: 768px) {
+    .responsive-section {
+        flex-direction: column-reverse;
+        text-align: center;
+        height: auto;
+    }
+
+    .responsive-text {
+        width: 100%;
+    }
+
+    .responsive-image {
+        width: 100%;
+        max-width: 400px;
+    }
+}
+
+@media (max-width: 480px) {
+    .responsive-image {
+        width: 100%;
+        max-width: 300px;
+    }
+
+    .responsive-text h1 {
+        font-size: 32px;
+        line-height: 40px;
+    }
+
+    .responsive-text p {
+        font-size: 16px;
+    }
+}
+</style>
+
 @endsection
