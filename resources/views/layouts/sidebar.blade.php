@@ -75,7 +75,7 @@
 
         <!-- Informasi Bansos -->
         <li class="custom-nav-item nav-item" style="margin-bottom: 10px;">
-          <a href="{{ route('admin.addBansos') }}" class="nav-link {{ request()->is('admin/informasi-bansos') ? 'active' : '' }}">
+          <a href="{{ route('admin.informasi-bansos') }}" class="nav-link {{ request()->is('admin/informasi-bansos') ? 'active' : '' }}">
             <i class="nav-icon fas fa-th"></i>
             <p>Informasi Bansos</p>
           </a>

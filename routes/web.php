@@ -49,9 +49,7 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/data-warga/penerima', [AdminController::class, 'create'])->name('admin.data-warga.create');
     Route::get('/informasi-akun', [InformasiController::class, 'index'])->name('admin.informasi.informasi-akun');
     Route::get('/validasi', [AdminController::class, 'validasi'])->name('admin.validasi');
-    Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('admin.informasi-bansos');
     Route::get('/data-warga/validasi', [AdminController::class, 'validasiData'])->name('admin.data-warga.validation');
-    Route::get('/informasi-bansos', [BansosController::class, 'index'])->name('admin.addBansos');
     Route::get('/perankingan', [SpkController::class, 'perankingan'])->name('admin.spk.menu');
     Route::put('/kriteria/update/{id}', [SpkController::class, 'update'])->name('spk.modal.editKriteria');
     Route::post('/kriteria/create', [SpkController::class, 'store'])->name('spk.modal.createKriteria');
@@ -60,9 +58,13 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('kriteria/{kriteria}/createSubKriteria', [SpkController::class, 'createSubKriteria'])->name('kriteria.createSubKriteria');
     Route::post('kriteria/{kriteria}/storeSubKriteria', [SpkController::class, 'storeSubKriteria'])->name('kriteria.storeSubKriteria');
     Route::put('/kriteria/{kriteria}/subkriteria/{subkriteria}', [SpkController::class, 'editSubKriteria'])->name('kriteria.updateSubKriteria');
-
-    Route::get('/addBansos', [AdminController::class, 'addBansos']);
-
+    Route::get('/informasi-bansos', [BansosController::class, 'index'])->name('admin.informasi-bansos');
+    Route::get('/informasi-bansos/addBansos', [BansosController::class, 'create'])->name('admin.informasi-bansos.addBansos');
+    Route::post('/informasi-bansos', [BansosController::class, 'store'])->name('admin.informasi-bansos.store');
+    Route::get('/informasi-bansos/show/{id}', [BansosController::class, 'show'])->name('admin.informasi-bansos.show');
+    Route::get('/informasi-bansos/{id}/edit', [BansosController::class, 'edit'])->name('admin.informasi-bansos.edit');
+    Route::put('/informasi-bansos/{id}', [BansosController::class, 'update'])->name('admin.informasi-bansos.update');
+    Route::delete('admin/informasi-bansos/{id}', [BansosController::class, 'destroy'])->name('admin.informasi-bansos.destroy');
 
 
 });

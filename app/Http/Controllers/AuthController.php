@@ -113,7 +113,7 @@ class AuthController extends Controller
         Auth::logout();
 
         // kembali ke halaman login
-        return redirect("login")->with('success', 'Anda telah berhasil logout.');
+        return redirect("/")->with('success', 'Anda telah berhasil logout.');
     }
 
     
