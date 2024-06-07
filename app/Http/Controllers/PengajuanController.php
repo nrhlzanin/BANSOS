@@ -30,23 +30,19 @@ class PengajuanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'no_kk' => 'required|string|max:20',
-            'no_nik' => 'required|string|max:20',
-            'nama' => 'required|string|max:255',
-            'no_rt' => 'required|integer',
-            'pekerjaan' => 'required|string|max:255',
+            'pekerjaan' => 'required|string|max:50',
             'penghasilan' => 'required|numeric',
-            'pendidikan' => 'required|string|max:255',
+            'foto_slipgaji' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
+            'pendidikan' => 'required|string|in:tidak sekolah,SD,SMP,SMA,kuliah',
             'jumlah_tanggungan' => 'required|integer',
-            'tempat_tinggal' => 'required|string|max:255',
-            'transportasi' => 'nullable|string|max:255',
+            'tempat_tinggal' => 'required|string|in:Kontrakan,Menumpang,Rumah Pribadi',
+            'transportasi' => 'nullable|string|in:Jalan Kaki dan/ Sepeda,Transportasi Umum,1 Kendaraan Bermotor,2 Kendaraan Bermotor,>2 Kendaraan Bermotor',
             'luas_bangunan' => 'nullable|numeric',
-            'jenis_atap' => 'nullable|string|max:255',
-            'jenis_dinding' => 'nullable|string|max:255',
-            'kelistrikan' => 'nullable|string|max:255',
-            'sumber_air_bersih' => 'nullable|string|max:255',
-            'aset' => 'nullable|array',
-        ]);
+            'jenis_atap' => 'nullable|string|in:Jerami,Bambu,Seng,Genteng Tanah Liat,Asbes,Genteng Metal',
+            'jenis_dinding' => 'nullable|string|in:Triplek,Anyaman Bambu,Papan Kayu,Batu Bata,Batako',
+            'kelistrikan' => 'nullable|string|in:Menumpang,Pribadi 450watt,Pribadi 900watt,Pribadi 1200watt,Pribadi >1200watt',
+            'sumber_air_bersih' => 'nullable|string|in:Sumur Swadaya,Sumur Tetangga,Sumur Pribadi,PDAM Terbatas,PDAM Bebas',
+            ]);
 
         PengajuanModel::create($request->all());
 

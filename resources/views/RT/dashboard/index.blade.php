@@ -47,5 +47,6 @@
     </div>
     <!-- ./col -->
   </div>
+  <iframe class="mx-auto" width="1200" height="450" src="https://lookerstudio.google.com/embed/reporting/38fb4a4b-a94e-4730-8503-d594e88429a6/page/lic2D" frameborder="0" style="border:0" allowfullscreen sandbox="allow-storage-access-by-user-activation allow-scripts allow-same-origin allow-popups allow-popups-to-escape-sandbox"></iframe>
 </div>
 @endsection

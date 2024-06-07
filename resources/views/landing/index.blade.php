@@ -161,7 +161,7 @@
 }
 
 .card2 img {
-    width: 70p%;
+    width: 70%;
     height: auto;
 }
 
@@ -246,7 +246,7 @@
 
 .row {
     display: flex;
-    flex-wrap
+    flex-wrap: wrap;
     gap: 20px;
 }
 

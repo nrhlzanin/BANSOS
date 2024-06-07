@@ -9,47 +9,47 @@
                 data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
                 aria-label="Toggle navigation">
                 <span class="navbar-toggler-icon"></span>
-            </button> 
-            <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            </button>
+            <div class="collapse navbar-collapse d-flex justify-content-between align-items-center"
+                id="navbarSupportedContent">
                 <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
                     <!-- Menu untuk user yang belum login -->
+                    <li class="nav-item">
+                        <a class="nav-link" aria-current="page" href="{{ url('/#beranda') }}">Beranda</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/#jenis') }}">Jenis Bansos</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="{{ url('/#informasi') }}">Informasi</a>
+                    </li>
                     @guest
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#beranda">Beranda</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#jenis">Jenis Bansos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#informasi">Informasi</a>
-                        </li>
                         <li class="nav-item">
                             <a class="nav-link" href="#tentang">FAQ</a>
                         </li>
-                        <ul class="nav-item d-flex p-0 ms-5 authentication">
-                            <li class="list-group">
-                                <a href="/login" class="nav-link text-center bg-primary text-white rounded-pill border login px-3">Login</a>
-                            </li>
-                        </ul>
                     @endguest
 
                     <!-- Menu untuk user yang sudah login -->
                     @auth
-                        <li class="nav-item">
-                            <a class="nav-link" aria-current="page" href="#beranda">Beranda</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#jenis">Jenis Bansos</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link" href="#informasi">Informasi</a>
-                        </li>
+
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('warga.pengajuan.create') }}">Pengajuan</a>
                         </li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
+
+                    @endauth
+                </ul>
+                <ul class="navbar-nav d-flex p-0 m-0 authentication d-flex justify-content-center align-items-center">
+                    @guest
+                        <li class="list-group">
+                            <a href="/login" class="nav-link text-center bg-primary text-white rounded-pill border login px-3">Login</a>
+                        </li>
+                    @endguest
+
+                    @auth
+                        <li class="nav-item dropdown d-flex">
+                            <a class="nav-link" href="#" role="button" data-toggle="dropdown" aria-expanded="false">
                                 Selamat Datang {{ auth()->user()->warga->nama_kepalaKeluarga }}
+                                <i class="fas fa-caret-down"></i>
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li>

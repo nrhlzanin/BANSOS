@@ -61,58 +61,6 @@
                         });
                     </script>
 
-                    <!-- Tempat Tanggal Lahir -->
-                    <div class="mb-3">
-                        <label for="tempat_tanggal_lahir" class="form-label" style="margin: 5px">Tempat Tanggal Lahir:</label>
-                        <div class="input-group">
-                            <input type="text" class="form-control form-control-lg" name="tempat_lahir" id="tempat_lahir" placeholder="Tempat Lahir" style="border-radius: 5px; font-size: 16px; padding: 10px; margin-right: 10px; margin-top: 5px;">
-                            <small id="tempat_lahir_warning" style="color: red; display: none; margin: 5px;">Hanya huruf yang diperbolehkan.</small>
-                            <input type="date" class="form-control form-control-lg" name="tanggal_lahir" id="tanggal_lahir" style="border-radius: 5px; font-size: 16px; padding: 10px; margin-left: 10px; margin-top: 5px;">
-                        </div>
-                    </div>
-
-                    <script>
-                        document.getElementById('tempat_lahir').addEventListener('input', function (e) {
-                            const input = e.target;
-                            const warning = document.getElementById('tempat_lahir_warning');
-                            const filteredValue = input.value.replace(/[^a-zA-Z\s]/g, '');
-
-                            if (input.value !== filteredValue) {
-                                input.value = filteredValue;
-                                warning.style.display = 'block';
-                            } else {
-                                warning.style.display = 'none';
-                            }
-                        });
-                    </script>
-
-                    {{-- Agama --}}
-                    <div class="mb-3">
-                        <label for="agama" class="form-label" style="margin: 5px">Agama:</label>
-                        <div class="input-group">
-                            <select class="form-select form-control-lg" name="agama" id="agama" style="background-color: white; color: #333; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px; width: 570px;">
-                                <option selected disabled>Pilih Agama</option>
-                                <option value="Islam">Islam</option>
-                                <option value="Kristen Katolik">Kristen Katolik</option>
-                                <option value="Kristen Protestan">Kristen Protestan</option>
-                                <option value="Hindu">Hindu</option>
-                                <option value="Buddha">Buddha</option>
-                                <option value="Konghucu">Konghucu</option>
-                            </select>
-                        </div>
-                    </div>
-                    {{-- Jenis Kelamin --}}
-                    <div class="mb-3">
-                        <label class="form-label" style="margin: 5px">Jenis Kelamin:</label><br>
-                        <div class="form-check form-check-inline" style="margin-left: 5px; margin-top: 15px">
-                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin_laki" value="Laki-Laki">
-                            <label class="form-check-label" for="jenis_kelamin_laki">Laki-Laki</label>
-                        </div>
-                        <div class="form-check form-check-inline" style="margin: 5px; margin-top: 15px">
-                            <input class="form-check-input" type="radio" name="jenis_kelamin" id="jenis_kelamin_perempuan" value="Perempuan">
-                            <label class="form-check-label" for="jenis_kelamin_perempuan">Perempuan</label>
-                        </div>
-                    </div>
                     <!-- No Telepon -->
                     <div class="mb-3">
                         <label for="no_telepon" class="form-label" style="margin: 5px; margin-top: 9px;">No Telepon:</label>
@@ -134,29 +82,6 @@
                             }
                         });
                     </script>
-
-                    <!-- Email -->
-                    <div class="mb-3">
-                        <label for="email" class="form-label" style="margin: 5px">Email:</label>
-                        <input type="email" class="form-control form-control-lg" name="email" id="email" placeholder="example@gmail.com" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" required>
-                        <small id="email_warning" style="color: red; display: none; margin: 5px;">Email tidak valid.</small>
-                    </div>
-
-                    <script>
-                        document.getElementById('email').addEventListener('input', function (e) {
-                            const input = e.target;
-                            const warning = document.getElementById('email_warning');
-                            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
-
-                            if (!emailPattern.test(input.value)) {
-                                warning.style.display = 'block';
-                            } else {
-                                warning.style.display = 'none';
-                            }
-                        });
-                    </script>
-
-
                 </div>  
                 <div class="col-md-6">
                     <!-- No. KK -->
@@ -181,104 +106,34 @@
                         });
                     </script>
 
-                    <!-- Provinsi -->
-                    <div class="mb-3">
-                        <label for="provinsi" class="form-label" style="margin: 5px">Provinsi:</label>
-                        <input type="text" class="form-control form-control-lg" name="provinsi" id="provinsi" placeholder="Nama Provinsi" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
-                        <small id="provinsi_warning" style="color: red; display: none; margin: 5px;">Hanya huruf yang diperbolehkan.</small>
-                    </div>
-
-                    <script>
-                        document.getElementById('provinsi').addEventListener('input', function (e) {
-                            const input = e.target;
-                            const warning = document.getElementById('provinsi_warning');
-                            const filteredValue = input.value.replace(/[^a-zA-Z\s]/g, '');
-
-                            if (input.value !== filteredValue) {
-                                input.value = filteredValue;
-                                warning.style.display = 'block';
-                            } else {
-                                warning.style.display = 'none';
-                            }
-                        });
-                    </script>
-
-                    <!-- Kabupaten -->
-                    <div class="mb-3">
-                        <label for="kabupaten" class="form-label" style="margin: 5px">Kabupaten:</label>
-                        <input type="text" class="form-control form-control-lg" name="kabupaten" id="kabupaten" placeholder="Nama Kabupaten" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
-                        <small id="kabupaten_warning" style="color: red; display: none; margin: 5px;">Hanya huruf yang diperbolehkan.</small>
-                    </div>
-
-                    <script>
-                        document.getElementById('kabupaten').addEventListener('input', function (e) {
-                            const input = e.target;
-                            const warning = document.getElementById('kabupaten_warning');
-                            const filteredValue = input.value.replace(/[^a-zA-Z\s]/g, '');
-
-                            if (input.value !== filteredValue) {
-                                input.value = filteredValue;
-                                warning.style.display = 'block';
-                            } else {
-                                warning.style.display = 'none';
-                            }
-                        });
-                    </script>
-
-                    <!-- Kecamatan -->
-                    <div class="mb-3">
-                        <label for="kecamatan" class="form-label" style="margin: 5px">Kecamatan:</label>
-                        <input type="text" class="form-control form-control-lg" name="kecamatan" id="kecamatan" placeholder="Nama Kecamatan" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
-                        <small id="kecamatan_warning" style="color: red; display: none; margin: 5px;">Hanya huruf yang diperbolehkan.</small>
-                    </div>
-
-                    <script>
-                        document.getElementById('kecamatan').addEventListener('input', function (e) {
-                            const input = e.target;
-                            const warning = document.getElementById('kecamatan_warning');
-                            const filteredValue = input.value.replace(/[^a-zA-Z\s]/g, '');
-
-                            if (input.value !== filteredValue) {
-                                input.value = filteredValue;
-                                warning.style.display = 'block';
-                            } else {
-                                warning.style.display = 'none';
-                            }
-                        });
-                    </script>
-
-                    <!-- Desa -->
-                    <div class="mb-3">
-                        <label for="desa" class="form-label" style="margin: 5px">Desa:</label>
-                        <input type="text" class="form-control form-control-lg" name="desa" id="desa" placeholder="Nama Desa" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
-                        <small id="desa_warning" style="color: red; display: none; margin: 5px;">Hanya huruf yang diperbolehkan.</small>
-                    </div>
-
-                    <script>
-                        document.getElementById('desa').addEventListener('input', function (e) {
-                            const input = e.target;
-                            const warning = document.getElementById('desa_warning');
-                            const filteredValue = input.value.replace(/[^a-zA-Z\s]/g, '');
-
-                            if (input.value !== filteredValue) {
-                                input.value = filteredValue;
-                                warning.style.display = 'block';
-                            } else {
-                                warning.style.display = 'none';
-                            }
-                        });
-                    </script>
-
                     {{-- RT/RW/Kode Pos --}}
                     <div class="mb-3">
-                        <label for="rt_rw" class="form-label" style="margin: 5px">RT/RW/Kode Pos:</label>
+                        <label for="rt" class="form-label" style="margin: 5px">RT:</label>
                         <div class="input-group">
-                            <input type="number" class="form-control form-control-lg" name="rt" id="rt" placeholder="Masukkan no. RT" style="border-radius: 5px; font-size: 16px; padding: 10px; margin-right: 10px; margin-top: 5px; margin-left: 5px;" pattern="\d*" inputmode="numeric">
-                            <input type="number" class="form-control form-control-lg" name="rw" id="rw" placeholder="Masukkan no. RW" style="border-radius: 5px; font-size: 16px; padding: 10px; margin-right: 10px; margin-top: 5px; margin-left: 5px;" pattern="\d*" inputmode="numeric">
-                            <input type="text" class="form-control form-control-lg" name="kode_pos" id="kode_pos" placeholder="Masukkan Kode Pos" oninput="this.value = this.value.replace(/[^0-9]/g, '');" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                            <input type="number" class="form-control form-control-lg" name="rt" id="rt" placeholder="Masukkan no. RT" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px" pattern="\d*" inputmode="numeric">
                         </div>
                     </div>
-                        
+
+                    <!-- Email -->
+                    <div class="mb-3">
+                        <label for="email" class="form-label" style="margin: 5px">Email:</label>
+                        <input type="email" class="form-control form-control-lg" name="email" id="email" placeholder="example@gmail.com" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" required>
+                        <small id="email_warning" style="color: red; display: none; margin: 5px;">Email tidak valid.</small>
+                    </div>
+
+                    <script>
+                        document.getElementById('email').addEventListener('input', function (e) {
+                            const input = e.target;
+                            const warning = document.getElementById('email_warning');
+                            const emailPattern = /^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+
+                            if (!emailPattern.test(input.value)) {
+                                warning.style.display = 'block';
+                            } else {
+                                warning.style.display = 'none';
+                            }
+                        });
+                    </script>
                 </div>
             </div>
 
@@ -407,7 +262,7 @@
                     <div class="mb-3">
                         <label for="pendidikan" class="form-label" style="margin: 5px">Pendidikan Terakhir:</label>
                             <div>
-                                <select class="form-select" name="pendidikan" id="pendidikan" style="background-color: white; f0f0f0; color: #333; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px; width: 570px">
+                                <select class="form-select" name="pendidikan" id="pendidikan" style="background-color: white; color: #333; border: 1px solid #ccc; border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px; width: 570px">
                                     <option selected disabled>Pilih Pendidikan Terakhir</option>
                                     <option value="1"> Tidak Sekolah</option>
                                     <option value="2"> SD</option>
@@ -452,7 +307,7 @@
                     {{-- Luas Bangunan --}}
                     <div class="mb-3">
                         <label for="luas" class="form-label" style="margin: 5px">Luas Bangunan (m²):</label>
-                        <input type="text" class="form-control form-control-lg" name="luas" id="luas" placeholder="Masukkan Luas Bangunan dalam m²" oninput="this.value = this.value.replace(/[^0-9]/g, '');" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px; width: 570px;">
+                        <input type="number" class="form-control form-control-lg" name="luas" id="luas" placeholder="Masukkan Luas Bangunan dalam m²" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px; width: 570px;">
                     </div>
                     {{-- Luas Bangunan
                     <div class="mb-3">
