@@ -16,7 +16,7 @@ return new class extends Migration
         Schema::create('alternatif', function (Blueprint $table) {
             $table->id('id_alternatif');
             $table->unsignedBigInteger('id_pengajuan')->index();
-            $table->foreign('id_pengajuan')->references('id_pengajuan')->on('pengajuan');
+            $table->foreign('id_pengajuan')->references('id_pengajuan')->on('pengajuan')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }

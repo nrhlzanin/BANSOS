@@ -102,11 +102,6 @@
                 <label>Email :</label>
                 <input type="email" class="form-control" value="{{ $user->email }}">
               </div>
-              <div class="notelp">
-                <label>Nomor Telp :</label>
-                <input type="email" class="form-control" value="{{ $rw->no_telp }}">
-              </div>
-            </div>
             <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
           </div>
         </div>
@@ -116,10 +111,11 @@
           <div class="container-13">
             <div class="data">Data</div>
             <form class="form-group">
-              <div class="form-row">
-                  <label for="nik">NIK:</label>
-                  <input type="text" class="form-control" id="nik" name="nik" value="{{ $user->nik }}" disabled>
+              <div class="notelp">
+                <label>Nomor Telp :</label>
+                <input type="email" class="form-control" value="{{ $rw->no_telp }}">
               </div>
+            </div>
               <div class="form-group">
                 <label for="alamat">Alamat:</label>
                 <input type="text" class="form-control" id="alamat" name="alamat" value="{{ $user->alamat }}" disabled>
@@ -146,13 +142,6 @@
                   <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" disabled>
                     <option value="laki-laki" {{ $user->jenis_kelamin == 'laki-laki' ? 'selected' : '' }}>Laki-laki</option>
                     <option value="perempuan" {{ $user->jenis_kelamin == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="status">Status:</label>
-                  <select class="form-control" id="status" name="status" disabled>
-                    <option value="menikah" {{ $user->status == 'menikah' ? 'selected' : '' }}>Menikah</option>
-                    <option value="tidak_aktif" {{ $user->status == 'tidak_aktif' ? 'selected' : '' }}>Tidak Aktif</option>
                   </select>
                 </div>
               </div>

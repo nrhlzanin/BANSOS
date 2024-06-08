@@ -28,9 +28,17 @@
                     <div class="card-body">
                       <div class="d-flex align-items-center justify-content-between">
                       </div>
+                      @if (session()->has('successUpdate'))
+                                <div class="alert alert-success alert-dismissible fade show" role="alert">
+                                    {{ session('successUpdate') }}
+                                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                        <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            @endif
                             <div class="table-responsive mt-4">          
                                 <table id="bansosTable" class="table table-striped">
-                                    <thead>
+                                    <thead style="background-color: #DAEEE7; color: #000;">
                                       <tr>
                                         <th>#</th>
                                         <th>Asal Bansos</th>
