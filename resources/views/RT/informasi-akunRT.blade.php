@@ -1,206 +1,78 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>{{ config('app.name', 'PWL – Laravel Starter Code') }}</title>
+@extends('layouts.appRT')
 
-  <meta name="csrf-token" content="{{ csrf_token() }}"> <!-- Untuk mengirimkan token Laravel CSRF pada setiap request ajax -->
+@section('title', 'Informasi Akun')
 
-  <!-- Google Font: Source Sans Pro -->
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,400i,700&display=fallback">
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="{{ asset('adminlte/plugins/fontawesome-free/css/all.min.css') }}">
-
-  <!-- DataTables -->
-  <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-bs4/css/dataTables.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-responsive/css/responsive.bootstrap4.min.css') }}">
-  <link rel="stylesheet" href="{{ asset('adminlte/plugins/datatables-buttons/css/buttons.bootstrap4.min.css') }}">
-
-  <!-- Theme style -->
-  <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
-
-  @stack('css') <!-- Digunakan untuk memanggil custom css dari perintah push('css') pada masing-masing view -->
-
-</head>
-<body class="hold-transition sidebar-mini">
-  @php
-    $user = Auth::user();
-    $rt = Auth::user()->rt;
-  @endphp
-  <!-- Site wrapper -->
-  <div class="wrapper">
-    <!-- Navbar -->
-    @include('layouts.header')
-    <!-- /.navbar -->
-    
-    <!-- Sidebar -->
-    @include('layouts.sidebarrt')
-    <!-- /.sidebar -->
-
-    <!-- Content Wrapper. Contains page content -->
-    <div class="content-wrapper">
-      <!-- Content Header (Page header) -->
-      <div class="content-header">
-        <div class="container-fluid">
-          <div class="row mb-2">
-            <div class="col-sm-6">
-              <h1 class="m-0">Informasi Akun</h1>
-            </div><!-- /.col -->
-            <div class="col-sm-6">
-              <ol class="breadcrumb float-sm-right">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active">Informasi Akun</li>
-              </ol>
-            </div><!-- /.col -->
-          </div><!-- /.row -->
-        </div><!-- /.container-fluid -->
-      </div>
-      <!-- /.content-header -->
-
-      <!-- Main content -->
-      <div class="dashboard">
-        <div class="container-1">
-          <div class="tabel-akun">
-            <img class="rectangle-14" src="../assets/vectors/rectangle_141_x2.svg" />
-            <div class="container-18">
-              <span class="profile">Profile</span>
-            </div>
-            <div class="container-2">
-              <div class="image-21">
-                <img src="{{ asset('img/profile.png') }}">
-              </div>
-              <div class="group-848">
-                <div class="admin-1">{{ $user->username }}</div>
-                <div class="ganti-foto-profile">
-                  Ganti Foto Profile
-                </div>
-                <span class="no-file-chosen">
-                  No file chosen
-                  <button class="edit-1">Choose File</button>
-                </span>
-              </div>
-            </div>
-            <div class="group-847">
-              <div class="nama">
-                <label>Nama :</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" value="{{ $rt->nama_petugas }}" disabled>
-                </div>
-              </div>
-              <div class="username">
-                <label>Username :</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" value="{{ $user->username }}" disabled>
-                </div>
-              </div>
-              <div class="password">
-                <label>Password :</label>
-                <input type="password" class="form-control">
-              </div>
-              <div class="email">
-                <label>Email :</label>
-                <input type="email" class="form-control" value="{{ $user->email }}">
-              </div>
-              <div class="notelp">
-                <label>Nomor Telp :</label>
-                <input type="email" class="form-control" value="{{ $rt->no_telp }}">
-              </div>
-            </div>
-            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-          </div>
-        </div>
-          <!-- /.container-fluid -->
-        <!-- Other profile details -->
-        <div class="tabel-akun-1">
-          <img class="rectangle-141" src="../assets/vectors/rectangle_14_x2.svg" />
-          <div class="rectangle-331"></div>
-          <div class="container-13">
-            <div class="data">Data</div>
-            <form class="form-group">
-              <div class="form-row">
-                <label for="nik">NIK:</label>
-                <input type="text" class="form-control" id="nik" name="nik" value="{{ $user->nik }}" disabled>
-              </div>
-              <div class="form-group">
-                <label for="alamat">Alamat:</label>
-                <input type="text" class="form-control" id="alamat" name="alamat" value="{{ $user->alamat }}" disabled>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="rt">RT:</label>
-                  <select class="form-control" id="rt" name="rt" disabled>
-
-                  </select>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="rw">RW:</label>
-                  <select class="form-control" id="rw" name="rw" disabled>
-                    <option value="1" {{ $user->rw == 1 ? 'selected' : '' }}>1</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="jenis_kelamin">Jenis Kelamin:</label>
-                  <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" disabled>
-                    <option value="laki-laki" {{ $user->jenis_kelamin == 'laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-                    <option value="perempuan" {{ $user->jenis_kelamin == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="status">Status:</label>
-                  <select class="form-control" id="status" name="status" disabled>
-                    <option value="menikah" {{ $user->status == 'menikah' ? 'selected' : '' }}>Menikah</option>
-                    <option value="tidak_aktif" {{ $user->status == 'tidak_aktif' ? 'selected' : '' }}>Tidak Aktif</option>
-                  </select>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-      </div>
-      </div>
-      <!-- /.content -->
-      
-      <!-- /.content -->
-        </div>
-    </div>
-    <!-- /.content-wrapper -->
-
-    @include('layouts.footer')
+@section('content_header')
+<div class="row mb-2">
+  <div class="col-sm-6">
+    <h1 class="m-0">Informasi Akun</h1>
+  </div><!-- /.col -->
+  <div class="col-sm-6">
+    <ol class="breadcrumb float-sm-right">
+      <li class="breadcrumb-item"><a href="#">Home</a></li>
+      <li class="breadcrumb-item active">Informasi Akun</li>
+    </ol>
   </div>
-  <!-- ./wrapper -->
+</div>
+@endsection
 
-  <!-- jQuery -->
-  <script src="{{ asset('adminlte/plugins/jquery/jquery.min.js') }}"></script>
-  <!-- Bootstrap 4 -->
-  <script src="{{ asset('adminlte/plugins/bootstrap/js/bootstrap.bundle.min.js') }}"></script>
+@section('content')
+@php
+  $user = Auth::user();
+  $rt = Auth::user()->rt;
+@endphp
+      <!-- Main content -->
+  <div class="dashboard">
+    <div class="container-1 bg-light">
+      <div class="">
+        <!-- <img class="rectangle-14" src="../assets/vectors/rectangle_141_x2.svg" /> -->
+        <div class="w-100 mb-3 p-2 d-flex justify-content-center align-items-center rounded-top-4"  style="background: #127C56;">
+          <span class="fs-2 text-light">Profile</span>
+        </div>
+        <form action="" method="POST">
+          <div class="px-5 d-flex">
+            <div class="image-21">
+              <img src="{{ asset('img/profile.png') }}">
+            </div>
+            <div class="group-848">
+              <div class="admin-1">{{ $rt->nama_petugas }}</div>
+              <div class="ganti-foto-profile">
+                Ganti Foto Profile
+              </div>
+              <input type="file" type="file">
+            </div>
+          </div>
+          <div class="px-5">
+            <div class="nama mb-3">
+              <label>Nama :</label>
+              <div class="input-group">
+                <input type="text" class="form-control" value="{{ $rt->nama_petugas }}" disabled>
+              </div>
+            </div>
+            <div class="username mb-3">
+              <label>Username :</label>
+              <div class="input-group">
+                <input type="text" class="form-control" value="{{ $user->username }}" disabled>
+              </div>
+            </div>
+            <div class="password mb-3">
+              <label>Password :</label>
+              <input type="password" class="form-control">
+            </div>
+            <div class="email mb-3">
+              <label>Email :</label>
+              <input type="email" class="form-control" value="{{ $user->email }}">
+            </div>
+            <div class="notelp">
+              <label>Nomor Telp :</label>
+              <input type="email" class="form-control" value="{{ $rt->no_telp }}">
+            </div>
+          </div>
+          <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+        </form>
+      </div>
+    </div>
+      <!-- /.container-fluid -->
 
-  <!-- DataTables  & Plugins -->
-  <script src="{{ asset('adminlte/plugins/datatables/jquery.dataTables.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-bs4/js/dataTables.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-responsive/js/dataTables.responsive.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-responsive/js/responsive.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-buttons/js/dataTables.buttons.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.bootstrap4.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/jszip/jszip.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/pdfmake/pdfmake.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/pdfmake/vfs_fonts.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.html5.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
-  <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
-
-  <!-- AdminLTE App -->
-  <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
-  <script>
-    //Untuk mengirimkan token Laravel CSRF pada setiap request ajax
-    $.ajaxSetup({
-      headers: {
-        'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
-      }
-    });
-  </script>
-  @stack('js') <!-- Digunakan untuk memanggil custom js dari perintah push('js') pada masing-masing view -->
-</body>
-</html>
+  </div>
+@endsection

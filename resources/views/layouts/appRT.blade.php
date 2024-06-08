@@ -19,8 +19,9 @@
 
   <!-- Theme style -->
   <link rel="stylesheet" href="{{ asset('adminlte/dist/css/adminlte.min.css') }}">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
 
-  @stack('css') <!-- Digunakan untuk memanggil custom css dari perintah push('css') pada masing-masing view -->
+  @stack('css')
 
 </head>
 <body class="hold-transition sidebar-mini">
@@ -54,7 +55,7 @@
         </div>
         <!-- /.content-header -->
         <!-- Main content -->
-        <section class="content">
+        <section class="content pb-5">
             @yield('content')
             <!-- <div class="container-fluid">
               <div class="row">
@@ -83,9 +84,9 @@
               </div>
             </div> -->
         </section>
+        </div>
+      @include('layouts.footer')
     </div>
-    @include('layouts.footer')
-  </div>
   <!-- Site wrapper -->
 
   <!-- jQuery -->
@@ -107,8 +108,11 @@
   <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.print.min.js') }}"></script>
   <script src="{{ asset('adminlte/plugins/datatables-buttons/js/buttons.colVis.min.js') }}"></script>
 
+  <!-- <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.8/dist/umd/popper.min.js" integrity="sha384-I7E8VVD/ismYTF4hNIPjVp/Zjvgyol6VFvRkX/vR+Vc4jQkC+hVqc2pM8ODewa9r" crossorigin="anonymous"></script>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.min.js" integrity="sha384-0pUGZvbkm6XF6gxjEnlmuGrJXVbNuzT9qBBavbLwCsOGabYfZo0T0to5eqruptLy" crossorigin="anonymous"></script> -->
+
   <!-- AdminLTE App -->
-  <script src="{{ asset('adminlte/dist/js/adminlte.min.js') }}"></script>
+  <script src="{{ asset('adminlte/dist/js/adminlte.js') }}"></script>
   <script>
     //Untuk mengirimkan token Laravel CSRF pada setiap request ajax
     $.ajaxSetup({

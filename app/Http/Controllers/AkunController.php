@@ -46,6 +46,7 @@ class AkunController extends Controller
     }
     public function akunPetugas() 
     {
+        return view('RT.informasi-akunRT');
 
     }
 }

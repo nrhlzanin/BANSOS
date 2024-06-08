@@ -15,8 +15,5 @@ class PetugasController extends Controller
     {
         return view('RT.dataWargaRT.index');
     }
-    public function informasiAkun() 
-    {
-        return view('RT.informasi-akunRT');
-    }
+    
 }

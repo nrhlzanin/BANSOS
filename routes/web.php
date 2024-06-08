@@ -67,7 +67,7 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
 Route::get('petugas', [PetugasController::class, 'index'])->middleware(['auth', 'role:rt']);
 Route::prefix('petugas')->group(function() {
     Route::get('/data-warga', [PetugasController::class, 'dataWarga'])->name('petugas.data-wargart');
-    Route::get('/informasi-akun', [PetugasController::class, 'informasiAkun'])->name('petugas.infomasi-akunrt');
+    Route::get('/informasi-akun', [AkunController::class, 'akunPetugas'])->name('petugas.infomasi-akunrt');
     Route::get('/informasi-bansos', [BansosController::class, 'bansosrt'])->name('petugas.bansosrt');
     Route::get('/informasi-bansos/show/{id}', [BansosController::class, 'showrt'])->name('petugas.bansosrt.show');
 
