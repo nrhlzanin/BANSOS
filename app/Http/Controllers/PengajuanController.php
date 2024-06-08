@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Models\PengajuanModel;
+use App\Models\WargaModel;
 use Illuminate\Http\Request;
+use Illuminate\Http\UploadedFile;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
+use Illuminate\Validation\ValidationException;
 
 class PengajuanController extends Controller
 {
@@ -21,7 +26,8 @@ class PengajuanController extends Controller
      */
     public function create()
     {
-        return view('warga.pengajuan.create');
+        $warga = Auth::user()->warga;
+        return view('warga.pengajuan.create', compact('warga'));
     }
 
     /**
@@ -29,24 +35,65 @@ class PengajuanController extends Controller
      */
     public function store(Request $request)
     {
-        $request->validate([
-            'pekerjaan' => 'required|string|max:50',
-            'penghasilan' => 'required|numeric',
-            'foto_slipgaji' => 'nullable|file|mimes:jpg,jpeg,png|max:2048',
-            'pendidikan' => 'required|string|in:tidak sekolah,SD,SMP,SMA,kuliah',
+        $validator = Validator::make($request->all(), [
+            'foto_kk' => 'required|image|mimetypes:image/*|max:2048',
+            'foto_ktp' => 'required|mimetypes:image/*|max:2048',
+            'pekerjaan' => 'required|max:50|in:Bekerja,Tidak Bekerja',
+            'penghasilan' => 'required|string|in:<=500.000,>500.000 sampai <=1.000.000,>1.000.000 sampai <=1.500.000,>1.500.000 sampai <=2.000.000,>2.000.000',
+            'foto_slipgaji' => 'required|file|mimes:jpg,jpeg,png|max:2048',
+            'pendidikan' => 'required|string|in:Tidak Sekolah,SD,SMP,SMA,Kuliah',
             'jumlah_tanggungan' => 'required|integer',
-            'tempat_tinggal' => 'required|string|in:Kontrakan,Menumpang,Rumah Pribadi',
-            'transportasi' => 'nullable|string|in:Jalan Kaki dan/ Sepeda,Transportasi Umum,1 Kendaraan Bermotor,2 Kendaraan Bermotor,>2 Kendaraan Bermotor',
-            'luas_bangunan' => 'nullable|numeric',
-            'jenis_atap' => 'nullable|string|in:Jerami,Bambu,Seng,Genteng Tanah Liat,Asbes,Genteng Metal',
-            'jenis_dinding' => 'nullable|string|in:Triplek,Anyaman Bambu,Papan Kayu,Batu Bata,Batako',
-            'kelistrikan' => 'nullable|string|in:Menumpang,Pribadi 450watt,Pribadi 900watt,Pribadi 1200watt,Pribadi >1200watt',
-            'sumber_air_bersih' => 'nullable|string|in:Sumur Swadaya,Sumur Tetangga,Sumur Pribadi,PDAM Terbatas,PDAM Bebas',
-            ]);
+            'tempat_tinggal' => 'required|string|in:Menumpang,Kontrakan,Rumah Pribadi',
+            'transportasi' => 'required|string|in:Jalan Kaki dan/ Sepeda,Transportasi Umum,1 Kendaraan Bermotor,2 Kendaraan Bermotor,>2 Kendaraan Bermotor',
+            'luas_bangunan' => 'required|string|in:0-50 m2,>50-100m2,>100-150m2,>150-200m2,>200m2',
+            'jenis_atap' => 'required|string|in:Jerami,Bambu,Seng,Genteng Tanah Liat,Asbes,Genteng Metal',
+            'jenis_dinding' => 'required|string|in:Tembok,Triplek,Anyaman Bambu,Papan Kayu,Batu Bata,Batako',
+            'kelistrikan' => 'required|string|in:Menumpang,Pribadi 450watt,Pribadi 900watt,Pribadi 1200watt,Pribadi >1200watt',
+            'sumber_air_bersih' => 'required|string|in:Sumur Swadaya,Sumur Tetangga,Sumur Pribadi,PDAM Terbatas,PDAM Bebas',
+        ]);
 
-        PengajuanModel::create($request->all());
+        if ($validator->fails()) {
+            throw ValidationException::withMessages($validator->errors()->toArray());
+        }
 
-        return redirect()->route('pengajuan.index')->with('success', 'Pengajuan berhasil dikirim.');
+        $foto_kk_path = null;
+        $foto_ktp_path = null;
+        $foto_slipgaji_path = null;
+
+        if ($request->foto_kk instanceof UploadedFile) {
+            $imageName = $request->foto_kk->getClientOriginalName();
+            
+            $foto_kk_path = $request->foto_kk->storeAs(
+                path: '/images/foto_kk',
+                name: $imageName
+            );
+        }
+        if ($request->foto_ktp instanceof UploadedFile) {
+            $imageName = $request->foto_ktp->getClientOriginalName();
+            
+            $foto_ktp_path = $request->foto_ktp->storeAs(
+                path: '/images/foto_ktp',
+                name: $imageName
+            );
+        }
+        if ($request->foto_slipgaji instanceof UploadedFile) {
+            $imageName = $request->foto_slipgaji->getClientOriginalName();
+            
+            $foto_slipgaji_path = $request->foto_slipgaji->storeAs(
+                path: '/images/foto_slipgaji',
+                name: $imageName
+            );
+        }
+
+        PengajuanModel::create([
+            ...$request->all(),
+            'id_warga' => auth()->user()->warga->id_warga,
+            'foto_kk' => $foto_kk_path,
+            'foto_ktp' => $foto_ktp_path,
+            'foto_slipgaji' => $foto_slipgaji_path,
+        ]);
+
+        return redirect()->route('warga.pengajuan.create')->with('success', 'Pengajuan berhasil dikirim.');
     }
 
     /**

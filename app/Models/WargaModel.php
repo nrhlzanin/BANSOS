@@ -14,6 +14,8 @@ class WargaModel extends Model
         'nama_kepalaKeluarga',
         'no_telp',
         'no_rt', 
+        'no_kk', 
+        'no_nik', 
     ];
     public function user() {
         return $this->belongsTo(UserModel::class, 'id_user', 'id_user');

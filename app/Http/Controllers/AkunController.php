@@ -43,7 +43,9 @@ class AkunController extends Controller
 
     public function akunWarga()
     {
-        return view("warga.profileSaya.index");
+        $warga = Auth::user()->warga;
+
+        return view('warga.profileSaya.index', compact('warga'));
     }
     public function akunPetugas() 
     {

@@ -79,7 +79,7 @@ Route::prefix('petugas')->group(function () {
     Route::delete('/data-akun-warga/delete/{id}', [AkunController::class, 'destroy'])->name('petugas.data-akun-warga.destroy');
 });
 // Route Warga
-Route::get('warga', [WargaController::class, 'index'])->middleware('auth', 'role:warga');
+Route::get('warga', [WargaController::class, 'index'])->middleware('auth', 'auth.session', 'role:warga');
 Route::prefix('warga')->group(function () {
     Route::get('/pengajuan/create', [PengajuanController::class, 'create'])->name('warga.pengajuan.create');
     Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('warga.pengajuan.store');

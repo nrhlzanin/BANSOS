@@ -20,19 +20,19 @@
                     <!-- Nama -->
                     <div class="mb-3">
                         <label for="nama" class="form-label" style="margin: 5px">Nama:</label>
-                        <input type="text" class="form-control form-control-lg" name="nama" id="nama" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                        <input type="text" class="form-control form-control-lg" name="nama" id="nama" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" value="{{ $warga->nama_kepalaKeluarga }}">
                     </div>
 
                     <!-- No. KTP -->
                     <div class="mb-3">
                         <label for="no_ktp" class="form-label" style="margin: 5px">No. KTP:</label>
-                        <input type="text" class="form-control form-control-lg" name="no_ktp" id="no_ktp" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                        <input type="text" class="form-control form-control-lg" name="no_ktp" id="no_ktp" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" value="{{ $warga->no_nik }}">
                     </div>
 
                     <!-- No. KK -->
                     <div class="mb-3">
                         <label for="no_kk" class="form-label" style="margin: 5px">No. KK:</label>
-                        <input type="text" class="form-control form-control-lg" name="no_kk" id="no_kk" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                        <input type="text" class="form-control form-control-lg" name="no_kk" id="no_kk" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" value="{{ $warga->no_kk }}">
                     </div>
                 </div>
 
@@ -40,19 +40,19 @@
                     <!-- RT -->
                     <div class="mb-3">
                         <label for="rt" class="form-label" style="margin: 5px">RT:</label>
-                        <input type="text" class="form-control form-control-lg" name="rt" id="rt" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                        <input type="text" class="form-control form-control-lg" name="rt" id="rt" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" value="{{ $warga->no_rt }}">
                     </div>
 
                     <!-- No. Telp -->
                     <div class="mb-3">
                         <label for="no_telp" class="form-label" style="margin: 5px">No. Telepon:</label>
-                        <input type="text" class="form-control form-control-lg" name="no_telp" id="no_telp" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;">
+                        <input type="text" class="form-control form-control-lg" name="no_telp" id="no_telp" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" value="{{ $warga->no_telp }}">
                     </div>
 
                     <!-- Email -->
                     <div class="mb-3">
                         <label for="email" class="form-label" style="margin: 5px">Email:</label>
-                        <input type="email" class="form-control form-control-lg" name="email" id="email" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" required>
+                        <input type="email" class="form-control form-control-lg" name="email" id="email" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" required value="{{ auth()->user()->email }}">
                     </div>
                 </div>
             </div>

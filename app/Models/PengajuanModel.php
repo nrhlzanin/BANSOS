@@ -11,10 +11,12 @@ class PengajuanModel extends Model
     protected $table = 'pengajuan';
     protected $primaryKey = 'id_pengajuan';
     protected $fillable = [
-        'no_kk', 
-        'no_nik', 
+        'id_warga',
+        'foto_kk', 
+        'foto_ktp', 
         'pekerjaan', 
         'penghasilan', 
+        'foto_slipgaji',
         'pendidikan', 
         'jumlah_tanggungan', 
         'tempat_tinggal',

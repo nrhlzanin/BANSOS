@@ -16,8 +16,17 @@ return new class extends Migration
             $table->foreignId('id_warga')->constrained('warga', 'id_warga')->onDelete('restrict')->onUpdate('restrict');
             $table->text('foto_kk')->nullable();
             $table->text('foto_ktp')->nullable();
-            $table->string('pekerjaan', 50);
-            $table->double('penghasilan', 7, );
+            $table->enum('pekerjaan', [
+                'bekerja', 
+                'tidak bekerja'
+            ])->nullable();
+            $table->enum('penghasilan', [
+                '<=500.000', 
+                '>500.000 sampai <=1.000.000', 
+                '>1.000.000 sampai <=1.500.000', 
+                '>1.500.000 sampai <=2.000.000', 
+                '>2.000.000'
+            ]);
             $table->text('foto_slipgaji')->nullable();
             $table->enum('pendidikan', [
                 'tidak sekolah', 
@@ -39,7 +48,13 @@ return new class extends Migration
                 '2 Kendaraan Bermotor', 
                 '>2 Kendaraan Bermotor'
             ])->nullable();
-            $table->integer('luas_bangunan')->nullable();
+            $table->enum('luas_bangunan', [
+                '0-50 m2', 
+                '>50-100m2', 
+                '>100-150m2', 
+                '>150-200m2', 
+                '>200m2'
+            ])->nullable();
             $table->enum('jenis_atap', [
                 'Jerami', 
                 'Bambu', 
@@ -49,6 +64,7 @@ return new class extends Migration
                 'Genteng Metal',
             ])->nullable();
             $table->enum('jenis_dinding', [
+                'Tembok',
                 'Triplek', 
                 'Anyaman Bambu', 
                 'Papan Kayu', 
