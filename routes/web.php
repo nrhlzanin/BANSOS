@@ -44,7 +44,6 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // Route RW coba
 Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/', [AdminController::class, 'index']);
-    
     Route::get('/data-warga', [AdminController::class, 'dataWarga'])->name('admin.data-warga');
     Route::get('/admin/data-warga/{id}', [AdminController::class, 'show'])->name('admin.data-warga.show');
     Route::get('/informasi-akun', [InformasiController::class, 'index'])->name('admin.informasi.informasi-akun');
@@ -64,7 +63,7 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/informasi-bansos/show/{id}', [BansosController::class, 'show'])->name('admin.informasi-bansos.show');
     Route::get('/informasi-bansos/{id}/edit', [BansosController::class, 'edit'])->name('admin.informasi-bansos.edit');
     Route::put('/informasi-bansos/{id}', [BansosController::class, 'update'])->name('admin.informasi-bansos.update');
-    Route::delete('admin/informasi-bansos/{id}', [BansosController::class, 'destroy'])->name('admin.informasi-bansos.destroy');
+    Route::delete('/informasi-bansos/{id}', [BansosController::class, 'destroy'])->name('admin.informasi-bansos.destroy');
 
 
 });
@@ -73,6 +72,9 @@ Route::get('petugas', [PetugasController::class, 'index'])->middleware(['auth', 
 Route::prefix('petugas')->group(function() {
     Route::get('/data-warga', [PetugasController::class, 'dataWarga'])->name('petugas.data-wargart');
     Route::get('/informasi-akun', [PetugasController::class, 'informasiAkun'])->name('petugas.infomasi-akunrt');
+    Route::get('/informasi-bansos', [BansosController::class, 'bansosrt'])->name('petugas.bansosrt');
+    Route::get('/informasi-bansos/show/{id}', [BansosController::class, 'showrt'])->name('petugas.bansosrt.show');
+
 });
 // Route Warga
 Route::get('warga', [WargaController::class, 'index'])->middleware('auth', 'role:warga');

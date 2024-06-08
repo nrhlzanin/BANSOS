@@ -46,7 +46,7 @@
             </a>
           </li>
           <li class="custom-nav-item nav-item has-treeview" style="margin-bottom: 10px;">
-              <a href="{{ route('petugas.data-wargart') }}" class="nav-link {{ request()->is('petugas/data-wargart') ? 'active' : '' }}">
+              <a href="{{ route('petugas.data-wargart') }}" class="nav-link {{ request()->is('petugas/data-warga') ? 'active' : '' }}">
               <i class="nav-icon fas fa-address-card"></i>
               <p>
                 Data Warga
@@ -54,7 +54,13 @@
             </a>
           </li>
           <li class="custom-nav-item nav-item" style="margin-bottom: 10px;">
-            <a href="{{ route('petugas.infomasi-akunrt') }}" class="nav-link {{ request()->is('petugas/informasi-akunrt') ? 'active' : '' }}">                <i class="nav-icon far fa-user-circle"></i>
+            <a href="{{ route('petugas.bansosrt') }}" class="nav-link {{ request()->is('petugas/informasi-bansos') ? 'active' : '' }}">
+              <i class="nav-icon fas fa fa-archive"></i>
+              <p>Informasi Bansos</p>
+            </a>
+          </li>
+          <li class="custom-nav-item nav-item" style="margin-bottom: 10px;">
+            <a href="{{ route('petugas.infomasi-akunrt') }}" class="nav-link {{ request()->is('petugas/informasi-akun') ? 'active' : '' }}">                <i class="nav-icon far fa-user-circle"></i>
                 <p>Informasi Akun</p>
             </a>
         </li>

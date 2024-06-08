@@ -59,4 +59,16 @@ class BansosController extends Controller
         return redirect()->route('admin.informasi-bansos')->with('success', 'Bansos berhasil dihapus.');
     }
 
+    public function bansosrt()
+    {
+        $bansos = BansosModel::all();
+        return view('RT.informasiBansos.index', compact('bansos'));
+    }
+
+    public function showrt($id)
+    {
+        $bansos = BansosModel::findOrFail($id);
+        return view('RT.informasiBansos.show', compact('bansos'));
+    }
+    
 }
