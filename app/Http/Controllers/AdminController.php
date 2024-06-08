@@ -31,32 +31,18 @@ class AdminController extends Controller
         return view('RW.dataWarga.data-warga', compact('penerima_bansos'));
     }
 
-    public function create()
-    {
-        return view('RW.dataWarga.create');
-    }
-
-    public function store(Request $request)
-    {
-        $request->validate([
-            'id_jenisbansos' => 'required|integer',
-            'id_petugas' => 'required|integer',
-            'id_admin' => 'required|integer',
-            'id_pengajuan' => 'required|integer',
-            'tanggal_penerimaan' => 'required|date',
-            'keterangan' => 'nullable|string|max:255',
-        ]);
-
-        PenerimaBansosModel::create($request->all());
-
-        return redirect()->route('admin.dataWarga')->with('success', 'Data penerima berhasil ditambahkan.');
-    }
-
     public function show($id)
     {
-        $penerima = PenerimaBansosModel::findOrFail($id);
-        return view('RW.dataWarga.detail', compact('penerima'));
+        
+        $penerima_bansos = PenerimaBansosModel::with([
+            'alternatif.pengajuan.warga', // Relasi dari penerima_bansos -> alternatif -> pengajuan -> warga
+            'bansos' // Relasi dari penerima_bansos -> bansos
+        ])->where('id_penerimabansos', $id) // Menyaring berdasarkan ID
+        ->firstOrFail(); // Mengambil satu hasil atau gagal jika tidak ditemukan
+        
+        return view('RW.dataWarga.detail', compact('penerima_bansos'));
     }
+
 
     public function edit($id)
     {
@@ -81,12 +67,6 @@ class AdminController extends Controller
         return redirect()->route('admin.dataWarga')->with('success', 'Data penerima berhasil diperbarui.');
     }
 
-    public function destroy($id)
-    {
-        $penerima = PenerimaBansosModel::findOrFail($id);
-        $penerima->delete();
-        return redirect()->route('admin.dataWarga')->with('success', 'Data penerima berhasil dihapus.');
-    }
 
     public function validasi()
     {

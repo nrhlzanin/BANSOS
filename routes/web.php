@@ -46,7 +46,7 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/', [AdminController::class, 'index']);
     
     Route::get('/data-warga', [AdminController::class, 'dataWarga'])->name('admin.data-warga');
-    Route::get('/data-warga/penerima', [AdminController::class, 'create'])->name('admin.data-warga.create');
+    Route::get('/admin/data-warga/{id}', [AdminController::class, 'show'])->name('admin.data-warga.show');
     Route::get('/informasi-akun', [InformasiController::class, 'index'])->name('admin.informasi.informasi-akun');
     Route::get('/validasi', [AdminController::class, 'validasi'])->name('admin.validasi');
     Route::get('/data-warga/validasi', [AdminController::class, 'validasiData'])->name('admin.data-warga.validation');
