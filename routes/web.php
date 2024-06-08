@@ -70,7 +70,7 @@ Route::prefix('petugas')->group(function () {
     Route::get('/informasi-bansos/show/{id}', [BansosController::class, 'showrt'])->name('petugas.bansosrt.show');
 
     // Routes for user CRUD
-    Route::get('/tambah-akun', [AkunController::class, 'tambahAkun'])->name('petugas.tambah-akunrt');
+    Route::get('/tambah-akun', [AkunController::class, 'index'])->name('petugas.tambah-akunrt');
     Route::get('/tambah-akun/addAkun', [AkunController::class, 'create'])->name('petugas.tambah-akun.create');
     Route::post('/tambah-akun', [AkunController::class, 'store'])->name('petugas.tambah-akun.store');
     Route::get('/tambah-akun/{id}', [AkunController::class, 'show'])->name('petugas.tambah-akun.show');

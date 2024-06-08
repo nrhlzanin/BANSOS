@@ -50,10 +50,15 @@ class AkunController extends Controller
         return view('RT.informasi-akunRT');
 
     }
+    public function index()
+    {
+        $akun = UserModel::all();
+        return view('RT.tambahAkun.index', compact('akun'));
+    }
 
     public function create()
     {
-        return view('RT.tambah-akun');
+        return view('RT.tambahAkun.addAkun');
     }
     public function store(Request $request)
     {
@@ -70,19 +75,19 @@ class AkunController extends Controller
             'level' => 'warga',
         ]);
 
-        return redirect()->route('petugas.tambah-akunrt')->with('success', 'Akun berhasil dibuat.');
+        return redirect()->route('RT.tambahAkun')->with('success', 'Akun berhasil dibuat.');
     }
 
     public function show($id)
     {
         $akun = UserModel::findOrFail($id);
-        return view('RT.detail-akun', compact('akun'));
+        return view('RT.tambahAkun.showAkun', compact('akun'));
     }
 
     public function edit($id)
     {
         $akun = UserModel::findOrFail($id);
-        return view('RT.edit-akun', compact('akun'));
+        return view('RT.tambahAkun.editAkun', compact('akun'));
     }
 
     public function update(Request $request, $id)
@@ -102,7 +107,7 @@ class AkunController extends Controller
         }
         $akun->save();
 
-        return redirect()->route('petugas.infomasi-akunrt')->with('success', 'Akun berhasil diperbaharui.');
+        return redirect()->route('RT.tambahAkun')->with('success', 'Akun berhasil diperbaharui.');
     }
 
     public function destroy($id)

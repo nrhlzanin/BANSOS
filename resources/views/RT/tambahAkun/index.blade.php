@@ -52,7 +52,7 @@
                                   <td>
                                     <a href="{{ route('petugas.tambah-akun.show', ['id' => $akun->id_user]) }}" class="btn btn-success btn-sm" style="background-color: #19CD61;">Detail <i class="fa fa-info-circle"></i></a>
                                     <a href="{{ route('petugas.tambah-akun.edit', ['id' => $akun->id_user]) }}" class="btn btn-primary btn-sm" style="background-color: #1E90FF;">Edit <i class="fa fa-edit"></i></a>
-                                    <form action="{{ route('petugas.tambah-akun.destroy', ['id' => $bans->id_bansos]) }}" method="POST" style="display: inline-block;">
+                                    <form action="{{ route('petugas.tambah-akun.destroy', ['id' => $akun->id_user]) }}" method="POST" style="display: inline-block;">
                                         @csrf
                                         @method('DELETE')
                                         <button type="submit" class="btn btn-danger btn-sm" style="background-color: #FF0F0F;" onclick="return confirm('Are you sure you want to delete?')">Delete <i class="fa fa-trash"></i></button>
