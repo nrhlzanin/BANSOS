@@ -49,9 +49,9 @@
             </a>
           </li>
           <li class="custom-nav-item nav-item" style="margin-bottom: 10px;">
-            <a href="{{ route('petugas.tambah-akunrt') }}" class="nav-link {{ request()->is('petugas/tambah-akun') ? 'active' : '' }}">
+            <a href="{{ route('petugas.data-akun-warga') }}" class="nav-link {{ request()->is('petugas/data-akun-warga') ? 'active' : '' }}">
                 <i class="nav-icon far fa-user-circle"></i>
-                <p>Tambah Akun</p>
+                <p>Data Akun Warga</p>
             </a>
         </li>
         

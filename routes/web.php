@@ -70,13 +70,13 @@ Route::prefix('petugas')->group(function () {
     Route::get('/informasi-bansos/show/{id}', [BansosController::class, 'showrt'])->name('petugas.bansosrt.show');
 
     // Routes for user CRUD
-    Route::get('/tambah-akun', [AkunController::class, 'index'])->name('petugas.tambah-akunrt');
-    Route::get('/tambah-akun/addAkun', [AkunController::class, 'create'])->name('petugas.tambah-akun.create');
-    Route::post('/tambah-akun', [AkunController::class, 'store'])->name('petugas.tambah-akun.store');
-    Route::get('/tambah-akun/{id}', [AkunController::class, 'show'])->name('petugas.tambah-akun.show');
-    Route::get('/tambah-akun/{id}/edit', [AkunController::class, 'edit'])->name('petugas.tambah-akun.edit');
-    Route::put('/tambah-akun/{id}', [AkunController::class, 'update'])->name('petugas.tambah-akun.update');
-    Route::delete('/tambah-akun/{id}', [AkunController::class, 'destroy'])->name('petugas.tambah-akun.destroy');
+    Route::get('/data-akun-warga', [AkunController::class, 'index'])->name('petugas.data-akun-warga');
+    Route::get('/data-akun-warga/add', [AkunController::class, 'create'])->name('petugas.data-akun-warga.create');
+    Route::post('/data-akun-warga', [AkunController::class, 'store'])->name('petugas.data-akun-warga.store');
+    Route::get('/data-akun-warga/show/{id}', [AkunController::class, 'show'])->name('petugas.data-akun-warga.show');
+    Route::get('/data-akun-warga/{id}/edit', [AkunController::class, 'edit'])->name('petugas.data-akun-warga.edit');
+    Route::put('/data-akun-warga/update/{id}', [AkunController::class, 'update'])->name('petugas.data-akun-warga.update');
+    Route::delete('/data-akun-warga/delete/{id}', [AkunController::class, 'destroy'])->name('petugas.data-akun-warga.destroy');
 });
 // Route Warga
 Route::get('warga', [WargaController::class, 'index'])->middleware('auth', 'role:warga');

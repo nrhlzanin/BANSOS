@@ -53,12 +53,12 @@ class AkunController extends Controller
     public function index()
     {
         $akun = UserModel::all();
-        return view('RT.tambahAkun.index', compact('akun'));
+        return view('RT.dataAkunWarga.index', compact('akun'));
     }
 
     public function create()
     {
-        return view('RT.tambahAkun.addAkun');
+        return view('RT.dataAkunWarga.addAkun');
     }
     public function store(Request $request)
     {
@@ -67,27 +67,28 @@ class AkunController extends Controller
             'email' => 'required|string|email|max:255|unique:user',
             'password' => 'required|string|min:8|confirmed',
         ]);
-
+    
         UserModel::create([
             'username' => $request->username,
             'email' => $request->email,
             'password' => Hash::make($request->password),
             'level' => 'warga',
         ]);
-
-        return redirect()->route('RT.tambahAkun')->with('success', 'Akun berhasil dibuat.');
+    
+        return redirect()->route('RT.dataAkunWarga')->with('success', 'Akun berhasil dibuat.');
     }
+    
 
     public function show($id)
     {
         $akun = UserModel::findOrFail($id);
-        return view('RT.tambahAkun.showAkun', compact('akun'));
+        return view('RT.dataAkunWarga.showAkun', compact('akun'));
     }
 
     public function edit($id)
     {
         $akun = UserModel::findOrFail($id);
-        return view('RT.tambahAkun.editAkun', compact('akun'));
+        return view('RT.dataAkunWarga.editAkun', compact('akun'));
     }
 
     public function update(Request $request, $id)
@@ -107,7 +108,7 @@ class AkunController extends Controller
         }
         $akun->save();
 
-        return redirect()->route('RT.tambahAkun')->with('success', 'Akun berhasil diperbaharui.');
+        return redirect()->route('RT.dataAkunWarga')->with('success', 'Akun berhasil diperbaharui.');
     }
 
     public function destroy($id)
@@ -115,6 +116,6 @@ class AkunController extends Controller
         $akun = UserModel::findOrFail($id);
         $akun->delete();
 
-        return redirect()->route('petugas.infomasi-akunrt')->with('success', 'Akun berhasil dihapus.');
+        return redirect()->route('petugas.dataAkunWarga')->with('success', 'Akun berhasil dihapus.');
     }
 }

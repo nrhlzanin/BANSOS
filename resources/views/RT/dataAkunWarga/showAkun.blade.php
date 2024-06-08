@@ -29,7 +29,8 @@
                     <td>{{ $akun->level }}</td>
                 </tr>
             </table>
-            <a href="{{ route('petugas.tambah-akun.edit', $akun->id_user) }}" class="btn btn-primary">Edit Akun</a>
+            <a href="{{ route('petugas.data-akun-warga.edit', $akun->id_user) }}" class="btn btn-primary">Edit Akun</a>
+            <a href="{{ route('petugas.data-akun-warga') }}" class="btn btn-secondary">Kembali</a>
         </div>
     </div>
 </div>

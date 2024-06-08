@@ -15,7 +15,7 @@
     </div>
     <div class="card">
         <div class="card-body">
-            <form action="{{ route('petugas.tambah-akun.store') }}" method="POST">
+            <form action="{{ route('petugas.data-akun-warga.store') }}" method="POST">
                 @csrf
                 <div class="form-group">
                     <label for="username">Username</label>
