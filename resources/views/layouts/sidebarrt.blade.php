@@ -49,6 +49,13 @@
             </a>
           </li>
           <li class="custom-nav-item nav-item" style="margin-bottom: 10px;">
+            <a href="{{ route('petugas.tambah-akunrt') }}" class="nav-link {{ request()->is('petugas/tambah-akun') ? 'active' : '' }}">
+                <i class="nav-icon far fa-user-circle"></i>
+                <p>Tambah Akun</p>
+            </a>
+        </li>
+        
+          <li class="custom-nav-item nav-item" style="margin-bottom: 10px;">
             <a href="{{ route('petugas.infomasi-akunrt') }}" class="nav-link {{ request()->is('petugas/informasi-akun') ? 'active' : '' }}">                <i class="nav-icon far fa-user-circle"></i>
                 <p>Informasi Akun</p>
             </a>

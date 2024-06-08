@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\UserModel;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Hash;
 
 class AkunController extends Controller
 {
@@ -48,5 +49,67 @@ class AkunController extends Controller
     {
         return view('RT.informasi-akunRT');
 
+    }
+
+    public function create()
+    {
+        return view('RT.tambah-akun');
+    }
+    public function store(Request $request)
+    {
+        $request->validate([
+            'username' => 'required|string|max:255|unique:user',
+            'email' => 'required|string|email|max:255|unique:user',
+            'password' => 'required|string|min:8|confirmed',
+        ]);
+
+        UserModel::create([
+            'username' => $request->username,
+            'email' => $request->email,
+            'password' => Hash::make($request->password),
+            'level' => 'warga',
+        ]);
+
+        return redirect()->route('petugas.tambah-akunrt')->with('success', 'Akun berhasil dibuat.');
+    }
+
+    public function show($id)
+    {
+        $akun = UserModel::findOrFail($id);
+        return view('RT.detail-akun', compact('akun'));
+    }
+
+    public function edit($id)
+    {
+        $akun = UserModel::findOrFail($id);
+        return view('RT.edit-akun', compact('akun'));
+    }
+
+    public function update(Request $request, $id)
+    {
+        $akun = UserModel::findOrFail($id);
+
+        $request->validate([
+            'username' => 'required|string|max:255|unique:user,username,' . $id . ',id_user',
+            'email' => 'required|string|email|max:255|unique:user,email,' . $id . ',id_user',
+            'password' => 'nullable|string|min:8|confirmed',
+        ]);
+
+        $akun->username = $request->username;
+        $akun->email = $request->email;
+        if ($request->filled('password')) {
+            $akun->password = Hash::make($request->password);
+        }
+        $akun->save();
+
+        return redirect()->route('petugas.infomasi-akunrt')->with('success', 'Akun berhasil diperbaharui.');
+    }
+
+    public function destroy($id)
+    {
+        $akun = UserModel::findOrFail($id);
+        $akun->delete();
+
+        return redirect()->route('petugas.infomasi-akunrt')->with('success', 'Akun berhasil dihapus.');
     }
 }

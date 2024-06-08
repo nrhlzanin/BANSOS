@@ -60,21 +60,27 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/informasi-bansos/{id}/edit', [BansosController::class, 'edit'])->name('admin.informasi-bansos.edit');
     Route::put('/informasi-bansos/{id}', [BansosController::class, 'update'])->name('admin.informasi-bansos.update');
     Route::delete('/informasi-bansos/{id}', [BansosController::class, 'destroy'])->name('admin.informasi-bansos.destroy');
-
-
 });
 // Route RT
 Route::get('petugas', [PetugasController::class, 'index'])->middleware(['auth', 'role:rt']);
-Route::prefix('petugas')->group(function() {
+Route::prefix('petugas')->group(function () {
     Route::get('/data-warga', [PetugasController::class, 'dataWarga'])->name('petugas.data-wargart');
     Route::get('/informasi-akun', [AkunController::class, 'akunPetugas'])->name('petugas.infomasi-akunrt');
     Route::get('/informasi-bansos', [BansosController::class, 'bansosrt'])->name('petugas.bansosrt');
     Route::get('/informasi-bansos/show/{id}', [BansosController::class, 'showrt'])->name('petugas.bansosrt.show');
 
+    // Routes for user CRUD
+    Route::get('/tambah-akun', [AkunController::class, 'tambahAkun'])->name('petugas.tambah-akunrt');
+    Route::get('/tambah-akun/addAkun', [AkunController::class, 'create'])->name('petugas.tambah-akun.create');
+    Route::post('/tambah-akun', [AkunController::class, 'store'])->name('petugas.tambah-akun.store');
+    Route::get('/tambah-akun/{id}', [AkunController::class, 'show'])->name('petugas.tambah-akun.show');
+    Route::get('/tambah-akun/{id}/edit', [AkunController::class, 'edit'])->name('petugas.tambah-akun.edit');
+    Route::put('/tambah-akun/{id}', [AkunController::class, 'update'])->name('petugas.tambah-akun.update');
+    Route::delete('/tambah-akun/{id}', [AkunController::class, 'destroy'])->name('petugas.tambah-akun.destroy');
 });
 // Route Warga
 Route::get('warga', [WargaController::class, 'index'])->middleware('auth', 'role:warga');
-Route::prefix('warga')->group(function() {
+Route::prefix('warga')->group(function () {
     Route::get('/pengajuan/create', [PengajuanController::class, 'create'])->name('warga.pengajuan.create');
     Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('warga.pengajuan.store');
     Route::get('/profil', [AkunController::class, 'akunWarga'])->name('warga.akun.index');
@@ -85,5 +91,3 @@ Route::prefix('warga')->group(function() {
 Route::get('/informasi-akun', [App\Http\Controllers\AdminController::class, 'informasiAkun'])->name('informasi-akun');
 Route::get('/validasi', [AdminController::class, 'validasi'])->name('validasi');
 Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('index');
-
-
