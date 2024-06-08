@@ -26,13 +26,13 @@
                     <!-- No. KTP -->
                     <div class="mb-3">
                         <label for="no_ktp" class="form-label" style="margin: 5px">No. KTP:</label>
-                        <input type="text" class="form-control form-control-lg" name="no_ktp" id="no_ktp" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" value="{{ $warga->no_nik }}">
+                        <input type="text" class="form-control form-control-lg" name="no_ktp" id="no_ktp" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" pattern="\d*" inputmode="numeric">
                     </div>
 
                     <!-- No. KK -->
                     <div class="mb-3">
                         <label for="no_kk" class="form-label" style="margin: 5px">No. KK:</label>
-                        <input type="text" class="form-control form-control-lg" name="no_kk" id="no_kk" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" value="{{ $warga->no_kk }}">
+                        <input type="text" class="form-control form-control-lg" name="no_kk" id="no_kk" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" pattern="\d*" inputmode="numeric">
                     </div>
                 </div>
 
@@ -40,13 +40,13 @@
                     <!-- RT -->
                     <div class="mb-3">
                         <label for="rt" class="form-label" style="margin: 5px">RT:</label>
-                        <input type="text" class="form-control form-control-lg" name="rt" id="rt" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" value="{{ $warga->no_rt }}">
+                        <input type="number" class="form-control form-control-lg" name="rt" id="rt" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" min="1" max="10" required>
                     </div>
 
                     <!-- No. Telp -->
                     <div class="mb-3">
                         <label for="no_telp" class="form-label" style="margin: 5px">No. Telepon:</label>
-                        <input type="text" class="form-control form-control-lg" name="no_telp" id="no_telp" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" value="{{ $warga->no_telp }}">
+                        <input type="text" class="form-control form-control-lg" name="no_telp" id="no_telp" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" pattern="\d*" inputmode="numeric">
                     </div>
 
                     <!-- Email -->
@@ -55,6 +55,10 @@
                         <input type="email" class="form-control form-control-lg" name="email" id="email" style="border-radius: 5px; font-size: 16px; padding: 10px; margin: 5px;" required value="{{ auth()->user()->email }}">
                     </div>
                 </div>
+            </div>
+            <!-- Simpan -->
+            <div class="text-center">
+                <button type="submit" name="submit" class="btn btn-primary center-btn" style="margin-top: 20px; margin-bottom: 20px;">Simpan</button>
             </div>
         </form>
     </header>
@@ -78,6 +82,8 @@
         centerButton.style.opacity = "0";
         setTimeout(function() {
             alert("Form berhasil disubmit!");
+            // Lanjutkan pengiriman form secara manual setelah animasi dan alert
+            document.getElementById("myForm").submit();
         }, 500); // Menunggu 0.5 detik sebelum menampilkan alert
     });
 </script>

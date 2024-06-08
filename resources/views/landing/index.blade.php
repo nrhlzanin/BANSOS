@@ -22,7 +22,7 @@
                 <div class="shadow card">
                     <div class="card-header">
                         <h4>Bantuan Pangan Non Tunai (BPNT)</h4>
-                        <img src="http://127.0.0.1:8000/img/laporkan.jpg" class="card-image" alt="BPNT">
+                        <img src="http://127.0.0.1:8000/img/BPNT.jpg" class="card-image" alt="BPNT">
                     </div>
                     <p>Bantuan Pangan Non Tunai (BPNT) adalah program pemerintah Indonesia yang memberikan bantuan sosial pangan kepada masyarakat kurang mampu dalam bentuk uang elektronik atau Kartu Sembako.</p>
                     <a href="https://katadata.co.id/ekonopedia/istilah-ekonomi/65839f989c180/bantuan-pangan-non-tunai-definisi-dasar-hukum-dan-cara-mengeceknya" target="_blank">Info Lebih Lanjut ></a>
@@ -31,7 +31,7 @@
                 <div class="shadow card">
                     <div class="card-header">
                         <h4>Program Keluarga Harapan (PKH)</h4>
-                        <img src="http://127.0.0.1:8000/img/laporkan.jpg" class="card-image" alt="PKH">
+                        <img src="http://127.0.0.1:8000/img/PKH.png" class="card-image" alt="PKH">
                     </div>
                     <p>Program Keluarga Harapan (PKH) merupakan program pemberian bantuan sosial bersyarat kepada keluarga miskin yang ditetapkan sebagai Keluarga Penerima Manfaat (KPM) PKH.</p>
                     <a href="https://kemensos.go.id/program-keluarga-harapan-pkh" target="_blank">Info Lebih Lanjut ></a>
@@ -40,7 +40,7 @@
                 <div class="shadow card">
                     <div class="card-header">
                         <h4>Bantuan Sosial Tunai (BST)</h4>
-                        <img src="http://127.0.0.1:8000/img/laporkan.jpg" class="card-image" alt="BST">
+                        <img src="http://127.0.0.1:8000/img/BST.jpg" class="card-image" alt="BST">
                     </div>
                     <p>Bantuan Sosial Tunai (BST) adalah program bantuan sosial yang diberikan oleh pemerintah Indonesia kepada keluarga miskin dan rentan miskin yang terdampak pandemi COVID-19.</p>
                     <a href="https://lifepal.co.id/media/bantuan-sosial-tunai/" target="_blank">Info Lebih Lanjut ></a>
