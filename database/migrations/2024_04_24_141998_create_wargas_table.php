@@ -19,8 +19,6 @@ return new class extends Migration
             $table->integer('no_rt');
             $table->string('no_kk', 16)->unique();
             $table->string('no_nik', 16)->unique();
-            $table->text('foto_kk')->nullable();
-            $table->text('foto_ktp')->nullable();
             $table->timestamps();
         });
     }

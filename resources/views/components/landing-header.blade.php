@@ -53,7 +53,7 @@
                             </a>
                             <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="navbarDropdown">
                                 <li>
-                                    <a class="dropdown-item" href="/profile">
+                                    <a class="dropdown-item" href="{{ route('warga.akun.index') }}">
                                         <i class="bi bi-person"></i><span class="ms-2">Profil Saya</span>
                                     </a>
                                 </li>

@@ -14,6 +14,8 @@ return new class extends Migration
         Schema::create('pengajuan', function (Blueprint $table) {
             $table->id('id_pengajuan');
             $table->foreignId('id_warga')->constrained('warga', 'id_warga')->onDelete('restrict')->onUpdate('restrict');
+            $table->text('foto_kk')->nullable();
+            $table->text('foto_ktp')->nullable();
             $table->string('pekerjaan', 50);
             $table->double('penghasilan', 7, );
             $table->text('foto_slipgaji')->nullable();
@@ -67,7 +69,6 @@ return new class extends Migration
                 'PDAM Terbatas', 
                 'PDAM Bebas'
             ])->nullable();
-            $table->string('aset')->nullable();
             $table->enum('status_data', ['belum tervalidasi', 'tervalidasi'])->default('belum tervalidasi'); // Untuk status verifikasi data
             $table->enum('status_pengajuan', ['proses', 'diterima', 'ditolak'])->default('proses'); // Untuk status verifikasi pengajuan
             $table->timestamps();

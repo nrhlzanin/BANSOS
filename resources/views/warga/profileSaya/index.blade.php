@@ -1,4 +1,4 @@
-@extends('layouts.landing')
+@extends('layouts.landing', ['hideFooter' => true])
 
 @section('title', 'Profil Saya')
 

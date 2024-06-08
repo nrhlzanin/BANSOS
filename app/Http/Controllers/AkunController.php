@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\UserModel;
 use Illuminate\Support\Facades\Auth;
 
-class UserController extends Controller
+class AkunController extends Controller
 {
     public function informasiAkun()
     {
@@ -40,8 +40,12 @@ class UserController extends Controller
         return redirect()->back()->with('success', 'Informasi akun berhasil diperbarui.');
     }
 
-    public function profilWarga()
+    public function akunWarga()
     {
-        return view("warga.profil.profil");
+        return view("warga.profileSaya.index");
+    }
+    public function akunPetugas() 
+    {
+
     }
 }

@@ -3,9 +3,8 @@
 use App\Http\Controllers\BansosController;
 use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AdminController;
+use App\Http\Controllers\AkunController;
 use App\Http\Controllers\AuthController;
-use App\Http\Controllers\DashboardController;
-use App\Http\Controllers\DashboardInfoController;
 use App\Http\Controllers\InformasiController;
 use App\Http\Controllers\KriteriaController;
 use App\Http\Controllers\LandingController;
@@ -14,13 +13,10 @@ use App\Http\Controllers\PengajuanController;
 use App\Http\Controllers\PenilaianController;
 use App\Http\Controllers\PerhitunganController;
 use App\Http\Controllers\PetugasController;
-use App\Http\Controllers\ProfileController;
 use App\Http\Controllers\SpkController;
 use App\Http\Controllers\SubkriteriaController;
-use App\Http\Controllers\UserController;
 use App\Http\Controllers\ValidasiController;
 use App\Http\Controllers\WargaController;
-use App\Models\Informasi;
 use Illuminate\Support\Facades\Route;
 use App\Models\BansosModel;
 use App\Models\PengajuanModel;
@@ -81,7 +77,7 @@ Route::get('warga', [WargaController::class, 'index'])->middleware('auth', 'role
 Route::prefix('warga')->group(function() {
     Route::get('/pengajuan/create', [PengajuanController::class, 'create'])->name('warga.pengajuan.create');
     Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('warga.pengajuan.store');
-    Route::get('/profil', [UserController::class, 'profilWarga']);
+    Route::get('/profil', [AkunController::class, 'akunWarga'])->name('warga.akun.index');
 });
 
 
