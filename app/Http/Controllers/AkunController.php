@@ -52,7 +52,7 @@ class AkunController extends Controller
     }
     public function index()
     {
-        $akun = UserModel::all();
+        $akun = UserModel::where('level', 'warga')->get();
         return view('RT.dataAkunWarga.index', compact('akun'));
     }
 
@@ -77,20 +77,16 @@ class AkunController extends Controller
     
         return redirect()->route('RT.dataAkunWarga')->with('success', 'Akun berhasil dibuat.');
     }
-    
-
     public function show($id)
     {
         $akun = UserModel::findOrFail($id);
         return view('RT.dataAkunWarga.showAkun', compact('akun'));
     }
-
     public function edit($id)
     {
         $akun = UserModel::findOrFail($id);
         return view('RT.dataAkunWarga.editAkun', compact('akun'));
     }
-
     public function update(Request $request, $id)
     {
         $akun = UserModel::findOrFail($id);
@@ -110,7 +106,6 @@ class AkunController extends Controller
 
         return redirect()->route('RT.dataAkunWarga')->with('success', 'Akun berhasil diperbaharui.');
     }
-
     public function destroy($id)
     {
         $akun = UserModel::findOrFail($id);
