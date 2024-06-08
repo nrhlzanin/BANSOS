@@ -10,7 +10,7 @@
           </div><!-- /.col -->
           <div class="col-sm-6">
             <ol class="breadcrumb float-sm-right">
-              <li class="breadcrumb-item"><a href="#">Home</a></li>
+              <li class="breadcrumb-item"><a href="{{ url('petugas') }}">Home</a></li>
               <li class="breadcrumb-item active">Informasi Bansos</li>
             </ol>
           </div><!-- /.col -->
@@ -29,7 +29,7 @@
                       <div class="d-flex align-items-center justify-content-between">
                       </div>
                             <div class="table-responsive mt-4">          
-                                <table class="table table-striped">
+                                <table id="bansosTable" class="table table-striped">
                                     <thead>
                                       <tr>
                                         <th>#</th>
@@ -37,30 +37,49 @@
                                         <th>Jenis Bansos</th>
                                         <th>Periode</th>
                                         <th>Status</th>
-                                        <th>Ketreangan</th>
+                                        <th>Keterangan</th>
                                         <th>Aksi</th>
                                       </tr>
                                     </thead>
                                     <tbody>
-                                      @foreach ($bansos as $index => $bans)
-                                      <tr>
-                                        <td>{{ $index + 1 }}</td>
-                                        <td>{{ $bans->asal_bansos }}</td>
-                                        <td>{{ $bans->jenis_bansos }}</td>
-                                        <td>{{ $bans->periode }}</td>
-                                        <td>{{$bans->status}}</td>
-                                        <td>{{$bans->keterangan}}</td>
-                                        <td>
-                                          <a href="{{ route('petugas.bansosrt.show', ['id' => $bans->id_bansos]) }}" class="btn btn-success btn-sm" style="background-color: #19CD61;">Detail <i class="fa fa-info-circle"></i></a>
-                                      </td>                                      
-                                      </tr>
-                                      @endforeach
-                                    </tbody>
-                                  </table>
-                                </div>      
+                                        @foreach ($bansos as $index => $bans)
+                                        <tr>
+                                          <td>{{ $index + 1 }}</td>
+                                          <td>{{ $bans->asal_bansos }}</td>
+                                          <td>{{ $bans->jenis_bansos }}</td>
+                                          <td>{{ $bans->periode }}</td>
+                                          <td>{{ $bans->status }}</td>
+                                          <td>{{ $bans->keterangan }}</td>
+                                          <td>
+                                            <a href="{{ route('petugas.bansosrt.show', ['id' => $bans->id_bansos]) }}" class="btn btn-success btn-sm" style="background-color: #19CD61;">Detail <i class="fa fa-info-circle"></i></a>
+                                        </td>                                      
+                                        </tr>
+                                        @endforeach
+                                      </tbody>
+                                    </table>
+                              </div>      
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
-        </div>
-    </div>
-@endsection
+        @endsection
+
+        @push('js')
+        <!-- DataTables CSS -->
+        <link rel="stylesheet" href="https://cdn.datatables.net/1.10.21/css/jquery.dataTables.min.css">
+        <link rel="stylesheet" href="https://cdn.datatables.net/responsive/2.2.5/css/responsive.dataTables.min.css">
+
+        <!-- DataTables JS -->
+        <script src="https://cdn.datatables.net/1.10.21/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.datatables.net/responsive/2.2.5/js/dataTables.responsive.min.js"></script>
+
+        <script>
+            $(document).ready(function() {
+                $('#bansosTable').DataTable({
+                    "responsive": true,
+                    "autoWidth": false,
+                });
+            });
+        </script>
+        @endpush

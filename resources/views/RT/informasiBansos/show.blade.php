@@ -32,7 +32,7 @@
                 <br>
                 <span style="font-size: 24px; background-color: #f0f0f0; padding: 3px 6px; border-radius: 4px;">{{ $bansos->status }}</span>
             </div>
-            <a href="{{ route('petugas.bansosrt') }}" class="btn btn-primary">Back</a>
+            <a href="{{ route('petugas.bansosrt') }}" class="btn btn-primary">Kembali</a>
         </div>
     </div>
 </main>
