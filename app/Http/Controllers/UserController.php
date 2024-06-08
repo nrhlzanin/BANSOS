@@ -39,4 +39,9 @@ class UserController extends Controller
 
         return redirect()->back()->with('success', 'Informasi akun berhasil diperbarui.');
     }
+
+    public function profilWarga()
+    {
+        return view("warga.profil.profil");
+    }
 }
