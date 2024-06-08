@@ -66,8 +66,7 @@ class SpkController extends Controller
     private function hitungPSI()
 {
     $alternatif = AlternatifModel::orderBy('id_pengajuan')->get();
-    $kriteria = Kriteria::orderBy('kode'); // Mengambil seluruh objek kriteria
-    
+    $kriteria = Kriteria::orderBy('kode')->get();    
     // penentuan matriks keputusan
     $Xij = [];
     foreach ($alternatif as $ka => $alt) {
