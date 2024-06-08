@@ -18,7 +18,7 @@ return new class extends Migration
 			$table->string('kode');
 			$table->string('name');
 			$table->float('bobot');
-			$table->string('type')->default('benefit'); // Default nya adalah 'benefit'
+			$table->tinyInteger('type')->default('1'); // Default nya adalah 'benefit'
 			// type == false (0) => cost
 			$table->float('min')->nullable();
 			$table->float('max')->nullable();

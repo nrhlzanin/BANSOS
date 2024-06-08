@@ -183,7 +183,7 @@
                                 </div>
 
                                 <!-- Normalisasi tab content -->
-                                @if ($alternatif->count() > 0)
+                                @if ($alternatifs->count() > 0)
                     
                                 <div class="tab-pane fade " id="normalisasi" role="tabpanel"
                                     aria-labelledby="normalisasi-tab">
@@ -206,7 +206,7 @@
                                                         </tr>
                                                     </thead>
                                                     <tbody>
-                                                      @foreach($alternatif as $index => $alt)
+                                                      @foreach($alternatifs as $index => $alt)
                                                       <tr>
                                                           <td>{{ $index + 1 }}</td>
                                                           <td>{{ $alt->pengajuan->warga->nama_kepalaKeluarga }}</td>
@@ -248,96 +248,100 @@
                                 @endif
                             </div>
                             <!-- Perhitungan tab content -->
-                            @if ($alternatif->count() > 0)
-                            <div class="tab-pane fade" id="perhitungan" role="tabpanel" aria-labelledby="perhitungan-tab">
-                                <div class="row">
-                                    <div class="col-md-12">
-                                        <div class="card">
-                                            <div class="card-header">
-                                                <h3 class="card-title">Normalisasi Matriks</h3>
-                                            </div>
-                                            <div class="card-body">
-                                                <table class="table table-striped">
-                                                    <thead>
-                                                        <tr>
-                                                            <th>Alternatif</th>
-                                                            @foreach ($kriteria as $krit)
-                                                                <th>{{ $krit->kode }}</th>
-                                                            @endforeach
-                                                        </tr>
-                                                    </thead>
-                                                    <tbody>
-                                                        <tr>
-                                                            <th class="bg-white text-left text-sm">MAX</th>
-                                                            @foreach ($kriteria as $krit)
-                                                                @php
-                                                                    $nilai = [];
-                                                                    foreach ($alternatif as $alter) {
-                                                                        $ks = $alter->kriteria->find($krit->id);
-                                                                        $nilai[] = $ks ? $ks->pivot->nilai : 0;
-                                                                    }
-                                                                    $max = max($nilai);
-                                                                @endphp
-                                                                <td>{{ $max }}</td>
-                                                            @endforeach
-                                                        </tr>
-                                                        <tr>
-                                                            <th class="bg-white text-left text-sm">MIN</th>
-                                                            @foreach ($kriteria as $krit)
-                                                                @php
-                                                                    $nilai = [];
-                                                                    foreach ($alternatif as $alter) {
-                                                                        $ks = $alter->kriteria->find($krit->id);
-                                                                        $nilai[] = $ks ? $ks->pivot->nilai : 0;
-                                                                    }
-                                                                    $min = min($nilai);
-                                                                @endphp
-                                                                <td>{{ $min }}</td>
-                                                            @endforeach
-                                                        </tr>
-                                                        @forelse ($alternatif as $index => $alt)
-                                                        <tr>
-                                                            <td>
-                                                                {{ $alt->pengajuan->warga->nama_kepalaKeluarga }}
-                                                            </td>
-                                                            @foreach ($alt->Nij as $normal)
-                                                            <td>
-                                                                {{ $normal }}
-                                                            </td>
-                                                            @endforeach
-                                                        </tr>
-                                                        @empty
-                                                        <tr>
-                                                            <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm" colspan="{{ $kriteria->count() + 1 }}">Belum ada data alternatif.</td>
-                                                        </tr>
-                                                        @endforelse
-                                                    </tbody>
-                                                    <tfoot>
-                                                        <tr>
-                                                            <td class="px-5 py-3 border-b-2 border-gray-200 bg-gray-900 text-white text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                                Total
-                                                            </td>
-                                                            @foreach ($kriteria as $krit)
-                                                                @php
-                                                                    $total = 0;
-                                                                    foreach ($alternatif as $alter) {
-                                                                        $ks = $alter->kriteria->find($krit->id);
-                                                                        $total += $ks ? $ks->pivot->nilai : 0;
-                                                                    }
-                                                                @endphp
-                                                                <td class="px-5 py-3 border-b-2 border-gray-200 bg-gray-900 text-white text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
-                                                                    {{ $total }}
-                                                                </td>
-                                                            @endforeach
-                                                        </tr>
-                                                    </tfoot>
-                                                </table>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            @endif
+@if ($alternatifs->count() > 0)
+<div class="tab-pane fade" id="perhitungan" role="tabpanel" aria-labelledby="perhitungan-tab">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="card">
+                <div class="card-header">
+                    <h3 class="card-title">Normalisasi Matriks</h3>
+                </div>
+                <div class="card-body">
+                    <table class="table table-striped">
+                        <thead>
+                            <tr>
+                                <th>Alternatif</th>
+                                @foreach ($kriteria as $krit)
+                                    <th>{{ $krit->kode }}</th>
+                                @endforeach
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <th class="bg-white text-left text-sm">MAX</th>
+                                @foreach ($kriteria as $krit)
+                                    @php
+                                        $nilai = [];
+                                        foreach ($alternatifs as $alter) {
+                                            $ks = $alter->kriteria->find($krit->id);
+                                            $nilai[] = $ks ? $ks->pivot->nilai : 0;
+                                        }
+                                        $max = max($nilai);
+                                    @endphp
+                                    <td>{{ $max }}</td>
+                                @endforeach
+                            </tr>
+                            <tr>
+                                <th class="bg-white text-left text-sm">MIN</th>
+                                @foreach ($kriteria as $krit)
+                                    @php
+                                        $nilai = [];
+                                        foreach ($alternatifs as $alter) {
+                                            $ks = $alter->kriteria->find($krit->id);
+                                            $nilai[] = $ks ? $ks->pivot->nilai : 0;
+                                        }
+                                        $min = min($nilai);
+                                    @endphp
+                                    <td>{{ $min }}</td>
+                                @endforeach
+                            </tr>
+                            @forelse ($alternatifs as $index => $alt)
+                            <tr>
+                                <td>
+                                    {{ $alt->pengajuan->warga->nama_kepalaKeluarga }}
+                                </td>
+                                @if (is_array($alt->Nij))
+                                    @foreach ($alt->Nij as $normal)
+                                        <td>
+                                            {{ $normal }}
+                                        </td>
+                                    @endforeach
+                                @else
+                                    <td colspan="{{ $kriteria->count() }}">Data Nij tidak valid</td>
+                                @endif
+                            </tr>
+                            @empty
+                            <tr>
+                                <td class="px-5 py-5 border-b border-gray-200 bg-white text-sm" colspan="{{ $kriteria->count() + 1 }}">Belum ada data alternatif.</td>
+                            </tr>
+                            @endforelse
+                        </tbody>
+                        <tfoot>
+                            <tr>
+                                <td class="px-5 py-3 border-b-2 border-gray-200 bg-gray-900 text-white text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                    Total
+                                </td>
+                                @foreach ($kriteria as $krit)
+                                    @php
+                                        $total = 0;
+                                        foreach ($alternatifs as $alter) {
+                                            $ks = $alter->kriteria->find($krit->id);
+                                            $total += $ks ? $ks->pivot->nilai : 0;
+                                        }
+                                    @endphp
+                                    <td class="px-5 py-3 border-b-2 border-gray-200 bg-gray-900 text-white text-center text-xs font-semibold text-gray-600 uppercase tracking-wider">
+                                        {{ $total }}
+                                    </td>
+                                @endforeach
+                            </tr>
+                        </tfoot>
+                    </table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+@endif
 
                             
                                         <!--Nilai Variasi Preferensi-->
@@ -358,7 +362,7 @@
                                                             </tr>
                                                         </thead>
                                                         <tbody>
-                                                            @foreach ($alternatif as $key => $alt)
+                                                            @foreach ($alternatifs as $key => $alt)
                                                                 <tr>
                                                                     <td>{{ $key + 1 }}</td>
                                                                     <td>{{ $alt->pengajuan->warga->nama_kepalaKeluarga }}</td>
@@ -451,7 +455,7 @@
                                             <tbody>
                                               <tbody>
                                                 @php $rank = 1; @endphp
-                                                @foreach ($alternatif as $alt)
+                                                @foreach ($alternatifs as $alt)
                                                     <tr>
                                                         <td>{{ $rank }}</td>
                                                         <td>{{ $alt->pengajuan->warga->nama_kepalaKeluarga }}</td>
