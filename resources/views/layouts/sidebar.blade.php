@@ -49,30 +49,13 @@
         </li>
 
         <!-- Data Warga -->
-        <li style="margin-bottom: 10px;" class="custom-nav-item nav-item has-treeview {{ request()->is('admin/data-warga', 'admin/validasi') ? 'menu-open' : '' }}">
-          <a href="#" class="nav-link {{ request()->is('admin/data-warga', 'admin/validasi') ? 'active' : '' }}">
+        
+        <li class="custom-nav-item nav-item" style="margin-bottom: 10px;">
+          <a href="{{ route('admin.data-warga') }}" class="nav-link {{ request()->is('admin/data-warga') ? 'active' : '' }}">
             <i class="nav-icon fas fa-address-card"></i>
-            <p>
-              Data Warga
-              <i class="fas fa-chevron-circle-down right"></i>
-            </p>
+            <p>Daftar Penerima Bansos</p>
           </a>
-          <ul class="nav nav-treeview">
-            <li class="nav-item" style="margin: 5px 0;">
-              <a href="{{ route('admin.data-warga') }}" class="nav-link {{ request()->is('admin/data-warga') ? 'active' : '' }}">
-                <i class="far fa-dot-circle nav-icon"></i>
-                <p>Daftar Penerima Bansos</p>
-              </a>
-            </li>
-            <li class="nav-item" style="margin: 5px 0;">
-              <a href="{{ route('admin.validasi') }}" class="nav-link {{ request()->is('admin/validasi') ? 'active' : '' }}">
-                <i class="far fa-dot-circle nav-icon"></i>
-                <p>Validasi Data Warga</p>
-              </a>
-            </li>
-          </ul>
         </li>
-
         <!-- Informasi Bansos -->
         <li class="custom-nav-item nav-item" style="margin-bottom: 10px;">
           <a href="{{ route('admin.informasi-bansos') }}" class="nav-link {{ request()->is('admin/informasi-bansos') ? 'active' : '' }}">
