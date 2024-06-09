@@ -63,7 +63,7 @@
                                     aria-labelledby="kriteria-tab">
                                     <div class="container mt-4">
                                         <div class="mt-2">
-                                            @include('spk.modal.createKriteria')
+                                            
                                             <a href="#" data-toggle="modal" data-target="#ModalCreate"
                                                 class="btn btn-success custom-btn">
                                                 Tambah Data Kriteria <i class="fa fa-plus icon-spacing"
@@ -82,35 +82,7 @@
                                                     </tr>
                                                 </thead>
                                                 <tbody>
-                                                    @isset($kriteria)
-                                                        @forelse ($kriteria as $index => $krit)
-                                                            <tr>
-                                                                <td>{{ $index + 1 }}</td>
-                                                                <td>{{ $krit->kode }}</td>
-                                                                <td>{{ $krit->name }}</td>
-                                                                <td>{{ $krit->type ? 'Benefit' : 'Cost' }}</td>
-                                                                <td>
-                                                                    @include('spk.modal.editKriteria')
-                                                                    <a href="#" data-toggle="modal"
-                                                                        data-target="#ModalEdit{{ $krit->id_kriteria }}"
-                                                                        class="btn btn-warning">
-                                                                        Edit <i class="fa fa-pencil-alt icon-spacing"
-                                                                            aria-hidden="true"></i>
-                                                                    </a>
-                                                                    <button class="btn btn-danger delete-btn"
-                                                                        data-id="{{ $krit->id }}">
-                                                                        Delete <i class="fa fa-trash icon-spacing"
-                                                                            aria-hidden="true"></i>
-                                                                    </button>
-                                                                </td>
-                                                            </tr>
-                                                        @empty
-                                                            <tr>
-                                                                <td colspan="5" class="text-center">Tidak ada kriteria yang
-                                                                    ditemukan.</td>
-                                                            </tr>
-                                                        @endforelse
-                                                    @endisset
+                                                    
                                                 </tbody>
                                             </table>
                                         </div>
@@ -120,23 +92,23 @@
                                 <div class="tab-pane fade" id="subkriteria" role="tabpanel"
                                     aria-labelledby="subkriteria-tab">
                                     <div class="card mt-4">
-                                        @foreach ($kriteria as $krit)
+                                        
                                             <div class="mt-6 mx-6">
                                                 <div class="card">
                                                     <div
                                                         class="card-header d-flex justify-content-between align-items-center">
-                                                        <h3>{{ $krit->name }} ({{ $krit->kode }})</h3>
+                                                        <h3></h3>
                                                         <div>
                                                             <button type="button"
                                                                 class="btn btn-success custom-btn mr-2 btn-sm"
                                                                 data-toggle="modal"
-                                                                data-target="#createSubKriteriaModal{{ $krit->id_kriteria }}">
+                                                                data-target="#createSubKriteriaModal">
                                                                 Tambah Data Sub Kriteria <i class="fa fa-plus icon-spacing"
                                                                     aria-hidden="true"></i>
                                                             </button>
                                                             <button type="button" class="btn btn-warning btn-sm"
                                                                 data-toggle="modal"
-                                                                data-target="#editSubKriteriaModal{{ $krit->id_kriteria }}">
+                                                                data-target="#editSubKriteriaModal">
                                                                 Edit <i class="fa fa-pencil-alt icon-spacing"
                                                                     aria-hidden="true"></i>
                                                             </button>
@@ -145,13 +117,9 @@
                                                 </div>
                                                 <div class="mt-2">
                                                     <!-- Include Create Sub Kriteria Modal -->
-                                                    @include('spk.modal.createSubKriteria', [
-                                                        'krit' => $krit,
-                                                    ])
+                                                    
                                                     <!-- Include Edit Sub Kriteria Modal -->
-                                                    @include('spk.modal.editSubKriteria', [
-                                                        'krit' => $krit,
-                                                    ])
+                                                
                                                     <div class="table-responsive">
                                                         <table class="table">
                                                             <thead>
@@ -163,22 +131,12 @@
                                                                 </tr>
                                                             </thead>
                                                             <tbody>
-                                                                @foreach ($krit->subKriteria as $key => $sub)
-                                                                    <tr>
-                                                                        <td>{{ $key + 1 }}</td>
-                                                                        <td>{{ $sub->name }}</td>
-                                                                        <td>{{ $sub->bobot }}</td>
-                                                                        <td>
-                                                                            <!-- Tambahkan tombol aksi sesuai kebutuhan -->
-                                                                        </td>
-                                                                    </tr>
-                                                                @endforeach
-                                                            </tbody>
+                                                                
                                                         </table>
                                                     </div>
                                                 </div>
                                             </div>
-                                        @endforeach
+                                        
                                     </div>
                                 </div>
 

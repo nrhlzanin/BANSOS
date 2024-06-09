@@ -11,14 +11,22 @@ class Kriteria extends Model
 
     protected $table = 'kriteria';
     protected $primaryKey = 'id_kriteria';
-    protected $guarded = [];
 
-    // Relationship to many sub-criteria
-    public function subKriteria()
+    protected $fillable = [
+        'nama_kriteria',
+        'tipe',
+        'bobot'
+    ];
+
+    public function subkriterias()
     {
-        return $this->hasMany(SubKriteria::class, 'id_kriteria');
-    } 
+        return $this->hasMany(Subkriteria::class, 'id_kriteria');
+    }
 
+    public function penilaians()
+    {
+        return $this->hasMany(Penilaian::class, 'id_kriteria');
+    }
     public function alternatif()
     {
         return $this->belongsToMany(AlternatifModel::class, 'alternatif_kriteria', 'id_kriteria', 'id_alternatif')

@@ -16,23 +16,19 @@ class KriteriaSeeder extends Seeder
         DB::table('kriteria')->insert([
             [
                 'id_kriteria' => 1,
-                'kode' => 'KRT001',
-                'name' => 'Status Pekerjaan Kepala Keluarga',
+                
+                'nama_kriteria' => 'Status Pekerjaan Kepala Keluarga',
                 'bobot' => 1.0,
-                'type' => '1',
-                'min' => 1,
-                'max' => 2,
+                'tipe' => 'cost',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],
             [
-                'id' => 2,
-                'kode' => 'KRT002',
-                'name' => 'Jumlah Penghasilan Perbulan',
+                'id_kriteria' => 2,
+                
+                'nama_kriteria' => 'Jumlah Penghasilan Perbulan',
                 'bobot' => 1.0,
-                'type' => '0',
-                'min' => 1,
-                'max' => 5,
+                'tipe' => 'Benefit',
                 'created_at' => Carbon::now(),
                 'updated_at' => Carbon::now(),
             ],

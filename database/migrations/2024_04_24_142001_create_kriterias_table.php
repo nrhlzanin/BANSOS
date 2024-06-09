@@ -14,16 +14,13 @@ return new class extends Migration
 	public function up()
 	{
 		Schema::create('kriteria', function (Blueprint $table) {
-			$table->id('id_kriteria');
-			$table->string('kode');
-			$table->string('name');
-			$table->float('bobot');
-			$table->tinyInteger('type')->default('1'); // Default nya adalah 'benefit'
-			// type == false (0) => cost
-			$table->float('min')->nullable();
-			$table->float('max')->nullable();
-			$table->timestamps();
-		});
+            $table->id('id_kriteria');
+            $table->string('nama_kriteria');
+            $table->enum('tipe', ['benefit', 'cost']);
+            $table->float('bobot');
+            // Tambahkan field lain jika diperlukan
+            $table->timestamps();
+        });
 	}
 
 	/**

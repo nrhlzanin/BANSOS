@@ -11,6 +11,8 @@ class AlternatifModel extends Model
 
     protected $table = 'alternatif';
     protected $primaryKey = 'id_alternatif';
+    protected $guarded = [];
+
 
     public function pengajuan()
     {
