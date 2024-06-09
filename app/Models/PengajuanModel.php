@@ -36,4 +36,9 @@ class PengajuanModel extends Model
     public function alternatif() {
         return $this->hasOne(AlternatifModel::class, 'id_pengajuan', 'id_pengajuan');
     }
+    public function penerima_bansos()
+    {
+        return $this->hasMany(PenerimaBansosModel::class, 'id_pengajuan', 'id_pengajuan');
+    }
+    
 }

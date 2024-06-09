@@ -29,6 +29,9 @@
                         <li class="nav-item">
                             <a class="nav-link" href="{{ route('warga.pengajuan.create') }}">Pengajuan</a>
                         </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('warga.pengajuan.status') }}">Status Pengajuan</a>
+                        </li>
 
                     @endauth
                 </ul>
