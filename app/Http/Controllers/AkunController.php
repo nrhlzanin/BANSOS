@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\UserModel;
+use App\Models\WargaModel;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
@@ -13,6 +14,13 @@ class AkunController extends Controller
     {
         // Ambil data pengguna yang sedang login
         $user = Auth::user();
+
+        // Debugging
+        if ($user->warga) {
+            dd($user->warga);
+        } else {
+            dd('Tidak ada data warga yang cocok');
+        }
 
         // Pastikan $user dikirim ke view
         return view('RW.informasi-akun', compact('user'));
@@ -47,10 +55,9 @@ class AkunController extends Controller
 
         return view('warga.profileSaya.index', compact('warga'));
     }
-    public function akunPetugas() 
+    public function akunPetugas()
     {
         return view('RT.informasi-akunRT');
-
     }
     public function index()
     {
@@ -63,24 +70,40 @@ class AkunController extends Controller
         return view('RT.dataAkunWarga.addAkun');
     }
     public function store(Request $request)
-{
-    $request->validate([
-        'username' => 'required|string|max:255|unique:user',
-        'password' => 'required|string|min:8|confirmed',
-        'email' => 'required|string|email|max:255|unique:user',
-    ]);
-
-    // Simpan data baru ke dalam database
-    UserModel::create([
-        'username' => $request->username,
-        'password' => Hash::make($request->password),
-        'level' => 'warga', // Tetapkan level akun sebagai 'warga'
-        'email' => $request->email, // Menetapkan nilai email dari request
-    ]);
-
-    // Redirect dengan pesan sukses
-    return redirect()->route('petugas.data-akun-warga')->with('success', 'Akun berhasil dibuat.');
-}
+    {
+        $request->validate([
+            'username' => 'required|string|max:255|unique:user',
+            'password' => 'required|string|min:8|confirmed',
+            'email' => 'required|string|email|max:255|unique:user',
+            'nama_kepalaKeluarga' => 'required|string|max:255',
+            'no_telp' => 'required|string|max:15',
+            'no_rt' => 'required|string|max:3',
+            'no_kk' => 'required|string|max:16',
+            'no_nik' => 'required|string|max:16',
+        ]);
+    
+        // Simpan data baru ke tabel user
+        $user = UserModel::create([
+            'username' => $request->username,
+            'password' => Hash::make($request->password),
+            'level' => 'warga',
+            'email' => $request->email,
+        ]);
+    
+        // Simpan data baru ke tabel warga
+        WargaModel::create([
+            'id_user' => $user->id_user, // Ensure id_user is set here
+            'nama_kepalaKeluarga' => $request->nama_kepalaKeluarga,
+            'no_telp' => $request->no_telp,
+            'no_rt' => $request->no_rt,
+            'no_kk' => $request->no_kk,
+            'no_nik' => $request->no_nik,
+        ]);
+    
+        // Redirect dengan pesan sukses
+        return redirect()->route('petugas.data-akun-warga')->with('success', 'Akun berhasil dibuat.');
+    }
+    
 
     public function show($id)
     {

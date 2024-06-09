@@ -44,7 +44,42 @@
                     @error('password_confirmation')
                         <span class="text-danger">{{ $message }}</span>
                     @enderror
-                </div>                
+                </div>
+                <div class="form-group">
+                    <label for="nama_kepalaKeluarga">Nama Kepala Keluarga</label>
+                    <input type="text" name="nama_kepalaKeluarga" id="nama_kepalaKeluarga" class="form-control" required>
+                    @error('nama_kepalaKeluarga')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="no_telp">No. Telp</label>
+                    <input type="text" name="no_telp" id="no_telp" class="form-control" required>
+                    @error('no_telp')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="no_rt">No. RT</label>
+                    <input type="text" name="no_rt" id="no_rt" class="form-control" required>
+                    @error('no_rt')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="no_kk">No. KK</label>
+                    <input type="text" name="no_kk" id="no_kk" class="form-control" required>
+                    @error('no_kk')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
+                <div class="form-group">
+                    <label for="no_nik">No. NIK</label>
+                    <input type="text" name="no_nik" id="no_nik" class="form-control" required>
+                    @error('no_nik')
+                        <span class="text-danger">{{ $message }}</span>
+                    @enderror
+                </div>
                 <button type="submit" class="btn btn-primary">Tambah Akun</button>
             </form>
         </div>
