@@ -22,6 +22,8 @@ use App\Models\BansosModel;
 use App\Models\PengajuanModel;
 use App\Models\Kriteria;
 use App\Models\SubKriteria;
+use App\Http\Controllers\Auth\ForgotPasswordController;
+use App\Http\Controllers\Auth\ResetPasswordController;
 
 
 
@@ -91,3 +93,8 @@ Route::prefix('warga')->group(function () {
 Route::get('/informasi-akun', [App\Http\Controllers\AdminController::class, 'informasiAkun'])->name('informasi-akun');
 Route::get('/validasi', [AdminController::class, 'validasi'])->name('validasi');
 Route::get('/informasi-bansos', [AdminController::class, 'informasiBansos'])->name('index');
+
+Route::get('forgot-password', [ForgotPasswordController::class, 'showLinkRequestForm'])->name('password.request');
+Route::post('forgot-password', [ForgotPasswordController::class, 'sendResetLinkEmail'])->name('password.email');
+Route::get('reset-password/{token}', [ResetPasswordController::class, 'showResetForm'])->name('password.reset');
+Route::post('reset-password', [ResetPasswordController::class, 'reset'])->name('password.update');
