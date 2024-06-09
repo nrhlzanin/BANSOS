@@ -35,10 +35,10 @@
             </a>
           </li>
           <li class="custom-nav-item nav-item has-treeview" style="margin-bottom: 10px;">
-              <a href="{{ route('petugas.data-wargart') }}" class="nav-link {{ request()->is('petugas/data-warga') ? 'active' : '' }}">
+              <a href="{{ route('petugas.data-pengajuan') }}" class="nav-link {{ request()->is('petugas/data-pengajuan') ? 'active' : '' }}">
               <i class="nav-icon fas fa-address-card"></i>
               <p>
-                Data Warga
+                Data Pengajuan
               </p>
             </a>
           </li>

@@ -20,4 +20,7 @@ class WargaModel extends Model
     public function user() {
         return $this->belongsTo(UserModel::class, 'id_user', 'id_user');
     }
+    public function pengajuan() {
+        return $this->hasMany(PengajuanModel::class, 'id_warga', 'id_warga');
+    }
 }

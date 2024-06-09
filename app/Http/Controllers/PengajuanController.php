@@ -15,10 +15,15 @@ class PengajuanController extends Controller
     /**
      * Display a listing of the resource.
      */
-    public function index()
+    public function dataPengajuanRT(Request $request)
     {
-        $pengajuanModel = PengajuanModel::all();
-        return view('pengajuan.index', compact('pengajuanModel'));
+        $user = Auth::user();
+        $no_rt = $user->rt->no_rt;
+        $pengajuans = PengajuanModel::whereHas('warga', function ($query) use ($no_rt) {
+            $query->where('no_rt', $no_rt);
+        })->get();
+
+        return view('RT.dataPengajuan.index', compact('no_rt','pengajuans'));
     }
 
     /**
@@ -102,8 +107,16 @@ class PengajuanController extends Controller
     public function show(string $id)
     {
         $pengajuan = PengajuanModel::findOrFail($id);
-        return view('pengajuan.show', compact('pengajuan'));
+        return view('RT.dataPengajuan.show', compact('pengajuan'));
     }
+
+    public function validatePengajuan($id)
+{
+    PengajuanModel::where('id_pengajuan', $id)
+        ->update(['status_data' => 'tervalidasi']);
+    
+    return redirect()->back()->with('successUpdate', 'Pengajuan berhasil divalidasi.');
+}
 
     /**
      * Show the form for editing the specified resource.
