@@ -2,11 +2,13 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\PenerimaBansosModel;
 use App\Models\PengajuanModel;
 use App\Models\WargaModel;
 use Illuminate\Http\Request;
 use Illuminate\Http\UploadedFile;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\Facades\Validator;
 use Illuminate\Validation\ValidationException;
 
@@ -167,4 +169,15 @@ class PengajuanController extends Controller
 
         return redirect()->route('pengajuan.index')->with('success', 'Pengajuan berhasil dihapus.');
     }
+
+    public function status()
+    {
+        $user = Auth::user();
+
+        // Mengambil data pengajuan berdasarkan id_warga yang sedang login
+        $pengajuan = PengajuanModel::where('id_warga', $user->warga->id_warga)->get();
+
+        return view('warga.statusPengajuan.index', compact('pengajuan', 'user'));
+    }
+    
 }

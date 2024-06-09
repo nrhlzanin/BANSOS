@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\BansosModel;
 use App\Models\Informasi;
 use App\Models\InformasiModel;
 use App\Models\JenisBantuan;
@@ -19,7 +20,7 @@ class InformasiController extends Controller
     {
         return view("main.detailInformasi", [
             "informasi" => $informasi,
-            "jenisBantuan" => JenisBantuan::where("id", $informasi->jenisBantuan_id)->get()
+            "jenisBantuan" => BansosModel::where("id", $informasi->jenisBantuan_id)->get()
         ]);
     }
 }
