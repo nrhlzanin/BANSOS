@@ -63,22 +63,25 @@ class AkunController extends Controller
         return view('RT.dataAkunWarga.addAkun');
     }
     public function store(Request $request)
-    {
-        $request->validate([
-            'username' => 'required|string|max:255|unique:user',
-            'email' => 'required|string|email|max:255|unique:user',
-            'password' => 'required|string|min:8|confirmed',
-        ]);
-    
-        UserModel::create([
-            'username' => $request->username,
-            'email' => $request->email,
-            'password' => Hash::make($request->password),
-            'level' => 'warga',
-        ]);
-    
-        return redirect()->route('RT.dataAkunWarga')->with('success', 'Akun berhasil dibuat.');
-    }
+{
+    $request->validate([
+        'username' => 'required|string|max:255|unique:user',
+        'password' => 'required|string|min:8|confirmed',
+        'email' => 'required|string|email|max:255|unique:user',
+    ]);
+
+    // Simpan data baru ke dalam database
+    UserModel::create([
+        'username' => $request->username,
+        'password' => Hash::make($request->password),
+        'level' => 'warga', // Tetapkan level akun sebagai 'warga'
+        'email' => $request->email, // Menetapkan nilai email dari request
+    ]);
+
+    // Redirect dengan pesan sukses
+    return redirect()->route('petugas.data-akun-warga')->with('success', 'Akun berhasil dibuat.');
+}
+
     public function show($id)
     {
         $akun = UserModel::findOrFail($id);
@@ -106,13 +109,13 @@ class AkunController extends Controller
         }
         $akun->save();
 
-        return redirect()->route('RT.dataAkunWarga')->with('success', 'Akun berhasil diperbaharui.');
+        return redirect()->route('petugas.data-akun-warga')->with('success', 'Akun berhasil diperbaharui.');
     }
     public function destroy($id)
     {
         $akun = UserModel::findOrFail($id);
         $akun->delete();
 
-        return redirect()->route('petugas.dataAkunWarga')->with('success', 'Akun berhasil dihapus.');
+        return redirect()->route('petugas.data-akun-warga')->with('success', 'Akun berhasil dihapus.');
     }
 }
