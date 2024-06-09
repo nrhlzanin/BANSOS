@@ -1,7 +1,7 @@
 <header>
     <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top border-bottom px-5">
             <a class="navbar-brand" href="/">
-                <img src="{{ asset('img/icon1.png') }}" alt="icon" width="50">
+                <img src="{{ asset('img/icon.png') }}" alt="icon" width="50">
                 <span class="ms-1">BANSOS</span>
             </a>
             <button class="navbar-toggler" type="button" data-toggle="collapse"
