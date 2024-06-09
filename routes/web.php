@@ -39,7 +39,7 @@ Route::get('/logout', [AuthController::class, 'logout'])->name('logout');
 // daftar penerima
 // Route::get("/penerima", [DashboardController::class, "daftarPenerima"])->middleware("auth");
 
-// Route RW coba
+// Route RW
 Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/', [AdminController::class, 'index']);
     Route::get('/data-alternatif-warga', [AdminController::class, 'dataAlternatif'])->name('admin.data-alternatif');
@@ -50,7 +50,9 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/informasi-akun', [InformasiController::class, 'index'])->name('admin.informasi.informasi-akun');
     Route::get('/validasi', [AdminController::class, 'validasi'])->name('admin.validasi');
     Route::get('/data-warga/validasi', [AdminController::class, 'validasiData'])->name('admin.data-warga.validation');
-    Route::get('/perankingan', [SpkController::class, 'calculatePSI'])->name('admin.spk.menu');
+    
+    // Route SPK
+    // Route::get('/perankingan', [SpkController::class, 'calculatePSI'])->name('admin.spk.menu');
     Route::put('/kriteria/update/{id}', [SpkController::class, 'update'])->name('spk.modal.editKriteria');
     Route::post('/kriteria/create', [SpkController::class, 'store'])->name('spk.modal.createKriteria');
     Route::get('kriteria/create', [SpkController::class, 'perankingan'])->name('spk.modal.createKriteria.get');
@@ -58,6 +60,8 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('kriteria/{kriteria}/createSubKriteria', [SpkController::class, 'createSubKriteria'])->name('kriteria.createSubKriteria');
     Route::post('kriteria/{kriteria}/storeSubKriteria', [SpkController::class, 'storeSubKriteria'])->name('kriteria.storeSubKriteria');
     Route::put('/kriteria/{kriteria}/subkriteria/{subkriteria}', [SpkController::class, 'editSubKriteria'])->name('kriteria.updateSubKriteria');
+    Route::get('/perangkingan', [SpkController::class, 'perangkingan'])->name('perangkingan.index');
+    
     Route::get('/informasi-bansos', [BansosController::class, 'index'])->name('admin.informasi-bansos');
     Route::get('/informasi-bansos/addBansos', [BansosController::class, 'create'])->name('admin.informasi-bansos.addBansos');
     Route::post('/informasi-bansos', [BansosController::class, 'store'])->name('admin.informasi-bansos.store');

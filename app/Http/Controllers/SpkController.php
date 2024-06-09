@@ -9,23 +9,32 @@ use App\Models\Subkriteria;
 use App\Models\HasilSPK;
 use App\Models\PengajuanModel;
 use Illuminate\Support\Facades\DB;
+use App\Models\WargaModel;
+use App\Models\SubCriteria;
 
 class SpkController extends Controller
 {
     public $kriteria_id;
 
-	public $name, $min, $max, $bobot;
+    public $name, $min, $max, $bobot;
 
-    public function perankingan()
-{
-    // Ambil data kriteria, alternatif, dan sub-kriteria
-    $kriteria = $this->ambilKriteria();
-    $pengajuans = PengajuanModel::where('status_pengajuan', 'diterima')->where('status_data', 'tervalidasi')->get();
-    $sub_kriteria = $this->ambilSemuaSubKriteria(); // Atau $this->ambilSubKriteria($kriteria_id) jika Anda memiliki kriteria ID yang spesifik
-    $alternatifs = $this->calculatePSI();
-    //return view('spk.menu', compact('kriteria', 'alternatifs', 'pengajuans', 'sub_kriteria'));
-}
+    //     public function perangkingan()
+    // {
+    //     // Ambil data kriteria, alternatif, dan sub-kriteria
+    //     $kriteria = $this->ambilKriteria();
+    //     $pengajuans = PengajuanModel::where('status_pengajuan', 'diterima')->where('status_data', 'tervalidasi')->get();
+    //     $sub_kriteria = $this->ambilSemuaSubKriteria(); // Atau $this->ambilSubKriteria($kriteria_id) jika Anda memiliki kriteria ID yang spesifik
+    //     $alternatifs = $this->calculatePSI();
+    //     //return view('spk.menu', compact('kriteria', 'alternatifs', 'pengajuans', 'sub_kriteria'));
+    // }
+    public function perangkingan()
+    {
+        // Ambil data pengajuan dan warga
+        $pengajuans = PengajuanModel::with('warga')->get();
 
+        // Mengarahkan ke view RW.perangkingan.index dan kirimkan data pengajuans
+        return view('RW.perangkingan.index', compact('pengajuans'));
+    }
     public function ambilKriteria()
     {
         // Ambil data kriteria
@@ -68,32 +77,32 @@ class SpkController extends Controller
     public function calculatePSI()
     {
         // Ambil data kriteria
-$kriteria = DB::table('kriteria')->get();
+        $kriteria = DB::table('kriteria')->get();
 
-// Ambil data subkriteria
-$subkriteria = DB::table('sub_kriteria')->get();
+        // Ambil data subkriteria
+        $subkriteria = DB::table('sub_kriteria')->get();
 
-// Step 1: Membuat Matriks Keputusan
-$matrixKeputusan = DB::table('penilaian')
-    ->join('pengajuan', 'penilaian.id_pengajuan', '=', 'pengajuan.id_pengajuan')
-    ->join('sub_kriteria', 'penilaian.id_subkriteria', '=', 'sub_kriteria.id_subkriteria')
-    ->select('penilaian.id_pengajuan', 'kriteria.nama_kriteria', 'sub_kriteria.nilai')
-    ->get();
+        // Step 1: Membuat Matriks Keputusan
+        $matrixKeputusan = DB::table('penilaian')
+            ->join('pengajuan', 'penilaian.id_pengajuan', '=', 'pengajuan.id_pengajuan')
+            ->join('sub_kriteria', 'penilaian.id_subkriteria', '=', 'sub_kriteria.id_subkriteria')
+            ->select('penilaian.id_pengajuan', 'kriteria.nama_kriteria', 'sub_kriteria.nilai')
+            ->get();
 
-// Menginisialisasi array kosong untuk menyimpan matriks keputusan
-$matriksKeputusan = [];
+        // Menginisialisasi array kosong untuk menyimpan matriks keputusan
+        $matriksKeputusan = [];
 
-// Loop untuk mengisi matriks keputusan dengan nilai dari database
-foreach ($matrixKeputusan as $item) {
-    $matriksKeputusan[$item->id_pengajuan][$item->nama_kriteria] = $item->nilai;
-}
+        // Loop untuk mengisi matriks keputusan dengan nilai dari database
+        foreach ($matrixKeputusan as $item) {
+            $matriksKeputusan[$item->id_pengajuan][$item->nama_kriteria] = $item->nilai;
+        }
 
-// Kirim data ke view
-return view('spk.calculateSpk', [
-    'kriteria' => $kriteria,
-    'subkriteria' => $subkriteria,
-    'matriksKeputusan' => $matriksKeputusan,
-]);
+        // Kirim data ke view
+        return view('spk.calculateSpk', [
+            'kriteria' => $kriteria,
+            'subkriteria' => $subkriteria,
+            'matriksKeputusan' => $matriksKeputusan,
+        ]);
     }
 
 
@@ -105,7 +114,7 @@ return view('spk.calculateSpk', [
 
         return redirect()->back()->with('success', 'Kriteria deleted successfully');
     }
-    
+
     // Display all Sub Kriteria for a given Kriteria
     public function subKriteria(Kriteria $kriteria)
     {
@@ -134,7 +143,7 @@ return view('spk.calculateSpk', [
         ]);
 
         return redirect()->route('kriteria.subKriteria', $kriteria->id)
-                        ->with('success','Sub Kriteria created successfully.');
+            ->with('success', 'Sub Kriteria created successfully.');
     }
 
     // Show form to edit Sub Kriteria for a given Kriteria
@@ -154,7 +163,6 @@ return view('spk.calculateSpk', [
         $subKriteria->update($request->all());
 
         return redirect()->route('kriteria.subKriteria', $subKriteria->id_kriteria)
-                        ->with('success','Sub Kriteria updated successfully');
+            ->with('success', 'Sub Kriteria updated successfully');
     }
-
 }

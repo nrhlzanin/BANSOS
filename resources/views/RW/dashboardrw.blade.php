@@ -110,7 +110,7 @@
                                 <div class="icon" style="position: absolute; top: 10px; right: 10px;">
                                     <i class="ion ion-bag"></i>
                                 </div>
-                                <a href="{{ route('admin.spk.menu') }}" class="small-box-footer"
+                                <a href="{{ route('perangkingan.index') }}" class="small-box-footer"
                                     style="display: block; text-align: center; padding: 10px; background: rgba(0, 0, 0, 0.1); border-top: 1px solid rgba(0, 0, 0, 0.1); color: black;">Perankingan
                                     <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
