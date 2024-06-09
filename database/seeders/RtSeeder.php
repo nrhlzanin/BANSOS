@@ -54,7 +54,7 @@ class RtSeeder extends Seeder
                 'id_user' => 7, 
                 'nama_petugas' => 'Bani Adam', 
                 'no_telp' => '084156598612',
-                'no_rt' =>  5
+                'no_rt' =>  6
             ]            
         ];
         DB::table('rt')->insert($data);
