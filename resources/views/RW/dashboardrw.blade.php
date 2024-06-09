@@ -76,7 +76,7 @@
                                 </div>
                                 <a href="{{ route('admin.data-warga') }}" class="small-box-footer"
                                     style="display: block; text-align: center; padding: 10px; background: rgba(0, 0, 0, 0.1); border-top: 1px solid rgba(0, 0, 0, 0.1); color: black;">Pendataan
-                                    Warga <i class="fas fa-arrow-circle-right"></i></a>
+                                    Bansos Warga <i class="fas fa-arrow-circle-right"></i></a>
                             </div>
                         </div>
                         <!-- ./col -->

@@ -48,13 +48,28 @@
           </a>
         </li>
 
-        <!-- Data Warga -->
-        
-        <li class="custom-nav-item nav-item" style="margin-bottom: 10px;">
-          <a href="{{ route('admin.data-warga') }}" class="nav-link {{ request()->is('admin/data-warga') ? 'active' : '' }}">
+        <!-- Pendataan Bansos Warga -->
+        <li style="margin-bottom: 10px;" class="custom-nav-item nav-item has-treeview">
+          <a href="#" class="nav-link {{ request()->is('admin/data-alternatif-warga') ? 'active' : '' }}">
             <i class="nav-icon fas fa-address-card"></i>
-            <p>Daftar Penerima Bansos</p>
+            <p>Pendataan Bansos
+              <i class="fas fa-chevron-circle-down right"></i>
+            </p>
           </a>
+          <ul class="nav nav-treeview">
+            <li class="nav-item" style="margin: 5px;">
+              <a href="{{ route('admin.data-alternatif') }}" class="nav-link {{ request()->is('admin/data-alternatif-warga') ? 'active' : '' }}">
+                <i class="far fa-dot-circle nav-icon"></i>
+                <p>Daftar Alternatif Pengajuan</p>
+              </a>                    
+            </li>
+            <li class="nav-item" style="margin: 5px;">
+              <a href="{{ route('admin.data-warga') }}" class="nav-link {{ request()->is('admin/data-warga') ? 'active' : '' }}">
+                <i class="far fa-dot-circle nav-icon"></i>
+                <p>Daftar Penerima Bansos</p>
+              </a>                    
+            </li>
+          </ul>
         </li>
         <!-- Informasi Bansos -->
         <li class="custom-nav-item nav-item" style="margin-bottom: 10px;">
@@ -66,7 +81,7 @@
 
         <!-- Perankingan -->
         <li style="margin-bottom: 10px;" class="custom-nav-item nav-item has-treeview {{ request()->is('admin/perankingan') ? 'menu-open' : '' }}">
-          <a href="{{ route('admin.spk.menu') }}" class="nav-link {{ request()->is('admin/perankingan') ? 'active' : '' }}">
+          <a href="#" class="nav-link {{ request()->is('admin/perankingan') ? 'active' : '' }}">
             <i class="nav-icon fas fa-trophy"></i>
             <p>
               Perankingan

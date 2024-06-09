@@ -7,6 +7,7 @@ use App\Models\PenerimaBansosModel;
 use App\Models\User;
 use App\Models\BansosModel;
 use App\Models\AlternatifModel;
+use App\Models\PengajuanModel;
 use Illuminate\Support\Facades\Auth;
 
 class AdminController extends Controller
@@ -16,6 +17,20 @@ class AdminController extends Controller
         return view('RW.dashboardrw');
     }
 
+    public function dataAlternatif() 
+    {
+        $pengajuans = PengajuanModel::where('status_data', 'tervalidasi')->get();
+
+        return view('RW.dataAlternatif.index', compact('pengajuans'));
+    }
+    public function showDataAlternatif($id) {
+        $pengajuans = PengajuanModel::where([
+            'status_data' => 'tervalidasi',
+            'id_pengajuan' => $id
+        ])->firstOrFail();
+
+        return view('RW.dataAlternatif.show', compact('pengajuans'));
+    }
     public function dataWarga()
     {
         $user = Auth::user();
