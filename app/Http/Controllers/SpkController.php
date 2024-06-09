@@ -18,7 +18,6 @@ class SpkController extends Controller
 
     public $name, $min, $max, $bobot;
 
-<<<<<<< HEAD
     //     public function perangkingan()
     // {
     //     // Ambil data kriteria, alternatif, dan sub-kriteria
@@ -36,25 +35,6 @@ class SpkController extends Controller
         // Mengarahkan ke view RW.perangkingan.index dan kirimkan data pengajuans
         return view('RW.perangkingan.index', compact('pengajuans'));
     }
-=======
-//     public function perangkingan()
-// {
-//     // Ambil data kriteria, alternatif, dan sub-kriteria
-//     $kriteria = $this->ambilKriteria();
-//     $pengajuans = PengajuanModel::where('status_pengajuan', 'diterima')->where('status_data', 'tervalidasi')->get();
-//     $sub_kriteria = $this->ambilSemuaSubKriteria(); // Atau $this->ambilSubKriteria($kriteria_id) jika Anda memiliki kriteria ID yang spesifik
-//     $alternatifs = $this->calculatePSI();
-//     //return view('spk.menu', compact('kriteria', 'alternatifs', 'pengajuans', 'sub_kriteria'));
-// }
-public function perangkingan()
-{
-    // Ambil data pengajuan dan warga
-    $pengajuans = PengajuanModel::with('warga')->get();
-
-    // Mengarahkan ke view RW.perangkingan.index dan kirimkan data pengajuans
-    return view('RW.perangkingan.index', compact('pengajuans'));
-}
->>>>>>> bc83e49a6feb9cbc11321b0ac315285e5b82c4a5
     public function ambilKriteria()
     {
         // Ambil data kriteria
@@ -125,8 +105,6 @@ public function perangkingan()
         ]);
     }
 
-
-
     // Delete Kriteria
     public function destroy(Kriteria $kriteria)
     {
@@ -185,11 +163,4 @@ public function perangkingan()
         return redirect()->route('kriteria.subKriteria', $subKriteria->id_kriteria)
             ->with('success', 'Sub Kriteria updated successfully');
     }
-<<<<<<< HEAD
-=======
-
-
-
-
->>>>>>> bc83e49a6feb9cbc11321b0ac315285e5b82c4a5
 }
