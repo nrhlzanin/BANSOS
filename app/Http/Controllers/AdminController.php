@@ -9,6 +9,7 @@ use App\Models\BansosModel;
 use App\Models\AlternatifModel;
 use App\Models\PengajuanModel;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Validator;
 
 class AdminController extends Controller
 {
@@ -20,8 +21,9 @@ class AdminController extends Controller
     public function dataAlternatif() 
     {
         $pengajuans = PengajuanModel::where('status_data', 'tervalidasi')->get();
+        $bansos = BansosModel::all();
 
-        return view('RW.dataAlternatif.index', compact('pengajuans'));
+        return view('RW.dataAlternatif.index', compact('pengajuans', 'bansos'));
     }
     public function showDataAlternatif($id) {
         $pengajuans = PengajuanModel::where([
@@ -31,6 +33,45 @@ class AdminController extends Controller
 
         return view('RW.dataAlternatif.show', compact('pengajuans'));
     }
+
+    public function updateAlternativeToHaveBansos(Request$request)
+    {
+        $validator = Validator::make($request->all(), [
+            'id_bansos' => 'required|integer|exists:bansos,id_bansos',
+            'id_pengajuan' => 'array|min:1',
+            'id_pengajuan.*' => 'required|exists:pengajuan,id_pengajuan'
+        ]);
+
+        if ($validator->fails()) {
+            return response()->json([
+                'success' => false,
+                'errors' => $validator->errors(),
+            ]);
+        }
+
+        foreach ($request->id_pengajuan as $id_pengajuan) {
+            PengajuanModel::where('id_pengajuan', $id_pengajuan)->update([
+                'status_pengajuan' => 'diterima'
+            ]);
+
+            $alternativeModel = AlternatifModel::make([
+                'id_pengajuan' => $id_pengajuan
+            ]);
+
+            $alternativeModel->save();
+
+            PenerimaBansosModel::create([
+                'id_alternatif' => $alternativeModel->id_alternatif,
+                'id_bansos' => $request->id_bansos,
+                'tanggal_penerimaan' => now(),
+            ]);
+        }
+
+        return response()->json([
+            'success' => true
+        ]);
+    }
+
     public function dataWarga()
     {
         $user = Auth::user();
@@ -69,8 +110,8 @@ class AdminController extends Controller
     {
         $request->validate([
             'id_jenisbansos' => 'required|integer',
-            'id_petugas' => 'required|integer',
-            'id_admin' => 'required|integer',
+            // 'id_petugas' => 'required|integer',
+            // 'id_admin' => 'required|integer',
             'id_pengajuan' => 'required|integer',
             'tanggal_penerimaan' => 'required|date',
             'keterangan' => 'nullable|string|max:255',

@@ -44,6 +44,7 @@ Route::prefix('admin')->middleware(['auth', 'role:rw'])->group(function () {
     Route::get('/', [AdminController::class, 'index']);
     Route::get('/data-alternatif-warga', [AdminController::class, 'dataAlternatif'])->name('admin.data-alternatif');
     Route::get('/data-alternatif-warga/{id}', [AdminController::class, 'showDataAlternatif'])->name('admin.data-alternatif.show');
+    Route::put('/data-alternatif-warga/to/penerima', [AdminController::class, 'updateAlternativeToHaveBansos'])->name('admin.data-alternatif.to.penerima');
     Route::get('/data-warga', [AdminController::class, 'dataWarga'])->name('admin.data-warga');
     Route::get('/data-warga/{id}', [AdminController::class, 'show'])->name('admin.data-warga.show');
     Route::get('/informasi-akun', [InformasiController::class, 'index'])->name('admin.informasi.informasi-akun');

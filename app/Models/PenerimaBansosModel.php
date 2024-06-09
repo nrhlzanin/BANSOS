@@ -13,10 +13,8 @@ class PenerimaBansosModel extends Model
 
     protected $fillable = [
         'id_penerimabansos',
-        'id_jenisbansos',
-        'id_petugas',
-        'id_admin',
-        'id_pengajuan',
+        'id_alternatif',
+        'id_bansos',
         'tanggal_penerimaan',
         'keterangan',
     ];
