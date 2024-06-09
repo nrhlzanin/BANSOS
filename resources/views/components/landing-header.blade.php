@@ -22,11 +22,6 @@
                     <li class="nav-item">
                         <a class="nav-link" href="{{ url('/#informasi') }}">Informasi</a>
                     </li>
-                    @guest
-                        <li class="nav-item">
-                            <a class="nav-link" href="#tentang">FAQ</a>
-                        </li>
-                    @endguest
 
                     <!-- Menu untuk user yang sudah login -->
                     @auth

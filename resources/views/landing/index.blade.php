@@ -88,28 +88,6 @@
                 </div>
             </div>
         </section>
-        
-
-        <!-- FAQ -->
-        <section class="container shadow" id="tentang"
-            style="padding: 30px 100px 20px !important; margin-top: 20px !important">
-            <h1 class="text-center">Pertanyaan dan Saran</h1>
-            <p class="text-center">Hubungi kami jika anda memiliki pertanyaan dan masukan</p>
-            <form method="post" action="{{ route('contact.submit') }}" class="mt-5">
-                @csrf
-                <div class="d-flex mb-3">
-                    <input type="text" class="form-control me-2" id="nama" name="nama" placeholder="Nama">
-                    <input type="email" class="form-control ms-2" id="email" name="email" placeholder="Email">
-                </div>
-                <div class="mb-3">
-                    <input type="text" class="form-control" id="subjek" name="subjek" placeholder="Subjek">
-                </div>
-                <div class="mb-3">
-                    <textarea class="form-control" id="floatingTextarea2" name="message" placeholder="Message" style="height: 100px"></textarea>
-                </div>
-                <button type="submit" class="btn btn-primary col-12">Kirim</button>
-            </form>
-        </section>
     </main>
 
 
