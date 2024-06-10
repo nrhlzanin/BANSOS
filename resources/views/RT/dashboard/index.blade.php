@@ -55,8 +55,7 @@
             </div>
             <!-- ./col -->
             <!-- ./col -->
-            <div class="col-lg-3 col-6">
-                <!-- small box -->
+            <!-- <div class="col-lg-3 col-6">
                 <div class="small-box" style="background-color: #b8efdc; position: relative; overflow: hidden;">
                     <div class="inner"
                         style="padding: 10px; color: black; display: flex; justify-content: center; align-items: center;">
@@ -70,7 +69,7 @@
                         style="display: block; text-align: center; padding: 10px; background: rgba(0, 0, 0, 0.1); border-top: 1px solid rgba(0, 0, 0, 0.1); color: black;">Validasi
                         Warga <i class="fas fa-arrow-circle-right"></i></a>
                 </div>
-            </div>
+            </div> -->
             <!-- ./col -->
             <div class="col-lg-3 col-6">
                 <!-- small box -->

@@ -68,11 +68,12 @@
               <input type="email" class="form-control" value="{{ $rt->no_telp }}">
             </div>
           </div>
-          <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+          <div class="pt-5 d-flex justify-content-center">
+            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
+          </div>
         </form>
       </div>
     </div>
       <!-- /.container-fluid -->
-
   </div>
 @endsection
