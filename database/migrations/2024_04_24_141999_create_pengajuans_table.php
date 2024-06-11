@@ -16,10 +16,7 @@ return new class extends Migration
             $table->foreignId('id_warga')->constrained('warga', 'id_warga')->onDelete('restrict')->onUpdate('restrict');
             $table->text('foto_kk')->nullable();
             $table->text('foto_ktp')->nullable();
-            $table->enum('pekerjaan', [
-                'bekerja', 
-                'tidak bekerja'
-            ])->nullable();
+            $table->enum('pekerjaan')->nullable();
             $table->enum('penghasilan', [
                 '<=500.000', 
                 '>500.000 sampai <=1.000.000', 

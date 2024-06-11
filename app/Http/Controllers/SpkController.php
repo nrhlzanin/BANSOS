@@ -103,7 +103,7 @@ class SpkController extends Controller
     }
 
         // Mengarahkan ke view RW.perangkingan.index dan kirimkan data pengajuans
-        return view('RW.perangkingan.index', compact('pengajuans', 'kriterias', 'maxValues', 'minValues', 'kriteriaValues'));
+        return view('spk.menu', compact('pengajuans', 'kriterias', 'maxValues', 'minValues', 'kriteriaValues'));
     }
     public function ambilKriteria()
     {

@@ -97,7 +97,6 @@ Route::prefix('warga')->group(function () {
     Route::post('/pengajuan', [PengajuanController::class, 'store'])->name('warga.pengajuan.store');
     Route::get('/profil', [AkunController::class, 'akunWarga'])->name('warga.akun.index');
     Route::get('/statusPenerima', [PengajuanController::class, 'status'])->name('warga.pengajuan.status');
-
     
 });
 
