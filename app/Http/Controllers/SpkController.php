@@ -31,9 +31,79 @@ class SpkController extends Controller
     {
         // Ambil data pengajuan dan warga
         $pengajuans = PengajuanModel::with('warga')->get();
+        $kriterias = Kriteria::all();
+
+        // Inisialisasi array untuk menyimpan nilai kriteria
+        $kriteriaValues = [];
+
+        // Iterasi untuk mengisi nilai kriteria
+        foreach ($pengajuans as $pengajuan) {
+            $values = [];
+            foreach ($kriterias as $kriteria) {
+                switch ($kriteria->nama_kriteria) {
+                    case 'pekerjaan':
+                        $values[] = $pengajuan->pekerjaan == 'bekerja' ? 1 : ($pengajuan->pekerjaan == 'tidak bekerja' ? 2 : '-');
+                        break;
+                    case 'penghasilan':
+                        if ($pengajuan->penghasilan <= 500000) {
+                            $values[] = 1;
+                        } elseif ($pengajuan->penghasilan > 500000 && $pengajuan->penghasilan <= 1000000) {
+                            $values[] = 2;
+                        } elseif ($pengajuan->penghasilan > 1000000 && $pengajuan->penghasilan <= 1500000) {
+                            $values[] = 3;
+                        } elseif ($pengajuan->penghasilan > 1500000 && $pengajuan->penghasilan <= 2000000) {
+                            $values[] = 4;
+                        } else {
+                            $values[] = 5;
+                        }
+                        break;
+                    case 'jumlah_tanggungan':
+                        $values[] = $pengajuan->jumlah_tanggungan > 4 ? 6 : $pengajuan->jumlah_tanggungan + 1;
+                        break;
+                    case 'tempat_tinggal':
+                        switch ($pengajuan->tempat_tinggal) {
+                            case 'Menumpang':
+                                $values[] = 1;
+                                break;
+                            case 'Kontrakan':
+                                $values[] = 2;
+                                break;
+                            case 'Rumah Pribadi':
+                                $values[] = 3;
+                                break;
+                            default:
+                                $values[] = '-';
+                        }
+                        break;
+                    case 'pendidikan':
+                        $pendidikanMapping = [
+                            'tidak sekolah' => 1,
+                            'SD' => 2,
+                            'SMP' => 3,
+                            'SMA' => 4,
+                            'kuliah' => 5
+                        ];
+                        $values[] = $pendidikanMapping[$pengajuan->pendidikan] ?? '-';
+                        break;
+                    // Tambahkan kasus lain jika diperlukan
+                    default:
+                        $values[] = '-';
+                }
+            }
+            $kriteriaValues[] = $values;
+        }
+
+        // Mengumpulkan nilai maksimum dan minimum untuk setiap kriteria
+    $maxValues = [];
+    $minValues = [];
+    foreach ($kriterias as $kriteria) {
+        $values = $pengajuans->pluck($kriteria->nama_kriteria)->toArray();
+        $maxValues[] = count($values) > 0 ? max($values) : 0;
+        $minValues[] = count($values) > 0 ? min($values) : 0;
+    }
 
         // Mengarahkan ke view RW.perangkingan.index dan kirimkan data pengajuans
-        return view('RW.perangkingan.index', compact('pengajuans'));
+        return view('RW.perangkingan.index', compact('pengajuans', 'kriterias', 'maxValues', 'minValues', 'kriteriaValues'));
     }
     public function ambilKriteria()
     {
@@ -51,9 +121,9 @@ class SpkController extends Controller
     {
         // Assuming this method should return both alternatives and criteria
         $alternatif = $this->ambilAlternatif();
-        $kriteria = $this->ambilKriteria();
+        $kriterias = $this->ambilKriteria();
 
-        return compact('alternatif', 'kriteria');
+        return compact('alternatif', 'kriterias');
     }
 
     public function ambilPerhitungan()

@@ -58,6 +58,12 @@
                                     @if($pengajuan->status_data == 'belum tervalidasi')
                                       <button type="button" class="btn btn-success btn-sm" data-toggle="modal" data-target="#validateModal{{ $pengajuan->id_pengajuan }}">Validasi</button>
                                     @endif
+                                    <!-- Delete Button -->
+                                    <form action="{{ route('petugas.data-pengajuan.destroy', $pengajuan->id_pengajuan) }}" method="POST" style="display: inline;">
+                                      @csrf
+                                      @method('DELETE')
+                                      <button type="submit" class="btn btn-danger btn-sm" onclick="return confirm('Are you sure you want to delete this item?');">Delete</button>
+                                  </form>
                                   </td>                                      
                                 </tr>
                                 <!-- Modal -->

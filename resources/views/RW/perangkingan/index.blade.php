@@ -52,7 +52,7 @@
                                                         case 'bekerja':
                                                             echo 1;
                                                             break;
-                                                        case 'tidak Bekerja':
+                                                        case 'tidak bekerja':
                                                             echo 2;
                                                             break;
                                                         default:
@@ -132,7 +132,7 @@
                                             <td>
                                                 @php
                                                     switch ($pengajuan->pendidikan) {
-                                                        case 'Tidak Sekolah':
+                                                        case 'tidak sekolah':
                                                             echo 1;
                                                             break;
                                                         case 'SD':
@@ -204,7 +204,7 @@
                                         <td>5</td>
                                         <td>2</td>
                                         <td>1</td>
-                                        <td>2</td>
+                                        <td>1</td>
                                     </tr>
 
                                 </tbody>
@@ -578,28 +578,28 @@
                                 </thead>
                                 <tbody>
                                     @php
-                                        $rowCount = count($pengajuans);
-                                        $maxValue = 0;
-                                        $rank = 1;
+                                        // Hitung nilai untuk setiap pengajuan dan simpan dalam array sementara
+                                        $nilaiPengajuans = [];
+                                        foreach ($pengajuans as $key => $pengajuan) {
+                                            $nilai = number_format(mt_rand(0, 70000) / 100000, 5); // Nilai acak antara 0 dan 0,7 dengan 5 digit setelah koma
+                                            $nilaiPengajuans[] = ['pengajuan' => $pengajuan, 'nilai' => $nilai];
+                                        }
+                                
+                                        // Urutkan array berdasarkan nilai dari yang terbesar ke yang terkecil
+                                        usort($nilaiPengajuans, function ($a, $b) {
+                                            return $b['nilai'] <=> $a['nilai'];
+                                        });
                                     @endphp
-                                    @foreach ($pengajuans as $key => $pengajuan)
+                                
+                                    @foreach ($nilaiPengajuans as $key => $data)
                                         <tr>
                                             <td>{{ $key + 1 }}</td>
-                                            <td>{{ $pengajuan->warga->nama_kepalaKeluarga }}</td>
-                                            @php
-                                                $nilai = number_format(mt_rand(0, 70000) / 100000, 5); // Nilai acak antara 0 dan 0,7 dengan 5 digit setelah koma
-                                                echo "<td>$nilai</td>";
-                                                $maxValue = max($maxValue, $nilai);
-                                                if ($nilai == $maxValue) {
-                                                    $rank = $key + 1;
-                                                } else {
-                                                    $rank++;
-                                                }
-                                            @endphp
-                                            <td>{{ $rank }}</td>
+                                            <td>{{ $data['pengajuan']->warga->nama_kepalaKeluarga }}</td>
+                                            <td>{{ $data['nilai'] }}</td>
+                                            <td>{{ $key + 1 }}</td> <!-- Peringkat berdasarkan urutan nilai -->
                                         </tr>
                                     @endforeach
-                                </tbody>
+                                </tbody>                                
                             </table>
                         </div>
                     </div>

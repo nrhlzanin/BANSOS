@@ -164,10 +164,11 @@ class PengajuanController extends Controller
      */
     public function destroy(string $id)
     {
-        $pengajuan = PengajuanModel::findOrFail($id);
-        $pengajuan->delete();
+        //dd($id);
+        $pengajuans = PengajuanModel::findOrFail($id);
+        $pengajuans->delete();
 
-        return redirect()->route('pengajuan.index')->with('success', 'Pengajuan berhasil dihapus.');
+        return redirect()->back()->with('success', 'Pengajuan berhasil dihapus.');
     }
 
     public function status()
@@ -175,9 +176,11 @@ class PengajuanController extends Controller
         $user = Auth::user();
 
         // Mengambil data pengajuan berdasarkan id_warga yang sedang login
-        $pengajuan = PengajuanModel::where('id_warga', $user->warga->id_warga)->get();
+        $pengajuan = PengajuanModel::where('id_warga', $user->id)->get();
 
         return view('warga.statusPengajuan.index', compact('pengajuan', 'user'));
     }
+    
+    
     
 }
