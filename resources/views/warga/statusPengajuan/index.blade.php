@@ -20,7 +20,7 @@
                     <div class="row">
                         <div class="col-md-6">
                             <p><strong>Tanggal Pengajuan:</strong> <span style="font-size: 18px;">{{ $item->created_at }}</span></p>
-                            <p><strong>Nama:</strong> <span style="font-size: 18px;">{{ $user->warga->nama_kepalaKeluarga }}</span></p>
+                            <p><strong>Nama:</strong> <span style="font-size: 18px;">{{ $user->nama_kepalaKeluarga }}</span></p>
                             <p><strong>Status Data:</strong> <span class="text-info" style="font-size: 18px;">{{ $item->status_data }}</span></p>
                             <p><strong>Status Pengajuan:</strong> <span class="text-info" style="font-size: 18px;">{{ $item->status_pengajuan }}</span></p>
                         </div>
