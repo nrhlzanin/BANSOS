@@ -32,6 +32,7 @@ class SpkController extends Controller
         // Ambil data pengajuan dan warga
         $pengajuans = PengajuanModel::with('warga')->get();
         $kriterias = Kriteria::all();
+        
 
         // Inisialisasi array untuk menyimpan nilai kriteria
         $kriteriaValues = [];
@@ -103,7 +104,7 @@ class SpkController extends Controller
     }
 
         // Mengarahkan ke view RW.perangkingan.index dan kirimkan data pengajuans
-        return view('spk.menu', compact('pengajuans', 'kriterias', 'maxValues', 'minValues', 'kriteriaValues'));
+        return view('RW.perangkingan.index', compact('pengajuans', 'kriterias', 'maxValues', 'minValues', 'kriteriaValues'));
     }
     public function ambilKriteria()
     {
@@ -123,7 +124,7 @@ class SpkController extends Controller
         $alternatif = $this->ambilAlternatif();
         $kriterias = $this->ambilKriteria();
 
-        return compact('alternatif', 'kriterias');
+        return compact('alternatifs', 'kriterias');
     }
 
     public function ambilPerhitungan()

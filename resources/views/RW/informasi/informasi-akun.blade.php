@@ -59,97 +59,65 @@
       <!-- /.content-header -->
 
       <!-- Main content -->
+      @php
+      $user = Auth::user();
+      $rw = Auth::user()->rw;
+    @endphp
+          <!-- Main content -->
       <div class="dashboard">
-        <div class="container-1">
-          <div class="tabel-akun">
-            <img class="rectangle-14" src="../assets/vectors/rectangle_141_x2.svg" />
-            <div class="container-18">
-              <span class="profile">Profile</span>
+        <div class="container-1 bg-light">
+          <div class="">
+            <!-- <img class="rectangle-14" src="../assets/vectors/rectangle_141_x2.svg" /> -->
+            <div class="w-100 mb-3 p-2 d-flex justify-content-center align-items-center rounded-top-4"  style="background: #127C56;">
+              <span class="fs-2 text-light">Profile</span>
             </div>
-            <div class="container-2">
-              <div class="image-21">
-                <img src="{{ asset('img/profile.png') }}">
-              </div>
-              <div class="group-848">
-                <div class="admin-1">{{ $user->username }}</div>
-                <div class="ganti-foto-profile">
-                  Ganti Foto Profile
+            <form action="" method="POST">
+              <div class="px-5 d-flex">
+                <div class="image-21">
+                  <img src="{{ asset('img/profile.png') }}">
                 </div>
-                <span class="no-file-chosen">
-                  No file chosen
-                  <button class="edit-1">Choose File</button>
-                </span>
-              </div>
-            </div>
-            <div class="group-847">
-              <div class="nama">
-                <label>Nama :</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" value="{{ $rw->nama_admin }}" disabled>
+                <div class="group-848">
+                  <div class="admin-1">{{ $rw->nama_admin }}</div>
+                  <div class="ganti-foto-profile">
+                    Ganti Foto Profile
+                  </div>
+                  <input type="file" type="file">
                 </div>
               </div>
-              <div class="username">
-                <label>Username :</label>
-                <div class="input-group">
-                  <input type="text" class="form-control" value="{{ $user->username }}" disabled>
+              <div class="px-5">
+                <div class="nama mb-3">
+                  <label>Nama :</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" value="{{ $rw->nama_admin }}" disabled>
+                  </div>
+                </div>
+                <div class="username mb-3">
+                  <label>Username :</label>
+                  <div class="input-group">
+                    <input type="text" class="form-control" value="{{ $user->username }}" disabled>
+                  </div>
+                </div>
+                <div class="password mb-3">
+                  <label>Password :</label>
+                  <input type="password" class="form-control">
+                </div>
+                <div class="email mb-3">
+                  <label>Email :</label>
+                  <input type="email" class="form-control" value="{{ $user->email }}">
+                </div>
+                <div class="notelp">
+                  <label>Nomor Telp :</label>
+                  <input type="email" class="form-control" value="{{ $rw->no_telp }}">
                 </div>
               </div>
-              <div class="password">
-                <label>Password :</label>
-                <input type="password" class="form-control">
-              </div>
-              <div class="email">
-                <label>Email :</label>
-                <input type="email" class="form-control" value="{{ $user->email }}">
-              </div>
-            <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
-          </div>
-        </div>
-        <div class="tabel-akun-1">
-          <img class="rectangle-141" src="../assets/vectors/rectangle_14_x2.svg" />
-          <div class="rectangle-331"></div>
-          <div class="container-13">
-            <div class="data">Data</div>
-            <form class="form-group">
-              <div class="notelp">
-                <label>Nomor Telp :</label>
-                <input type="email" class="form-control" value="{{ $rw->no_telp }}">
-              </div>
-            </div>
-              <div class="form-group">
-                <label for="alamat">Alamat:</label>
-                <input type="text" class="form-control" id="alamat" name="alamat" value="{{ $user->alamat }}" disabled>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="rt">RT:</label>
-                  <select class="form-control" id="rt" name="rt" disabled>
-                    <option value="1" {{ $user->rt == 1 ? 'selected' : '' }}>1</option>
-                    <option value="2" {{ $user->rt == 2 ? 'selected' : '' }}>2</option>
-                    <option value="3" {{ $user->rt == 3 ? 'selected' : '' }}>3</option>
-                  </select>
-                </div>
-                <div class="form-group col-md-6">
-                  <label for="rw">RW:</label>
-                  <select class="form-control" id="rw" name="rw" disabled>
-                    <option value="1" {{ $user->rt == 1 ? 'selected' : '' }}>1</option>
-                  </select>
-                </div>
-              </div>
-              <div class="form-row">
-                <div class="form-group col-md-6">
-                  <label for="jenis_kelamin">Jenis Kelamin:</label>
-                  <select class="form-control" id="jenis_kelamin" name="jenis_kelamin" disabled>
-                    <option value="laki-laki" {{ $user->jenis_kelamin == 'laki-laki' ? 'selected' : '' }}>Laki-laki</option>
-                    <option value="perempuan" {{ $user->jenis_kelamin == 'perempuan' ? 'selected' : '' }}>Perempuan</option>
-                  </select>
-                </div>
+              <div class="pt-5 d-flex justify-content-center">
+                <button type="submit" class="btn btn-primary">Simpan Perubahan</button>
               </div>
             </form>
           </div>
         </div>
+          <!-- /.container-fluid -->
       </div>
-    </div>
 
 @include('layouts.footer')
 </div>

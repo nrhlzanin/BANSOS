@@ -173,11 +173,11 @@ class PengajuanController extends Controller
 
     public function status()
     {
-        $user = Auth::user();
+        $user = Auth::user()->warga;
 
         // Mengambil data pengajuan berdasarkan id_warga yang sedang login
-        $pengajuan = PengajuanModel::where('id_warga', $user->id)->get();
-
+        $pengajuan = PengajuanModel::where('id_warga', $user->id_warga)->get();
+        // dd($pengajuan);
         return view('warga.statusPengajuan.index', compact('pengajuan', 'user'));
     }
     

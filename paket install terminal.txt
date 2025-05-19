@@ -1,7 +1,11 @@
 composer create-project laravel/laravel="10.3.*" ProjekBansos
 composer require laravel/ui
+composer require staudenmeir/laravel-static-site-generator
+npm run
+npm install laravel-mix --save-dev
 npm install
 npm run build
+npm run production
 composer require livewire/livewire
 composer dump-autoload
 npm run dev
